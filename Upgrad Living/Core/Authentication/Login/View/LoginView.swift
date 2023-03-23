@@ -84,11 +84,9 @@ struct LoginView: View {
                             if txtMobile.count == 10 || txtMobile.count == 7 || txtMobile.count == 8{
                                 if txtMobile.count == 7 || txtMobile.count == 8{
                                     isApplicationId = true
-                                    UserDefaults.standard.set(txtMobile, forKey: "MobileNumber")
                                     isShowOTP = true
                                 }else{
                                     isApplicationId = false
-                                    UserDefaults.standard.set(txtMobile, forKey: "MobileNumber")
                                     isShowOTP = true
                                 }
                             }else{

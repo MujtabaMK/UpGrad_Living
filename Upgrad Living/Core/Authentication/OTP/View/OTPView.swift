@@ -128,7 +128,7 @@ struct OTPView: View {
                             Button {
                                 
                             } label: {
-                                Text("Get OTP")
+                                Text("Verify")
                                     .frame(width: 250, alignment: .center)
                                     .font(.custom(OpenSans_SemiBold, size: 14))
                                     .padding()

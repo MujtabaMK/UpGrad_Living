@@ -13,11 +13,11 @@ struct LoginView: View {
     @State private var isShowOTP = false
     @State private var isShowAlert = false
     @State private var isApplicationId = false
+    @State private var isShowLoading = false
     var body: some View {
         NavigationView{
             ZStack{
                 LoginTopView()
-                
                 VStack{
                     Image("Upgrad_Login_Logo")
                         .resizable()
@@ -107,7 +107,7 @@ struct LoginView: View {
                                         startPoint: .leading,
                                         endPoint: .trailing))
                                 .clipShape(Capsule())
-                                .alert("Please Enter Application Id or Mobile Number", isPresented: $isShowAlert) {
+                                .alert("Please Enter valid Application Id or Mobile Number", isPresented: $isShowAlert) {
                                     Button("OK", role: .cancel) { }
                                 }
                             NavigationLink(
@@ -129,7 +129,18 @@ struct LoginView: View {
                         .fill(Color.white)
                         .shadow(color: .gray, radius: 10, x: 0, y: 0)
                 )
-                LoadingView()
+                VStack{
+                    //Delete
+                    Spacer()
+                    Button {
+                        isShowLoading.toggle()
+                    } label: {
+                        Text("Show")
+                    }
+                }
+                if isShowLoading{
+                    LoadingView()
+                }
             }
             .ignoresSafeArea()
             .navigationBarHidden(true)

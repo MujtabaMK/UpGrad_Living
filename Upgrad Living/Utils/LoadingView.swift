@@ -10,7 +10,7 @@ import SwiftUI
 struct LoadingView: View {
     var body: some View {
         ZStack{
-            Color(hex: 0x000000, alpha: 0.2)
+            Color(hex: 0x000000, alpha: 0.6)
             VStack{
                 Text("In order to write about life first you must live it")
                     .font(.custom(OpenSans_SemiBold, size: 18))
@@ -27,9 +27,11 @@ struct LoadingView: View {
                 Text("Loading")
                     .font(.custom(OpenSans_SemiBold, size: 18))
                     .foregroundColor(Color(hex: 0xCC1120))
-                    .padding()
+                    .padding(6)
+                LottieView(name: "Loading", loopMode: .loop)
+                            .frame(width: 100, height: 20)
             }
-            .frame(width: UIScreen.main.bounds.width - 90, height: 200)
+            .frame(width: UIScreen.main.bounds.width - 90, height: 250)
             .background(.white)
             .padding(.horizontal)
             .background(

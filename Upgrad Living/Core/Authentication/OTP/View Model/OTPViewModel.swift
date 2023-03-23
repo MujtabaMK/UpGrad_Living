@@ -13,5 +13,3 @@ enum LogInField {
     case otp3
     case otp4
 }
-
-

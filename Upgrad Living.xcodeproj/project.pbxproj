@@ -218,8 +218,8 @@
 		096A3FDD29CC254100092AAC /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				0934F12829CC3DAF0076AD56 /* OTP */,
 				096A3FDE29CC254A00092AAC /* Login */,
+				0934F12829CC3DAF0076AD56 /* OTP */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";

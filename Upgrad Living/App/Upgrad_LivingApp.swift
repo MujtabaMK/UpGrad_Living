@@ -11,7 +11,8 @@ import SwiftUI
 struct Upgrad_LivingApp: App {
     var body: some Scene {
         WindowGroup {
-           LoginView()
+           //LoginView()
+            WalkThrough1()
         }
     }
 }

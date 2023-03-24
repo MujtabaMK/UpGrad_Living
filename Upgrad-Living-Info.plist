@@ -23,5 +23,7 @@
 		<key>UIImageName</key>
 		<string>Flash_Screen</string>
 	</dict>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

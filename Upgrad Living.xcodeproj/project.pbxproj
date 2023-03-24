@@ -30,13 +30,13 @@
 		096A400429CC2D5800092AAC /* HexColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A400029CC2D5700092AAC /* HexColour.swift */; };
 		096A400529CC2D5800092AAC /* extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A400129CC2D5700092AAC /* extention.swift */; };
 		096A400629CC2D5800092AAC /* customLodingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A400229CC2D5800092AAC /* customLodingIndicator.swift */; };
+		098D698629CD58940000F5A9 /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 098D698529CD58940000F5A9 /* Loading.json */; };
 		09A33B6129CC1D3C00C01D65 /* Upgrad_LivingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */; };
 		09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6229CC1D3C00C01D65 /* ContentView.swift */; };
 		09A33B6529CC1D4200C01D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A33B6429CC1D4200C01D65 /* Assets.xcassets */; };
 		09A33B6829CC1D4200C01D65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A33B6729CC1D4200C01D65 /* Preview Assets.xcassets */; };
 		09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */; };
 		09CC312629CC71940048BFF5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312529CC71940048BFF5 /* LottieView.swift */; };
-		09CC312E29CC79B60048BFF5 /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 09CC312D29CC79B50048BFF5 /* Loading.json */; };
 		09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +64,7 @@
 		096A400029CC2D5700092AAC /* HexColour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColour.swift; sourceTree = "<group>"; };
 		096A400129CC2D5700092AAC /* extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extention.swift; sourceTree = "<group>"; };
 		096A400229CC2D5800092AAC /* customLodingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customLodingIndicator.swift; sourceTree = "<group>"; };
+		098D698529CD58940000F5A9 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		09A33B5D29CC1D3C00C01D65 /* Upgrad Living.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upgrad Living.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrad_LivingApp.swift; sourceTree = "<group>"; };
 		09A33B6229CC1D3C00C01D65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		09A33B6729CC1D4200C01D65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09CC312529CC71940048BFF5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
-		09CC312D29CC79B50048BFF5 /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDefine.swift; sourceTree = "<group>"; };
 		42FC69D1BCE0EB9CB9343A47 /* Pods_Upgrad_Living.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Upgrad_Living.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3DD8EBA0C63FEA03A808A5 /* Pods-Upgrad Living.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.release.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.release.xcconfig"; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 		09CC312229CC70BD0048BFF5 /* JSON File */ = {
 			isa = PBXGroup;
 			children = (
-				09CC312D29CC79B50048BFF5 /* Loading.json */,
+				098D698529CD58940000F5A9 /* Loading.json */,
 			);
 			path = "JSON File";
 			sourceTree = "<group>";
@@ -386,6 +386,7 @@
 				096A3FF729CC2A5500092AAC /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				096A3FF929CC2A5500092AAC /* OpenSans-ExtraBold.ttf in Resources */,
 				096A3FF629CC2A5500092AAC /* OpenSans-MediumItalic.ttf in Resources */,
+				098D698629CD58940000F5A9 /* Loading.json in Resources */,
 				096A3FF529CC2A5500092AAC /* OpenSans-Medium.ttf in Resources */,
 				096A3FF829CC2A5500092AAC /* OpenSans-Italic.ttf in Resources */,
 				096A3FF129CC2A5500092AAC /* OpenSans-Light.ttf in Resources */,
@@ -397,7 +398,6 @@
 				096A3FF429CC2A5500092AAC /* OpenSans-SemiBold.ttf in Resources */,
 				096A3FFB29CC2A5500092AAC /* OpenSans-LightItalic.ttf in Resources */,
 				09A33B6529CC1D4200C01D65 /* Assets.xcassets in Resources */,
-				09CC312E29CC79B60048BFF5 /* Loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

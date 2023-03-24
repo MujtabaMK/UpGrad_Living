@@ -41,6 +41,10 @@
 		09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6229CC1D3C00C01D65 /* ContentView.swift */; };
 		09A33B6529CC1D4200C01D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A33B6429CC1D4200C01D65 /* Assets.xcassets */; };
 		09A33B6829CC1D4200C01D65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A33B6729CC1D4200C01D65 /* Preview Assets.xcassets */; };
+		09A6F6DC29CDB96C00689E9F /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6DB29CDB96C00689E9F /* BaseAPI.swift */; };
+		09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6DD29CDB9B300689E9F /* APIDefine.swift */; };
+		09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6DF29CDBA3400689E9F /* LoginModel.swift */; };
+		09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6E129CDBA5400689E9F /* LoginViewModel.swift */; };
 		09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */; };
 		09CC312629CC71940048BFF5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312529CC71940048BFF5 /* LottieView.swift */; };
 		09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */; };
@@ -82,6 +86,10 @@
 		09A33B6229CC1D3C00C01D65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		09A33B6429CC1D4200C01D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09A33B6729CC1D4200C01D65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		09A6F6DB29CDB96C00689E9F /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		09A6F6DD29CDB9B300689E9F /* APIDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
+		09A6F6DF29CDBA3400689E9F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		09A6F6E129CDBA5400689E9F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09CC312529CC71940048BFF5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDefine.swift; sourceTree = "<group>"; };
@@ -114,6 +122,7 @@
 		0934F12629CC3D980076AD56 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				09A6F6E129CDBA5400689E9F /* LoginViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -121,6 +130,7 @@
 		0934F12729CC3D9F0076AD56 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09A6F6DF29CDBA3400689E9F /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +193,7 @@
 			children = (
 				096A3FFD29CC2B0300092AAC /* FountsDefine.swift */,
 				09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */,
+				09A6F6DD29CDB9B300689E9F /* APIDefine.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -212,6 +223,7 @@
 		096A3FDA29CC251400092AAC /* Singleton Class */ = {
 			isa = PBXGroup;
 			children = (
+				09A6F6DB29CDB96C00689E9F /* BaseAPI.swift */,
 			);
 			path = "Singleton Class";
 			sourceTree = "<group>";
@@ -485,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0945E26C29CD9F1400F9EA4E /* WalkThrough3.swift in Sources */,
+				09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */,
 				098D699029CD770D0000F5A9 /* WalkThrough1.swift in Sources */,
 				096A400529CC2D5800092AAC /* extention.swift in Sources */,
 				09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */,
@@ -496,11 +509,14 @@
 				096A3FFE29CC2B0300092AAC /* FountsDefine.swift in Sources */,
 				098D698D29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift in Sources */,
 				096A400429CC2D5800092AAC /* HexColour.swift in Sources */,
+				09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */,
+				09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */,
 				0945E26A29CD8C3D00F9EA4E /* WalkThrough2.swift in Sources */,
 				098D698929CD70230000F5A9 /* ContentViewModel.swift in Sources */,
 				0934F12D29CC3DD70076AD56 /* OTPView.swift in Sources */,
 				0934F13129CC581C0076AD56 /* OTPViewTextField.swift in Sources */,
 				096A400629CC2D5800092AAC /* customLodingIndicator.swift in Sources */,
+				09A6F6DC29CDB96C00689E9F /* BaseAPI.swift in Sources */,
 				096A400329CC2D5800092AAC /* HideKeyboard.swift in Sources */,
 				09CC312629CC71940048BFF5 /* LottieView.swift in Sources */,
 				09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */,

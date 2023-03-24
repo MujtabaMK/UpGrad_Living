@@ -13,7 +13,9 @@ struct LoginView: View {
     @State private var isShowOTP = false
     @State private var isShowAlert = false
     @State private var isApplicationId = false
-    @State private var isShowLoading = false
+    @State private var showingAlert = false
+    @State private var AlertMessage = String()
+    @StateObject var viewModel = LoginViewModel()
     var body: some View {
         NavigationView{
             ZStack{
@@ -82,14 +84,19 @@ struct LoginView: View {
                     VStack{
                         Button {
                             if txtMobile.count == 10 || txtMobile.count == 7 || txtMobile.count == 8{
-                                if txtMobile.count == 7 || txtMobile.count == 8{
-                                    isApplicationId = true
-                                    isShowOTP = true
-                                }else{
-                                    isApplicationId = false
-                                    isShowOTP = true
-                                }
+                                    viewModel.fetchLoginDate(mobile: txtMobile) { loginData in
+                                       if loginData.status == 1{
+                                           print(loginData.data?.studentMobile ?? "")
+                                           print(loginData.data?.studentAppID ?? "")
+                                           isApplicationId = false
+                                           isShowOTP = true
+                                        }else{
+                                            AlertMessage = loginData.msg ?? ""
+                                            isShowAlert = true
+                                        }
+                                    }
                             }else{
+                                AlertMessage = "Please Enter valid Application Id or Mobile Number"
                                 isShowAlert = true
                             }
                         } label: {
@@ -105,7 +112,7 @@ struct LoginView: View {
                                         startPoint: .leading,
                                         endPoint: .trailing))
                                 .clipShape(Capsule())
-                                .alert("Please Enter valid Application Id or Mobile Number", isPresented: $isShowAlert) {
+                                .alert(AlertMessage, isPresented: $isShowAlert) {
                                     Button("OK", role: .cancel) { }
                                 }
                             NavigationLink(
@@ -127,16 +134,7 @@ struct LoginView: View {
                         .fill(Color.white)
                         .shadow(color: .gray, radius: 10, x: 0, y: 0)
                 )
-                VStack{
-                    //Delete
-                    Spacer()
-                    Button {
-                        isShowLoading.toggle()
-                    } label: {
-                        Text("Show")
-                    }
-                }
-                if isShowLoading{
+                if viewModel.isLoadingData{
                     LoadingView()
                 }
             }

@@ -48,6 +48,8 @@
 		09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */; };
 		09CC312629CC71940048BFF5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312529CC71940048BFF5 /* LottieView.swift */; };
 		09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */; };
+		09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ECD9DA29D3F680008465A2 /* OTPModel.swift */; };
+		09ECD9DD29D3FA60008465A2 /* APIFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ECD9DC29D3FA60008465A2 /* APIFunction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,8 @@
 		09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09CC312529CC71940048BFF5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDefine.swift; sourceTree = "<group>"; };
+		09ECD9DA29D3F680008465A2 /* OTPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPModel.swift; sourceTree = "<group>"; };
+		09ECD9DC29D3FA60008465A2 /* APIFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFunction.swift; sourceTree = "<group>"; };
 		42FC69D1BCE0EB9CB9343A47 /* Pods_Upgrad_Living.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Upgrad_Living.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3DD8EBA0C63FEA03A808A5 /* Pods-Upgrad Living.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.release.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.release.xcconfig"; sourceTree = "<group>"; };
 		DE0620C48538023C275F94CA /* Pods-Upgrad Living.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.debug.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 		0934F12B29CC3DC30076AD56 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09ECD9DA29D3F680008465A2 /* OTPModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 		096A3FDB29CC252000092AAC /* API Finction */ = {
 			isa = PBXGroup;
 			children = (
+				09ECD9DC29D3FA60008465A2 /* APIFunction.swift */,
 			);
 			path = "API Finction";
 			sourceTree = "<group>";
@@ -511,9 +517,11 @@
 				096A400429CC2D5800092AAC /* HexColour.swift in Sources */,
 				09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */,
 				09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */,
+				09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */,
 				0945E26A29CD8C3D00F9EA4E /* WalkThrough2.swift in Sources */,
 				098D698929CD70230000F5A9 /* ContentViewModel.swift in Sources */,
 				0934F12D29CC3DD70076AD56 /* OTPView.swift in Sources */,
+				09ECD9DD29D3FA60008465A2 /* APIFunction.swift in Sources */,
 				0934F13129CC581C0076AD56 /* OTPViewTextField.swift in Sources */,
 				096A400629CC2D5800092AAC /* customLodingIndicator.swift in Sources */,
 				09A6F6DC29CDB96C00689E9F /* BaseAPI.swift in Sources */,

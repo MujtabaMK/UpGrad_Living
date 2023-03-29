@@ -9,3 +9,4 @@ import Foundation
 
 let StartURL = BaseAPI.shared.BaseURL
 let Login_API = "\(StartURL)loginOTPApp"
+let Login_OTP_Verify_API = "\(StartURL)loginOTPVerify"

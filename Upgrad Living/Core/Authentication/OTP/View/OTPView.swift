@@ -19,6 +19,10 @@ struct OTPView: View {
     @Binding var newMobile: String
     @Binding var isApplicationId: Bool
     @Environment(\.presentationMode) var presentaionMode
+    @State private var showingAlert = false
+    @State private var AlertMessage = String()
+    @StateObject var viewModel = OTPViewModel()
+    @State private var loginDict = [String: Any?]()
     var body: some View {
         NavigationView{
             ZStack{
@@ -112,6 +116,7 @@ struct OTPView: View {
                                 Spacer()
                                 Button {
                                     
+                                    
                                 } label: {
                                     Text("Didn’t receive code?")
                                         .font(.custom(OpenSans_Regular, size: 12))
@@ -126,7 +131,24 @@ struct OTPView: View {
                         .frame(alignment: .trailing)
                         VStack(alignment: .center){
                             Button {
-                                
+                                let MobileOTP = OTP1 + OTP2 + OTP3 + OTP4
+                                if MobileOTP.count == 4{
+                                    viewModel.fetchLoginDate(mobile: newMobile, otp: MobileOTP) { OTPData in
+                                        if OTPData.status == 1{
+                                            if OTPData.data?.userid?.count != 0{
+                                                saveLoginOTPData(dict: OTPData.data!) { returnvalue in
+                                                    print("DEBUG: School Name = ",returnvalue.school ?? "")
+                                                }
+//                                                loginDict = getLoginOTPData(dict: OTPData.data!)
+                                                UserDefaults.standard.set(true, forKey: "isLogin")
+                                               // showDashboardView = true
+                                            }
+                                        }else{
+                                            AlertMessage = OTPData.msg ?? ""
+                                            showingAlert = true
+                                        }
+                                    }
+                                }
                             } label: {
                                 Text("Verify")
                                     .frame(width: 250, alignment: .center)
@@ -140,6 +162,9 @@ struct OTPView: View {
                                             startPoint: .leading,
                                             endPoint: .trailing))
                                     .clipShape(Capsule())
+                                    .alert(AlertMessage, isPresented: $showingAlert) {
+                                        Button("OK", role: .cancel) { }
+                                    }
                             }
                         }
                         .padding(.bottom, 20)
@@ -160,6 +185,9 @@ struct OTPView: View {
                     Last4DigitMobileNumber = isApplicationId ?  "***\(lastDigit)" : "+91***\(lastDigit)"
                     print(Last4DigitMobileNumber)
                     
+                }
+                if viewModel.isLoadingData{
+                    LoadingView()
                 }
             }
             .ignoresSafeArea()

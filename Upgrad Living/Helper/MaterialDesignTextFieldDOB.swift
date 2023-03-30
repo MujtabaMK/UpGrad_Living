@@ -1,26 +1,27 @@
 //
-//  MaterialDesignTextField.swift
-//  ATLAS VMS
+//  MaterialDesignTextFieldDOB.swift
+//  Upgrad Living
 //
-//  Created by Mujtaba Khan on 10/01/23.
+//  Created by Mujtaba Khan on 29/03/23.
 //
 
 import SwiftUI
 import Combine
 
-struct MaterialDesignTextField: View {
+struct MaterialDesignTextFieldDOB: View {
     @State var ColourValue = Color(.white)
     @Binding var BorderColor: Color
     @Binding var placeholderImage: String
     var body: some View {
         ZStack {
             HStack{
+                TextField("", text: $text)
+                    .focused($focusField, equals: .textField)
+                Spacer()
                 Image(placeholderImage)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
-                TextField("", text: $text)
-                    .focused($focusField, equals: .textField)
             }
             .padding()
             .overlay(
@@ -162,7 +163,7 @@ struct MaterialDesignTextField: View {
             placeholderLeadingPadding = 15.0
         } else {
             placeholderBottomPadding = 0.0
-            placeholderLeadingPadding = 45.0
+            placeholderLeadingPadding = 15.0
         }
     }
     
@@ -171,8 +172,8 @@ struct MaterialDesignTextField: View {
     }
 }
 
-struct MaterialDesignTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        MaterialDesignTextField(.constant(""), placeholder: "", hint: .constant(""), editing: .constant(false), valid: .constant(false), BorderColor: .constant(Color(hex: 0xF15865)), placeholderImage: .constant("person"))
-    }
-}
+//struct MaterialDesignTextFieldDOB_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MaterialDesignTextFieldDOB(<#Binding<String>#>, placeholder: <#String#>, hint: <#Binding<String>#>, editing: <#Binding<Bool>#>, valid: <#Binding<Bool>#>, BorderColor: <#Binding<Color>#>, placeholderImage: <#Binding<String>#>)
+//    }
+//}

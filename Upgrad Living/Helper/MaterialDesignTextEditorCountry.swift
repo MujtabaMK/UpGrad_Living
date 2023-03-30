@@ -1,36 +1,40 @@
 //
-//  MaterialDesignTextField.swift
+//  MaterialDesignTextEditorCountry.swift
 //  ATLAS VMS
 //
-//  Created by Mujtaba Khan on 10/01/23.
+//  Created by Mujtaba Khan on 21/02/23.
 //
 
 import SwiftUI
 import Combine
 
-struct MaterialDesignTextField: View {
+struct MaterialDesignTextEditorCountry: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var ColourValue = Color(.white)
     @Binding var BorderColor: Color
-    @Binding var placeholderImage: String
     var body: some View {
         ZStack {
             HStack{
-                Image(placeholderImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                TextField("", text: $text)
+                TextEditor(text: .constant(text))
+                    .disabled(true)
+                    .padding(.leading, 4)
                     .focused($focusField, equals: .textField)
+                Spacer()
+                Image("DropDown")
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFit()
+                    .padding(.trailing, 12)
+                    .frame(width: 30, height: 30)
             }
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 12.0, style: .continuous)
                     .stroke(borderColor, lineWidth: borderWidth)
             )
-            
             HStack {
                 ZStack {
-                    Color(.white)
+                    Color(colorScheme == .light ? .white : .black)
                     //Color(PlaceHolderBackgroundColour)
                         .cornerRadius(4.0)
                         .opacity(placeholderBackgroundOpacity)
@@ -42,19 +46,9 @@ struct MaterialDesignTextField: View {
                         .layoutPriority(1)
                 }
                 .padding([.leading], placeholderLeadingPadding)
-                .padding([.bottom], placeholderBottomPadding)
+                .padding([.top], placeholderBottomPadding)
                 Spacer()
             }
-//            HStack {
-//                VStack {
-//                    Spacer()
-//                    Text(hint)
-//                        .font(.system(size: 10.0))
-//                        .foregroundColor(.gray)
-//                        .padding([.leading], 10.0)
-//                }
-//                Spacer()
-//            }
         }
         .onChange(of: editing) {
             focusField = $0 ? .textField : nil
@@ -72,7 +66,7 @@ struct MaterialDesignTextField: View {
     }
     
     private let placeholder: String
-    @State private var borderColor = Color.white
+    @State private var borderColor = Color.gray
     @State private var borderWidth = 1.0
     @Binding private var editing: Bool
     @FocusState private var focusField: Field?
@@ -90,15 +84,13 @@ struct MaterialDesignTextField: View {
          hint: Binding<String>,
          editing: Binding<Bool>,
          valid: Binding<Bool>,
-         BorderColor: Binding<Color>,
-         placeholderImage: Binding<String>) {
+         BorderColor: Binding<Color>) {
         self._text = text
         self.placeholder = placeholder
         self._hint = hint
         self._editing = editing
         self._valid = valid
         self._BorderColor = BorderColor
-        self._placeholderImage = placeholderImage
     }
     
     private func updateBorder() {
@@ -149,7 +141,7 @@ struct MaterialDesignTextField: View {
     }
     
     private func updatePlaceholderFontSize() {
-        if !text.isEmpty {
+        if editing || !text.isEmpty {
             placeholderFontSize = 10.0
         } else {
             placeholderFontSize = 16.0
@@ -157,12 +149,12 @@ struct MaterialDesignTextField: View {
     }
     
     private func updatePlaceholderPosition() {
-        if  !text.isEmpty {
-            placeholderBottomPadding = 52.0
+        if editing || !text.isEmpty {
+            placeholderBottomPadding = -38.0
             placeholderLeadingPadding = 15.0
         } else {
             placeholderBottomPadding = 0.0
-            placeholderLeadingPadding = 45.0
+            placeholderLeadingPadding = 15.0
         }
     }
     
@@ -171,8 +163,8 @@ struct MaterialDesignTextField: View {
     }
 }
 
-struct MaterialDesignTextField_Previews: PreviewProvider {
+struct MaterialDesignTextEditorCountry_Previews: PreviewProvider {
     static var previews: some View {
-        MaterialDesignTextField(.constant(""), placeholder: "", hint: .constant(""), editing: .constant(false), valid: .constant(false), BorderColor: .constant(Color(hex: 0xF15865)), placeholderImage: .constant("person"))
+        MaterialDesignTextEditorCountry(.constant(""), placeholder: "", hint: .constant(""), editing: .constant(false), valid: .constant(false), BorderColor: .constant(Color(hex: 0xF15865)))
     }
 }

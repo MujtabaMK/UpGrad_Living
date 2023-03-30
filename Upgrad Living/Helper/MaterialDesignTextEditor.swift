@@ -1,14 +1,15 @@
 //
-//  MaterialDesignTextField.swift
+//  MaterialDesignTextEditor.swift
 //  ATLAS VMS
 //
-//  Created by Mujtaba Khan on 10/01/23.
+//  Created by Mujtaba Khan on 21/02/23.
 //
 
 import SwiftUI
 import Combine
 
-struct MaterialDesignTextField: View {
+struct MaterialDesignTextEditor: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var ColourValue = Color(.white)
     @Binding var BorderColor: Color
     @Binding var placeholderImage: String
@@ -19,18 +20,26 @@ struct MaterialDesignTextField: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
-                TextField("", text: $text)
+                TextEditor(text: .constant(text))
+                    .disabled(true)
+                    .padding(.leading, 4)
                     .focused($focusField, equals: .textField)
+                Spacer()
+                Image("DropDown")
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFit()
+                    .padding(.trailing, 12)
+                    .frame(width: 30, height: 30)
             }
             .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 12.0, style: .continuous)
                     .stroke(borderColor, lineWidth: borderWidth)
             )
-            
             HStack {
                 ZStack {
-                    Color(.white)
+                    Color(colorScheme == .light ? .white : .black)
                     //Color(PlaceHolderBackgroundColour)
                         .cornerRadius(4.0)
                         .opacity(placeholderBackgroundOpacity)
@@ -42,7 +51,7 @@ struct MaterialDesignTextField: View {
                         .layoutPriority(1)
                 }
                 .padding([.leading], placeholderLeadingPadding)
-                .padding([.bottom], placeholderBottomPadding)
+                .padding([.top], placeholderBottomPadding)
                 Spacer()
             }
 //            HStack {
@@ -52,6 +61,7 @@ struct MaterialDesignTextField: View {
 //                        .font(.system(size: 10.0))
 //                        .foregroundColor(.gray)
 //                        .padding([.leading], 10.0)
+//                        .padding(.bottom, -35)
 //                }
 //                Spacer()
 //            }
@@ -72,7 +82,7 @@ struct MaterialDesignTextField: View {
     }
     
     private let placeholder: String
-    @State private var borderColor = Color.white
+    @State private var borderColor = Color.gray
     @State private var borderWidth = 1.0
     @Binding private var editing: Bool
     @FocusState private var focusField: Field?
@@ -149,7 +159,7 @@ struct MaterialDesignTextField: View {
     }
     
     private func updatePlaceholderFontSize() {
-        if !text.isEmpty {
+        if editing || !text.isEmpty {
             placeholderFontSize = 10.0
         } else {
             placeholderFontSize = 16.0
@@ -157,8 +167,8 @@ struct MaterialDesignTextField: View {
     }
     
     private func updatePlaceholderPosition() {
-        if  !text.isEmpty {
-            placeholderBottomPadding = 52.0
+        if editing || !text.isEmpty {
+            placeholderBottomPadding = -38.0
             placeholderLeadingPadding = 15.0
         } else {
             placeholderBottomPadding = 0.0
@@ -171,8 +181,8 @@ struct MaterialDesignTextField: View {
     }
 }
 
-struct MaterialDesignTextField_Previews: PreviewProvider {
+struct MaterialDesignTextEditor_Previews: PreviewProvider {
     static var previews: some View {
-        MaterialDesignTextField(.constant(""), placeholder: "", hint: .constant(""), editing: .constant(false), valid: .constant(false), BorderColor: .constant(Color(hex: 0xF15865)), placeholderImage: .constant("person"))
+        MaterialDesignTextEditor(.constant(""), placeholder: "", hint: .constant(""), editing: .constant(false), valid: .constant(false), BorderColor: .constant(Color(hex: 0xF15865)), placeholderImage: .constant("person"))
     }
 }

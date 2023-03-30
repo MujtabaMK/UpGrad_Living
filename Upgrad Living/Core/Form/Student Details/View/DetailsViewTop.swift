@@ -24,6 +24,25 @@ struct DetailsViewTop: View {
                                 .font(.custom(OpenSans_SemiBold, size: 14))
                                 .foregroundColor(Color(hex: 0x868686))
                         )
+                }else if Step == "2"{
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color(hex: 0x75D5DA))
+                        .overlay(
+                            Text("2")
+                                .font(.custom(OpenSans_SemiBold, size: 14))
+                                .foregroundColor(Color(hex: 0x868686))
+                        )
+                }
+                else if Step == "3"{
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color(hex: 0x685BC7))
+                        .overlay(
+                            Text("3")
+                                .font(.custom(OpenSans_SemiBold, size: 14))
+                                .foregroundColor(Color(hex: 0x333333))
+                        )
                 }
                 
                 Text("of")
@@ -31,6 +50,25 @@ struct DetailsViewTop: View {
                     .foregroundColor(Color(hex: 0x868686))
                 
                 if Step == "1"{
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color(hex: 0xF1F0F0))
+                        .overlay(
+                            Text("5")
+                                .font(.custom(OpenSans_SemiBold, size: 14))
+                                .foregroundColor(Color(hex: 0x868686))
+                        )
+                }else if Step == "2"{
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color(hex: 0xF1F0F0))
+                        .overlay(
+                            Text("5")
+                                .font(.custom(OpenSans_SemiBold, size: 14))
+                                .foregroundColor(Color(hex: 0x868686))
+                        )
+                }
+                else if Step == "3"{
                     Circle()
                         .frame(width: 30, height: 30)
                         .foregroundColor(Color(hex: 0xF1F0F0))
@@ -61,7 +99,46 @@ struct DetailsViewTop: View {
                     .frame(width: UIScreen.main.bounds.width - 20)
                     .background(Color(hex: 0xF15865))
                     .padding(.top, -30)
+            }else if Step == "2"{
+                HStack{
+                    Image("Parent_Top_Image")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 235, height: 235, alignment: .leading)
+                        Spacer()
+                    Text("Fill in your parent’s and/or guardian’s details")
+                        .font(.custom(OpenSans_Bold, size: 20))
+                        .foregroundColor(Color(hex: 0x333333))
+                        Spacer()
+                }
+                Text("Parent’s Details")
+                    .foregroundColor(.white)
+                    .font(.custom(OpenSans_Bold, size: 16))
+                    .padding(8)
+                    .frame(width: UIScreen.main.bounds.width - 20)
+                    .background(Color(hex: 0x00B2BA))
+                    .padding(.top, -30)
+            }else if Step == "3"{
+                HStack{
+                    Image("Enrollment_Top_Image")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 235, height: 235, alignment: .leading)
+                        Spacer()
+                    Text("Fill in your enrollment details")
+                        .font(.custom(OpenSans_Bold, size: 20))
+                        .foregroundColor(Color(hex: 0x333333))
+                        Spacer()
+                }
+                Text("Enrollment Details")
+                    .foregroundColor(.white)
+                    .font(.custom(OpenSans_Bold, size: 16))
+                    .padding(8)
+                    .frame(width: UIScreen.main.bounds.width - 20)
+                    .background(Color(hex: 0x685BC7))
+                    .padding(.top, -40)
             }
+            
         }
     }
 }

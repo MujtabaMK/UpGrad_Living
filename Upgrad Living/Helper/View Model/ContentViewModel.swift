@@ -108,7 +108,7 @@ final class ContentViewModel: ObservableObject {
     }
     
     func validateTextMiddleName() {
-        if textMiddleName.count > 2{
+        if textMiddleName.count > 0{
             textMiddleNameValid = true
             hintMiddleName = "Success"
         }else{

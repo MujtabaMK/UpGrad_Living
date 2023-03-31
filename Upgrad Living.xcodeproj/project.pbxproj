@@ -50,6 +50,11 @@
 		0993226329D6939C0036C050 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226229D6939C0036C050 /* SearchBar.swift */; };
 		0993226529D6B37B0036C050 /* SchoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226429D6B37B0036C050 /* SchoolModel.swift */; };
 		0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226729D6B44B0036C050 /* SchoolViewModel.swift */; };
+		0993226A29D6C81A0036C050 /* FoucesedStudentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226929D6C81A0036C050 /* FoucesedStudentTextField.swift */; };
+		0993226C29D6E71D0036C050 /* FoucesedParentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226B29D6E71D0036C050 /* FoucesedParentTextField.swift */; };
+		0993226E29D6F0290036C050 /* FoucesedEnrollmentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226D29D6F0290036C050 /* FoucesedEnrollmentTextField.swift */; };
+		0993227029D6F9400036C050 /* SubmitStudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226F29D6F9400036C050 /* SubmitStudentModel.swift */; };
+		0993227229D6F9810036C050 /* SubmitStudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993227129D6F9810036C050 /* SubmitStudentViewModel.swift */; };
 		09A33B6129CC1D3C00C01D65 /* Upgrad_LivingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */; };
 		09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6229CC1D3C00C01D65 /* ContentView.swift */; };
 		09A33B6529CC1D4200C01D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A33B6429CC1D4200C01D65 /* Assets.xcassets */; };
@@ -123,6 +128,11 @@
 		0993226229D6939C0036C050 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0993226429D6B37B0036C050 /* SchoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolModel.swift; sourceTree = "<group>"; };
 		0993226729D6B44B0036C050 /* SchoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolViewModel.swift; sourceTree = "<group>"; };
+		0993226929D6C81A0036C050 /* FoucesedStudentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucesedStudentTextField.swift; sourceTree = "<group>"; };
+		0993226B29D6E71D0036C050 /* FoucesedParentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucesedParentTextField.swift; sourceTree = "<group>"; };
+		0993226D29D6F0290036C050 /* FoucesedEnrollmentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucesedEnrollmentTextField.swift; sourceTree = "<group>"; };
+		0993226F29D6F9400036C050 /* SubmitStudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitStudentModel.swift; sourceTree = "<group>"; };
+		0993227129D6F9810036C050 /* SubmitStudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitStudentViewModel.swift; sourceTree = "<group>"; };
 		09A33B5D29CC1D3C00C01D65 /* Upgrad Living.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upgrad Living.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrad_LivingApp.swift; sourceTree = "<group>"; };
 		09A33B6229CC1D3C00C01D65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -380,6 +390,8 @@
 			children = (
 				098A04D929D42F3600C9595A /* MasterViewModel.swift */,
 				098A04E329D4538200C9595A /* CountryViewModel.swift */,
+				0993226929D6C81A0036C050 /* FoucesedStudentTextField.swift */,
+				0993227129D6F9810036C050 /* SubmitStudentViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -389,6 +401,7 @@
 			children = (
 				098A04D729D42EC700C9595A /* MasterModel.swift */,
 				098A04E129D452F800C9595A /* CountryModel.swift */,
+				0993226F29D6F9400036C050 /* SubmitStudentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -508,6 +521,7 @@
 		09DE74A529D541C9001B105A /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				0993226B29D6E71D0036C050 /* FoucesedParentTextField.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -541,6 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				0993226729D6B44B0036C050 /* SchoolViewModel.swift */,
+				0993226D29D6F0290036C050 /* FoucesedEnrollmentTextField.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -800,12 +815,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0945E26C29CD9F1400F9EA4E /* WalkThrough3.swift in Sources */,
+				0993226C29D6E71D0036C050 /* FoucesedParentTextField.swift in Sources */,
 				098A04D829D42EC700C9595A /* MasterModel.swift in Sources */,
 				09DE74D629D5AAFA001B105A /* FormDeclerationView.swift in Sources */,
 				0993226529D6B37B0036C050 /* SchoolModel.swift in Sources */,
 				09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */,
 				09DE74C429D5783F001B105A /* RoomTypeTwinView.swift in Sources */,
 				0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */,
+				0993226A29D6C81A0036C050 /* FoucesedStudentTextField.swift in Sources */,
 				098D699029CD770D0000F5A9 /* WalkThrough1.swift in Sources */,
 				09DE74CC29D58769001B105A /* MedicalQuestionOptionView.swift in Sources */,
 				098A04D029D407C400C9595A /* StudentDetailsView.swift in Sources */,
@@ -824,6 +841,7 @@
 				098D698B29CD702C0000F5A9 /* MaterialDesignTextField.swift in Sources */,
 				09DE74AC29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift in Sources */,
 				0934F12F29CC57AE0076AD56 /* OTPViewModel.swift in Sources */,
+				0993227029D6F9400036C050 /* SubmitStudentModel.swift in Sources */,
 				09DE74A829D541F5001B105A /* ParentsDetailsView.swift in Sources */,
 				096A3FFE29CC2B0300092AAC /* FountsDefine.swift in Sources */,
 				098A04E229D452F800C9595A /* CountryModel.swift in Sources */,
@@ -838,11 +856,13 @@
 				09DE74B429D55DBD001B105A /* EnrollmentContentViewModel.swift in Sources */,
 				09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */,
 				098A04DA29D42F3600C9595A /* MasterViewModel.swift in Sources */,
+				0993226E29D6F0290036C050 /* FoucesedEnrollmentTextField.swift in Sources */,
 				0945E26A29CD8C3D00F9EA4E /* WalkThrough2.swift in Sources */,
 				098D698929CD70230000F5A9 /* ContentViewModel.swift in Sources */,
 				0934F12D29CC3DD70076AD56 /* OTPView.swift in Sources */,
 				09DE74D029D59E2B001B105A /* MediacalQuestionSubImage.swift in Sources */,
 				09ECD9DD29D3FA60008465A2 /* APIFunction.swift in Sources */,
+				0993227229D6F9810036C050 /* SubmitStudentViewModel.swift in Sources */,
 				0934F13129CC581C0076AD56 /* OTPViewTextField.swift in Sources */,
 				096A400629CC2D5800092AAC /* customLodingIndicator.swift in Sources */,
 				09A6F6DC29CDB96C00689E9F /* BaseAPI.swift in Sources */,

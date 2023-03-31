@@ -38,6 +38,13 @@ struct ParentsDetailsView: View {
     
     @State private var showEnrollmentDetails = false
     
+    @State private var alertMessage = String()
+    @State private var showingAlert = false
+    @State private var AlertShow = String()
+    
+    @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
+    @FocusState private var focusedField: FoucesedParentTextField?
+    
     var getIsEditable: String
     var body: some View {
         NavigationView {
@@ -61,6 +68,7 @@ struct ParentsDetailsView: View {
                 ScrollView(showsIndicators: false){
                     DetailsViewTop(Step: "2")
                         .padding(.bottom)
+                        .id(1)
                     //Father
                     VStack(alignment: .leading){
                         //Father First Name
@@ -71,6 +79,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textFatherFirstNameValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("person"))
+                        .focused($focusedField, equals: .fFirstName)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textFatherFirstName, perform: { newValue in
                             editingTextFieldFatherFirstName = true
@@ -92,6 +101,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textFatherMiddleNameValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("person"))
+                        .focused($focusedField, equals: .fMiddleName)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textFatherMiddleName, perform: { newValue in
                             editingTextFieldFatherMiddleName = true
@@ -113,6 +123,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textFatherLastNameValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("person"))
+                        .focused($focusedField, equals: .fLastName)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textFatherLastName, perform: { newValue in
                             editingTextFieldFatherLastName = true
@@ -134,6 +145,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textFatherMobileNumberValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("Student_Phone"))
+                        .focused($focusedField, equals: .fMobileNumber)
                         .keyboardType(.numberPad)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textFatherMobileNumber, perform: { newValue in
@@ -172,6 +184,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textFatherEmailValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("Student_Email"))
+                        .focused($focusedField, equals: .fEmailId)
                         .keyboardType(.emailAddress)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textFatherEmail, perform: { newValue in
@@ -191,6 +204,7 @@ struct ParentsDetailsView: View {
                         .frame(width: UIScreen.main.bounds.width - 20, height: 50)
                         .padding(.bottom, 10)
                     }
+                    .id(2)
                     //Mother
                     VStack(alignment: .leading){
                         //Mother First Name
@@ -201,6 +215,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textMotherFirstNameValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("person"))
+                        .focused($focusedField, equals: .mFirstName)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textMotherFirstName, perform: { newValue in
                             editingTextFieldMotherFirstName = true
@@ -222,6 +237,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textMotherMiddleNameValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("person"))
+                        .focused($focusedField, equals: .mMiddleName)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textMotherMiddleName, perform: { newValue in
                             editingTextFieldMotherMiddleName = true
@@ -243,6 +259,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textMotherLastNameValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("person"))
+                        .focused($focusedField, equals: .mLastName)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textMotherLastName, perform: { newValue in
                             editingTextFieldMotherLastName = true
@@ -264,6 +281,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textMotherMobileNumberValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("Student_Phone"))
+                        .focused($focusedField, equals: .mMobileNumber)
                         .keyboardType(.numberPad)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textMotherMobileNumber, perform: { newValue in
@@ -294,6 +312,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textMotherEmailValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("Student_Email"))
+                        .focused($focusedField, equals: .mEmailId)
                         .keyboardType(.emailAddress)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textMotherEmail, perform: { newValue in
@@ -313,6 +332,7 @@ struct ParentsDetailsView: View {
                         .frame(width: UIScreen.main.bounds.width - 20, height: 50)
                         .padding(.bottom, 10)
                     }
+                    .id(3)
                     VStack{
                         Text("Guardian’s Details (If Applicable)")
                             .foregroundColor(.white)
@@ -322,6 +342,7 @@ struct ParentsDetailsView: View {
                             .background(Color(hex: 0x00B2BA))
                             .padding(.bottom, 8)
                     }
+                    .id(4)
                     //Guardian
                     VStack(alignment: .leading){
                         //Guardian First Name
@@ -332,6 +353,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textGuardianFirstNameValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("person"))
+                        .focused($focusedField, equals: .gFirstName)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textGuardianFirstName, perform: { newValue in
                             editingTextFieldGuardianFirstName = true
@@ -353,6 +375,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textGuardianMiddleNameValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("person"))
+                        .focused($focusedField, equals: .gMiddleName)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textGuardianMiddleName, perform: { newValue in
                             editingTextFieldGuardianMiddleName = true
@@ -374,6 +397,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textGuardianLastNameValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("person"))
+                        .focused($focusedField, equals: .gLastName)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textGuardianLastName, perform: { newValue in
                             editingTextFieldGuardianLastName = true
@@ -395,6 +419,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textGuardianMobileNumberValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("Student_Phone"))
+                        .focused($focusedField, equals: .gMobileNumber)
                         .keyboardType(.numberPad)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textGuardianMobileNumber, perform: { newValue in
@@ -425,6 +450,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textGuardianEmailValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("Student_Email"))
+                        .focused($focusedField, equals: .gEmailId)
                         .keyboardType(.emailAddress)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textGuardianEmail, perform: { newValue in
@@ -452,6 +478,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textGuardianRelationshipValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("Parent_Relainship"))
+                        .focused($focusedField, equals: .relationship)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textGuardianRelationship, perform: { newValue in
                             editingTextFieldGuardianRelationship = true
@@ -473,6 +500,7 @@ struct ParentsDetailsView: View {
                                                 valid: $viewModel.textCurrentAddressValid,
                                                 BorderColor: $borderColor,
                                                 placeholderImage: .constant("Student_Current_Address"))
+                        .focused($focusedField, equals: .address)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textCurrentAddress, perform: { newValue in
                             editingTextFieldCurrentAddress = true
@@ -486,6 +514,7 @@ struct ParentsDetailsView: View {
                         .frame(width: UIScreen.main.bounds.width - 20, height: 50)
                         .padding(.bottom, 10)
                     }
+                    .id(5)
                     
                     VStack(alignment: .leading) {
                         //Current Country
@@ -686,6 +715,7 @@ struct ParentsDetailsView: View {
                             }
                         }
                     }
+                    .id(6)
                     VStack(alignment: .leading){
                         //Guardian Pin Code
                         MaterialDesignTextFieldwithoutImage($viewModel.textCurrentPincode,
@@ -694,6 +724,7 @@ struct ParentsDetailsView: View {
                                                 editing: $editingTextFieldCurrentPinCode,
                                                 valid: $viewModel.textCurrentPincodeValid,
                                                 BorderColor: $borderColor)
+                        .focused($focusedField, equals: .pinCode)
                         .keyboardType(.numberPad)
                         .disableAutocorrection(true)
                         .onChange(of: viewModel.textCurrentPincode, perform: { newValue in
@@ -719,12 +750,61 @@ struct ParentsDetailsView: View {
                     NavigationLink("", destination: EnrollmentDetailsView(getIsEditable: "1").navigationBarHidden(true),isActive: $showEnrollmentDetails).isDetailLink(false)
                     VStack(alignment: .center){
                         Button {
-                            showEnrollmentDetails = true
+                            if viewModel.hintFatherFirstName != "Success"{
+                                alertMessage = "Please Enter Father's First Name"
+                                AlertShow = "0"
+                                focusedField = .fFirstName
+                                showingAlert = true
+                            }else if viewModel.hintFatherLastName != "Success"{
+                                alertMessage = "Please Enter Father's Last Name"
+                                AlertShow = "0"
+                                focusedField = .fLastName
+                                showingAlert = true
+                            }else if viewModel.hintFatherMobileNumber != "Success"{
+                                alertMessage = "Please Enter Father's Mobile Number"
+                                AlertShow = "0"
+                                focusedField = .fMobileNumber
+                                showingAlert = true
+                            }else if viewModel.hintFatherEmail != "Success"{
+                                alertMessage = "Please Enter Father's Email ID"
+                                AlertShow = "0"
+                                focusedField = .fEmailId
+                                showingAlert = true
+                            }else if viewModel.hintMotherFirstName != "Success"{
+                                alertMessage = "Please Enter Mother's First Name"
+                                AlertShow = "0"
+                                focusedField = .mFirstName
+                                showingAlert = true
+                            }else if viewModel.hintMotherLastName != "Success"{
+                                alertMessage = "Please Enter Mother's Last Name"
+                                AlertShow = "0"
+                                focusedField = .mLastName
+                                showingAlert = true
+                            }else if viewModel.hintMotherMobileNumber != "Success"{
+                                alertMessage = "Please Enter Mother's Mobile Number"
+                                AlertShow = "0"
+                                focusedField = .mMobileNumber
+                                showingAlert = true
+                            }else if viewModel.hintMotherEmail != "Success"{
+                                alertMessage = "Please Enter Mother's Email Id"
+                                AlertShow = "0"
+                                focusedField = .mEmailId
+                                showingAlert = true
+                            }else{
+                                showEnrollmentDetails = true
+                            }
                         } label: {
                             DetailsViewBottom()
                         }
                     }
                     .padding(.bottom)
+                }
+            }
+            .alert(alertMessage, isPresented: $showingAlert) {
+                Button("OK", role: .cancel) {
+                    if AlertShow == "1"{
+                        showEnrollmentDetails = true
+                    }
                 }
             }
             .navigationBarHidden(true)

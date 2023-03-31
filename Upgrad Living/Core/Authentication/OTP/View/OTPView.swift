@@ -14,7 +14,7 @@ struct OTPView: View {
     @State private var OTP3 = ""
     @State private var OTP4 = ""
     @FocusState private var loginFieldFocus: LogInField?
-    @State private var isShowLogin = false
+    @State private var isStudentView = false
     @State private var Last4DigitMobileNumber = ""
     @Binding var newMobile: String
     @Binding var isApplicationId: Bool
@@ -30,8 +30,7 @@ struct OTPView: View {
                 VStack{
                     HStack(alignment: .top){
                         Button {
-                            isShowLogin = true
-                            //presentaionMode.wrappedValue.dismiss()
+                            presentaionMode.wrappedValue.dismiss()
                         } label: {
                             Image("back_button")
                                 .resizable()
@@ -141,7 +140,7 @@ struct OTPView: View {
                                                 }
 //                                                loginDict = getLoginOTPData(dict: OTPData.data!)
                                                 UserDefaults.standard.set(true, forKey: "isLogin")
-                                               // showDashboardView = true
+                                                isStudentView = true
                                             }
                                         }else{
                                             AlertMessage = OTPData.msg ?? ""
@@ -178,7 +177,7 @@ struct OTPView: View {
                             .shadow(color: .gray, radius: 10, x: 0, y: 0)
                     )
                     Spacer()
-                    NavigationLink("", destination: LoginView().navigationBarHidden(true),isActive: $isShowLogin).isDetailLink(false)
+                    NavigationLink("", destination: StudentDetailsView(getIsEditable: "1").navigationBarHidden(true),isActive: $isStudentView).isDetailLink(false)
                 }
                 .onAppear{
                     let lastDigit = Last4dight(MobileNumber: newMobile)

@@ -170,7 +170,7 @@ struct DetailsViewTop: View {
                     .padding(8)
                     .frame(width: UIScreen.main.bounds.width - 20)
                     .background(Color(hex: 0x685BC7))
-                    .padding(.top, -40)
+                    .padding(.top, -30)
             }else if Step == "4"{
                 HStack{
                     Image("RoomType_Top_Image")
@@ -189,7 +189,7 @@ struct DetailsViewTop: View {
                     .padding(8)
                     .frame(width: UIScreen.main.bounds.width - 20)
                     .background(Color(hex: 0x3CA0D1))
-                    .padding(.top, -40)
+                    .padding(.top, -30)
             }else if Step == "5"{
                 HStack{
                     Image("Medical_Question_Top")
@@ -208,7 +208,7 @@ struct DetailsViewTop: View {
                     .padding(8)
                     .frame(width: UIScreen.main.bounds.width - 40)
                     .background(Color(hex: 0xE75798))
-                    .padding(.top, -40)
+                    .padding(.top, -30)
             }
             
             

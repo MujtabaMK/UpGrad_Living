@@ -26,10 +26,12 @@ final class ContentViewModel: ObservableObject {
     let placeholderCurrentCountry = "Country*"
     let placeholderCurrentState = "State*"
     let placeholderCurrentCity = "City*"
+    let placeholderCurrentPinCode = "Pin Code*"
     let placeholderPermanentAddress = "Address of Permanent Residence*"
     let placeholderPermanentCountry = "Country*"
     let placeholderPermanentState = "State*"
     let placeholderPermanentCity = "City*"
+    let placeholderPermanentPinCode = "Pin Code*"
     
     @Published var hintFirstName = "First Name"
     @Published var hintMiddleName = "Middle Name"
@@ -48,10 +50,12 @@ final class ContentViewModel: ObservableObject {
     @Published var hintCurrentCountry = "Country"
     @Published var hintCurrentState = "State"
     @Published var hintCurrentCity = "City"
+    @Published var hintCurrentPinCode = "Pin Code"
     @Published var hintPermanentAddress = "Address of Permanent Residence"
     @Published var hintPermanentCountry = "Country"
     @Published var hintPermanentState = "State"
     @Published var hintPermanentCity = "City"
+    @Published var hintPermanentPinCode = "Pin Code"
 
     @Published var textFirstName = ""
     @Published var textMiddleName = ""
@@ -70,10 +74,12 @@ final class ContentViewModel: ObservableObject {
     @Published var textCurrentCountry = ""
     @Published var textCurrentState = ""
     @Published var textCurrentCity = ""
+    @Published var textCurrentPinCode = ""
     @Published var textPermanentAddress = ""
     @Published var textPermanentCountry = ""
     @Published var textPermanentState = ""
     @Published var textPermanentCity = ""
+    @Published var textPermanentPinCode = ""
 
     @Published var textFirstNameValid = false
     @Published var textMiddleNameValid = true
@@ -92,10 +98,12 @@ final class ContentViewModel: ObservableObject {
     @Published var textCurrentCountryValid = true
     @Published var textCurrentStateValid = true
     @Published var textCurrentCityValid = true
+    @Published var textCurrentPinCodeValid = true
     @Published var textPermanentAddressValid = true
     @Published var textPermanentCountryValid = true
     @Published var textPermanentStateValid = true
     @Published var textPermanentCityValid = true
+    @Published var textPermanentPinCodeValid = true
     
     func validateTextFirstName(){
         if textFirstName.count > 2{
@@ -130,13 +138,13 @@ final class ContentViewModel: ObservableObject {
     func validateTextMobileNumber(){
         if  textMobileNumber.count != 10{
             textMobileNumberValid = false
-            hintMiddleName = "Enter 10 Digit Mobile Number"
+            hintMobileNumber = "Enter 10 Digit Mobile Number"
         }else if textMobileNumber.count == 10 && textMobileNumber.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil{
             textMobileNumberValid = true
-            hintMiddleName = "Success"
+            hintMobileNumber = "Success"
         }else{
             textMobileNumberValid = false
-            hintMiddleName = "Not Valid"
+            hintMobileNumber = "Not Valid"
         }
     }
     func validateTextEmail(){
@@ -149,7 +157,7 @@ final class ContentViewModel: ObservableObject {
         }
     }
     func validateTextBloodGroup() {
-        if textBloodGroup.count > 2{
+        if textBloodGroup.count > 1{
             textBloodGroupValid = true
             hintBloodGroup = "Success"
         }else{
@@ -158,7 +166,7 @@ final class ContentViewModel: ObservableObject {
         }
     }
     func validateTextGender() {
-        if textGender.count > 2{
+        if textGender.count > 1{
             textGenderValid = true
             hintGender = "Success"
         }else{
@@ -205,10 +213,10 @@ final class ContentViewModel: ObservableObject {
     func validateTextPan() {
         if textPanCard.count > 2{
             textPanValid = true
-            hintNationality = "Success"
+            hintPan = "Success"
         }else{
             textNationalityValid = false
-            hintNationality = "Not Valid"
+            hintPan = "Not Valid"
         }
     }
     func validateTextPassport() {
@@ -239,7 +247,7 @@ final class ContentViewModel: ObservableObject {
         }
     }
     func validateTextState() {
-        if textCurrentState.count > 2{
+        if textCurrentState.count > 1{
             textCurrentStateValid = true
             hintCurrentState = "Success"
         }else{
@@ -248,12 +256,21 @@ final class ContentViewModel: ObservableObject {
         }
     }
     func validateTextCity() {
-        if textCurrentCity.count > 2{
+        if textCurrentCity.count > 1{
             textCurrentCityValid = true
             hintCurrentCity = "Success"
         }else{
             textCurrentCityValid = false
             hintCurrentCity = "Not Valid"
+        }
+    }
+    func validateTextCurrentPinCode() {
+        if textCurrentPinCode.count > 1{
+            textCurrentPinCodeValid = true
+            hintCurrentPinCode = "Success"
+        }else{
+            textCurrentPinCodeValid = false
+            hintCurrentPinCode = "Not Valid"
         }
     }
     func validateTextPermentAddress() {
@@ -266,7 +283,7 @@ final class ContentViewModel: ObservableObject {
         }
     }
     func validateTextPermentCountry() {
-        if textPermanentCountry.count > 2{
+        if textPermanentCountry.count > 1{
             textPermanentCountryValid = true
             hintPermanentCountry = "Success"
         }else{
@@ -275,7 +292,7 @@ final class ContentViewModel: ObservableObject {
         }
     }
     func validateTextPermentState() {
-        if textPermanentState.count > 2{
+        if textPermanentState.count > 1{
             textPermanentStateValid = true
             hintPermanentState = "Success"
         }else{
@@ -284,12 +301,21 @@ final class ContentViewModel: ObservableObject {
         }
     }
     func validateTextPermentCity() {
-        if textPermanentCity.count > 2{
+        if textPermanentCity.count > 1{
             textPermanentCityValid = true
             hintPermanentCity = "Success"
         }else{
             textPermanentCityValid = false
             hintPermanentCity = "Not Valid"
+        }
+    }
+    func validateTextPermentPinCode() {
+        if textPermanentPinCode.count > 1{
+            textPermanentPinCodeValid = true
+            hintPermanentPinCode = "Success"
+        }else{
+            textPermanentPinCodeValid = false
+            hintPermanentPinCode = "Not Valid"
         }
     }
     

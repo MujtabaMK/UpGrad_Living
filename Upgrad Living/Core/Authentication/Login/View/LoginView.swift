@@ -88,6 +88,7 @@ struct LoginView: View {
                                        if loginData.status == 1{
                                            print(loginData.data?.studentMobile ?? "")
                                            print(loginData.data?.studentAppID ?? "")
+                                           UserDefaults.standard.set(loginData.data?.studentAppID ?? "", forKey: "studentAppID")
                                            isApplicationId = false
                                            isShowOTP = true
                                         }else{

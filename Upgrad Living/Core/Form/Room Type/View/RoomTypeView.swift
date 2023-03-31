@@ -10,8 +10,8 @@ import SwiftUI
 struct RoomTypeView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var borderColor = Color(hex: 0x3CA0D1)
-    @State private var SelectedValue = "1"
-    @State private var PaymentMethod = "1"
+    @State private var SelectedValue = "3"
+    @State private var PaymentMethod = "6 Months"
     @State private var showMedicalQuestion = false
     
     var body: some View {
@@ -39,7 +39,7 @@ struct RoomTypeView: View {
                             .padding(.bottom)
                     }
                     VStack{
-                        if SelectedValue == "1"{
+                        if SelectedValue == "3"{
                             RoomTypeQuardView(isSelect: .constant(true))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 15)
@@ -54,7 +54,7 @@ struct RoomTypeView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
-                                    SelectedValue = "1"
+                                    SelectedValue = "3"
                                 }
                             RoomTypeTripleView(isSelect: .constant(false))
                                 .background(
@@ -65,7 +65,7 @@ struct RoomTypeView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
-                                    SelectedValue = "2"
+                                    SelectedValue = "4"
                                 }
                             RoomTypeTwinView(isSelect: .constant(false))
                                 .background(
@@ -76,9 +76,9 @@ struct RoomTypeView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
-                                    SelectedValue = "3"
+                                    SelectedValue = "5"
                                 }
-                        }else if SelectedValue == "2"{
+                        }else if SelectedValue == "4"{
                             RoomTypeQuardView(isSelect: .constant(false))
                                 .background(
                                     RoundedRectangle(cornerRadius: 15)
@@ -88,7 +88,7 @@ struct RoomTypeView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
-                                    SelectedValue = "1"
+                                    SelectedValue = "3"
                                 }
                             RoomTypeTripleView(isSelect: .constant(true))
                                 .overlay(
@@ -104,7 +104,7 @@ struct RoomTypeView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
-                                    SelectedValue = "2"
+                                    SelectedValue = "4"
                                 }
                             RoomTypeTwinView(isSelect: .constant(false))
                                 .background(
@@ -115,7 +115,7 @@ struct RoomTypeView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
-                                    SelectedValue = "3"
+                                    SelectedValue = "5"
                                 }
                         }else{
                             RoomTypeQuardView(isSelect: .constant(false))
@@ -127,7 +127,7 @@ struct RoomTypeView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
-                                    SelectedValue = "1"
+                                    SelectedValue = "3"
                                 }
                             RoomTypeTripleView(isSelect: .constant(false))
                                 .background(
@@ -138,7 +138,7 @@ struct RoomTypeView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
-                                    SelectedValue = "2"
+                                    SelectedValue = "4"
                                 }
                             RoomTypeTwinView(isSelect: .constant(true))
                                 .overlay(
@@ -154,7 +154,7 @@ struct RoomTypeView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.bottom, 10)
                                 .onTapGesture {
-                                    SelectedValue = "3"
+                                    SelectedValue = "5"
                                 }
                         }
                     }
@@ -169,7 +169,7 @@ struct RoomTypeView: View {
                     }
                     VStack{
                         HStack(spacing: 12){
-                            if PaymentMethod == "1"{
+                            if PaymentMethod == "6 Months"{
                                 Text("6 Months")
                                     .padding(20)
                                     .frame(width: UIScreen.main.bounds.width / 2 - 20)
@@ -185,7 +185,7 @@ struct RoomTypeView: View {
                                     )
                                 
                                     .onTapGesture {
-                                        PaymentMethod = "1"
+                                        PaymentMethod = "6 Months"
                                     }
                                 
                                 Text("11 Months")
@@ -197,7 +197,7 @@ struct RoomTypeView: View {
                                             .shadow(color: .gray, radius: 5, x: 0, y: 0)
                                     )
                                     .onTapGesture {
-                                        PaymentMethod = "2"
+                                        PaymentMethod = "11 Months"
                                     }
                             }else{
                                 Text("6 Months")
@@ -209,7 +209,7 @@ struct RoomTypeView: View {
                                             .shadow(color: .gray, radius: 5, x: 0, y: 0)
                                     )
                                     .onTapGesture {
-                                        PaymentMethod = "1"
+                                        PaymentMethod = "6 Months"
                                     }
                                 
                                 Text("11 Months")
@@ -226,7 +226,7 @@ struct RoomTypeView: View {
                                             .shadow(color: .gray, radius: 5, x: 0, y: 0)
                                     )
                                     .onTapGesture {
-                                        PaymentMethod = "2"
+                                        PaymentMethod = "11 Months"
                                     }
                             }
                         }

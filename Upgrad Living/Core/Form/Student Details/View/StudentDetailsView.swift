@@ -21,12 +21,16 @@ struct StudentDetailsView: View {
     @State private var canEditPermentState = false
     @State private var canEditPermentCity = false
     
+    @State private var showPrentsDetails = false
+    
     @State private var isSelect = false
     
     @State private var todayDate = Date()
     
     @StateObject private var masterViewModel = MasterViewModel()
     @StateObject private var countryViewModel = CountryViewModel()
+    
+    //Module array
     @State private var arrGender = [gender]()
     @State private var arrCountry = [countries]()
     @State private var arrBloodGroup = [BloodGroup]()
@@ -35,6 +39,8 @@ struct StudentDetailsView: View {
     @State private var arrCountryPerment = [countries]()
     @State private var arrStatePerment = [states]()
     @State private var arrCityPerment = [City]()
+    
+    //ID
     @State private var bloodGroupId = ""
     @State private var genderId = ""
     @State private var currentCountryID = ""
@@ -43,184 +49,178 @@ struct StudentDetailsView: View {
     @State private var permentCountryID = ""
     @State private var permentStateId = ""
     @State private var permentCityId = ""
+    
+    //Search Text
+    @State private var searchTextBloodGroup = ""
+    @State private var ShowBloodGroupDropDown = false
+    
+    //Current
+    @State private var searchTextCurrentCountry = ""
+    @State private var ShowCurrentCountryDropDown = false
+    
+    @State private var searchTextCurrentState = ""
+    @State private var ShowCurrentStateDropDown = false
+    
+    @State private var searchTextCurrentCity = ""
+    @State private var ShowCurrentCityDropDown = false
+    
+    //Perment
+    @State private var searchTextPermentCountry = ""
+    @State private var ShowPermentCountryDropDown = false
+    
+    @State private var searchTextPermentState = ""
+    @State private var ShowPermentStateDropDown = false
+    
+    @State private var searchTextPermentCity = ""
+    @State private var ShowPermentCityDropDown = false
+        
     var getIsEditable: String
     var body: some View {
-        VStack{
-            Text("Profile")
-                .font(.custom(OpenSans_SemiBold, size: 18))
-                .foregroundColor(Color(hex: 0x333333))
-            Divider()
-            ScrollView(showsIndicators: false){
-                DetailsViewTop(Step: "1")
-                    .padding(.bottom)
-                
-                VStack(alignment: .leading){
-                    //First Name
-                    MaterialDesignTextField($viewModel.textFirstName,
-                                            placeholder: viewModel.placeholderFirstName,
-                                            hint: $viewModel.hintFirstName,
-                                            editing: $editingTextFieldFirstName,
-                                            valid: $viewModel.textFirstNameValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("person"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textFirstName, perform: { newValue in
-                        editingTextFieldFirstName = true
-                    })
-                    .onTapGesture {
-                        editingTextFieldFirstName = true
-                    }
-                    .onSubmit {
-                        editingTextFieldFirstName = true
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
+        NavigationView {
+            VStack{
+                Text("Profile")
+                    .font(.custom(OpenSans_SemiBold, size: 18))
+                    .foregroundColor(Color(hex: 0x333333))
+                    .padding(.top, 5)
+                Divider()
+                ScrollView(showsIndicators: false){
+                    DetailsViewTop(Step: "1")
+                        .padding(.bottom)
                     
-                    //Middle Name
-                    MaterialDesignTextField($viewModel.textMiddleName,
-                                            placeholder: viewModel.placeholderMiddleName,
-                                            hint: $viewModel.hintLastName,
-                                            editing: $editingTextFieldMiddleName,
-                                            valid: $viewModel.textMiddleNameValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("person"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textMiddleName, perform: { newValue in
-                        editingTextFieldMiddleName = true
-                    })
-                    .onTapGesture {
-                        editingTextFieldMiddleName = true
-                    }
-                    .onSubmit {
-                        editingTextFieldMiddleName = true
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    
-                    //Last Name
-                    MaterialDesignTextField($viewModel.textLastName,
-                                            placeholder: viewModel.placeholderLastName,
-                                            hint: $viewModel.hintLastName,
-                                            editing: $editingTextFieldLastName,
-                                            valid: $viewModel.textLastNameValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("person"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textLastName, perform: { newValue in
-                        editingTextFieldLastName = true
-                    })
-                    .onTapGesture {
-                        editingTextFieldLastName = true
-                    }
-                    .onSubmit {
-                        editingTextFieldLastName = true
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    
-                    //Mobile Number
-                    MaterialDesignTextField($viewModel.textMobileNumber,
-                                            placeholder: viewModel.placeholderMobileNumber,
-                                            hint: $viewModel.hintMiddleName,
-                                            editing: $editingTextFieldMobileNumber,
-                                            valid: $viewModel.textMobileNumberValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("Student_Phone"))
-                    .keyboardType(.numberPad)
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textMobileNumber, perform: { newValue in
-                        if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
+                    VStack(alignment: .leading){
+                        //First Name
+                        MaterialDesignTextField($viewModel.textFirstName,
+                                                placeholder: viewModel.placeholderFirstName,
+                                                hint: $viewModel.hintFirstName,
+                                                editing: $editingTextFieldFirstName,
+                                                valid: $viewModel.textFirstNameValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("person"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textFirstName, perform: { newValue in
+                            editingTextFieldFirstName = true
+                        })
+                        .onTapGesture {
+                            editingTextFieldFirstName = true
+                        }
+                        .onSubmit {
+                            editingTextFieldFirstName = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        //Middle Name
+                        MaterialDesignTextField($viewModel.textMiddleName,
+                                                placeholder: viewModel.placeholderMiddleName,
+                                                hint: $viewModel.hintLastName,
+                                                editing: $editingTextFieldMiddleName,
+                                                valid: $viewModel.textMiddleNameValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("person"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textMiddleName, perform: { newValue in
+                            editingTextFieldMiddleName = true
+                        })
+                        .onTapGesture {
+                            editingTextFieldMiddleName = true
+                        }
+                        .onSubmit {
+                            editingTextFieldMiddleName = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        //Last Name
+                        MaterialDesignTextField($viewModel.textLastName,
+                                                placeholder: viewModel.placeholderLastName,
+                                                hint: $viewModel.hintLastName,
+                                                editing: $editingTextFieldLastName,
+                                                valid: $viewModel.textLastNameValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("person"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textLastName, perform: { newValue in
+                            editingTextFieldLastName = true
+                        })
+                        .onTapGesture {
+                            editingTextFieldLastName = true
+                        }
+                        .onSubmit {
+                            editingTextFieldLastName = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        //Mobile Number
+                        MaterialDesignTextField($viewModel.textMobileNumber,
+                                                placeholder: viewModel.placeholderMobileNumber,
+                                                hint: $viewModel.hintMiddleName,
+                                                editing: $editingTextFieldMobileNumber,
+                                                valid: $viewModel.textMobileNumberValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Student_Phone"))
+                        .keyboardType(.numberPad)
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textMobileNumber, perform: { newValue in
+                            if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
+                                editingTextFieldMobileNumber = true
+                                print("valid")
+                            } else {
+                                print("invalid")
+                            }
+                        })
+                        .onTapGesture { editingTextFieldMobileNumber = true }
+                        .onSubmit {
                             editingTextFieldMobileNumber = true
-                            print("valid")
-                        } else {
-                            print("invalid")
                         }
-                    })
-                    .onTapGesture { editingTextFieldMobileNumber = true }
-                    .onSubmit {
-                        editingTextFieldMobileNumber = true
-                    }
-                    .onReceive(Just(viewModel.textMobileNumber)) { newValue in
-                        if viewModel.textMobileNumber.count > 10 {
-                            viewModel.textMobileNumber = String(viewModel.textMobileNumber.prefix(10))
-                        }
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button("Done") {
-                                hideKeyboard()
+                        .onReceive(Just(viewModel.textMobileNumber)) { newValue in
+                            if viewModel.textMobileNumber.count > 10 {
+                                viewModel.textMobileNumber = String(viewModel.textMobileNumber.prefix(10))
                             }
                         }
-                    }
-                    
-                    //Email
-                    MaterialDesignTextField($viewModel.textEmail,
-                                            placeholder: viewModel.placeholderEmail,
-                                            hint: $viewModel.hintEmail,
-                                            editing: $editingTextFieldEmail,
-                                            valid: $viewModel.textEmailValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("Student_Email"))
-                    .keyboardType(.emailAddress)
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textEmail, perform: { newValue in
-                        if(newValue.range(of:"^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", options: .regularExpression) != nil) {
-                            print("valid")
-                            editingTextFieldEmail = true
-                        } else {
-                            editingTextFieldEmail = true
-                            print("invalid")
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                                Spacer()
+                                Button("Done") {
+                                    hideKeyboard()
+                                }
+                            }
                         }
                         
-                    })
-                    .onTapGesture { editingTextFieldEmail = true }
-                    .onSubmit {
-                        editingTextFieldEmail = true
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    
-                    //Blood Group
-                    Button {
-                        canEditBloodGroup = true
-                    } label: {
-                        if canEditBloodGroup{
-                            Menu {
-                                ForEach(arrBloodGroup) { SchoolData in
-                                    Button {
-                                        viewModel.textBloodGroup = SchoolData.name ?? ""
-                                        self.bloodGroupId = SchoolData.id ?? ""
-                                    } label: {
-                                        Text(SchoolData.name ?? "")
-                                    }
-                                }
-                            } label: {
-                                MaterialDesignTextEditor($viewModel.textBloodGroup,
-                                                         placeholder: viewModel.placeholderBloodGroup,
-                                                         hint: $viewModel.hintBloodGroup,
-                                                         editing: $editingTextFieldBloodGroup,
-                                                         valid: $viewModel.textBloodGroupValid,
-                                                         BorderColor: $borderColor,
-                                                         placeholderImage: .constant("Student_BloodGroup"))
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textBloodGroup, perform: { newValue in
-                                    editingTextFieldBloodGroup = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldBloodGroup = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldBloodGroup = false
-                                }
+                        //Email
+                        MaterialDesignTextField($viewModel.textEmail,
+                                                placeholder: viewModel.placeholderEmail,
+                                                hint: $viewModel.hintEmail,
+                                                editing: $editingTextFieldEmail,
+                                                valid: $viewModel.textEmailValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Student_Email"))
+                        .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textEmail, perform: { newValue in
+                            if(newValue.range(of:"^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", options: .regularExpression) != nil) {
+                                print("valid")
+                                editingTextFieldEmail = true
+                            } else {
+                                editingTextFieldEmail = true
+                                print("invalid")
                             }
-                            .padding(.bottom)
-                        }else{
+                            
+                        })
+                        .onTapGesture { editingTextFieldEmail = true }
+                        .onSubmit {
+                            editingTextFieldEmail = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        //Blood Group
+                        Button {
+                            searchTextBloodGroup = ""
+                            ShowBloodGroupDropDown = true
+                        } label: {
                             MaterialDesignTextEditor($viewModel.textBloodGroup,
                                                      placeholder: viewModel.placeholderBloodGroup,
                                                      hint: $viewModel.hintBloodGroup,
@@ -230,699 +230,752 @@ struct StudentDetailsView: View {
                                                      placeholderImage: .constant("Student_BloodGroup"))
                             .disabled(true)
                             .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
+                            .foregroundColor(.black )
                             .onChange(of: viewModel.textBloodGroup, perform: { newValue in
-                                editingTextFieldBloodGroup = true
-                                canEditBloodGroup = true
+                                editingTextFieldBloodGroup = false
+                                ShowBloodGroupDropDown = false
                             })
                             .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldBloodGroup = true
-                                canEditBloodGroup = true
-                            }
                             .onSubmit {
-                                editingTextFieldBloodGroup = true
-                                canEditBloodGroup = true
+                                editingTextFieldBloodGroup = false
+                                ShowBloodGroupDropDown = false
                             }
                             .padding(.bottom)
                         }
-                    }
-                    
-                    //Student Gender
-                    Button {
-                        canEditGender = true
-                    } label: {
-                        if canEditGender{
-                            Menu {
-                                ForEach(arrGender) { SchoolData in
+                        
+                        if ShowBloodGroupDropDown{
+                            VStack(alignment: .leading){
+                                SearchBar(text: $searchTextBloodGroup)
+                                    .frame(width: UIScreen.main.bounds.width - 50)
+                                    .padding(.top)
+                                    .padding(.leading, 5)
+                                ForEach(searchResultsBloodGroup) { master in
                                     Button {
-                                        viewModel.textGender = SchoolData.name ?? ""
-                                        self.genderId = SchoolData.id ?? ""
+                                        viewModel.textBloodGroup = master.name ?? ""
+                                        self.bloodGroupId = master.id ?? ""
+                                        ShowBloodGroupDropDown = false
                                     } label: {
-                                        Text(SchoolData.name ?? "")
+                                        Text(master.name ?? "")
+                                            .padding(5)
+                                            .padding(.leading, 5)
+                                            .foregroundColor(.black)
+                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                     }
                                 }
-                            } label: {
-                                MaterialDesignTextEditor($viewModel.textGender,
-                                                         placeholder: viewModel.placeholderGender,
-                                                         hint: $viewModel.hintGender,
-                                                         editing: $editingTextFieldGender,
+                            }
+                            .overlay(
+                                RoundedRectangle(
+                                    cornerRadius: 4).strokeBorder(borderColor,
+                                                                  style: StrokeStyle(lineWidth: 1.0))
+                            )
+                            .padding(.bottom)
+                        }
+                        
+                        //Student Gender
+                        Button {
+                            canEditGender = true
+                        } label: {
+                            if canEditGender{
+                                Menu {
+                                    ForEach(arrGender) { SchoolData in
+                                        Button {
+                                            viewModel.textGender = SchoolData.name ?? ""
+                                            self.genderId = SchoolData.id ?? ""
+                                        } label: {
+                                            Text(SchoolData.name ?? "")
+                                        }
+                                    }
+                                } label: {
+                                    MaterialDesignTextEditor($viewModel.textGender,
+                                                             placeholder: viewModel.placeholderGender,
+                                                             hint: $viewModel.hintGender,
+                                                             editing: $editingTextFieldGender,
+                                                             valid: $viewModel.textBloodGroupValid,
+                                                             BorderColor: $borderColor,
+                                                             placeholderImage: .constant("Student_Gender"))
+                                    .disabled(true)
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(.black )
+                                    .onChange(of: viewModel.textGender, perform: { newValue in
+                                        editingTextFieldGender = false
+                                    })
+                                    .frame(width: UIScreen.main.bounds.width - 20, height: 55)
+                                    .onTapGesture {
+                                        editingTextFieldGender = false
+                                    }
+                                    .onSubmit {
+                                        editingTextFieldGender = false
+                                    }
+                                }
+                                .padding(.bottom)
+                            }else{
+                                MaterialDesignTextEditor($viewModel.textBloodGroup,
+                                                         placeholder: viewModel.placeholderBloodGroup,
+                                                         hint: $viewModel.hintBloodGroup,
+                                                         editing: $editingTextFieldBloodGroup,
                                                          valid: $viewModel.textBloodGroupValid,
                                                          BorderColor: $borderColor,
                                                          placeholderImage: .constant("Student_Gender"))
                                 .disabled(true)
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
+                                .foregroundColor(.black)
                                 .onChange(of: viewModel.textGender, perform: { newValue in
-                                    editingTextFieldGender = false
+                                    editingTextFieldGender = true
+                                    canEditGender = true
                                 })
                                 .frame(width: UIScreen.main.bounds.width - 20, height: 55)
                                 .onTapGesture {
-                                    editingTextFieldGender = false
+                                    editingTextFieldGender = true
+                                    canEditGender = true
                                 }
                                 .onSubmit {
-                                    editingTextFieldGender = false
+                                    editingTextFieldGender = true
+                                    canEditGender = true
                                 }
+                                .padding(.bottom)
                             }
-                            .padding(.bottom)
-                        }else{
-                            MaterialDesignTextEditor($viewModel.textBloodGroup,
-                                                     placeholder: viewModel.placeholderBloodGroup,
-                                                     hint: $viewModel.hintBloodGroup,
-                                                     editing: $editingTextFieldBloodGroup,
-                                                     valid: $viewModel.textBloodGroupValid,
-                                                     BorderColor: $borderColor,
-                                                     placeholderImage: .constant("Student_Gender"))
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
-                            .onChange(of: viewModel.textGender, perform: { newValue in
-                                editingTextFieldGender = true
-                                canEditGender = true
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 55)
-                            .onTapGesture {
-                                editingTextFieldGender = true
-                                canEditGender = true
-                            }
-                            .onSubmit {
-                                editingTextFieldGender = true
-                                canEditGender = true
-                            }
-                            .padding(.bottom)
                         }
-                    }
-                    
-                    //Date
-                    
-                    MaterialDesignTextFieldDOB($viewModel.textDOB,
-                                            placeholder: viewModel.placeholderDOB,
-                                            hint: $viewModel.hintDOB,
-                                            editing: $editingTextFieldDOB,
-                                            valid: $viewModel.textDOBValid,
-                                               BorderColor: $borderColor,
-                                               placeholderImage: .constant("Student_DOB"))
-                    .disabled(true)
-                    .onChange(of: viewModel.textDOB, perform: { newValue in
-                        editingTextFieldDOB = true
-                    })
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 55)
-                    .padding(.bottom, 10)
-                    .onTapGesture {
-                        editingTextFieldDOB = true
-                        showDatePickerAlert()
-                        convertDate()
-                    }
-                    .onSubmit {
-                        editingTextFieldDOB = true
-                        convertDate()
-                    }
-                    
-                    //Place of Birth
-                    MaterialDesignTextField($viewModel.textPOB,
-                                            placeholder: viewModel.placeholderPOB,
-                                            hint: $viewModel.hintPOB,
-                                            editing: $editingTextFieldPOB,
-                                            valid: $viewModel.textPOBValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("Student_Place_Birth"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textPOB, perform: { newValue in
-                        editingTextFieldPOB = true
-                    })
-                    .onTapGesture {
-                        editingTextFieldPOB = true
-                    }
-                    .onSubmit {
-                        editingTextFieldPOB = true
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    
-                    //Nationality
-                    MaterialDesignTextField($viewModel.textNationality,
-                                            placeholder: viewModel.placeholderNationality,
-                                            hint: $viewModel.hintNationality,
-                                            editing: $editingTextFieldNationality,
-                                            valid: $viewModel.textNationalityValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("Student_Nationality"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textNationality, perform: { newValue in
-                        editingTextFieldNationality = true
-                    })
-                    .onTapGesture {
-                        editingTextFieldNationality = true
-                    }
-                    .onSubmit {
-                        editingTextFieldNationality = true
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    
-                    
-                }
-                VStack{
-                    //Aadhar
-                    MaterialDesignTextField($viewModel.textAadharCard,
-                                            placeholder: viewModel.placeholderAadhar,
-                                            hint: $viewModel.hintAadhar,
-                                            editing: $editingTextFieldAadhar,
-                                            valid: $viewModel.textAadharValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("Student_AadharCard"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textAadharCard, perform: { newValue in
-                        if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
-                            editingTextFieldAadhar = true
-                            print("valid")
-                        } else {
-                            print("invalid")
-                        }
-                    })
-                    .onTapGesture {
-                        editingTextFieldAadhar = true
-                    }
-                    .onSubmit {
-                        editingTextFieldAadhar = true
-                    }
-                    .onReceive(Just(viewModel.textAadharCard)) { newValue in
-                        if viewModel.textAadharCard.count > 11 {
-                            viewModel.textAadharCard = String(viewModel.textAadharCard.prefix(11))
-                        }
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    
-                    //Pan
-                    MaterialDesignTextField($viewModel.textPanCard,
-                                            placeholder: viewModel.placeholderPan,
-                                            hint: $viewModel.hintPan,
-                                            editing: $editingTextFieldPan,
-                                            valid: $viewModel.textPanValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("Student_AadharCard"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textPanCard, perform: { newValue in
-                        editingTextFieldPan = true
-                    })
-                    .onTapGesture { editingTextFieldPan = true }
-                    .onSubmit {
-                        editingTextFieldPan = true
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    
-                    //Passport
-                    MaterialDesignTextField($viewModel.textPassport,
-                                            placeholder: viewModel.placeholderPassport,
-                                            hint: $viewModel.hintPassport,
-                                            editing: $editingTextFieldPassport,
-                                            valid: $viewModel.textPassportValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("Student_Passport"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textPassport, perform: { newValue in
-                        editingTextFieldPassport = true
-                    })
-                    .onTapGesture {
-                        editingTextFieldPassport = true
-                    }
-                    .onSubmit {
-                        editingTextFieldPassport = true
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                   
-                    //Current Address
-                    MaterialDesignTextField($viewModel.textCurrentAddress,
-                                            placeholder: viewModel.placeholderCurrentAddress,
-                                            hint: $viewModel.hintCurrentAddress,
-                                            editing: $editingTextFieldCurrentAddress,
-                                            valid: $viewModel.textCurrentAddressValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("Student_Current_Address"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textCurrentAddress, perform: { newValue in
-                        editingTextFieldCurrentAddress = true
-                    })
-                    .onTapGesture {
-                        editingTextFieldCurrentAddress = true
-                    }
-                    .onSubmit {
-                        editingTextFieldCurrentAddress = true
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    
-                    
-                    //Current Country
-                    Button {
-                        canEditCurrentCountry = true
-                    } label: {
-                        if canEditCurrentCountry{
-                            Menu {
-                                ForEach(arrCountry) { SchoolData in
-                                    Button {
-                                        viewModel.textCurrentCountry = SchoolData.name ?? ""
-                                        self.currentCountryID = SchoolData.id ?? ""
-                                        countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
-                                            arrStateCurrent = CountryData.data?.states ?? []
-                                            arrCityCurrent = CountryData.data?.cities ?? []
-                                        }
-                                    } label: {
-                                        Text(SchoolData.name ?? "")
-                                    }
-                                }
-                            } label: {
-                                MaterialDesignTextEditorCountry($viewModel.textCurrentCountry,
-                                                         placeholder: viewModel.placeholderCurrentCountry,
-                                                         hint: $viewModel.hintCurrentCountry,
-                                                         editing: $editingTextFieldCurrentCountry,
-                                                         valid: $viewModel.textCurrentCountryValid,
-                                                         BorderColor: $borderColor)
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textCurrentCountry, perform: { newValue in
-                                    editingTextFieldCurrentCountry = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldCurrentCountry = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldCurrentCountry = false
-                                }
-                            }
-                            .padding(.bottom)
-                        }else{
-                            MaterialDesignTextEditorCountry($viewModel.textCurrentCountry,
-                                                     placeholder: viewModel.placeholderCurrentCountry,
-                                                     hint: $viewModel.hintCurrentCountry,
-                                                     editing: $editingTextFieldCurrentCountry,
-                                                     valid: $viewModel.textCurrentCountryValid,
-                                                     BorderColor: $borderColor)
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
-                            .onChange(of: viewModel.textCurrentCountry, perform: { newValue in
-                                editingTextFieldCurrentCountry = true
-                                canEditCurrentCountry = true
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldCurrentCountry = true
-                                canEditCurrentCountry = true
-                            }
-                            .onSubmit {
-                                editingTextFieldCurrentCountry = true
-                                canEditCurrentCountry = true
-                            }
-                            .padding(.bottom)
-                        }
-                    }
-                    
-                    //Current State
-                    Button {
-                        canEditCurrentState = true
-                    } label: {
-                        if canEditCurrentState{
-                            Menu {
-                                ForEach(arrStateCurrent) { SchoolData in
-                                    Button {
-                                        viewModel.textCurrentState = SchoolData.name ?? ""
-                                        self.currentStateId = SchoolData.id ?? ""
-                                        countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
-                                            arrStateCurrent = CountryData.data?.states ?? []
-                                            arrCityCurrent = CountryData.data?.cities ?? []
-                                        }
-                                    } label: {
-                                        Text(SchoolData.name ?? "")
-                                    }
-                                }
-                            } label: {
-                                MaterialDesignTextEditorCountry($viewModel.textCurrentState,
-                                                         placeholder: viewModel.placeholderCurrentState,
-                                                         hint: $viewModel.hintCurrentState,
-                                                         editing: $editingTextFieldCurrentState,
-                                                         valid: $viewModel.textCurrentStateValid,
-                                                         BorderColor: $borderColor)
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textCurrentState, perform: { newValue in
-                                    editingTextFieldCurrentState = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldCurrentState = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldCurrentState = false
-                                }
-                            }
-                            .padding(.bottom)
-                        }else{
-                            MaterialDesignTextEditorCountry($viewModel.textCurrentState,
-                                                     placeholder: viewModel.placeholderCurrentState,
-                                                     hint: $viewModel.hintCurrentState,
-                                                     editing: $editingTextFieldCurrentCountry,
-                                                     valid: $viewModel.textCurrentStateValid,
-                                                     BorderColor: $borderColor)
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
-                            .onChange(of: viewModel.textCurrentState, perform: { newValue in
-                                editingTextFieldCurrentState = true
-                                canEditCurrentState = true
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldCurrentState = true
-                                canEditCurrentState = true
-                            }
-                            .onSubmit {
-                                editingTextFieldCurrentState = true
-                                canEditCurrentState = true
-                            }
-                            .padding(.bottom)
-                        }
-                    }
-                    
-                    //Current City
-                    Button {
-                        canEditCurrentCity = true
-                    } label: {
-                        if canEditCurrentCity{
-                            Menu {
-                                ForEach(arrCityCurrent) { SchoolData in
-                                    Button {
-                                        viewModel.textCurrentCity = SchoolData.name ?? ""
-                                        self.currentCityId = SchoolData.id ?? ""
-                                        countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
-                                            arrStateCurrent = CountryData.data?.states ?? []
-                                            arrCityCurrent = CountryData.data?.cities ?? []
-                                        }
-                                    } label: {
-                                        Text(SchoolData.name ?? "")
-                                    }
-                                }
-                            } label: {
-                                MaterialDesignTextEditorCountry($viewModel.textCurrentCity,
-                                                         placeholder: viewModel.placeholderCurrentCity,
-                                                         hint: $viewModel.hintCurrentCity,
-                                                         editing: $editingTextFieldCurrentCity,
-                                                         valid: $viewModel.textCurrentCityValid,
-                                                         BorderColor: $borderColor)
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textCurrentCity, perform: { newValue in
-                                    editingTextFieldCurrentCity = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldCurrentCity = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldCurrentCity = false
-                                }
-                            }
-                            .padding(.bottom)
-                        }else{
-                            MaterialDesignTextEditorCountry($viewModel.textCurrentCity,
-                                                     placeholder: viewModel.placeholderCurrentCity,
-                                                     hint: $viewModel.hintCurrentCity,
-                                                     editing: $editingTextFieldCurrentCity,
-                                                     valid: $viewModel.textCurrentCityValid,
-                                                     BorderColor: $borderColor)
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
-                            .onChange(of: viewModel.textCurrentCity, perform: { newValue in
-                                editingTextFieldCurrentCity = true
-                                canEditCurrentCity = true
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldCurrentCity = true
-                                canEditCurrentCity = true
-                            }
-                            .onSubmit {
-                                editingTextFieldCurrentCity = true
-                                canEditCurrentCity = true
-                            }
-                            .padding(.bottom)
-                        }
-                    }
-                }
-                .padding(.bottom, 5)
-                VStack(alignment: .leading){
-                    Button {
-                        isSelect.toggle()
-                        if isSelect{
-                            viewModel.textPermanentCountry = viewModel.textCurrentCountry
-                            viewModel.textPermanentState = viewModel.textCurrentState
-                            viewModel.textPermanentCity = viewModel.textCurrentCity
-                            permentCountryID = currentCountryID
-                            permentStateId = currentStateId
-                            permentCityId = currentCityId
-                        }else{
-                            viewModel.textPermanentCountry = ""
-                            viewModel.textPermanentState = ""
-                            viewModel.textPermanentCity = ""
-                            permentCountryID = ""
-                            permentStateId = ""
-                            permentCityId = ""
-                        }
-                    } label: {
-                        HStack{
-                            Image(isSelect ? "Student_Select" : "Student_UnSelect")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20, height: 20, alignment: .leading)
-                                .padding(2)
-                            Text("Same as above")
-                                .font(.custom(OpenSans_SemiBold, size: 10))
-                                .foregroundColor(Color(hex: 0x555555))
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, alignment: .leading)
-                    }
-                }
-                .padding(.bottom, 5)
-                VStack{
-                    //Perment Country
-                    Button {
-                        canEditPermentCountry = true
-                    } label: {
-                        if canEditPermentCountry{
-                            Menu {
-                                ForEach(arrCountryPerment) { SchoolData in
-                                    Button {
-                                        viewModel.textPermanentCountry = SchoolData.name ?? ""
-                                        self.permentCountryID = SchoolData.id ?? ""
-                                        countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
-                                            arrStatePerment = CountryData.data?.states ?? []
-                                            arrCityPerment = CountryData.data?.cities ?? []
-                                        }
-                                    } label: {
-                                        Text(SchoolData.name ?? "")
-                                    }
-                                }
-                            } label: {
-                                MaterialDesignTextEditorCountry($viewModel.textPermanentCountry,
-                                                         placeholder: viewModel.placeholderPermanentCountry,
-                                                         hint: $viewModel.hintPermanentCountry,
-                                                         editing: $editingTextFieldPermentCountry,
-                                                         valid: $viewModel.textPermanentCountryValid,
-                                                         BorderColor: $borderColor)
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textPermanentCountry, perform: { newValue in
-                                    editingTextFieldPermentCountry = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldPermentCountry = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldPermentCountry = false
-                                }
-                            }
-                            .padding(.bottom)
-                        }else{
-                            MaterialDesignTextEditorCountry($viewModel.textPermanentCountry,
-                                                     placeholder: viewModel.placeholderPermanentCountry,
-                                                     hint: $viewModel.hintPermanentCountry,
-                                                     editing: $editingTextFieldPermentCountry,
-                                                     valid: $viewModel.textPermanentCountryValid,
-                                                     BorderColor: $borderColor)
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
-                            .onChange(of: viewModel.textPermanentCountry, perform: { newValue in
-                                editingTextFieldPermentCountry = true
-                                canEditPermentCountry = true
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldPermentCountry = true
-                                canEditPermentCountry = true
-                            }
-                            .onSubmit {
-                                editingTextFieldPermentCountry = true
-                                canEditPermentCountry = true
-                            }
-                            .padding(.bottom)
-                        }
-                    }
-                    
-                    //Perment State
-                    Button {
-                        canEditPermentState = true
-                    } label: {
-                        if canEditPermentState{
-                            Menu {
-                                ForEach(arrStatePerment) { SchoolData in
-                                    Button {
-                                        viewModel.textPermanentState = SchoolData.name ?? ""
-                                        self.permentStateId = SchoolData.id ?? ""
-                                        countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
-                                            arrStatePerment = CountryData.data?.states ?? []
-                                            arrCityPerment = CountryData.data?.cities ?? []
-                                        }
-                                    } label: {
-                                        Text(SchoolData.name ?? "")
-                                    }
-                                }
-                            } label: {
-                                MaterialDesignTextEditorCountry($viewModel.textPermanentState,
-                                                         placeholder: viewModel.placeholderPermanentState,
-                                                         hint: $viewModel.hintPermanentState,
-                                                         editing: $editingTextFieldPermentState,
-                                                         valid: $viewModel.textPermanentStateValid,
-                                                         BorderColor: $borderColor)
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textPermanentState, perform: { newValue in
-                                    editingTextFieldPermentState = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldPermentState = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldPermentState = false
-                                }
-                            }
-                            .padding(.bottom)
-                        }else{
-                            MaterialDesignTextEditorCountry($viewModel.textPermanentState,
-                                                     placeholder: viewModel.placeholderPermanentState,
-                                                     hint: $viewModel.hintPermanentState,
-                                                     editing: $editingTextFieldPermentState,
-                                                     valid: $viewModel.textPermanentStateValid,
-                                                     BorderColor: $borderColor)
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
-                            .onChange(of: viewModel.textPermanentState, perform: { newValue in
-                                editingTextFieldPermentState = true
-                                canEditPermentState = true
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldPermentState = true
-                                canEditPermentState = true
-                            }
-                            .onSubmit {
-                                editingTextFieldPermentState = true
-                                canEditPermentState = true
-                            }
-                            .padding(.bottom)
-                        }
-                    }
-                    
-                    //Perment City
-                    Button {
-                        canEditPermentCity = true
-                    } label: {
-                        if canEditPermentCity{
-                            Menu {
-                                ForEach(arrCityPerment) { SchoolData in
-                                    Button {
-                                        viewModel.textPermanentCity = SchoolData.name ?? ""
-                                        self.permentCityId = SchoolData.id ?? ""
-                                        countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
-                                            arrStatePerment = CountryData.data?.states ?? []
-                                            arrCityPerment = CountryData.data?.cities ?? []
-                                        }
-                                    } label: {
-                                        Text(SchoolData.name ?? "")
-                                    }
-                                }
-                            } label: {
-                                MaterialDesignTextEditorCountry($viewModel.textPermanentCity,
-                                                         placeholder: viewModel.placeholderPermanentCity,
-                                                         hint: $viewModel.hintPermanentCity,
-                                                         editing: $editingTextFieldPermentCity,
-                                                         valid: $viewModel.textPermanentCityValid,
-                                                         BorderColor: $borderColor)
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textPermanentCity, perform: { newValue in
-                                    editingTextFieldPermentCity = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldPermentCity = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldPermentCity = false
-                                }
-                            }
-                            .padding(.bottom)
-                        }else{
-                            MaterialDesignTextEditorCountry($viewModel.textPermanentCity,
-                                                     placeholder: viewModel.placeholderPermanentCity,
-                                                     hint: $viewModel.hintPermanentCity,
-                                                     editing: $editingTextFieldPermentCity,
-                                                     valid: $viewModel.textPermanentCityValid,
-                                                     BorderColor: $borderColor)
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
-                            .onChange(of: viewModel.textPermanentCity, perform: { newValue in
-                                editingTextFieldPermentCity = true
-                                canEditPermentCity = true
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldPermentCity = true
-                                canEditPermentCity = true
-                            }
-                            .onSubmit {
-                                editingTextFieldPermentCity = true
-                                canEditPermentCity = true
-                            }
-                            .padding(.bottom)
-                        }
-                    }
-                }
-                VStack(alignment: .center){
-                    Button {
                         
-                    } label: {
-                        DetailsViewBottom()
+                        //Date
+                        
+                        MaterialDesignTextFieldDOB($viewModel.textDOB,
+                                                   placeholder: viewModel.placeholderDOB,
+                                                   hint: $viewModel.hintDOB,
+                                                   editing: $editingTextFieldDOB,
+                                                   valid: $viewModel.textDOBValid,
+                                                   BorderColor: $borderColor,
+                                                   placeholderImage: .constant("Student_DOB"))
+                        .disabled(true)
+                        .onChange(of: viewModel.textDOB, perform: { newValue in
+                            editingTextFieldDOB = true
+                        })
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 55)
+                        .padding(.bottom, 10)
+                        .onTapGesture {
+                            editingTextFieldDOB = true
+                            showDatePickerAlert()
+                            convertDate()
+                        }
+                        .onSubmit {
+                            editingTextFieldDOB = true
+                            convertDate()
+                        }
+                        
+                        //Place of Birth
+                        MaterialDesignTextField($viewModel.textPOB,
+                                                placeholder: viewModel.placeholderPOB,
+                                                hint: $viewModel.hintPOB,
+                                                editing: $editingTextFieldPOB,
+                                                valid: $viewModel.textPOBValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Student_Place_Birth"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textPOB, perform: { newValue in
+                            editingTextFieldPOB = true
+                        })
+                        .onTapGesture {
+                            editingTextFieldPOB = true
+                        }
+                        .onSubmit {
+                            editingTextFieldPOB = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
                     }
+                    VStack{
+                        //Nationality
+                        MaterialDesignTextField($viewModel.textNationality,
+                                                placeholder: viewModel.placeholderNationality,
+                                                hint: $viewModel.hintNationality,
+                                                editing: $editingTextFieldNationality,
+                                                valid: $viewModel.textNationalityValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Student_Nationality"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textNationality, perform: { newValue in
+                            editingTextFieldNationality = true
+                        })
+                        .onTapGesture {
+                            editingTextFieldNationality = true
+                        }
+                        .onSubmit {
+                            editingTextFieldNationality = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        //Aadhar
+                        MaterialDesignTextField($viewModel.textAadharCard,
+                                                placeholder: viewModel.placeholderAadhar,
+                                                hint: $viewModel.hintAadhar,
+                                                editing: $editingTextFieldAadhar,
+                                                valid: $viewModel.textAadharValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Student_AadharCard"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textAadharCard, perform: { newValue in
+                            if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
+                                editingTextFieldAadhar = true
+                                print("valid")
+                            } else {
+                                print("invalid")
+                            }
+                        })
+                        .onTapGesture {
+                            editingTextFieldAadhar = true
+                        }
+                        .onSubmit {
+                            editingTextFieldAadhar = true
+                        }
+                        .onReceive(Just(viewModel.textAadharCard)) { newValue in
+                            if viewModel.textAadharCard.count > 11 {
+                                viewModel.textAadharCard = String(viewModel.textAadharCard.prefix(11))
+                            }
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        //Pan
+                        MaterialDesignTextField($viewModel.textPanCard,
+                                                placeholder: viewModel.placeholderPan,
+                                                hint: $viewModel.hintPan,
+                                                editing: $editingTextFieldPan,
+                                                valid: $viewModel.textPanValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Student_AadharCard"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textPanCard, perform: { newValue in
+                            editingTextFieldPan = true
+                        })
+                        .onTapGesture { editingTextFieldPan = true }
+                        .onSubmit {
+                            editingTextFieldPan = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        //Passport
+                        MaterialDesignTextField($viewModel.textPassport,
+                                                placeholder: viewModel.placeholderPassport,
+                                                hint: $viewModel.hintPassport,
+                                                editing: $editingTextFieldPassport,
+                                                valid: $viewModel.textPassportValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Student_Passport"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textPassport, perform: { newValue in
+                            editingTextFieldPassport = true
+                        })
+                        .onTapGesture {
+                            editingTextFieldPassport = true
+                        }
+                        .onSubmit {
+                            editingTextFieldPassport = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                    }
+                    
+                    //Current Address
+                    VStack{
+                        //Current Address
+                        MaterialDesignTextField($viewModel.textCurrentAddress,
+                                                placeholder: viewModel.placeholderCurrentAddress,
+                                                hint: $viewModel.hintCurrentAddress,
+                                                editing: $editingTextFieldCurrentAddress,
+                                                valid: $viewModel.textCurrentAddressValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Student_Current_Address"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textCurrentAddress, perform: { newValue in
+                            editingTextFieldCurrentAddress = true
+                        })
+                        .onTapGesture {
+                            editingTextFieldCurrentAddress = true
+                        }
+                        .onSubmit {
+                            editingTextFieldCurrentAddress = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        //Current Country
+                        Button {
+                            searchTextCurrentCountry = ""
+                            ShowCurrentCountryDropDown = true
+                        } label: {
+                            MaterialDesignTextEditorCountry($viewModel.textCurrentCountry,
+                                                            placeholder: viewModel.placeholderCurrentCountry,
+                                                            hint: $viewModel.hintCurrentCountry,
+                                                            editing: $editingTextFieldCurrentCountry,
+                                                            valid: $viewModel.textCurrentCountryValid,
+                                                            BorderColor: $borderColor)
+                            .disabled(true)
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.black )
+                            .onChange(of: viewModel.textCurrentCountry, perform: { newValue in
+                                editingTextFieldCurrentCountry = false
+                                ShowCurrentCountryDropDown = false
+                                ShowCurrentStateDropDown = false
+                                ShowCurrentCityDropDown = false
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .onSubmit {
+                                editingTextFieldCurrentCountry = false
+                                ShowCurrentCountryDropDown = false
+                                ShowCurrentStateDropDown = false
+                                ShowCurrentCityDropDown = false
+                            }
+                        }
+                        .padding(.bottom)
+                        
+                        if ShowCurrentCountryDropDown{
+                            VStack(alignment: .leading){
+                                SearchBar(text: $searchTextCurrentCountry)
+                                    .frame(width: UIScreen.main.bounds.width - 50)
+                                    .padding(.top)
+                                    .padding(.leading, 5)
+                                ForEach(searchResultsCurrentCountry) { master in
+                                    Button {
+                                        viewModel.textCurrentCountry = master.name ?? ""
+                                        self.currentCountryID = master.id ?? ""
+                                        viewModel.textCurrentCity = ""
+                                        self.currentCityId = ""
+                                        viewModel.textCurrentState = ""
+                                        self.currentCityId = ""
+                                        
+                                        countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
+                                            arrStateCurrent = CountryData.data?.states ?? []
+                                            arrCityCurrent = CountryData.data?.cities ?? []
+                                        }
+                                        ShowCurrentCountryDropDown = false
+                                        ShowCurrentStateDropDown = false
+                                        ShowCurrentCityDropDown = false
+                                    } label: {
+                                        Text(master.name ?? "")
+                                            .padding(5)
+                                            .padding(.leading, 5)
+                                            .foregroundColor(.black)
+                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                    }
+                                }
+                            }
+                            .overlay(
+                                RoundedRectangle(
+                                    cornerRadius: 4).strokeBorder(borderColor,
+                                                                  style: StrokeStyle(lineWidth: 1.0))
+                            )
+                            .padding(.bottom)
+                        }
+                        
+                        //Current State
+                        Button {
+                            searchTextCurrentState = ""
+                            ShowCurrentStateDropDown = true
+                        } label: {
+                            MaterialDesignTextEditorCountry($viewModel.textCurrentState,
+                                                            placeholder: viewModel.placeholderCurrentState,
+                                                            hint: $viewModel.hintCurrentState,
+                                                            editing: $editingTextFieldCurrentState,
+                                                            valid: $viewModel.textCurrentStateValid,
+                                                            BorderColor: $borderColor)
+                            .disabled(true)
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.black )
+                            .onChange(of: viewModel.textCurrentState, perform: { newValue in
+                                editingTextFieldCurrentState = false
+                                ShowCurrentCountryDropDown = false
+                                ShowCurrentStateDropDown = false
+                                ShowCurrentCityDropDown = false
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .onSubmit {
+                                editingTextFieldCurrentState = false
+                                ShowCurrentCountryDropDown = false
+                                ShowCurrentStateDropDown = false
+                                ShowCurrentCityDropDown = false
+                            }
+                            .padding(.bottom)
+                        }
+                        if !viewModel.textCurrentCountry.isEmpty{
+                            if ShowCurrentStateDropDown{
+                                VStack(alignment: .leading){
+                                    SearchBar(text: $searchTextCurrentState)
+                                        .frame(width: UIScreen.main.bounds.width - 50)
+                                        .padding(.top)
+                                        .padding(.leading, 5)
+                                    ForEach(searchResultsCurrentState) { master in
+                                        Button {
+                                            viewModel.textCurrentState = master.name ?? ""
+                                            self.currentStateId = master.id ?? ""
+                                            viewModel.textCurrentCity = ""
+                                            self.currentCityId = ""
+                                            countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
+                                                arrStateCurrent = CountryData.data?.states ?? []
+                                                arrCityCurrent = CountryData.data?.cities ?? []
+                                            }
+                                            ShowCurrentCountryDropDown = false
+                                            ShowCurrentStateDropDown = false
+                                            ShowCurrentCityDropDown = false
+                                        } label: {
+                                            Text(master.name ?? "")
+                                                .padding(5)
+                                                .padding(.leading, 5)
+                                                .foregroundColor(.black)
+                                                .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                        }
+                                    }
+                                }
+                                .overlay(
+                                    RoundedRectangle(
+                                        cornerRadius: 4).strokeBorder(borderColor,
+                                                                      style: StrokeStyle(lineWidth: 1.0))
+                                )
+                                .padding(.bottom)
+                            }
+                        }
+                        
+                        //Current City
+                        Button {
+                            searchTextCurrentCity = ""
+                            ShowCurrentCityDropDown = true
+                        } label: {
+                            MaterialDesignTextEditorCountry($viewModel.textCurrentCity,
+                                                            placeholder: viewModel.placeholderCurrentCity,
+                                                            hint: $viewModel.hintCurrentCity,
+                                                            editing: $editingTextFieldCurrentCity,
+                                                            valid: $viewModel.textCurrentCityValid,
+                                                            BorderColor: $borderColor)
+                            .disabled(true)
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.black )
+                            .onChange(of: viewModel.textCurrentCity, perform: { newValue in
+                                editingTextFieldCurrentCity = false
+                                ShowCurrentCountryDropDown = false
+                                ShowCurrentStateDropDown = false
+                                ShowCurrentCityDropDown = false
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .onSubmit {
+                                editingTextFieldCurrentCity = false
+                                ShowCurrentCountryDropDown = false
+                                ShowCurrentStateDropDown = false
+                                ShowCurrentCityDropDown = false
+                            }
+                        }
+                        .padding(.bottom)
+                        
+                        if !viewModel.textCurrentState.isEmpty{
+                            if ShowCurrentCityDropDown{
+                                VStack(alignment: .leading){
+                                    SearchBar(text: $searchTextCurrentCity)
+                                        .frame(width: UIScreen.main.bounds.width - 50)
+                                        .padding(.top)
+                                        .padding(.leading, 5)
+                                    ForEach(searchResultsCurrentCity) { master in
+                                        Button {
+                                            viewModel.textCurrentCity = master.name ?? ""
+                                            self.currentCityId = master.id ?? ""
+                                            ShowCurrentCountryDropDown = false
+                                            ShowCurrentStateDropDown = false
+                                            ShowCurrentCityDropDown = false
+                                        } label: {
+                                            Text(master.name ?? "")
+                                                .padding(5)
+                                                .padding(.leading, 5)
+                                                .foregroundColor(.black)
+                                                .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                        }
+                                    }
+                                }
+                                .overlay(
+                                    RoundedRectangle(
+                                        cornerRadius: 4).strokeBorder(borderColor,
+                                                                      style: StrokeStyle(lineWidth: 1.0))
+                                )
+                                .padding(.bottom)
+                            }
+                        }
+                    }
+                    .padding(.bottom, 5)
+                    
+                    VStack(alignment: .leading){
+                        Button {
+                            isSelect.toggle()
+                            if isSelect{
+                                viewModel.textPermanentAddress = viewModel.textCurrentAddress
+                                viewModel.textPermanentCountry = viewModel.textCurrentCountry
+                                viewModel.textPermanentState = viewModel.textCurrentState
+                                viewModel.textPermanentCity = viewModel.textCurrentCity
+                                permentCountryID = currentCountryID
+                                permentStateId = currentStateId
+                                permentCityId = currentCityId
+                            }else{
+                                viewModel.textPermanentAddress = ""
+                                viewModel.textPermanentCountry = ""
+                                viewModel.textPermanentState = ""
+                                viewModel.textPermanentCity = ""
+                                permentCountryID = ""
+                                permentStateId = ""
+                                permentCityId = ""
+                            }
+                        } label: {
+                            HStack{
+                                Image(isSelect ? "Student_Select" : "Student_UnSelect")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 20, height: 20, alignment: .leading)
+                                    .padding(2)
+                                Text("Same as above")
+                                    .font(.custom(OpenSans_SemiBold, size: 10))
+                                    .foregroundColor(Color(hex: 0x555555))
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, alignment: .leading)
+                        }
+                    }
+                    .padding(.bottom, 5)
+                    
+                    VStack{
+                        //Perment Address
+                        MaterialDesignTextField($viewModel.textPermanentAddress,
+                                                placeholder: viewModel.placeholderPermanentAddress,
+                                                hint: $viewModel.hintPermanentAddress,
+                                                editing: $editingTextFieldPermentAddress,
+                                                valid: $viewModel.textPermanentCountryValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Student_Current_Address"))
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textPermanentAddress, perform: { newValue in
+                            editingTextFieldPermentAddress = true
+                        })
+                        .onTapGesture {
+                            editingTextFieldPermentAddress = true
+                        }
+                        .onSubmit {
+                            editingTextFieldPermentAddress = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        //Perment Country
+                        Button {
+                            searchTextPermentCountry = ""
+                            ShowPermentCountryDropDown = true
+                        } label: {
+                            MaterialDesignTextEditorCountry($viewModel.textPermanentCountry,
+                                                            placeholder: viewModel.placeholderPermanentCountry,
+                                                            hint: $viewModel.hintPermanentCountry,
+                                                            editing: $editingTextFieldPermentCountry,
+                                                            valid: $viewModel.textPermanentCountryValid,
+                                                            BorderColor: $borderColor)
+                            .disabled(true)
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.black )
+                            .onChange(of: viewModel.textPermanentCountry, perform: { newValue in
+                                editingTextFieldPermentCountry = false
+                                ShowPermentCountryDropDown = false
+                                ShowPermentStateDropDown = false
+                                ShowPermentCityDropDown = false
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .onSubmit {
+                                editingTextFieldPermentCountry = false
+                                ShowPermentCountryDropDown = false
+                                ShowPermentStateDropDown = false
+                                ShowPermentCityDropDown = false
+                            }
+                        }
+                        .padding(.bottom)
+                        
+                        if ShowPermentCountryDropDown{
+                            VStack(alignment: .leading){
+                                SearchBar(text: $searchTextPermentCountry)
+                                    .frame(width: UIScreen.main.bounds.width - 50)
+                                    .padding(.top)
+                                    .padding(.leading, 5)
+                                ForEach(searchResultsPermentCountry) { master in
+                                    Button {
+                                        viewModel.textPermanentCountry = master.name ?? ""
+                                        self.permentCountryID = master.id ?? ""
+                                        ShowPermentCountryDropDown = false
+                                        ShowPermentStateDropDown = false
+                                        ShowPermentCityDropDown = false
+                                        viewModel.textPermanentState = ""
+                                        self.permentStateId = ""
+                                        viewModel.textPermanentCity = ""
+                                        self.permentCityId = ""
+                                        countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
+                                            arrStatePerment = CountryData.data?.states ?? []
+                                            arrCityPerment = CountryData.data?.cities ?? []
+                                        }
+                                    } label: {
+                                        Text(master.name ?? "")
+                                            .padding(5)
+                                            .padding(.leading, 5)
+                                            .foregroundColor(.black)
+                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                    }
+                                }
+                            }
+                            .overlay(
+                                RoundedRectangle(
+                                    cornerRadius: 4).strokeBorder(borderColor,
+                                                                  style: StrokeStyle(lineWidth: 1.0))
+                            )
+                            .padding(.bottom)
+                        }
+                        
+                        //Perment State
+                        
+                        Button {
+                            searchTextPermentState = ""
+                            ShowPermentStateDropDown = true
+                        } label: {
+                            MaterialDesignTextEditorCountry($viewModel.textPermanentState,
+                                                            placeholder: viewModel.placeholderPermanentState,
+                                                            hint: $viewModel.hintPermanentState,
+                                                            editing: $editingTextFieldPermentState,
+                                                            valid: $viewModel.textPermanentStateValid,
+                                                            BorderColor: $borderColor)
+                            .disabled(true)
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.black )
+                            .onChange(of: viewModel.textPermanentState, perform: { newValue in
+                                editingTextFieldPermentState = false
+                                ShowPermentCountryDropDown = false
+                                ShowPermentStateDropDown = false
+                                ShowPermentCityDropDown = false
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .onSubmit {
+                                editingTextFieldPermentState = false
+                                ShowPermentCountryDropDown = false
+                                ShowPermentStateDropDown = false
+                                ShowPermentCityDropDown = false
+                            }
+                        }
+                        .padding(.bottom)
+                        
+                        if !viewModel.textPermanentCountry.isEmpty{
+                            if ShowPermentStateDropDown{
+                                VStack(alignment: .leading){
+                                    SearchBar(text: $searchTextPermentState)
+                                        .frame(width: UIScreen.main.bounds.width - 50)
+                                        .padding(.top)
+                                        .padding(.leading, 5)
+                                    ForEach(searchResultsPermentState) { master in
+                                        Button {
+                                            viewModel.textPermanentState = master.name ?? ""
+                                            self.permentStateId = master.id ?? ""
+                                            ShowPermentCountryDropDown = false
+                                            ShowPermentStateDropDown = false
+                                            ShowPermentCityDropDown = false
+                                            viewModel.textPermanentCity = ""
+                                            self.permentCityId = ""
+                                            countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
+                                                arrStatePerment = CountryData.data?.states ?? []
+                                                arrCityPerment = CountryData.data?.cities ?? []
+                                            }
+                                        } label: {
+                                            Text(master.name ?? "")
+                                                .padding(5)
+                                                .padding(.leading, 5)
+                                                .foregroundColor(.black)
+                                                .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                        }
+                                    }
+                                }
+                                .overlay(
+                                    RoundedRectangle(
+                                        cornerRadius: 4).strokeBorder(borderColor,
+                                                                      style: StrokeStyle(lineWidth: 1.0))
+                                )
+                                .padding(.bottom)
+                            }
+                        }
+                        
+                        //Perment City
+                        
+                        Button {
+                            searchTextPermentCity = ""
+                            ShowPermentCityDropDown = true
+                        } label: {
+                            MaterialDesignTextEditorCountry($viewModel.textPermanentCity,
+                                                            placeholder: viewModel.placeholderPermanentCity,
+                                                            hint: $viewModel.hintPermanentCity,
+                                                            editing: $editingTextFieldPermentCity,
+                                                            valid: $viewModel.textPermanentCityValid,
+                                                            BorderColor: $borderColor)
+                            .disabled(true)
+                            .multilineTextAlignment(.leading)
+                            .foregroundColor(.black )
+                            .onChange(of: viewModel.textPermanentCity, perform: { newValue in
+                                editingTextFieldPermentCity = false
+                                ShowPermentCountryDropDown = false
+                                ShowPermentStateDropDown = false
+                                ShowPermentCityDropDown = false
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .onSubmit {
+                                editingTextFieldPermentCity = false
+                                ShowPermentCountryDropDown = false
+                                ShowPermentStateDropDown = false
+                                ShowPermentCityDropDown = false
+                            }
+                        }
+                        .padding(.bottom)
+                        
+                        if !viewModel.textPermanentState.isEmpty{
+                            if ShowPermentCityDropDown{
+                                VStack(alignment: .leading){
+                                    SearchBar(text: $searchTextPermentCity)
+                                        .frame(width: UIScreen.main.bounds.width - 50)
+                                        .padding(.top)
+                                        .padding(.leading, 5)
+                                    ForEach(searchResultsPermentCity) { master in
+                                        Button {
+                                            viewModel.textPermanentCity = master.name ?? ""
+                                            self.permentCityId = master.id ?? ""
+                                            ShowPermentCountryDropDown = false
+                                            ShowPermentStateDropDown = false
+                                            ShowPermentCityDropDown = false
+                                        } label: {
+                                            Text(master.name ?? "")
+                                                .padding(5)
+                                                .padding(.leading, 5)
+                                                .foregroundColor(.black)
+                                                .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                        }
+                                    }
+                                }
+                                .overlay(
+                                    RoundedRectangle(
+                                        cornerRadius: 4).strokeBorder(borderColor,
+                                                                      style: StrokeStyle(lineWidth: 1.0))
+                                )
+                                .padding(.bottom)
+                            }
+                        }
+                    }
+                    NavigationLink("", destination: ParentsDetailsView(getIsEditable: "1").navigationBarHidden(true),isActive: $showPrentsDetails).isDetailLink(false)
+                    VStack(alignment: .center){
+                        Button {
+                            showPrentsDetails = true
+                        } label: {
+                            DetailsViewBottom()
+                        }
+                    }
+                    .padding(.bottom)
                 }
             }
+            .navigationBarHidden(true)
         }
-        .onAppear{
+        .onAppear(perform: delayText)
+    }
+    private func delayText() {
+        // Delay of 0.5 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             masterViewModel.MasterGet { MasterData in
                 arrGender = MasterData.data?.gender ?? []
                 arrCountry = MasterData.data?.countries ?? []
@@ -1044,6 +1097,11 @@ struct StudentDetailsView: View {
             viewModel.validateTextCity()
         }
     }
+    @State private var editingTextFieldPermentAddress = false {
+        didSet {
+            viewModel.validateTextPermentAddress()
+        }
+    }
     @State private var editingTextFieldPermentCountry = false {
         didSet {
             viewModel.validateTextPermentCountry()
@@ -1057,6 +1115,93 @@ struct StudentDetailsView: View {
     @State private var editingTextFieldPermentCity = false {
         didSet {
             viewModel.validateTextPermentCity()
+        }
+    }
+    
+    //MARK: - Search Variable
+    var searchResultsBloodGroup: [BloodGroup] {
+        if searchTextBloodGroup.isEmpty {
+            return arrBloodGroup
+        } else {
+            return arrBloodGroup.filter {
+                $0.name!.contains(searchTextBloodGroup) ||
+                $0.name!.lowercased().contains(searchTextBloodGroup) ||
+                $0.name!.uppercased().contains(searchTextBloodGroup)
+            }
+        }
+    }
+    
+    //Current
+    var searchResultsCurrentCountry: [countries] {
+        if searchTextCurrentCountry.isEmpty {
+            return arrCountry
+        } else {
+            return arrCountry.filter {
+                $0.name!.contains(searchTextCurrentCountry) ||
+                $0.name!.lowercased().contains(searchTextCurrentCountry) ||
+                $0.name!.uppercased().contains(searchTextCurrentCountry)
+            }
+        }
+    }
+    
+    var searchResultsCurrentState: [states] {
+        if searchTextCurrentState.isEmpty {
+            return arrStateCurrent
+        } else {
+            return arrStateCurrent.filter {
+                $0.name!.contains(searchTextCurrentState) ||
+                $0.name!.lowercased().contains(searchTextCurrentState) ||
+                $0.name!.uppercased().contains(searchTextCurrentState)
+            }
+        }
+    }
+    
+    var searchResultsCurrentCity: [City] {
+        if searchTextCurrentCity.isEmpty {
+            return arrCityCurrent
+        } else {
+            return arrCityCurrent.filter {
+                $0.name!.contains(searchTextCurrentCity) ||
+                $0.name!.lowercased().contains(searchTextCurrentCity) ||
+                $0.name!.uppercased().contains(searchTextCurrentCity)
+            }
+        }
+    }
+    
+    //Perment
+    var searchResultsPermentCountry: [countries] {
+        if searchTextPermentCountry.isEmpty {
+            return arrCountryPerment
+        } else {
+            return arrCountryPerment.filter {
+                $0.name!.contains(searchTextPermentCountry) ||
+                $0.name!.lowercased().contains(searchTextPermentCountry) ||
+                $0.name!.uppercased().contains(searchTextPermentCountry)
+            }
+        }
+    }
+    
+    var searchResultsPermentState: [states] {
+        if searchTextPermentState.isEmpty {
+            return arrStatePerment
+        } else {
+            return arrStatePerment.filter {
+                $0.name!.contains(searchTextPermentState) ||
+                $0.name!.lowercased().contains(searchTextPermentState) ||
+                $0.name!.uppercased().contains(searchTextPermentState)
+            }
+        }
+    }
+    
+    var searchResultsPermentCity: [City] {
+        if searchTextPermentCity.isEmpty {
+            return arrCityPerment
+        } else {
+            return arrCityPerment.filter {
+                $0.name!.contains(searchTextPermentCity) ||
+                $0.name!.lowercased().contains(searchTextPermentCity) ||
+                $0.name!.uppercased().contains(searchTextPermentCity)
+            }
         }
     }
     
@@ -1079,7 +1224,7 @@ struct StudentDetailsView: View {
         
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
-        datePicker.minimumDate = Date()
+        datePicker.maximumDate = Date()
         alertVC.view.addSubview(datePicker)
         datePicker.frame.size.width = UIScreen.main.bounds.width
         

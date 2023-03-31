@@ -47,6 +47,9 @@
 		098D698B29CD702C0000F5A9 /* MaterialDesignTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D698A29CD702C0000F5A9 /* MaterialDesignTextField.swift */; };
 		098D698D29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D698C29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift */; };
 		098D699029CD770D0000F5A9 /* WalkThrough1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098D698F29CD770D0000F5A9 /* WalkThrough1.swift */; };
+		0993226329D6939C0036C050 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226229D6939C0036C050 /* SearchBar.swift */; };
+		0993226529D6B37B0036C050 /* SchoolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226429D6B37B0036C050 /* SchoolModel.swift */; };
+		0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226729D6B44B0036C050 /* SchoolViewModel.swift */; };
 		09A33B6129CC1D3C00C01D65 /* Upgrad_LivingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */; };
 		09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6229CC1D3C00C01D65 /* ContentView.swift */; };
 		09A33B6529CC1D4200C01D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A33B6429CC1D4200C01D65 /* Assets.xcassets */; };
@@ -63,6 +66,15 @@
 		09DE74AC29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74AB29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift */; };
 		09DE74B229D55C4E001B105A /* EnrollmentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74B129D55C4E001B105A /* EnrollmentDetailsView.swift */; };
 		09DE74B429D55DBD001B105A /* EnrollmentContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74B329D55DBD001B105A /* EnrollmentContentViewModel.swift */; };
+		09DE74BC29D56977001B105A /* RoomTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74BB29D56977001B105A /* RoomTypeView.swift */; };
+		09DE74C029D56D01001B105A /* RoomTypeQuardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74BF29D56D01001B105A /* RoomTypeQuardView.swift */; };
+		09DE74C229D5782D001B105A /* RoomTypeTripleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74C129D5782D001B105A /* RoomTypeTripleView.swift */; };
+		09DE74C429D5783F001B105A /* RoomTypeTwinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74C329D5783F001B105A /* RoomTypeTwinView.swift */; };
+		09DE74CA29D5860B001B105A /* MedicalQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74C929D5860B001B105A /* MedicalQuestionView.swift */; };
+		09DE74CC29D58769001B105A /* MedicalQuestionOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74CB29D58769001B105A /* MedicalQuestionOptionView.swift */; };
+		09DE74CE29D588B1001B105A /* MediacalQuestionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74CD29D588B1001B105A /* MediacalQuestionImage.swift */; };
+		09DE74D029D59E2B001B105A /* MediacalQuestionSubImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74CF29D59E2B001B105A /* MediacalQuestionSubImage.swift */; };
+		09DE74D629D5AAFA001B105A /* FormDeclerationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74D529D5AAFA001B105A /* FormDeclerationView.swift */; };
 		09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ECD9DA29D3F680008465A2 /* OTPModel.swift */; };
 		09ECD9DD29D3FA60008465A2 /* APIFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ECD9DC29D3FA60008465A2 /* APIFunction.swift */; };
 /* End PBXBuildFile section */
@@ -108,6 +120,9 @@
 		098D698A29CD702C0000F5A9 /* MaterialDesignTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialDesignTextField.swift; sourceTree = "<group>"; };
 		098D698C29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatableCustomFontModifier.swift; sourceTree = "<group>"; };
 		098D698F29CD770D0000F5A9 /* WalkThrough1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThrough1.swift; sourceTree = "<group>"; };
+		0993226229D6939C0036C050 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		0993226429D6B37B0036C050 /* SchoolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolModel.swift; sourceTree = "<group>"; };
+		0993226729D6B44B0036C050 /* SchoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolViewModel.swift; sourceTree = "<group>"; };
 		09A33B5D29CC1D3C00C01D65 /* Upgrad Living.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upgrad Living.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrad_LivingApp.swift; sourceTree = "<group>"; };
 		09A33B6229CC1D3C00C01D65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -125,6 +140,15 @@
 		09DE74AB29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialDesignTextFieldwithoutImage.swift; sourceTree = "<group>"; };
 		09DE74B129D55C4E001B105A /* EnrollmentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentDetailsView.swift; sourceTree = "<group>"; };
 		09DE74B329D55DBD001B105A /* EnrollmentContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentContentViewModel.swift; sourceTree = "<group>"; };
+		09DE74BB29D56977001B105A /* RoomTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTypeView.swift; sourceTree = "<group>"; };
+		09DE74BF29D56D01001B105A /* RoomTypeQuardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTypeQuardView.swift; sourceTree = "<group>"; };
+		09DE74C129D5782D001B105A /* RoomTypeTripleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTypeTripleView.swift; sourceTree = "<group>"; };
+		09DE74C329D5783F001B105A /* RoomTypeTwinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTypeTwinView.swift; sourceTree = "<group>"; };
+		09DE74C929D5860B001B105A /* MedicalQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalQuestionView.swift; sourceTree = "<group>"; };
+		09DE74CB29D58769001B105A /* MedicalQuestionOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalQuestionOptionView.swift; sourceTree = "<group>"; };
+		09DE74CD29D588B1001B105A /* MediacalQuestionImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediacalQuestionImage.swift; sourceTree = "<group>"; };
+		09DE74CF29D59E2B001B105A /* MediacalQuestionSubImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediacalQuestionSubImage.swift; sourceTree = "<group>"; };
+		09DE74D529D5AAFA001B105A /* FormDeclerationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDeclerationView.swift; sourceTree = "<group>"; };
 		09ECD9DA29D3F680008465A2 /* OTPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPModel.swift; sourceTree = "<group>"; };
 		09ECD9DC29D3FA60008465A2 /* APIFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFunction.swift; sourceTree = "<group>"; };
 		42FC69D1BCE0EB9CB9343A47 /* Pods_Upgrad_Living.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Upgrad_Living.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,13 +241,9 @@
 		096A3FD629CC24E900092AAC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0993226629D6B3F70036C050 /* Material TextField */,
+				0993226129D6938E0036C050 /* Search Bar */,
 				098D698729CD700E0000F5A9 /* View Model */,
-				098D698A29CD702C0000F5A9 /* MaterialDesignTextField.swift */,
-				098A04DD29D43BC300C9595A /* MaterialDesignTextFieldDOB.swift */,
-				098A04DB29D4339500C9595A /* MaterialDesignTextEditor.swift */,
-				098A04DF29D44FE400C9595A /* MaterialDesignTextEditorCountry.swift */,
-				09DE74AB29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift */,
-				098D698C29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -328,6 +348,9 @@
 				098A04CB29D4079600C9595A /* Student Details */,
 				09DE74A329D541B3001B105A /* Parents Details */,
 				09DE74AD29D55C1A001B105A /* Enrollment Details */,
+				09DE74B529D5692E001B105A /* Room Type */,
+				09DE74C529D585D7001B105A /* Medical Question */,
+				09DE74D129D5AA68001B105A /* Decleration */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -388,6 +411,27 @@
 				0945E26B29CD9F1400F9EA4E /* WalkThrough3.swift */,
 			);
 			path = WalkThrough;
+			sourceTree = "<group>";
+		};
+		0993226129D6938E0036C050 /* Search Bar */ = {
+			isa = PBXGroup;
+			children = (
+				0993226229D6939C0036C050 /* SearchBar.swift */,
+			);
+			path = "Search Bar";
+			sourceTree = "<group>";
+		};
+		0993226629D6B3F70036C050 /* Material TextField */ = {
+			isa = PBXGroup;
+			children = (
+				098D698A29CD702C0000F5A9 /* MaterialDesignTextField.swift */,
+				098A04DD29D43BC300C9595A /* MaterialDesignTextFieldDOB.swift */,
+				098A04DB29D4339500C9595A /* MaterialDesignTextEditor.swift */,
+				098A04DF29D44FE400C9595A /* MaterialDesignTextEditorCountry.swift */,
+				09DE74AB29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift */,
+				098D698C29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift */,
+			);
+			path = "Material TextField";
 			sourceTree = "<group>";
 		};
 		09A33B5429CC1D3C00C01D65 = {
@@ -496,11 +540,115 @@
 		09DE74AF29D55C30001B105A /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				0993226729D6B44B0036C050 /* SchoolViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
 		};
 		09DE74B029D55C38001B105A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0993226429D6B37B0036C050 /* SchoolModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09DE74B529D5692E001B105A /* Room Type */ = {
+			isa = PBXGroup;
+			children = (
+				09DE74B829D5694C001B105A /* Model */,
+				09DE74B729D56945001B105A /* View Model */,
+				09DE74B629D5693E001B105A /* View */,
+			);
+			path = "Room Type";
+			sourceTree = "<group>";
+		};
+		09DE74B629D5693E001B105A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09DE74BB29D56977001B105A /* RoomTypeView.swift */,
+				09DE74BF29D56D01001B105A /* RoomTypeQuardView.swift */,
+				09DE74C129D5782D001B105A /* RoomTypeTripleView.swift */,
+				09DE74C329D5783F001B105A /* RoomTypeTwinView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09DE74B729D56945001B105A /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		09DE74B829D5694C001B105A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09DE74C529D585D7001B105A /* Medical Question */ = {
+			isa = PBXGroup;
+			children = (
+				09DE74C829D585F6001B105A /* Model */,
+				09DE74C729D585F0001B105A /* Model View */,
+				09DE74C629D585EB001B105A /* View */,
+			);
+			path = "Medical Question";
+			sourceTree = "<group>";
+		};
+		09DE74C629D585EB001B105A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09DE74C929D5860B001B105A /* MedicalQuestionView.swift */,
+				09DE74CB29D58769001B105A /* MedicalQuestionOptionView.swift */,
+				09DE74CD29D588B1001B105A /* MediacalQuestionImage.swift */,
+				09DE74CF29D59E2B001B105A /* MediacalQuestionSubImage.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09DE74C729D585F0001B105A /* Model View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model View";
+			sourceTree = "<group>";
+		};
+		09DE74C829D585F6001B105A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09DE74D129D5AA68001B105A /* Decleration */ = {
+			isa = PBXGroup;
+			children = (
+				09DE74D429D5AAE6001B105A /* Model */,
+				09DE74D329D5AA7C001B105A /* View Model */,
+				09DE74D229D5AA77001B105A /* View */,
+			);
+			path = Decleration;
+			sourceTree = "<group>";
+		};
+		09DE74D229D5AA77001B105A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09DE74D529D5AAFA001B105A /* FormDeclerationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09DE74D329D5AA7C001B105A /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		09DE74D429D5AAE6001B105A /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -653,16 +801,25 @@
 			files = (
 				0945E26C29CD9F1400F9EA4E /* WalkThrough3.swift in Sources */,
 				098A04D829D42EC700C9595A /* MasterModel.swift in Sources */,
+				09DE74D629D5AAFA001B105A /* FormDeclerationView.swift in Sources */,
+				0993226529D6B37B0036C050 /* SchoolModel.swift in Sources */,
 				09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */,
+				09DE74C429D5783F001B105A /* RoomTypeTwinView.swift in Sources */,
+				0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */,
 				098D699029CD770D0000F5A9 /* WalkThrough1.swift in Sources */,
+				09DE74CC29D58769001B105A /* MedicalQuestionOptionView.swift in Sources */,
 				098A04D029D407C400C9595A /* StudentDetailsView.swift in Sources */,
+				09DE74CE29D588B1001B105A /* MediacalQuestionImage.swift in Sources */,
 				096A400529CC2D5800092AAC /* extention.swift in Sources */,
 				09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */,
 				096A3FE029CC255E00092AAC /* LoginTopView.swift in Sources */,
 				098A04D429D4111100C9595A /* DetailsViewTop.swift in Sources */,
+				0993226329D6939C0036C050 /* SearchBar.swift in Sources */,
+				09DE74C229D5782D001B105A /* RoomTypeTripleView.swift in Sources */,
 				09DE74AA29D54560001B105A /* ParentContentViewModel.swift in Sources */,
 				09DE74B229D55C4E001B105A /* EnrollmentDetailsView.swift in Sources */,
 				096A3FE229CC259B00092AAC /* LoginView.swift in Sources */,
+				09DE74CA29D5860B001B105A /* MedicalQuestionView.swift in Sources */,
 				09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */,
 				098D698B29CD702C0000F5A9 /* MaterialDesignTextField.swift in Sources */,
 				09DE74AC29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift in Sources */,
@@ -676,6 +833,7 @@
 				09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */,
 				09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */,
 				098A04E029D44FE400C9595A /* MaterialDesignTextEditorCountry.swift in Sources */,
+				09DE74BC29D56977001B105A /* RoomTypeView.swift in Sources */,
 				098A04E429D4538200C9595A /* CountryViewModel.swift in Sources */,
 				09DE74B429D55DBD001B105A /* EnrollmentContentViewModel.swift in Sources */,
 				09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */,
@@ -683,10 +841,12 @@
 				0945E26A29CD8C3D00F9EA4E /* WalkThrough2.swift in Sources */,
 				098D698929CD70230000F5A9 /* ContentViewModel.swift in Sources */,
 				0934F12D29CC3DD70076AD56 /* OTPView.swift in Sources */,
+				09DE74D029D59E2B001B105A /* MediacalQuestionSubImage.swift in Sources */,
 				09ECD9DD29D3FA60008465A2 /* APIFunction.swift in Sources */,
 				0934F13129CC581C0076AD56 /* OTPViewTextField.swift in Sources */,
 				096A400629CC2D5800092AAC /* customLodingIndicator.swift in Sources */,
 				09A6F6DC29CDB96C00689E9F /* BaseAPI.swift in Sources */,
+				09DE74C029D56D01001B105A /* RoomTypeQuardView.swift in Sources */,
 				096A400329CC2D5800092AAC /* HideKeyboard.swift in Sources */,
 				098A04DE29D43BC300C9595A /* MaterialDesignTextFieldDOB.swift in Sources */,
 				09CC312629CC71940048BFF5 /* LottieView.swift in Sources */,

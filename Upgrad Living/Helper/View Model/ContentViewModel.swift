@@ -256,6 +256,15 @@ final class ContentViewModel: ObservableObject {
             hintCurrentCity = "Not Valid"
         }
     }
+    func validateTextPermentAddress() {
+        if textPermanentAddress.count > 2{
+            textPermanentCountryValid = true
+            hintPermanentAddress = "Success"
+        }else{
+            textPermanentCountryValid = false
+            hintPermanentAddress = "Not Valid"
+        }
+    }
     func validateTextPermentCountry() {
         if textPermanentCountry.count > 2{
             textPermanentCountryValid = true

@@ -21,6 +21,16 @@ struct MaterialDesignTextField: View {
                     .frame(width: 20, height: 20)
                 TextField("", text: $text)
                     .focused($focusField, equals: .textField)
+                if !text.isEmpty{
+                    Button {
+                        text = ""
+                    } label: {
+                        Image("txt_Delete")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20, height: 20)
+                    }
+                }
             }
             .padding()
             .overlay(

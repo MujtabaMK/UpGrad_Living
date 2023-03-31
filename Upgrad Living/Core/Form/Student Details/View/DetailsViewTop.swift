@@ -33,13 +33,30 @@ struct DetailsViewTop: View {
                                 .font(.custom(OpenSans_SemiBold, size: 14))
                                 .foregroundColor(Color(hex: 0x868686))
                         )
-                }
-                else if Step == "3"{
+                }else if Step == "3"{
                     Circle()
                         .frame(width: 30, height: 30)
                         .foregroundColor(Color(hex: 0x685BC7))
                         .overlay(
                             Text("3")
+                                .font(.custom(OpenSans_SemiBold, size: 14))
+                                .foregroundColor(Color(hex: 0x333333))
+                        )
+                }else if Step == "4"{
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color(hex: 0x3CA0D1))
+                        .overlay(
+                            Text("4")
+                                .font(.custom(OpenSans_SemiBold, size: 14))
+                                .foregroundColor(Color(hex: 0x333333))
+                        )
+                }else if Step == "5"{
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color(hex: 0xE75798))
+                        .overlay(
+                            Text("5")
                                 .font(.custom(OpenSans_SemiBold, size: 14))
                                 .foregroundColor(Color(hex: 0x333333))
                         )
@@ -67,8 +84,25 @@ struct DetailsViewTop: View {
                                 .font(.custom(OpenSans_SemiBold, size: 14))
                                 .foregroundColor(Color(hex: 0x868686))
                         )
-                }
-                else if Step == "3"{
+                }else if Step == "3"{
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color(hex: 0xF1F0F0))
+                        .overlay(
+                            Text("5")
+                                .font(.custom(OpenSans_SemiBold, size: 14))
+                                .foregroundColor(Color(hex: 0x868686))
+                        )
+                }else if Step == "4"{
+                    Circle()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(Color(hex: 0xF1F0F0))
+                        .overlay(
+                            Text("5")
+                                .font(.custom(OpenSans_SemiBold, size: 14))
+                                .foregroundColor(Color(hex: 0x868686))
+                        )
+                }else if Step == "5"{
                     Circle()
                         .frame(width: 30, height: 30)
                         .foregroundColor(Color(hex: 0xF1F0F0))
@@ -137,7 +171,46 @@ struct DetailsViewTop: View {
                     .frame(width: UIScreen.main.bounds.width - 20)
                     .background(Color(hex: 0x685BC7))
                     .padding(.top, -40)
+            }else if Step == "4"{
+                HStack{
+                    Image("RoomType_Top_Image")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 235, height: 235, alignment: .leading)
+                        Spacer()
+                    Text("Select your accommodation and payment options")
+                        .font(.custom(OpenSans_Bold, size: 20))
+                        .foregroundColor(Color(hex: 0x333333))
+                        Spacer()
+                }
+                Text("Select the Room Type")
+                    .foregroundColor(.white)
+                    .font(.custom(OpenSans_Bold, size: 16))
+                    .padding(8)
+                    .frame(width: UIScreen.main.bounds.width - 20)
+                    .background(Color(hex: 0x3CA0D1))
+                    .padding(.top, -40)
+            }else if Step == "5"{
+                HStack{
+                    Image("Medical_Question_Top")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 235, height: 235, alignment: .leading)
+                        Spacer()
+                    Text("Choose your dietary requirements and medical information")
+                        .font(.custom(OpenSans_Bold, size: 20))
+                        .foregroundColor(Color(hex: 0x333333))
+                        Spacer()
+                }
+                Text("Dietary Requirements")
+                    .foregroundColor(.white)
+                    .font(.custom(OpenSans_Bold, size: 16))
+                    .padding(8)
+                    .frame(width: UIScreen.main.bounds.width - 40)
+                    .background(Color(hex: 0xE75798))
+                    .padding(.top, -40)
             }
+            
             
         }
     }

@@ -17,97 +17,86 @@ struct EnrollmentDetailsView: View {
     @State private var canEditDegree = false
     @State private var canEditSpeclization = false
     
-    @StateObject private var masterViewModel = MasterViewModel()
-    @State private var arrBloodGroup = [BloodGroup]()
+    @StateObject private var schoolViewModel = SchoolViewModel()
+    @State private var arrSchool = [School]()
+    @State private var arrProgram = [Program]()
+    @State private var arrDegree = [Degree]()
+    @State private var arrSpeclization = [Specialization]()
     
     @State private var SchoolID = ""
     @State private var ProgramID = ""
     @State private var DegreeID = ""
     @State private var SpeclizationID = ""
     
+    
+    //Current
+    @State private var searchTextSchool = ""
+    @State private var ShowSchoolDropDown = false
+    
+    @State private var searchTextProgram = ""
+    @State private var ShowProgramDropDown = false
+    
+    @State private var searchTextDegree = ""
+    @State private var ShowDegreeDropDown = false
+    
+    @State private var searchTextSpeclization = ""
+    @State private var ShowSpeclizationDropDown = false
+    
+    @State private var showRoomType = false
+    
     var getIsEditable: String
     var body: some View {
-        VStack{
-            HStack{
-                Button {
-                    withAnimation() {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                } label: {
-                    Image("back_Button")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .padding(.leading, 20)
-                }
-                Spacer(minLength: 0)
-            }
-            Divider()
-            ScrollView(showsIndicators: false){
-                DetailsViewTop(Step: "3")
-                    .padding(.bottom)
-                
-                VStack(alignment: .leading){
-                    //Application Id
-                    MaterialDesignTextField($viewModel.textApplicationID,
-                                            placeholder: viewModel.placeholderApplicationID,
-                                            hint: $viewModel.hintApplicationId,
-                                            editing: $editingTextFieldApplicationId,
-                                            valid: $viewModel.textApplicationIDValid,
-                                            BorderColor: $borderColor,
-                                            placeholderImage: .constant("Enrollment_Application_Id"))
-                    .disableAutocorrection(true)
-                    .onChange(of: viewModel.textApplicationID, perform: { newValue in
-                        editingTextFieldApplicationId = false
-                    })
-                    .onTapGesture {
-                        editingTextFieldApplicationId = false
-                    }
-                    .onSubmit {
-                        editingTextFieldApplicationId = false
-                    }
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                    .padding(.bottom, 10)
-                    
-                    
-                    //School
+        NavigationView {
+            VStack{
+                HStack{
                     Button {
-                        canEditSchool = true
+                        withAnimation() {
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     } label: {
-                        if canEditSchool{
-                            Menu {
-                                ForEach(arrBloodGroup) { SchoolData in
-                                    Button {
-                                        viewModel.textSchool = SchoolData.name ?? ""
-                                        self.SchoolID = SchoolData.id ?? ""
-                                    } label: {
-                                        Text(SchoolData.name ?? "")
-                                    }
-                                }
-                            } label: {
-                                MaterialDesignTextEditor($viewModel.textSchool,
-                                                         placeholder: viewModel.placeholderSchool,
-                                                         hint: $viewModel.hintSchool,
-                                                         editing: $editingTextFieldSchool,
-                                                         valid: $viewModel.textSchoolValid,
-                                                         BorderColor: $borderColor,
-                                                         placeholderImage: .constant("Enrollment_School"))
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textSchool, perform: { newValue in
-                                    editingTextFieldSchool = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldSchool = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldSchool = false
-                                }
-                            }
-                            .padding(.bottom)
-                        }else{
+                        Image("back_Button")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .padding(.leading, 20)
+                    }
+                    Spacer(minLength: 0)
+                }
+                .padding(.top)
+                Divider()
+                ScrollView(showsIndicators: false){
+                    DetailsViewTop(Step: "3")
+                        .padding(.bottom)
+                    
+                    VStack(alignment: .leading){
+                        //Application Id
+                        MaterialDesignTextField($viewModel.textApplicationID,
+                                                placeholder: viewModel.placeholderApplicationID,
+                                                hint: $viewModel.hintApplicationId,
+                                                editing: $editingTextFieldApplicationId,
+                                                valid: $viewModel.textApplicationIDValid,
+                                                BorderColor: $borderColor,
+                                                placeholderImage: .constant("Enrollment_Application_Id"))
+                        .disabled(true)
+                        .disableAutocorrection(true)
+                        .onChange(of: viewModel.textApplicationID, perform: { newValue in
+                            editingTextFieldApplicationId = true
+                        })
+                        .onTapGesture {
+                            editingTextFieldApplicationId = true
+                        }
+                        .onSubmit {
+                            editingTextFieldApplicationId = true
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                        .padding(.bottom, 10)
+                        
+                        
+                        //School
+                        Button {
+                            searchTextSchool = ""
+                            ShowSchoolDropDown = true
+                        } label: {
                             MaterialDesignTextEditor($viewModel.textSchool,
                                                      placeholder: viewModel.placeholderSchool,
                                                      hint: $viewModel.hintSchool,
@@ -117,62 +106,74 @@ struct EnrollmentDetailsView: View {
                                                      placeholderImage: .constant("Enrollment_School"))
                             .disabled(true)
                             .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
+                            .foregroundColor(.black )
                             .onChange(of: viewModel.textSchool, perform: { newValue in
-                                editingTextFieldSchool = true
-                                canEditSchool = true
+                                editingTextFieldSchool = false
+                                ShowSchoolDropDown = false
+                                ShowProgramDropDown = false
+                                ShowDegreeDropDown = false
+                                ShowSpeclizationDropDown = false
                             })
                             .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldSchool = true
-                                canEditSchool = true
-                            }
                             .onSubmit {
-                                editingTextFieldSchool = true
-                                canEditSchool = true
+                                editingTextFieldSchool = false
+                                ShowSchoolDropDown = false
+                                ShowProgramDropDown = false
+                                ShowDegreeDropDown = false
+                                ShowSpeclizationDropDown = false
                             }
-                            .padding(.bottom)
                         }
-                    }
-                    
-                    //Program
-                    Button {
-                        canEditProgram = true
-                    } label: {
-                        if canEditProgram{
-                            Menu {
-                                ForEach(arrBloodGroup) { SchoolData in
+                        .padding(.bottom)
+                        
+                        if ShowSchoolDropDown{
+                            VStack(alignment: .leading){
+                                SearchBar(text: $searchTextSchool)
+                                    .frame(width: UIScreen.main.bounds.width - 50)
+                                    .padding(.top)
+                                    .padding(.leading, 5)
+                                ForEach(searchResultsSchool) { master in
                                     Button {
-                                        viewModel.textProgram = SchoolData.name ?? ""
-                                        self.ProgramID = SchoolData.id ?? ""
+                                        viewModel.textSchool = master.schoolFullName ?? ""
+                                        self.SchoolID = master.schoolID ?? ""
+                                        viewModel.textProgram = ""
+                                        self.ProgramID = ""
+                                        viewModel.textDegree = ""
+                                        self.DegreeID = ""
+                                        viewModel.textSpeclization = ""
+                                        self.SpeclizationID = ""
+                                        
+                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+                                            arrSchool = SchoolData.data?.school ?? []
+                                            arrProgram = SchoolData.data?.program ?? []
+                                            arrDegree = SchoolData.data?.degree ?? []
+                                            arrSpeclization = SchoolData.data?.specialization ?? []
+                                        }
+                                        ShowSchoolDropDown = false
+                                        ShowProgramDropDown = false
+                                        ShowDegreeDropDown = false
+                                        ShowSpeclizationDropDown = false
                                     } label: {
-                                        Text(SchoolData.name ?? "")
+                                        Text(master.schoolFullName ?? "")
+                                            .padding(5)
+                                            .padding(.leading, 5)
+                                            .foregroundColor(.black)
+                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                     }
                                 }
-                            } label: {
-                                MaterialDesignTextEditor($viewModel.textProgram,
-                                                         placeholder: viewModel.placeholderProgram,
-                                                         hint: $viewModel.hintProgram,
-                                                         editing: $editingTextFieldProgram,
-                                                         valid: $viewModel.textProgramValid,
-                                                         BorderColor: $borderColor,
-                                                         placeholderImage: .constant("Enrollment_Program"))
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textProgram, perform: { newValue in
-                                    editingTextFieldProgram = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldProgram = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldProgram = false
-                                }
                             }
+                            .overlay(
+                                RoundedRectangle(
+                                    cornerRadius: 4).strokeBorder(borderColor,
+                                                                  style: StrokeStyle(lineWidth: 1.0))
+                            )
                             .padding(.bottom)
-                        }else{
+                        }
+                        
+                        //Program
+                        Button {
+                            searchTextProgram = ""
+                            ShowProgramDropDown = true
+                        } label: {
                             MaterialDesignTextEditor($viewModel.textProgram,
                                                      placeholder: viewModel.placeholderProgram,
                                                      hint: $viewModel.hintProgram,
@@ -182,62 +183,72 @@ struct EnrollmentDetailsView: View {
                                                      placeholderImage: .constant("Enrollment_Program"))
                             .disabled(true)
                             .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
+                            .foregroundColor(.black )
                             .onChange(of: viewModel.textProgram, perform: { newValue in
-                                editingTextFieldProgram = true
-                                canEditProgram = true
+                                editingTextFieldProgram = false
+                                ShowSchoolDropDown = false
+                                ShowProgramDropDown = false
+                                ShowDegreeDropDown = false
+                                ShowSpeclizationDropDown = false
                             })
                             .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldProgram = true
-                                canEditProgram = true
-                            }
                             .onSubmit {
-                                editingTextFieldProgram = true
-                                canEditProgram = true
+                                editingTextFieldProgram = false
+                                ShowSchoolDropDown = false
+                                ShowProgramDropDown = false
+                                ShowDegreeDropDown = false
+                                ShowSpeclizationDropDown = false
                             }
-                            .padding(.bottom)
                         }
-                    }
-                    
-                    //Degree
-                    Button {
-                        canEditDegree = true
-                    } label: {
-                        if canEditDegree{
-                            Menu {
-                                ForEach(arrBloodGroup) { SchoolData in
+                        .padding(.bottom)
+
+                        if ShowProgramDropDown{
+                            VStack(alignment: .leading){
+                                SearchBar(text: $searchTextProgram)
+                                    .frame(width: UIScreen.main.bounds.width - 50)
+                                    .padding(.top)
+                                    .padding(.leading, 5)
+                                ForEach(searchResultsProgram) { master in
                                     Button {
-                                        viewModel.textDegree = SchoolData.name ?? ""
-                                        self.DegreeID = SchoolData.id ?? ""
+                                        viewModel.textProgram = master.certificationShortName ?? ""
+                                        self.ProgramID = master.certificationID ?? ""
+                                        viewModel.textDegree = ""
+                                        self.DegreeID = ""
+                                        viewModel.textSpeclization = ""
+                                        self.SpeclizationID = ""
+                                        
+                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+                                            arrSchool = SchoolData.data?.school ?? []
+                                            arrProgram = SchoolData.data?.program ?? []
+                                            arrDegree = SchoolData.data?.degree ?? []
+                                            arrSpeclization = SchoolData.data?.specialization ?? []
+                                        }
+                                        ShowSchoolDropDown = false
+                                        ShowProgramDropDown = false
+                                        ShowDegreeDropDown = false
+                                        ShowSpeclizationDropDown = false
                                     } label: {
-                                        Text(SchoolData.name ?? "")
+                                        Text(master.certificationShortName ?? "")
+                                            .padding(5)
+                                            .padding(.leading, 5)
+                                            .foregroundColor(.black)
+                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                     }
                                 }
-                            } label: {
-                                MaterialDesignTextEditor($viewModel.textDegree,
-                                                         placeholder: viewModel.placeholderDegree,
-                                                         hint: $viewModel.hintDegree,
-                                                         editing: $editingTextFieldDegree,
-                                                         valid: $viewModel.textDegreeValid,
-                                                         BorderColor: $borderColor,
-                                                         placeholderImage: .constant("Enrollment_Degree"))
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textDegree, perform: { newValue in
-                                    editingTextFieldDegree = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldDegree = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldDegree = false
-                                }
                             }
+                            .overlay(
+                                RoundedRectangle(
+                                    cornerRadius: 4).strokeBorder(borderColor,
+                                                                  style: StrokeStyle(lineWidth: 1.0))
+                            )
                             .padding(.bottom)
-                        }else{
+                        }
+                        
+                        //Degree
+                        Button {
+                            searchTextDegree = ""
+                            ShowDegreeDropDown = true
+                        } label: {
                             MaterialDesignTextEditor($viewModel.textDegree,
                                                      placeholder: viewModel.placeholderDegree,
                                                      hint: $viewModel.hintDegree,
@@ -247,62 +258,70 @@ struct EnrollmentDetailsView: View {
                                                      placeholderImage: .constant("Enrollment_Degree"))
                             .disabled(true)
                             .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
+                            .foregroundColor(.black )
                             .onChange(of: viewModel.textDegree, perform: { newValue in
-                                editingTextFieldDegree = true
-                                canEditDegree = true
+                                editingTextFieldDegree = false
+                                ShowSchoolDropDown = false
+                                ShowProgramDropDown = false
+                                ShowDegreeDropDown = false
+                                ShowSpeclizationDropDown = false
                             })
                             .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldDegree = true
-                                canEditDegree = true
-                            }
                             .onSubmit {
-                                editingTextFieldDegree = true
-                                canEditDegree = true
+                                editingTextFieldDegree = false
+                                ShowSchoolDropDown = false
+                                ShowProgramDropDown = false
+                                ShowDegreeDropDown = false
+                                ShowSpeclizationDropDown = false
                             }
-                            .padding(.bottom)
                         }
-                    }
-                    
-                    //Speclization
-                    Button {
-                        canEditSpeclization = true
-                    } label: {
-                        if canEditSpeclization{
-                            Menu {
-                                ForEach(arrBloodGroup) { SchoolData in
+                        .padding(.bottom)
+
+                        if ShowDegreeDropDown{
+                            VStack(alignment: .leading){
+                                SearchBar(text: $searchTextDegree)
+                                    .frame(width: UIScreen.main.bounds.width - 50)
+                                    .padding(.top)
+                                    .padding(.leading, 5)
+                                ForEach(searchResultsDegree) { master in
                                     Button {
-                                        viewModel.textSpeclization = SchoolData.name ?? ""
-                                        self.SpeclizationID = SchoolData.id ?? ""
+                                        viewModel.textDegree = master.abbrivation ?? ""
+                                        self.DegreeID = master.id ?? ""
+                                        viewModel.textSpeclization = ""
+                                        self.SpeclizationID = ""
+                                        
+                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+                                            arrSchool = SchoolData.data?.school ?? []
+                                            arrProgram = SchoolData.data?.program ?? []
+                                            arrDegree = SchoolData.data?.degree ?? []
+                                            arrSpeclization = SchoolData.data?.specialization ?? []
+                                        }
+                                        ShowSchoolDropDown = false
+                                        ShowProgramDropDown = false
+                                        ShowDegreeDropDown = false
+                                        ShowSpeclizationDropDown = false
                                     } label: {
-                                        Text(SchoolData.name ?? "")
+                                        Text(master.abbrivation ?? "")
+                                            .padding(5)
+                                            .padding(.leading, 5)
+                                            .foregroundColor(.black)
+                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                     }
                                 }
-                            } label: {
-                                MaterialDesignTextEditor($viewModel.textSpeclization,
-                                                         placeholder: viewModel.placeholderSpeclization,
-                                                         hint: $viewModel.hintSpeclization,
-                                                         editing: $editingTextFieldSpeclization,
-                                                         valid: $viewModel.textSpeclizationValid,
-                                                         BorderColor: $borderColor,
-                                                         placeholderImage: .constant("Enrollment_Speclizatiom"))
-                                .disabled(true)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
-                                .onChange(of: viewModel.textSpeclization, perform: { newValue in
-                                    editingTextFieldSpeclization = false
-                                })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                                .onTapGesture {
-                                    editingTextFieldSpeclization = false
-                                }
-                                .onSubmit {
-                                    editingTextFieldSpeclization = false
-                                }
                             }
+                            .overlay(
+                                RoundedRectangle(
+                                    cornerRadius: 4).strokeBorder(borderColor,
+                                                                  style: StrokeStyle(lineWidth: 1.0))
+                            )
                             .padding(.bottom)
-                        }else{
+                        }
+                        
+                        //Speclization
+                        Button {
+                            searchTextSpeclization = ""
+                            ShowSpeclizationDropDown = true
+                        } label: {
                             MaterialDesignTextEditor($viewModel.textSpeclization,
                                                      placeholder: viewModel.placeholderSpeclization,
                                                      hint: $viewModel.hintSpeclization,
@@ -312,36 +331,87 @@ struct EnrollmentDetailsView: View {
                                                      placeholderImage: .constant("Enrollment_Speclizatiom"))
                             .disabled(true)
                             .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
+                            .foregroundColor(.black )
                             .onChange(of: viewModel.textSpeclization, perform: { newValue in
-                                editingTextFieldSpeclization = true
-                                canEditSpeclization = true
+                                editingTextFieldSpeclization = false
+                                ShowSchoolDropDown = false
+                                ShowProgramDropDown = false
+                                ShowDegreeDropDown = false
+                                ShowSpeclizationDropDown = false
                             })
                             .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onTapGesture {
-                                editingTextFieldSpeclization = true
-                                canEditSpeclization = true
-                            }
                             .onSubmit {
-                                editingTextFieldSpeclization = true
-                                canEditSpeclization = true
+                                editingTextFieldSpeclization = false
+                                ShowSchoolDropDown = false
+                                ShowProgramDropDown = false
+                                ShowDegreeDropDown = false
+                                ShowSpeclizationDropDown = false
                             }
+                        }
+                        .padding(.bottom)
+
+                        if ShowSpeclizationDropDown{
+                            VStack(alignment: .leading){
+                                SearchBar(text: $searchTextSpeclization)
+                                    .frame(width: UIScreen.main.bounds.width - 50)
+                                    .padding(.top)
+                                    .padding(.leading, 5)
+                                ForEach(searchResultsSpeclization) { master in
+                                    Button {
+                                        viewModel.textSpeclization = master.specialisationName ?? ""
+                                        self.SpeclizationID = master.specialisationID ?? ""
+                                        
+                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+                                            arrSchool = SchoolData.data?.school ?? []
+                                            arrProgram = SchoolData.data?.program ?? []
+                                            arrDegree = SchoolData.data?.degree ?? []
+                                            arrSpeclization = SchoolData.data?.specialization ?? []
+                                        }
+                                        ShowSchoolDropDown = false
+                                        ShowProgramDropDown = false
+                                        ShowDegreeDropDown = false
+                                        ShowSpeclizationDropDown = false
+                                    } label: {
+                                        Text(master.specialisationName ?? "")
+                                            .padding(5)
+                                            .padding(.leading, 5)
+                                            .foregroundColor(.black)
+                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                    }
+                                }
+                            }
+                            .overlay(
+                                RoundedRectangle(
+                                    cornerRadius: 4).strokeBorder(borderColor,
+                                                                  style: StrokeStyle(lineWidth: 1.0))
+                            )
                             .padding(.bottom)
                         }
                     }
-                }
-                VStack(alignment: .center){
-                    Button {
-                        
-                    } label: {
-                        DetailsViewBottom()
+                    NavigationLink("", destination: RoomTypeView().navigationBarHidden(true),isActive: $showRoomType).isDetailLink(false)
+                    VStack(alignment: .center){
+                        Button {
+                            showRoomType = true
+                        } label: {
+                            DetailsViewBottom()
+                        }
                     }
+                    .padding(.bottom)
                 }
             }
+            .navigationBarHidden(true)
         }
-        .onAppear{
-            masterViewModel.MasterGet { MasterData in
-                arrBloodGroup = MasterData.data?.bloodGroups ?? []
+        .onAppear(perform: delayText)
+    }
+    private func delayText() {
+        // Delay of 1.5 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            
+            schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+                arrSchool = SchoolData.data?.school ?? []
+                arrProgram = SchoolData.data?.program ?? []
+                arrDegree = SchoolData.data?.degree ?? []
+                arrSpeclization = SchoolData.data?.specialization ?? []
                 
                 if getIsEditable == "1"{
                     canEditSchool = true
@@ -357,6 +427,7 @@ struct EnrollmentDetailsView: View {
             }
         }
     }
+    
     @State private var editingTextFieldApplicationId = false {
         didSet {
             viewModel.validateTextApplicationId()
@@ -380,6 +451,57 @@ struct EnrollmentDetailsView: View {
     @State private var editingTextFieldSpeclization = false {
         didSet {
             viewModel.validateTextSpeclization()
+        }
+    }
+    
+    //MARK: - Search Variable
+
+    //Current
+    var searchResultsSchool: [School] {
+        if searchTextSchool.isEmpty {
+            return arrSchool
+        } else {
+            return arrSchool.filter {
+                $0.schoolFullName!.contains(searchTextSchool) ||
+                $0.schoolFullName!.lowercased().contains(searchTextSchool) ||
+                $0.schoolFullName!.uppercased().contains(searchTextSchool)
+            }
+        }
+    }
+    
+    var searchResultsProgram: [Program] {
+        if searchTextProgram.isEmpty {
+            return arrProgram
+        } else {
+            return arrProgram.filter {
+                $0.certificationShortName!.contains(searchTextProgram) ||
+                $0.certificationShortName!.lowercased().contains(searchTextProgram) ||
+                $0.certificationShortName!.uppercased().contains(searchTextProgram)
+            }
+        }
+    }
+    
+    var searchResultsDegree: [Degree] {
+        if searchTextDegree.isEmpty {
+            return arrDegree
+        } else {
+            return arrDegree.filter {
+                $0.abbrivation!.contains(searchTextDegree) ||
+                $0.abbrivation!.lowercased().contains(searchTextDegree) ||
+                $0.abbrivation!.uppercased().contains(searchTextDegree)
+            }
+        }
+    }
+    
+    var searchResultsSpeclization: [Specialization] {
+        if searchTextSpeclization.isEmpty {
+            return arrSpeclization
+        } else {
+            return arrSpeclization.filter {
+                $0.specialisationName!.contains(searchTextSpeclization) ||
+                $0.specialisationName!.lowercased().contains(searchTextSpeclization) ||
+                $0.specialisationName!.uppercased().contains(searchTextSpeclization)
+            }
         }
     }
 }

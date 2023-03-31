@@ -13,7 +13,7 @@ struct Upgrad_LivingApp: App {
     var body: some Scene {
         WindowGroup {
             if isLogin{
-                EnrollmentDetailsView(getIsEditable: "3")
+                StudentDetailsView(getIsEditable: "1")
             }else{
                 LoginView()
             }

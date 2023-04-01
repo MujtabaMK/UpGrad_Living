@@ -11,6 +11,7 @@ import Combine
 struct ParentsDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = ParentContentViewModel()
+    @StateObject private var submitViewModel = SubmitParentViewModel()
     @State private var borderColor = Color(hex: 0x00B2BA)
     @State private var canEditCurrentCountry = false
     @State private var canEditCurrentState = false
@@ -48,586 +49,521 @@ struct ParentsDetailsView: View {
     var getIsEditable: String
     var body: some View {
         NavigationView {
-            VStack{
-                HStack{
-                    Button {
-                        withAnimation() {
-                            presentationMode.wrappedValue.dismiss()
+            ZStack{
+                VStack{
+                    HStack{
+                        Button {
+                            withAnimation() {
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        } label: {
+                            Image("back_Button")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding(.leading, 20)
                         }
-                    } label: {
-                        Image("back_Button")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                            .padding(.leading, 20)
+                        Spacer(minLength: 0)
                     }
-                    Spacer(minLength: 0)
-                }
-                .padding(.top)
-                Divider()
-                ScrollView(showsIndicators: false){
-                    DetailsViewTop(Step: "2")
-                        .padding(.bottom)
-                        .id(1)
-                    //Father
-                    VStack(alignment: .leading){
-                        //Father First Name
-                        MaterialDesignTextField($viewModel.textFatherFirstName,
-                                                placeholder: viewModel.placeholderFatherFirstName,
-                                                hint: $viewModel.hintFatherFirstName,
-                                                editing: $editingTextFieldFatherFirstName,
-                                                valid: $viewModel.textFatherFirstNameValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("person"))
-                        .focused($focusedField, equals: .fFirstName)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textFatherFirstName, perform: { newValue in
-                            editingTextFieldFatherFirstName = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldFatherFirstName = true
-                        }
-                        .onSubmit {
-                            editingTextFieldFatherFirstName = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Father Middle Name
-                        MaterialDesignTextField($viewModel.textFatherMiddleName,
-                                                placeholder: viewModel.placeholderFatherMiddleName,
-                                                hint: $viewModel.hintFatherMiddleName,
-                                                editing: $editingTextFieldFatherMiddleName,
-                                                valid: $viewModel.textFatherMiddleNameValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("person"))
-                        .focused($focusedField, equals: .fMiddleName)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textFatherMiddleName, perform: { newValue in
-                            editingTextFieldFatherMiddleName = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldFatherMiddleName = true
-                        }
-                        .onSubmit {
-                            editingTextFieldFatherMiddleName = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Father Last Name
-                        MaterialDesignTextField($viewModel.textFatherLastName,
-                                                placeholder: viewModel.placeholderFatherLastName,
-                                                hint: $viewModel.hintFatherLastName,
-                                                editing: $editingTextFieldFatherLastName,
-                                                valid: $viewModel.textFatherLastNameValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("person"))
-                        .focused($focusedField, equals: .fLastName)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textFatherLastName, perform: { newValue in
-                            editingTextFieldFatherLastName = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldFatherLastName = true
-                        }
-                        .onSubmit {
-                            editingTextFieldFatherLastName = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Father Mobile Number
-                        MaterialDesignTextField($viewModel.textFatherMobileNumber,
-                                                placeholder: viewModel.placeholderFatherMobileNumber,
-                                                hint: $viewModel.hintFatherMobileNumber,
-                                                editing: $editingTextFieldFatherMobileNumber,
-                                                valid: $viewModel.textFatherMobileNumberValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("Student_Phone"))
-                        .focused($focusedField, equals: .fMobileNumber)
-                        .keyboardType(.numberPad)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textFatherMobileNumber, perform: { newValue in
-                            if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
+                    .padding(.top)
+                    Divider()
+                    ScrollView(showsIndicators: false){
+                        DetailsViewTop(Step: "2")
+                            .padding(.bottom)
+                            .id(1)
+                        //Father
+                        VStack(alignment: .leading){
+                            //Father First Name
+                            MaterialDesignTextField($viewModel.textFatherFirstName,
+                                                    placeholder: viewModel.placeholderFatherFirstName,
+                                                    hint: $viewModel.hintFatherFirstName,
+                                                    editing: $editingTextFieldFatherFirstName,
+                                                    valid: $viewModel.textFatherFirstNameValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("person"))
+                            .focused($focusedField, equals: .fFirstName)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textFatherFirstName, perform: { newValue in
+                                editingTextFieldFatherFirstName = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldFatherFirstName = true
+                            }
+                            .onSubmit {
+                                editingTextFieldFatherFirstName = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Father Middle Name
+                            MaterialDesignTextField($viewModel.textFatherMiddleName,
+                                                    placeholder: viewModel.placeholderFatherMiddleName,
+                                                    hint: $viewModel.hintFatherMiddleName,
+                                                    editing: $editingTextFieldFatherMiddleName,
+                                                    valid: $viewModel.textFatherMiddleNameValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("person"))
+                            .focused($focusedField, equals: .fMiddleName)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textFatherMiddleName, perform: { newValue in
+                                editingTextFieldFatherMiddleName = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldFatherMiddleName = true
+                            }
+                            .onSubmit {
+                                editingTextFieldFatherMiddleName = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Father Last Name
+                            MaterialDesignTextField($viewModel.textFatherLastName,
+                                                    placeholder: viewModel.placeholderFatherLastName,
+                                                    hint: $viewModel.hintFatherLastName,
+                                                    editing: $editingTextFieldFatherLastName,
+                                                    valid: $viewModel.textFatherLastNameValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("person"))
+                            .focused($focusedField, equals: .fLastName)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textFatherLastName, perform: { newValue in
+                                editingTextFieldFatherLastName = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldFatherLastName = true
+                            }
+                            .onSubmit {
+                                editingTextFieldFatherLastName = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Father Mobile Number
+                            MaterialDesignTextField($viewModel.textFatherMobileNumber,
+                                                    placeholder: viewModel.placeholderFatherMobileNumber,
+                                                    hint: $viewModel.hintFatherMobileNumber,
+                                                    editing: $editingTextFieldFatherMobileNumber,
+                                                    valid: $viewModel.textFatherMobileNumberValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("Student_Phone"))
+                            .focused($focusedField, equals: .fMobileNumber)
+                            .keyboardType(.numberPad)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textFatherMobileNumber, perform: { newValue in
+                                if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
+                                    editingTextFieldFatherMobileNumber = true
+                                    print("valid")
+                                } else {
+                                    print("invalid")
+                                }
+                            })
+                            .onTapGesture { editingTextFieldFatherMobileNumber = true }
+                            .onSubmit {
                                 editingTextFieldFatherMobileNumber = true
-                                print("valid")
-                            } else {
-                                print("invalid")
                             }
-                        })
-                        .onTapGesture { editingTextFieldFatherMobileNumber = true }
-                        .onSubmit {
-                            editingTextFieldFatherMobileNumber = true
-                        }
-                        .onReceive(Just(viewModel.textFatherMobileNumber)) { newValue in
-                            if viewModel.textFatherMobileNumber.count > 10 {
-                                viewModel.textFatherMobileNumber = String(viewModel.textFatherMobileNumber.prefix(10))
-                            }
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        .toolbar {
-                            ToolbarItemGroup(placement: .keyboard) {
-                                Spacer()
-                                Button("Done") {
-                                    hideKeyboard()
+                            .onReceive(Just(viewModel.textFatherMobileNumber)) { newValue in
+                                if viewModel.textFatherMobileNumber.count > 10 {
+                                    viewModel.textFatherMobileNumber = String(viewModel.textFatherMobileNumber.prefix(10))
                                 }
                             }
-                        }
-                        
-                        //Father Email
-                        MaterialDesignTextField($viewModel.textFatherEmail,
-                                                placeholder: viewModel.placeholderFatherEmail,
-                                                hint: $viewModel.hintFatherEmail,
-                                                editing: $editingTextFieldFatherEmail,
-                                                valid: $viewModel.textFatherEmailValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("Student_Email"))
-                        .focused($focusedField, equals: .fEmailId)
-                        .keyboardType(.emailAddress)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textFatherEmail, perform: { newValue in
-                            if(newValue.range(of:"^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", options: .regularExpression) != nil) {
-                                print("valid")
-                                editingTextFieldFatherEmail = true
-                            } else {
-                                editingTextFieldFatherEmail = true
-                                print("invalid")
-                            }
-                            
-                        })
-                        .onTapGesture { editingTextFieldFatherEmail = true }
-                        .onSubmit {
-                            editingTextFieldFatherEmail = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                    }
-                    .id(2)
-                    //Mother
-                    VStack(alignment: .leading){
-                        //Mother First Name
-                        MaterialDesignTextField($viewModel.textMotherFirstName,
-                                                placeholder: viewModel.placeholderMotherFirstName,
-                                                hint: $viewModel.hintMotherFirstName,
-                                                editing: $editingTextFieldMotherFirstName,
-                                                valid: $viewModel.textMotherFirstNameValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("person"))
-                        .focused($focusedField, equals: .mFirstName)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textMotherFirstName, perform: { newValue in
-                            editingTextFieldMotherFirstName = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldMotherFirstName = true
-                        }
-                        .onSubmit {
-                            editingTextFieldMotherFirstName = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Mother Middle Name
-                        MaterialDesignTextField($viewModel.textMotherMiddleName,
-                                                placeholder: viewModel.placeholderMotherMiddleName,
-                                                hint: $viewModel.hintMotherMiddleName,
-                                                editing: $editingTextFieldMotherMiddleName,
-                                                valid: $viewModel.textMotherMiddleNameValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("person"))
-                        .focused($focusedField, equals: .mMiddleName)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textMotherMiddleName, perform: { newValue in
-                            editingTextFieldMotherMiddleName = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldMotherMiddleName = true
-                        }
-                        .onSubmit {
-                            editingTextFieldMotherMiddleName = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Mother Last Name
-                        MaterialDesignTextField($viewModel.textMotherLastName,
-                                                placeholder: viewModel.placeholderMotherLastName,
-                                                hint: $viewModel.hintMotherLastName,
-                                                editing: $editingTextFieldMotherLastName,
-                                                valid: $viewModel.textMotherLastNameValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("person"))
-                        .focused($focusedField, equals: .mLastName)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textMotherLastName, perform: { newValue in
-                            editingTextFieldMotherLastName = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldMotherLastName = true
-                        }
-                        .onSubmit {
-                            editingTextFieldMotherLastName = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Mother Mobile Number
-                        MaterialDesignTextField($viewModel.textMotherMobileNumber,
-                                                placeholder: viewModel.placeholderMotherMobileNumber,
-                                                hint: $viewModel.hintMotherMobileNumber,
-                                                editing: $editingTextFieldMotherMobileNumber,
-                                                valid: $viewModel.textMotherMobileNumberValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("Student_Phone"))
-                        .focused($focusedField, equals: .mMobileNumber)
-                        .keyboardType(.numberPad)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textMotherMobileNumber, perform: { newValue in
-                            if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
-                                editingTextFieldMotherMobileNumber = true
-                                print("valid")
-                            } else {
-                                print("invalid")
-                            }
-                        })
-                        .onTapGesture { editingTextFieldMotherMobileNumber = true }
-                        .onSubmit {
-                            editingTextFieldMotherMobileNumber = true
-                        }
-                        .onReceive(Just(viewModel.textMotherMobileNumber)) { newValue in
-                            if viewModel.textMotherMobileNumber.count > 10 {
-                                viewModel.textMotherMobileNumber = String(viewModel.textMotherMobileNumber.prefix(10))
-                            }
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Mother Email
-                        MaterialDesignTextField($viewModel.textMotherEmail,
-                                                placeholder: viewModel.placeholderMotherEmail,
-                                                hint: $viewModel.hintMotherEmail,
-                                                editing: $editingTextFieldMotherEmail,
-                                                valid: $viewModel.textMotherEmailValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("Student_Email"))
-                        .focused($focusedField, equals: .mEmailId)
-                        .keyboardType(.emailAddress)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textMotherEmail, perform: { newValue in
-                            if(newValue.range(of:"^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", options: .regularExpression) != nil) {
-                                print("valid")
-                                editingTextFieldMotherEmail = true
-                            } else {
-                                editingTextFieldMotherEmail = true
-                                print("invalid")
-                            }
-                            
-                        })
-                        .onTapGesture { editingTextFieldMotherEmail = true }
-                        .onSubmit {
-                            editingTextFieldMotherEmail = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                    }
-                    .id(3)
-                    VStack{
-                        Text("Guardian’s Details (If Applicable)")
-                            .foregroundColor(.white)
-                            .font(.custom(OpenSans_Bold, size: 16))
-                            .padding(8)
-                            .frame(width: UIScreen.main.bounds.width - 20)
-                            .background(Color(hex: 0x00B2BA))
-                            .padding(.bottom, 8)
-                    }
-                    .id(4)
-                    //Guardian
-                    VStack(alignment: .leading){
-                        //Guardian First Name
-                        MaterialDesignTextField($viewModel.textGuardianFirstName,
-                                                placeholder: viewModel.placeholderGuardianFirstName,
-                                                hint: $viewModel.hintGuardianFirstName,
-                                                editing: $editingTextFieldGuardianFirstName,
-                                                valid: $viewModel.textGuardianFirstNameValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("person"))
-                        .focused($focusedField, equals: .gFirstName)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textGuardianFirstName, perform: { newValue in
-                            editingTextFieldGuardianFirstName = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldGuardianFirstName = true
-                        }
-                        .onSubmit {
-                            editingTextFieldGuardianFirstName = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Guardian Middle Name
-                        MaterialDesignTextField($viewModel.textGuardianMiddleName,
-                                                placeholder: viewModel.placeholderGuardianMiddleName,
-                                                hint: $viewModel.hintGuardianMiddleName,
-                                                editing: $editingTextFieldGuardianMiddleName,
-                                                valid: $viewModel.textGuardianMiddleNameValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("person"))
-                        .focused($focusedField, equals: .gMiddleName)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textGuardianMiddleName, perform: { newValue in
-                            editingTextFieldGuardianMiddleName = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldGuardianMiddleName = true
-                        }
-                        .onSubmit {
-                            editingTextFieldGuardianMiddleName = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Guardian Last Name
-                        MaterialDesignTextField($viewModel.textGuardianLastName,
-                                                placeholder: viewModel.placeholderGuardianLastName,
-                                                hint: $viewModel.hintGuardianLastName,
-                                                editing: $editingTextFieldGuardianLastName,
-                                                valid: $viewModel.textGuardianLastNameValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("person"))
-                        .focused($focusedField, equals: .gLastName)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textGuardianLastName, perform: { newValue in
-                            editingTextFieldGuardianLastName = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldGuardianLastName = true
-                        }
-                        .onSubmit {
-                            editingTextFieldGuardianLastName = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Guardian Mobile Number
-                        MaterialDesignTextField($viewModel.textGuardianMobileNumber,
-                                                placeholder: viewModel.placeholderGuardianMobileNumber,
-                                                hint: $viewModel.hintGuardianMobileNumber,
-                                                editing: $editingTextFieldGuardianMobileNumber,
-                                                valid: $viewModel.textGuardianMobileNumberValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("Student_Phone"))
-                        .focused($focusedField, equals: .gMobileNumber)
-                        .keyboardType(.numberPad)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textGuardianMobileNumber, perform: { newValue in
-                            if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
-                                editingTextFieldGuardianMobileNumber = true
-                                print("valid")
-                            } else {
-                                print("invalid")
-                            }
-                        })
-                        .onTapGesture { editingTextFieldGuardianMobileNumber = true }
-                        .onSubmit {
-                            editingTextFieldGuardianMobileNumber = true
-                        }
-                        .onReceive(Just(viewModel.textGuardianMobileNumber)) { newValue in
-                            if viewModel.textGuardianMobileNumber.count > 10 {
-                                viewModel.textGuardianMobileNumber = String(viewModel.textGuardianMobileNumber.prefix(10))
-                            }
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Guardian Email
-                        MaterialDesignTextField($viewModel.textGuardianEmail,
-                                                placeholder: viewModel.placeholderGuardianEmail,
-                                                hint: $viewModel.hintGuardianEmail,
-                                                editing: $editingTextFieldGuardianEmail,
-                                                valid: $viewModel.textGuardianEmailValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("Student_Email"))
-                        .focused($focusedField, equals: .gEmailId)
-                        .keyboardType(.emailAddress)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textGuardianEmail, perform: { newValue in
-                            if(newValue.range(of:"^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", options: .regularExpression) != nil) {
-                                print("valid")
-                                editingTextFieldGuardianEmail = true
-                            } else {
-                                editingTextFieldGuardianEmail = true
-                                print("invalid")
-                            }
-                            
-                        })
-                        .onTapGesture { editingTextFieldGuardianEmail = true }
-                        .onSubmit {
-                            editingTextFieldGuardianEmail = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Guardian Relationship
-                        MaterialDesignTextField($viewModel.textGuardianRelationship,
-                                                placeholder: viewModel.placeholderGuardianRelationship,
-                                                hint: $viewModel.hintGuardianRelationship,
-                                                editing: $editingTextFieldGuardianRelationship,
-                                                valid: $viewModel.textGuardianRelationshipValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("Parent_Relainship"))
-                        .focused($focusedField, equals: .relationship)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textGuardianRelationship, perform: { newValue in
-                            editingTextFieldGuardianRelationship = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldGuardianRelationship = true
-                        }
-                        .onSubmit {
-                            editingTextFieldGuardianRelationship = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        //Current Address
-                        MaterialDesignTextField($viewModel.textCurrentAddress,
-                                                placeholder: viewModel.placeholderCurrentAddress,
-                                                hint: $viewModel.hintCurrentAddress,
-                                                editing: $editingTextFieldCurrentAddress,
-                                                valid: $viewModel.textCurrentAddressValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("Student_Current_Address"))
-                        .focused($focusedField, equals: .address)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textCurrentAddress, perform: { newValue in
-                            editingTextFieldCurrentAddress = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldCurrentAddress = true
-                        }
-                        .onSubmit {
-                            editingTextFieldCurrentAddress = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                    }
-                    .id(5)
-                    
-                    VStack(alignment: .leading) {
-                        //Current Country
-                        Button {
-                            searchTextCurrentCountry = ""
-                            ShowCurrentCountryDropDown = true
-                        } label: {
-                            MaterialDesignTextEditorCountry($viewModel.textCurrentCountry,
-                                                            placeholder: viewModel.placeholderCurrentCountry,
-                                                            hint: $viewModel.hintCurrentCountry,
-                                                            editing: $editingTextFieldCurrentCountry,
-                                                            valid: $viewModel.textCurrentCountryValid,
-                                                            BorderColor: $borderColor)
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black )
-                            .onChange(of: viewModel.textCurrentCountry, perform: { newValue in
-                                editingTextFieldCurrentCountry = false
-                                ShowCurrentCountryDropDown = false
-                                ShowCurrentStateDropDown = false
-                                ShowCurrentCityDropDown = false
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onSubmit {
-                                editingTextFieldCurrentCountry = false
-                                ShowCurrentCountryDropDown = false
-                                ShowCurrentStateDropDown = false
-                                ShowCurrentCityDropDown = false
-                            }
-                        }
-                        .padding(.bottom)
-                        
-                        if ShowCurrentCountryDropDown{
-                            VStack(alignment: .leading){
-                                SearchBar(text: $searchTextCurrentCountry)
-                                    .frame(width: UIScreen.main.bounds.width - 50)
-                                    .padding(.top)
-                                    .padding(.leading, 5)
-                                ForEach(searchResultsCurrentCountry) { master in
-                                    Button {
-                                        viewModel.textCurrentCountry = master.name ?? ""
-                                        self.currentCountryID = master.id ?? ""
-                                        viewModel.textCurrentCity = ""
-                                        self.currentCityId = ""
-                                        viewModel.textCurrentState = ""
-                                        self.currentCityId = ""
-                                        
-                                        countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
-                                            arrStateCurrent = CountryData.data?.states ?? []
-                                            arrCityCurrent = CountryData.data?.cities ?? []
-                                        }
-                                        ShowCurrentCountryDropDown = false
-                                        ShowCurrentStateDropDown = false
-                                        ShowCurrentCityDropDown = false
-                                    } label: {
-                                        Text(master.name ?? "")
-                                            .padding(5)
-                                            .padding(.leading, 5)
-                                            .foregroundColor(.black)
-                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            .toolbar {
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    Spacer()
+                                    Button("Done") {
+                                        hideKeyboard()
                                     }
                                 }
                             }
-                            .overlay(
-                                RoundedRectangle(
-                                    cornerRadius: 4).strokeBorder(borderColor,
-                                                                  style: StrokeStyle(lineWidth: 1.0))
-                            )
-                            .padding(.bottom)
-                        }
-                        
-                        //Current State
-                        Button {
-                            searchTextCurrentState = ""
-                            ShowCurrentStateDropDown = true
-                        } label: {
-                            MaterialDesignTextEditorCountry($viewModel.textCurrentState,
-                                                            placeholder: viewModel.placeholderCurrentState,
-                                                            hint: $viewModel.hintCurrentState,
-                                                            editing: $editingTextFieldCurrentState,
-                                                            valid: $viewModel.textCurrentStateValid,
-                                                            BorderColor: $borderColor)
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black )
-                            .onChange(of: viewModel.textCurrentState, perform: { newValue in
-                                editingTextFieldCurrentState = false
-                                ShowCurrentCountryDropDown = false
-                                ShowCurrentStateDropDown = false
-                                ShowCurrentCityDropDown = false
+                            
+                            //Father Email
+                            MaterialDesignTextField($viewModel.textFatherEmail,
+                                                    placeholder: viewModel.placeholderFatherEmail,
+                                                    hint: $viewModel.hintFatherEmail,
+                                                    editing: $editingTextFieldFatherEmail,
+                                                    valid: $viewModel.textFatherEmailValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("Student_Email"))
+                            .focused($focusedField, equals: .fEmailId)
+                            .keyboardType(.emailAddress)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textFatherEmail, perform: { newValue in
+                                if(newValue.range(of:"^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", options: .regularExpression) != nil) {
+                                    print("valid")
+                                    editingTextFieldFatherEmail = true
+                                } else {
+                                    editingTextFieldFatherEmail = true
+                                    print("invalid")
+                                }
+                                
                             })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .onTapGesture { editingTextFieldFatherEmail = true }
                             .onSubmit {
-                                editingTextFieldCurrentState = false
-                                ShowCurrentCountryDropDown = false
-                                ShowCurrentStateDropDown = false
-                                ShowCurrentCityDropDown = false
+                                editingTextFieldFatherEmail = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                        }
+                        .id(2)
+                        //Mother
+                        VStack(alignment: .leading){
+                            //Mother First Name
+                            MaterialDesignTextField($viewModel.textMotherFirstName,
+                                                    placeholder: viewModel.placeholderMotherFirstName,
+                                                    hint: $viewModel.hintMotherFirstName,
+                                                    editing: $editingTextFieldMotherFirstName,
+                                                    valid: $viewModel.textMotherFirstNameValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("person"))
+                            .focused($focusedField, equals: .mFirstName)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textMotherFirstName, perform: { newValue in
+                                editingTextFieldMotherFirstName = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldMotherFirstName = true
+                            }
+                            .onSubmit {
+                                editingTextFieldMotherFirstName = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Mother Middle Name
+                            MaterialDesignTextField($viewModel.textMotherMiddleName,
+                                                    placeholder: viewModel.placeholderMotherMiddleName,
+                                                    hint: $viewModel.hintMotherMiddleName,
+                                                    editing: $editingTextFieldMotherMiddleName,
+                                                    valid: $viewModel.textMotherMiddleNameValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("person"))
+                            .focused($focusedField, equals: .mMiddleName)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textMotherMiddleName, perform: { newValue in
+                                editingTextFieldMotherMiddleName = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldMotherMiddleName = true
+                            }
+                            .onSubmit {
+                                editingTextFieldMotherMiddleName = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Mother Last Name
+                            MaterialDesignTextField($viewModel.textMotherLastName,
+                                                    placeholder: viewModel.placeholderMotherLastName,
+                                                    hint: $viewModel.hintMotherLastName,
+                                                    editing: $editingTextFieldMotherLastName,
+                                                    valid: $viewModel.textMotherLastNameValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("person"))
+                            .focused($focusedField, equals: .mLastName)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textMotherLastName, perform: { newValue in
+                                editingTextFieldMotherLastName = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldMotherLastName = true
+                            }
+                            .onSubmit {
+                                editingTextFieldMotherLastName = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Mother Mobile Number
+                            MaterialDesignTextField($viewModel.textMotherMobileNumber,
+                                                    placeholder: viewModel.placeholderMotherMobileNumber,
+                                                    hint: $viewModel.hintMotherMobileNumber,
+                                                    editing: $editingTextFieldMotherMobileNumber,
+                                                    valid: $viewModel.textMotherMobileNumberValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("Student_Phone"))
+                            .focused($focusedField, equals: .mMobileNumber)
+                            .keyboardType(.numberPad)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textMotherMobileNumber, perform: { newValue in
+                                if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
+                                    editingTextFieldMotherMobileNumber = true
+                                    print("valid")
+                                } else {
+                                    print("invalid")
+                                }
+                            })
+                            .onTapGesture { editingTextFieldMotherMobileNumber = true }
+                            .onSubmit {
+                                editingTextFieldMotherMobileNumber = true
+                            }
+                            .onReceive(Just(viewModel.textMotherMobileNumber)) { newValue in
+                                if viewModel.textMotherMobileNumber.count > 10 {
+                                    viewModel.textMotherMobileNumber = String(viewModel.textMotherMobileNumber.prefix(10))
+                                }
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Mother Email
+                            MaterialDesignTextField($viewModel.textMotherEmail,
+                                                    placeholder: viewModel.placeholderMotherEmail,
+                                                    hint: $viewModel.hintMotherEmail,
+                                                    editing: $editingTextFieldMotherEmail,
+                                                    valid: $viewModel.textMotherEmailValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("Student_Email"))
+                            .focused($focusedField, equals: .mEmailId)
+                            .keyboardType(.emailAddress)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textMotherEmail, perform: { newValue in
+                                if(newValue.range(of:"^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", options: .regularExpression) != nil) {
+                                    print("valid")
+                                    editingTextFieldMotherEmail = true
+                                } else {
+                                    editingTextFieldMotherEmail = true
+                                    print("invalid")
+                                }
+                                
+                            })
+                            .onTapGesture { editingTextFieldMotherEmail = true }
+                            .onSubmit {
+                                editingTextFieldMotherEmail = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                        }
+                        .id(3)
+                        VStack{
+                            Text("Guardian’s Details (If Applicable)")
+                                .foregroundColor(.white)
+                                .font(.custom(OpenSans_Bold, size: 16))
+                                .padding(8)
+                                .frame(width: UIScreen.main.bounds.width - 20)
+                                .background(Color(hex: 0x00B2BA))
+                                .padding(.bottom, 8)
+                        }
+                        .id(4)
+                        //Guardian
+                        VStack(alignment: .leading){
+                            //Guardian First Name
+                            MaterialDesignTextField($viewModel.textGuardianFirstName,
+                                                    placeholder: viewModel.placeholderGuardianFirstName,
+                                                    hint: $viewModel.hintGuardianFirstName,
+                                                    editing: $editingTextFieldGuardianFirstName,
+                                                    valid: $viewModel.textGuardianFirstNameValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("person"))
+                            .focused($focusedField, equals: .gFirstName)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textGuardianFirstName, perform: { newValue in
+                                editingTextFieldGuardianFirstName = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldGuardianFirstName = true
+                            }
+                            .onSubmit {
+                                editingTextFieldGuardianFirstName = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Guardian Middle Name
+                            MaterialDesignTextField($viewModel.textGuardianMiddleName,
+                                                    placeholder: viewModel.placeholderGuardianMiddleName,
+                                                    hint: $viewModel.hintGuardianMiddleName,
+                                                    editing: $editingTextFieldGuardianMiddleName,
+                                                    valid: $viewModel.textGuardianMiddleNameValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("person"))
+                            .focused($focusedField, equals: .gMiddleName)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textGuardianMiddleName, perform: { newValue in
+                                editingTextFieldGuardianMiddleName = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldGuardianMiddleName = true
+                            }
+                            .onSubmit {
+                                editingTextFieldGuardianMiddleName = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Guardian Last Name
+                            MaterialDesignTextField($viewModel.textGuardianLastName,
+                                                    placeholder: viewModel.placeholderGuardianLastName,
+                                                    hint: $viewModel.hintGuardianLastName,
+                                                    editing: $editingTextFieldGuardianLastName,
+                                                    valid: $viewModel.textGuardianLastNameValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("person"))
+                            .focused($focusedField, equals: .gLastName)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textGuardianLastName, perform: { newValue in
+                                editingTextFieldGuardianLastName = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldGuardianLastName = true
+                            }
+                            .onSubmit {
+                                editingTextFieldGuardianLastName = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Guardian Mobile Number
+                            MaterialDesignTextField($viewModel.textGuardianMobileNumber,
+                                                    placeholder: viewModel.placeholderGuardianMobileNumber,
+                                                    hint: $viewModel.hintGuardianMobileNumber,
+                                                    editing: $editingTextFieldGuardianMobileNumber,
+                                                    valid: $viewModel.textGuardianMobileNumberValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("Student_Phone"))
+                            .focused($focusedField, equals: .gMobileNumber)
+                            .keyboardType(.numberPad)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textGuardianMobileNumber, perform: { newValue in
+                                if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
+                                    editingTextFieldGuardianMobileNumber = true
+                                    print("valid")
+                                } else {
+                                    print("invalid")
+                                }
+                            })
+                            .onTapGesture { editingTextFieldGuardianMobileNumber = true }
+                            .onSubmit {
+                                editingTextFieldGuardianMobileNumber = true
+                            }
+                            .onReceive(Just(viewModel.textGuardianMobileNumber)) { newValue in
+                                if viewModel.textGuardianMobileNumber.count > 10 {
+                                    viewModel.textGuardianMobileNumber = String(viewModel.textGuardianMobileNumber.prefix(10))
+                                }
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Guardian Email
+                            MaterialDesignTextField($viewModel.textGuardianEmail,
+                                                    placeholder: viewModel.placeholderGuardianEmail,
+                                                    hint: $viewModel.hintGuardianEmail,
+                                                    editing: $editingTextFieldGuardianEmail,
+                                                    valid: $viewModel.textGuardianEmailValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("Student_Email"))
+                            .focused($focusedField, equals: .gEmailId)
+                            .keyboardType(.emailAddress)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textGuardianEmail, perform: { newValue in
+                                if(newValue.range(of:"^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$", options: .regularExpression) != nil) {
+                                    print("valid")
+                                    editingTextFieldGuardianEmail = true
+                                } else {
+                                    editingTextFieldGuardianEmail = true
+                                    print("invalid")
+                                }
+                                
+                            })
+                            .onTapGesture { editingTextFieldGuardianEmail = true }
+                            .onSubmit {
+                                editingTextFieldGuardianEmail = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Guardian Relationship
+                            MaterialDesignTextField($viewModel.textGuardianRelationship,
+                                                    placeholder: viewModel.placeholderGuardianRelationship,
+                                                    hint: $viewModel.hintGuardianRelationship,
+                                                    editing: $editingTextFieldGuardianRelationship,
+                                                    valid: $viewModel.textGuardianRelationshipValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("Parent_Relainship"))
+                            .focused($focusedField, equals: .relationship)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textGuardianRelationship, perform: { newValue in
+                                editingTextFieldGuardianRelationship = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldGuardianRelationship = true
+                            }
+                            .onSubmit {
+                                editingTextFieldGuardianRelationship = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            //Current Address
+                            MaterialDesignTextField($viewModel.textCurrentAddress,
+                                                    placeholder: viewModel.placeholderCurrentAddress,
+                                                    hint: $viewModel.hintCurrentAddress,
+                                                    editing: $editingTextFieldCurrentAddress,
+                                                    valid: $viewModel.textCurrentAddressValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("Student_Current_Address"))
+                            .focused($focusedField, equals: .address)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textCurrentAddress, perform: { newValue in
+                                editingTextFieldCurrentAddress = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldCurrentAddress = true
+                            }
+                            .onSubmit {
+                                editingTextFieldCurrentAddress = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                        }
+                        .id(5)
+                        
+                        VStack(alignment: .leading) {
+                            //Current Country
+                            Button {
+                                searchTextCurrentCountry = ""
+                                ShowCurrentCountryDropDown = true
+                            } label: {
+                                MaterialDesignTextEditorCountry($viewModel.textCurrentCountry,
+                                                                placeholder: viewModel.placeholderCurrentCountry,
+                                                                hint: $viewModel.hintCurrentCountry,
+                                                                editing: $editingTextFieldCurrentCountry,
+                                                                valid: $viewModel.textCurrentCountryValid,
+                                                                BorderColor: $borderColor)
+                                .disabled(true)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.black )
+                                .onChange(of: viewModel.textCurrentCountry, perform: { newValue in
+                                    editingTextFieldCurrentCountry = false
+                                    ShowCurrentCountryDropDown = false
+                                    ShowCurrentStateDropDown = false
+                                    ShowCurrentCityDropDown = false
+                                })
+                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                                .onSubmit {
+                                    editingTextFieldCurrentCountry = false
+                                    ShowCurrentCountryDropDown = false
+                                    ShowCurrentStateDropDown = false
+                                    ShowCurrentCityDropDown = false
+                                }
                             }
                             .padding(.bottom)
-                        }
-                        if !viewModel.textCurrentCountry.isEmpty{
-                            if ShowCurrentStateDropDown{
+                            
+                            if ShowCurrentCountryDropDown{
                                 VStack(alignment: .leading){
-                                    SearchBar(text: $searchTextCurrentState)
+                                    SearchBar(text: $searchTextCurrentCountry)
                                         .frame(width: UIScreen.main.bounds.width - 50)
                                         .padding(.top)
                                         .padding(.leading, 5)
-                                    ForEach(searchResultsCurrentState) { master in
+                                    ForEach(searchResultsCurrentCountry) { master in
                                         Button {
-                                            viewModel.textCurrentState = master.name ?? ""
-                                            self.currentStateId = master.id ?? ""
+                                            viewModel.textCurrentCountry = master.name ?? ""
+                                            self.currentCountryID = master.id ?? ""
                                             viewModel.textCurrentCity = ""
                                             self.currentCityId = ""
+                                            viewModel.textCurrentState = ""
+                                            self.currentCityId = ""
+                                            
                                             countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
                                                 arrStateCurrent = CountryData.data?.states ?? []
                                                 arrCityCurrent = CountryData.data?.cities ?? []
@@ -651,153 +587,253 @@ struct ParentsDetailsView: View {
                                 )
                                 .padding(.bottom)
                             }
+                            
+                            //Current State
+                            Button {
+                                searchTextCurrentState = ""
+                                ShowCurrentStateDropDown = true
+                            } label: {
+                                MaterialDesignTextEditorCountry($viewModel.textCurrentState,
+                                                                placeholder: viewModel.placeholderCurrentState,
+                                                                hint: $viewModel.hintCurrentState,
+                                                                editing: $editingTextFieldCurrentState,
+                                                                valid: $viewModel.textCurrentStateValid,
+                                                                BorderColor: $borderColor)
+                                .disabled(true)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.black )
+                                .onChange(of: viewModel.textCurrentState, perform: { newValue in
+                                    editingTextFieldCurrentState = false
+                                    ShowCurrentCountryDropDown = false
+                                    ShowCurrentStateDropDown = false
+                                    ShowCurrentCityDropDown = false
+                                })
+                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                                .onSubmit {
+                                    editingTextFieldCurrentState = false
+                                    ShowCurrentCountryDropDown = false
+                                    ShowCurrentStateDropDown = false
+                                    ShowCurrentCityDropDown = false
+                                }
+                                .padding(.bottom)
+                            }
+                            if !viewModel.textCurrentCountry.isEmpty{
+                                if ShowCurrentStateDropDown{
+                                    VStack(alignment: .leading){
+                                        SearchBar(text: $searchTextCurrentState)
+                                            .frame(width: UIScreen.main.bounds.width - 50)
+                                            .padding(.top)
+                                            .padding(.leading, 5)
+                                        ForEach(searchResultsCurrentState) { master in
+                                            Button {
+                                                viewModel.textCurrentState = master.name ?? ""
+                                                self.currentStateId = master.id ?? ""
+                                                viewModel.textCurrentCity = ""
+                                                self.currentCityId = ""
+                                                countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
+                                                    arrStateCurrent = CountryData.data?.states ?? []
+                                                    arrCityCurrent = CountryData.data?.cities ?? []
+                                                }
+                                                ShowCurrentCountryDropDown = false
+                                                ShowCurrentStateDropDown = false
+                                                ShowCurrentCityDropDown = false
+                                            } label: {
+                                                Text(master.name ?? "")
+                                                    .padding(5)
+                                                    .padding(.leading, 5)
+                                                    .foregroundColor(.black)
+                                                    .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                            }
+                                        }
+                                    }
+                                    .overlay(
+                                        RoundedRectangle(
+                                            cornerRadius: 4).strokeBorder(borderColor,
+                                                                          style: StrokeStyle(lineWidth: 1.0))
+                                    )
+                                    .padding(.bottom)
+                                }
+                            }
+                            
+                            //Current City
+                            Button {
+                                searchTextCurrentCity = ""
+                                ShowCurrentCityDropDown = true
+                            } label: {
+                                MaterialDesignTextEditorCountry($viewModel.textCurrentCity,
+                                                                placeholder: viewModel.placeholderCurrentCity,
+                                                                hint: $viewModel.hintCurrentCity,
+                                                                editing: $editingTextFieldCurrentCity,
+                                                                valid: $viewModel.textCurrentCityValid,
+                                                                BorderColor: $borderColor)
+                                .disabled(true)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.black )
+                                .onChange(of: viewModel.textCurrentCity, perform: { newValue in
+                                    editingTextFieldCurrentCity = false
+                                    ShowCurrentCountryDropDown = false
+                                    ShowCurrentStateDropDown = false
+                                    ShowCurrentCityDropDown = false
+                                })
+                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                                .onSubmit {
+                                    editingTextFieldCurrentCity = false
+                                    ShowCurrentCountryDropDown = false
+                                    ShowCurrentStateDropDown = false
+                                    ShowCurrentCityDropDown = false
+                                }
+                            }
+                            .padding(.bottom)
+                            
+                            if !viewModel.textCurrentState.isEmpty{
+                                if ShowCurrentCityDropDown{
+                                    VStack(alignment: .leading){
+                                        SearchBar(text: $searchTextCurrentCity)
+                                            .frame(width: UIScreen.main.bounds.width - 50)
+                                            .padding(.top)
+                                            .padding(.leading, 5)
+                                        ForEach(searchResultsCurrentCity) { master in
+                                            Button {
+                                                viewModel.textCurrentCity = master.name ?? ""
+                                                self.currentCityId = master.id ?? ""
+                                                ShowCurrentCountryDropDown = false
+                                                ShowCurrentStateDropDown = false
+                                                ShowCurrentCityDropDown = false
+                                            } label: {
+                                                Text(master.name ?? "")
+                                                    .padding(5)
+                                                    .padding(.leading, 5)
+                                                    .foregroundColor(.black)
+                                                    .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                            }
+                                        }
+                                    }
+                                    .overlay(
+                                        RoundedRectangle(
+                                            cornerRadius: 4).strokeBorder(borderColor,
+                                                                          style: StrokeStyle(lineWidth: 1.0))
+                                    )
+                                    .padding(.bottom)
+                                }
+                            }
                         }
-                        
-                        //Current City
-                        Button {
-                            searchTextCurrentCity = ""
-                            ShowCurrentCityDropDown = true
-                        } label: {
-                            MaterialDesignTextEditorCountry($viewModel.textCurrentCity,
-                                                            placeholder: viewModel.placeholderCurrentCity,
-                                                            hint: $viewModel.hintCurrentCity,
-                                                            editing: $editingTextFieldCurrentCity,
-                                                            valid: $viewModel.textCurrentCityValid,
-                                                            BorderColor: $borderColor)
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black )
-                            .onChange(of: viewModel.textCurrentCity, perform: { newValue in
-                                editingTextFieldCurrentCity = false
-                                ShowCurrentCountryDropDown = false
-                                ShowCurrentStateDropDown = false
-                                ShowCurrentCityDropDown = false
+                        .id(6)
+                        VStack(alignment: .leading){
+                            //Guardian Pin Code
+                            MaterialDesignTextFieldwithoutImage($viewModel.textCurrentPincode,
+                                                                placeholder: viewModel.placeholderCurrentPincode,
+                                                                hint: $viewModel.hintCurrentPincode,
+                                                                editing: $editingTextFieldCurrentPinCode,
+                                                                valid: $viewModel.textCurrentPincodeValid,
+                                                                BorderColor: $borderColor)
+                            .focused($focusedField, equals: .pinCode)
+                            .keyboardType(.numberPad)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textCurrentPincode, perform: { newValue in
+                                if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
+                                    editingTextFieldCurrentPinCode = true
+                                    print("valid")
+                                } else {
+                                    print("invalid")
+                                }
                             })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                            .onTapGesture { editingTextFieldCurrentPinCode = true }
                             .onSubmit {
-                                editingTextFieldCurrentCity = false
-                                ShowCurrentCountryDropDown = false
-                                ShowCurrentStateDropDown = false
-                                ShowCurrentCityDropDown = false
+                                editingTextFieldCurrentPinCode = true
+                            }
+                            .onReceive(Just(viewModel.textCurrentPincode)) { newValue in
+                                if viewModel.textCurrentPincode.count > 6 {
+                                    viewModel.textCurrentPincode = String(viewModel.textCurrentPincode.prefix(6))
+                                }
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                        }
+                        NavigationLink("", destination: EnrollmentDetailsView(getIsEditable: "1").navigationBarHidden(true),isActive: $showEnrollmentDetails).isDetailLink(false)
+                        VStack(alignment: .center){
+                            Button {
+                                if viewModel.hintFatherFirstName != "Success"{
+                                    alertMessage = "Please Enter Father's First Name"
+                                    AlertShow = "0"
+                                    focusedField = .fFirstName
+                                    showingAlert = true
+                                }else if viewModel.hintFatherLastName != "Success"{
+                                    alertMessage = "Please Enter Father's Last Name"
+                                    AlertShow = "0"
+                                    focusedField = .fLastName
+                                    showingAlert = true
+                                }else if viewModel.hintFatherMobileNumber != "Success"{
+                                    alertMessage = "Please Enter Father's Mobile Number"
+                                    AlertShow = "0"
+                                    focusedField = .fMobileNumber
+                                    showingAlert = true
+                                }else if viewModel.hintFatherEmail != "Success"{
+                                    alertMessage = "Please Enter Father's Email ID"
+                                    AlertShow = "0"
+                                    focusedField = .fEmailId
+                                    showingAlert = true
+                                }else if viewModel.hintMotherFirstName != "Success"{
+                                    alertMessage = "Please Enter Mother's First Name"
+                                    AlertShow = "0"
+                                    focusedField = .mFirstName
+                                    showingAlert = true
+                                }else if viewModel.hintMotherLastName != "Success"{
+                                    alertMessage = "Please Enter Mother's Last Name"
+                                    AlertShow = "0"
+                                    focusedField = .mLastName
+                                    showingAlert = true
+                                }else if viewModel.hintMotherMobileNumber != "Success"{
+                                    alertMessage = "Please Enter Mother's Mobile Number"
+                                    AlertShow = "0"
+                                    focusedField = .mMobileNumber
+                                    showingAlert = true
+                                }else if viewModel.hintMotherEmail != "Success"{
+                                    alertMessage = "Please Enter Mother's Email Id"
+                                    AlertShow = "0"
+                                    focusedField = .mEmailId
+                                    showingAlert = true
+                                }else{
+                                    submitViewModel.fetchLoginDate(
+                                        fFirstName: viewModel.textFatherFirstName,
+                                        fMiddleName: viewModel.textFatherMiddleName,
+                                        fLastName: viewModel.textFatherLastName,
+                                        fMobile: viewModel.textFatherMobileNumber,
+                                        fEmail: viewModel.textFatherEmail,
+                                        mFirstName: viewModel.textMotherFirstName,
+                                        mMiddleName: viewModel.textMotherMiddleName,
+                                        mLastName: viewModel.textMotherLastName,
+                                        mMobile: viewModel.textMotherMobileNumber,
+                                        mEmail: viewModel.textMotherEmail,
+                                        gFirstName: viewModel.textGuardianFirstName,
+                                        gMiddleName: viewModel.textGuardianMiddleName,
+                                        gLastName: viewModel.textGuardianLastName,
+                                        gMobile: viewModel.textGuardianMobileNumber,
+                                        gEmail: viewModel.textGuardianEmail,
+                                        gRelation: viewModel.textGuardianRelationship,
+                                        gAddress: viewModel.textCurrentAddress,
+                                        gCountry: currentCountryID,
+                                        gState: currentStateId,
+                                        gCity: currentCityId,
+                                        gPincode: viewModel.textCurrentPincode,
+                                        appId: studentAppID ?? "") { ParentDetails in
+                                            if ParentDetails.status == 1{
+                                                showEnrollmentDetails = true
+                                            }else{
+                                                alertMessage = ParentDetails.msg ?? ""
+                                                AlertShow = "0"
+                                                showingAlert = true
+                                            }
+                                        }
+                                }
+                            } label: {
+                                DetailsViewBottom()
                             }
                         }
                         .padding(.bottom)
-                        
-                        if !viewModel.textCurrentState.isEmpty{
-                            if ShowCurrentCityDropDown{
-                                VStack(alignment: .leading){
-                                    SearchBar(text: $searchTextCurrentCity)
-                                        .frame(width: UIScreen.main.bounds.width - 50)
-                                        .padding(.top)
-                                        .padding(.leading, 5)
-                                    ForEach(searchResultsCurrentCity) { master in
-                                        Button {
-                                            viewModel.textCurrentCity = master.name ?? ""
-                                            self.currentCityId = master.id ?? ""
-                                            ShowCurrentCountryDropDown = false
-                                            ShowCurrentStateDropDown = false
-                                            ShowCurrentCityDropDown = false
-                                        } label: {
-                                            Text(master.name ?? "")
-                                                .padding(5)
-                                                .padding(.leading, 5)
-                                                .foregroundColor(.black)
-                                                .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
-                                        }
-                                    }
-                                }
-                                .overlay(
-                                    RoundedRectangle(
-                                        cornerRadius: 4).strokeBorder(borderColor,
-                                                                      style: StrokeStyle(lineWidth: 1.0))
-                                )
-                                .padding(.bottom)
-                            }
-                        }
                     }
-                    .id(6)
-                    VStack(alignment: .leading){
-                        //Guardian Pin Code
-                        MaterialDesignTextFieldwithoutImage($viewModel.textCurrentPincode,
-                                                placeholder: viewModel.placeholderCurrentPincode,
-                                                hint: $viewModel.hintCurrentPincode,
-                                                editing: $editingTextFieldCurrentPinCode,
-                                                valid: $viewModel.textCurrentPincodeValid,
-                                                BorderColor: $borderColor)
-                        .focused($focusedField, equals: .pinCode)
-                        .keyboardType(.numberPad)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textCurrentPincode, perform: { newValue in
-                            if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
-                                editingTextFieldCurrentPinCode = true
-                                print("valid")
-                            } else {
-                                print("invalid")
-                            }
-                        })
-                        .onTapGesture { editingTextFieldCurrentPinCode = true }
-                        .onSubmit {
-                            editingTextFieldCurrentPinCode = true
-                        }
-                        .onReceive(Just(viewModel.textCurrentPincode)) { newValue in
-                            if viewModel.textCurrentPincode.count > 6 {
-                                viewModel.textCurrentPincode = String(viewModel.textCurrentPincode.prefix(6))
-                            }
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                    }
-                    NavigationLink("", destination: EnrollmentDetailsView(getIsEditable: "1").navigationBarHidden(true),isActive: $showEnrollmentDetails).isDetailLink(false)
-                    VStack(alignment: .center){
-                        Button {
-                            if viewModel.hintFatherFirstName != "Success"{
-                                alertMessage = "Please Enter Father's First Name"
-                                AlertShow = "0"
-                                focusedField = .fFirstName
-                                showingAlert = true
-                            }else if viewModel.hintFatherLastName != "Success"{
-                                alertMessage = "Please Enter Father's Last Name"
-                                AlertShow = "0"
-                                focusedField = .fLastName
-                                showingAlert = true
-                            }else if viewModel.hintFatherMobileNumber != "Success"{
-                                alertMessage = "Please Enter Father's Mobile Number"
-                                AlertShow = "0"
-                                focusedField = .fMobileNumber
-                                showingAlert = true
-                            }else if viewModel.hintFatherEmail != "Success"{
-                                alertMessage = "Please Enter Father's Email ID"
-                                AlertShow = "0"
-                                focusedField = .fEmailId
-                                showingAlert = true
-                            }else if viewModel.hintMotherFirstName != "Success"{
-                                alertMessage = "Please Enter Mother's First Name"
-                                AlertShow = "0"
-                                focusedField = .mFirstName
-                                showingAlert = true
-                            }else if viewModel.hintMotherLastName != "Success"{
-                                alertMessage = "Please Enter Mother's Last Name"
-                                AlertShow = "0"
-                                focusedField = .mLastName
-                                showingAlert = true
-                            }else if viewModel.hintMotherMobileNumber != "Success"{
-                                alertMessage = "Please Enter Mother's Mobile Number"
-                                AlertShow = "0"
-                                focusedField = .mMobileNumber
-                                showingAlert = true
-                            }else if viewModel.hintMotherEmail != "Success"{
-                                alertMessage = "Please Enter Mother's Email Id"
-                                AlertShow = "0"
-                                focusedField = .mEmailId
-                                showingAlert = true
-                            }else{
-                                showEnrollmentDetails = true
-                            }
-                        } label: {
-                            DetailsViewBottom()
-                        }
-                    }
-                    .padding(.bottom)
+                }
+                if submitViewModel.isLoadingData{
+                    LoadingView()
                 }
             }
             .alert(alertMessage, isPresented: $showingAlert) {
@@ -810,7 +846,6 @@ struct ParentsDetailsView: View {
             .navigationBarHidden(true)
         }
         .onAppear(perform: delayText)
-        
     }
     
     private func delayText() {
@@ -951,7 +986,7 @@ struct ParentsDetailsView: View {
     }
     
     //MARK: - Search Variable
-
+    
     //Current
     var searchResultsCurrentCountry: [countries] {
         if searchTextCurrentCountry.isEmpty {

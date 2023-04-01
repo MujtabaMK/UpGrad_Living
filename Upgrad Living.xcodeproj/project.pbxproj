@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		073E92853C1A2A88BF467C2D /* Pods_Upgrad_Living.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FC69D1BCE0EB9CB9343A47 /* Pods_Upgrad_Living.framework */; };
+		0931A90629D7ED6B00F6A209 /* SubmitParentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0931A90529D7ED6B00F6A209 /* SubmitParentModel.swift */; };
+		0931A90829D7EE7700F6A209 /* SubmitParentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0931A90729D7EE7700F6A209 /* SubmitParentViewModel.swift */; };
+		0931A90A29D7F67000F6A209 /* SubmitEnrollmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0931A90929D7F67000F6A209 /* SubmitEnrollmentModel.swift */; };
+		0931A90C29D7F69D00F6A209 /* SubmitEnrollmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0931A90B29D7F69D00F6A209 /* SubmitEnrollmentViewModel.swift */; };
+		0931A90E29D7FBBF00F6A209 /* MedicalTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0931A90D29D7FBBF00F6A209 /* MedicalTextEditor.swift */; };
 		0934F12D29CC3DD70076AD56 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934F12C29CC3DD70076AD56 /* OTPView.swift */; };
 		0934F12F29CC57AE0076AD56 /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934F12E29CC57AE0076AD56 /* OTPViewModel.swift */; };
 		0934F13129CC581C0076AD56 /* OTPViewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934F13029CC581C0076AD56 /* OTPViewTextField.swift */; };
@@ -63,6 +68,11 @@
 		09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6DD29CDB9B300689E9F /* APIDefine.swift */; };
 		09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6DF29CDBA3400689E9F /* LoginModel.swift */; };
 		09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6E129CDBA5400689E9F /* LoginViewModel.swift */; };
+		09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */; };
+		09B7A1C829D8125A00EC72EF /* SubmitMedicalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */; };
+		09B7A1CA29D8129800EC72EF /* SubmitMedicalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C929D8129800EC72EF /* SubmitMedicalViewModel.swift */; };
+		09B7A1CC29D8264C00EC72EF /* SubmitDocumentaionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1CB29D8264C00EC72EF /* SubmitDocumentaionModel.swift */; };
+		09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1CD29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift */; };
 		09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */; };
 		09CC312629CC71940048BFF5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312529CC71940048BFF5 /* LottieView.swift */; };
 		09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */; };
@@ -85,6 +95,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0931A90529D7ED6B00F6A209 /* SubmitParentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitParentModel.swift; sourceTree = "<group>"; };
+		0931A90729D7EE7700F6A209 /* SubmitParentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitParentViewModel.swift; sourceTree = "<group>"; };
+		0931A90929D7F67000F6A209 /* SubmitEnrollmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitEnrollmentModel.swift; sourceTree = "<group>"; };
+		0931A90B29D7F69D00F6A209 /* SubmitEnrollmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitEnrollmentViewModel.swift; sourceTree = "<group>"; };
+		0931A90D29D7FBBF00F6A209 /* MedicalTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalTextEditor.swift; sourceTree = "<group>"; };
 		0934F12C29CC3DD70076AD56 /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
 		0934F12E29CC57AE0076AD56 /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
 		0934F13029CC581C0076AD56 /* OTPViewTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewTextField.swift; sourceTree = "<group>"; };
@@ -142,6 +157,11 @@
 		09A6F6DD29CDB9B300689E9F /* APIDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
 		09A6F6DF29CDBA3400689E9F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		09A6F6E129CDBA5400689E9F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucesedMedicalTextEditor.swift; sourceTree = "<group>"; };
+		09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitMedicalModel.swift; sourceTree = "<group>"; };
+		09B7A1C929D8129800EC72EF /* SubmitMedicalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitMedicalViewModel.swift; sourceTree = "<group>"; };
+		09B7A1CB29D8264C00EC72EF /* SubmitDocumentaionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitDocumentaionModel.swift; sourceTree = "<group>"; };
+		09B7A1CD29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitDocumentaionViewModel.swift; sourceTree = "<group>"; };
 		09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09CC312529CC71940048BFF5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDefine.swift; sourceTree = "<group>"; };
@@ -522,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				0993226B29D6E71D0036C050 /* FoucesedParentTextField.swift */,
+				0931A90729D7EE7700F6A209 /* SubmitParentViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -529,6 +550,7 @@
 		09DE74A629D541D0001B105A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0931A90529D7ED6B00F6A209 /* SubmitParentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -556,6 +578,7 @@
 			children = (
 				0993226729D6B44B0036C050 /* SchoolViewModel.swift */,
 				0993226D29D6F0290036C050 /* FoucesedEnrollmentTextField.swift */,
+				0931A90B29D7F69D00F6A209 /* SubmitEnrollmentViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -564,6 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				0993226429D6B37B0036C050 /* SchoolModel.swift */,
+				0931A90929D7F67000F6A209 /* SubmitEnrollmentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -620,6 +644,7 @@
 				09DE74CB29D58769001B105A /* MedicalQuestionOptionView.swift */,
 				09DE74CD29D588B1001B105A /* MediacalQuestionImage.swift */,
 				09DE74CF29D59E2B001B105A /* MediacalQuestionSubImage.swift */,
+				0931A90D29D7FBBF00F6A209 /* MedicalTextEditor.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -627,6 +652,8 @@
 		09DE74C729D585F0001B105A /* Model View */ = {
 			isa = PBXGroup;
 			children = (
+				09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */,
+				09B7A1C929D8129800EC72EF /* SubmitMedicalViewModel.swift */,
 			);
 			path = "Model View";
 			sourceTree = "<group>";
@@ -634,6 +661,7 @@
 		09DE74C829D585F6001B105A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -659,6 +687,7 @@
 		09DE74D329D5AA7C001B105A /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				09B7A1CD29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -666,6 +695,7 @@
 		09DE74D429D5AAE6001B105A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09B7A1CB29D8264C00EC72EF /* SubmitDocumentaionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -705,6 +735,8 @@
 			dependencies = (
 			);
 			name = "Upgrad Living";
+			packageProductDependencies = (
+			);
 			productName = "Upgrad Living";
 			productReference = 09A33B5D29CC1D3C00C01D65 /* Upgrad Living.app */;
 			productType = "com.apple.product-type.application";
@@ -733,6 +765,8 @@
 				Base,
 			);
 			mainGroup = 09A33B5429CC1D3C00C01D65;
+			packageReferences = (
+			);
 			productRefGroup = 09A33B5E29CC1D3C00C01D65 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -815,10 +849,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0945E26C29CD9F1400F9EA4E /* WalkThrough3.swift in Sources */,
+				09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */,
 				0993226C29D6E71D0036C050 /* FoucesedParentTextField.swift in Sources */,
 				098A04D829D42EC700C9595A /* MasterModel.swift in Sources */,
 				09DE74D629D5AAFA001B105A /* FormDeclerationView.swift in Sources */,
 				0993226529D6B37B0036C050 /* SchoolModel.swift in Sources */,
+				0931A90A29D7F67000F6A209 /* SubmitEnrollmentModel.swift in Sources */,
 				09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */,
 				09DE74C429D5783F001B105A /* RoomTypeTwinView.swift in Sources */,
 				0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */,
@@ -828,6 +864,7 @@
 				098A04D029D407C400C9595A /* StudentDetailsView.swift in Sources */,
 				09DE74CE29D588B1001B105A /* MediacalQuestionImage.swift in Sources */,
 				096A400529CC2D5800092AAC /* extention.swift in Sources */,
+				09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */,
 				09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */,
 				096A3FE029CC255E00092AAC /* LoginTopView.swift in Sources */,
 				098A04D429D4111100C9595A /* DetailsViewTop.swift in Sources */,
@@ -838,15 +875,19 @@
 				096A3FE229CC259B00092AAC /* LoginView.swift in Sources */,
 				09DE74CA29D5860B001B105A /* MedicalQuestionView.swift in Sources */,
 				09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */,
+				0931A90829D7EE7700F6A209 /* SubmitParentViewModel.swift in Sources */,
 				098D698B29CD702C0000F5A9 /* MaterialDesignTextField.swift in Sources */,
 				09DE74AC29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift in Sources */,
 				0934F12F29CC57AE0076AD56 /* OTPViewModel.swift in Sources */,
 				0993227029D6F9400036C050 /* SubmitStudentModel.swift in Sources */,
+				09B7A1CC29D8264C00EC72EF /* SubmitDocumentaionModel.swift in Sources */,
 				09DE74A829D541F5001B105A /* ParentsDetailsView.swift in Sources */,
 				096A3FFE29CC2B0300092AAC /* FountsDefine.swift in Sources */,
 				098A04E229D452F800C9595A /* CountryModel.swift in Sources */,
 				098A04DC29D4339500C9595A /* MaterialDesignTextEditor.swift in Sources */,
 				098D698D29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift in Sources */,
+				0931A90629D7ED6B00F6A209 /* SubmitParentModel.swift in Sources */,
+				09B7A1C829D8125A00EC72EF /* SubmitMedicalModel.swift in Sources */,
 				096A400429CC2D5800092AAC /* HexColour.swift in Sources */,
 				09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */,
 				09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */,
@@ -856,6 +897,7 @@
 				09DE74B429D55DBD001B105A /* EnrollmentContentViewModel.swift in Sources */,
 				09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */,
 				098A04DA29D42F3600C9595A /* MasterViewModel.swift in Sources */,
+				0931A90E29D7FBBF00F6A209 /* MedicalTextEditor.swift in Sources */,
 				0993226E29D6F0290036C050 /* FoucesedEnrollmentTextField.swift in Sources */,
 				0945E26A29CD8C3D00F9EA4E /* WalkThrough2.swift in Sources */,
 				098D698929CD70230000F5A9 /* ContentViewModel.swift in Sources */,
@@ -867,11 +909,13 @@
 				096A400629CC2D5800092AAC /* customLodingIndicator.swift in Sources */,
 				09A6F6DC29CDB96C00689E9F /* BaseAPI.swift in Sources */,
 				09DE74C029D56D01001B105A /* RoomTypeQuardView.swift in Sources */,
+				0931A90C29D7F69D00F6A209 /* SubmitEnrollmentViewModel.swift in Sources */,
 				096A400329CC2D5800092AAC /* HideKeyboard.swift in Sources */,
 				098A04DE29D43BC300C9595A /* MaterialDesignTextFieldDOB.swift in Sources */,
 				09CC312629CC71940048BFF5 /* LottieView.swift in Sources */,
 				09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */,
 				098A04E629D4617000C9595A /* DetailsViewBottom.swift in Sources */,
+				09B7A1CA29D8129800EC72EF /* SubmitMedicalViewModel.swift in Sources */,
 				09A33B6129CC1D3C00C01D65 /* Upgrad_LivingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

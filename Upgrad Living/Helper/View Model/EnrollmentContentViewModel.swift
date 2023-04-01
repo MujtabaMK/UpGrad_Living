@@ -54,7 +54,7 @@ final class EnrollmentContentViewModel: ObservableObject {
     }
     
     func validateTextProgram(){
-        if textProgram.count > 2{
+        if textProgram.count > 1{
             textProgramValid = true
             hintProgram = "Success"
         }else{

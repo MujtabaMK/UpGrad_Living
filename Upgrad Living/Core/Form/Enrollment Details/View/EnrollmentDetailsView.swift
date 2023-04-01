@@ -10,6 +10,7 @@ import SwiftUI
 struct EnrollmentDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = EnrollmentContentViewModel()
+    @StateObject private var submitViewModel = SubmitEnrollmentViewModel()
     @State private var borderColor = Color(hex: 0x685BC7)
     
     @State private var canEditSchool = false
@@ -54,371 +55,389 @@ struct EnrollmentDetailsView: View {
     var getIsEditable: String
     var body: some View {
         NavigationView {
-            VStack{
-                HStack{
-                    Button {
-                        withAnimation() {
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                    } label: {
-                        Image("back_Button")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                            .padding(.leading, 20)
-                    }
-                    Spacer(minLength: 0)
-                }
-                .padding(.top)
-                Divider()
-                ScrollView(showsIndicators: false){
-                    DetailsViewTop(Step: "3")
-                        .padding(.bottom)
-                    
-                    VStack(alignment: .leading){
-                        //Application Id
-                        MaterialDesignTextField($viewModel.textApplicationID,
-                                                placeholder: viewModel.placeholderApplicationID,
-                                                hint: $viewModel.hintApplicationId,
-                                                editing: $editingTextFieldApplicationId,
-                                                valid: $viewModel.textApplicationIDValid,
-                                                BorderColor: $borderColor,
-                                                placeholderImage: .constant("Enrollment_Application_Id"))
-                        .disabled(true)
-                        .disableAutocorrection(true)
-                        .onChange(of: viewModel.textApplicationID, perform: { newValue in
-                            editingTextFieldApplicationId = true
-                        })
-                        .onTapGesture {
-                            editingTextFieldApplicationId = true
-                        }
-                        .onSubmit {
-                            editingTextFieldApplicationId = true
-                        }
-                        .frame(width: UIScreen.main.bounds.width - 20, height: 50)
-                        .padding(.bottom, 10)
-                        
-                        
-                        //School
+            ZStack{
+                VStack{
+                    HStack{
                         Button {
-                            searchTextSchool = ""
-                            ShowSchoolDropDown = true
-                        } label: {
-                            MaterialDesignTextEditor($viewModel.textSchool,
-                                                     placeholder: viewModel.placeholderSchool,
-                                                     hint: $viewModel.hintSchool,
-                                                     editing: $editingTextFieldSchool,
-                                                     valid: $viewModel.textSchoolValid,
-                                                     BorderColor: $borderColor,
-                                                     placeholderImage: .constant("Enrollment_School"))
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black )
-                            .onChange(of: viewModel.textSchool, perform: { newValue in
-                                editingTextFieldSchool = false
-                                ShowSchoolDropDown = false
-                                ShowProgramDropDown = false
-                                //ShowDegreeDropDown = false
-                                //ShowSpeclizationDropDown = false
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onSubmit {
-                                editingTextFieldSchool = false
-                                ShowSchoolDropDown = false
-                                ShowProgramDropDown = false
-                                //ShowDegreeDropDown = false
-                                //ShowSpeclizationDropDown = false
+                            withAnimation() {
+                                presentationMode.wrappedValue.dismiss()
                             }
+                        } label: {
+                            Image("back_Button")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding(.leading, 20)
                         }
-                        .padding(.bottom)
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.top)
+                    Divider()
+                    ScrollView(showsIndicators: false){
+                        DetailsViewTop(Step: "3")
+                            .padding(.bottom)
                         
-                        if ShowSchoolDropDown{
-                            VStack(alignment: .leading){
-                                SearchBar(text: $searchTextSchool)
-                                    .frame(width: UIScreen.main.bounds.width - 50)
-                                    .padding(.top)
-                                    .padding(.leading, 5)
-                                ForEach(searchResultsSchool) { master in
-                                    Button {
-                                        viewModel.textSchool = master.schoolFullName ?? ""
-                                        self.SchoolID = master.schoolID ?? ""
-                                        viewModel.textProgram = ""
-                                        self.ProgramID = ""
-                                        viewModel.textDegree = ""
-                                        self.DegreeID = ""
-                                        viewModel.textSpeclization = ""
-                                        self.SpeclizationID = ""
-                                        
-                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
-                                            arrSchool = SchoolData.data?.school ?? []
-                                            arrProgram = SchoolData.data?.program ?? []
-                                            //arrDegree = SchoolData.data?.degree ?? []
-                                           // arrSpeclization = SchoolData.data?.specialization ?? []
-                                        }
-                                        ShowSchoolDropDown = false
-                                        ShowProgramDropDown = false
-                                       // ShowDegreeDropDown = false
-                                       // ShowSpeclizationDropDown = false
-                                    } label: {
-                                        Text(master.schoolFullName ?? "")
-                                            .padding(5)
-                                            .padding(.leading, 5)
-                                            .foregroundColor(.black)
-                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
-                                    }
+                        VStack(alignment: .leading){
+                            //Application Id
+                            MaterialDesignTextField($viewModel.textApplicationID,
+                                                    placeholder: viewModel.placeholderApplicationID,
+                                                    hint: $viewModel.hintApplicationId,
+                                                    editing: $editingTextFieldApplicationId,
+                                                    valid: $viewModel.textApplicationIDValid,
+                                                    BorderColor: $borderColor,
+                                                    placeholderImage: .constant("Enrollment_Application_Id"))
+                            .disabled(true)
+                            .disableAutocorrection(true)
+                            .onChange(of: viewModel.textApplicationID, perform: { newValue in
+                                editingTextFieldApplicationId = true
+                            })
+                            .onTapGesture {
+                                editingTextFieldApplicationId = true
+                            }
+                            .onSubmit {
+                                editingTextFieldApplicationId = true
+                            }
+                            .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                            .padding(.bottom, 10)
+                            
+                            
+                            //School
+                            Button {
+                                searchTextSchool = ""
+                                ShowSchoolDropDown = true
+                            } label: {
+                                MaterialDesignTextEditor($viewModel.textSchool,
+                                                         placeholder: viewModel.placeholderSchool,
+                                                         hint: $viewModel.hintSchool,
+                                                         editing: $editingTextFieldSchool,
+                                                         valid: $viewModel.textSchoolValid,
+                                                         BorderColor: $borderColor,
+                                                         placeholderImage: .constant("Enrollment_School"))
+                                .disabled(true)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.black )
+                                .onChange(of: viewModel.textSchool, perform: { newValue in
+                                    editingTextFieldSchool = false
+                                    ShowSchoolDropDown = false
+                                    ShowProgramDropDown = false
+                                    //ShowDegreeDropDown = false
+                                    //ShowSpeclizationDropDown = false
+                                })
+                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                                .onSubmit {
+                                    editingTextFieldSchool = false
+                                    ShowSchoolDropDown = false
+                                    ShowProgramDropDown = false
+                                    //ShowDegreeDropDown = false
+                                    //ShowSpeclizationDropDown = false
                                 }
                             }
-                            .overlay(
-                                RoundedRectangle(
-                                    cornerRadius: 4).strokeBorder(borderColor,
-                                                                  style: StrokeStyle(lineWidth: 1.0))
-                            )
                             .padding(.bottom)
-                        }
-                        
-                        //Program
-                        Button {
-                            searchTextProgram = ""
-                            ShowProgramDropDown = true
-                        } label: {
-                            MaterialDesignTextEditor($viewModel.textProgram,
-                                                     placeholder: viewModel.placeholderProgram,
-                                                     hint: $viewModel.hintProgram,
-                                                     editing: $editingTextFieldProgram,
-                                                     valid: $viewModel.textProgramValid,
-                                                     BorderColor: $borderColor,
-                                                     placeholderImage: .constant("Enrollment_Program"))
-                            .disabled(true)
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black )
-                            .onChange(of: viewModel.textProgram, perform: { newValue in
-                                editingTextFieldProgram = false
-                                ShowSchoolDropDown = false
-                                ShowProgramDropDown = false
-                                //ShowDegreeDropDown = false
-                                //ShowSpeclizationDropDown = false
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-                            .onSubmit {
-                                editingTextFieldProgram = false
-                                ShowSchoolDropDown = false
-                                ShowProgramDropDown = false
-                               // ShowDegreeDropDown = false
-                               // ShowSpeclizationDropDown = false
+                            
+                            if ShowSchoolDropDown{
+                                VStack(alignment: .leading){
+                                    SearchBar(text: $searchTextSchool)
+                                        .frame(width: UIScreen.main.bounds.width - 50)
+                                        .padding(.top)
+                                        .padding(.leading, 5)
+                                    ForEach(searchResultsSchool) { master in
+                                        Button {
+                                            viewModel.textSchool = master.schoolFullName ?? ""
+                                            self.SchoolID = master.schoolID ?? ""
+                                            viewModel.textProgram = ""
+                                            self.ProgramID = ""
+                                            viewModel.textDegree = ""
+                                            self.DegreeID = ""
+                                            viewModel.textSpeclization = ""
+                                            self.SpeclizationID = ""
+                                            
+                                            schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+                                                arrSchool = SchoolData.data?.school ?? []
+                                                arrProgram = SchoolData.data?.program ?? []
+                                                //arrDegree = SchoolData.data?.degree ?? []
+                                               // arrSpeclization = SchoolData.data?.specialization ?? []
+                                            }
+                                            ShowSchoolDropDown = false
+                                            ShowProgramDropDown = false
+                                           // ShowDegreeDropDown = false
+                                           // ShowSpeclizationDropDown = false
+                                        } label: {
+                                            Text(master.schoolFullName ?? "")
+                                                .padding(5)
+                                                .padding(.leading, 5)
+                                                .foregroundColor(.black)
+                                                .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+                                        }
+                                    }
+                                }
+                                .overlay(
+                                    RoundedRectangle(
+                                        cornerRadius: 4).strokeBorder(borderColor,
+                                                                      style: StrokeStyle(lineWidth: 1.0))
+                                )
+                                .padding(.bottom)
                             }
-                        }
-                        .padding(.bottom)
+                            
+                            //Program
+                            Button {
+                                searchTextProgram = ""
+                                ShowProgramDropDown = true
+                            } label: {
+                                MaterialDesignTextEditor($viewModel.textProgram,
+                                                         placeholder: viewModel.placeholderProgram,
+                                                         hint: $viewModel.hintProgram,
+                                                         editing: $editingTextFieldProgram,
+                                                         valid: $viewModel.textProgramValid,
+                                                         BorderColor: $borderColor,
+                                                         placeholderImage: .constant("Enrollment_Program"))
+                                .disabled(true)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.black )
+                                .onChange(of: viewModel.textProgram, perform: { newValue in
+                                    editingTextFieldProgram = false
+                                    ShowSchoolDropDown = false
+                                    ShowProgramDropDown = false
+                                    //ShowDegreeDropDown = false
+                                    //ShowSpeclizationDropDown = false
+                                })
+                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                                .onSubmit {
+                                    editingTextFieldProgram = false
+                                    ShowSchoolDropDown = false
+                                    ShowProgramDropDown = false
+                                   // ShowDegreeDropDown = false
+                                   // ShowSpeclizationDropDown = false
+                                }
+                            }
+                            .padding(.bottom)
 
-                        if ShowProgramDropDown{
-                            VStack(alignment: .leading){
-                                SearchBar(text: $searchTextProgram)
-                                    .frame(width: UIScreen.main.bounds.width - 50)
-                                    .padding(.top)
-                                    .padding(.leading, 5)
-                                ForEach(searchResultsProgram) { master in
-                                    Button {
-                                        viewModel.textProgram = master.certificationShortName ?? ""
-                                        self.ProgramID = master.certificationID ?? ""
-                                        viewModel.textDegree = ""
-                                        self.DegreeID = ""
-                                        viewModel.textSpeclization = ""
-                                        self.SpeclizationID = ""
-                                        
-                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
-                                            arrSchool = SchoolData.data?.school ?? []
-                                            arrProgram = SchoolData.data?.program ?? []
-                                            //arrDegree = SchoolData.data?.degree ?? []
-                                            //arrSpeclization = SchoolData.data?.specialization ?? []
+                            if ShowProgramDropDown{
+                                VStack(alignment: .leading){
+                                    SearchBar(text: $searchTextProgram)
+                                        .frame(width: UIScreen.main.bounds.width - 50)
+                                        .padding(.top)
+                                        .padding(.leading, 5)
+                                    ForEach(searchResultsProgram) { master in
+                                        Button {
+                                            viewModel.textProgram = master.certificationShortName ?? ""
+                                            self.ProgramID = master.certificationID ?? ""
+                                            viewModel.textDegree = ""
+                                            self.DegreeID = ""
+                                            viewModel.textSpeclization = ""
+                                            self.SpeclizationID = ""
+                                            
+                                            schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+                                                arrSchool = SchoolData.data?.school ?? []
+                                                arrProgram = SchoolData.data?.program ?? []
+                                                //arrDegree = SchoolData.data?.degree ?? []
+                                                //arrSpeclization = SchoolData.data?.specialization ?? []
+                                            }
+                                            ShowSchoolDropDown = false
+                                            ShowProgramDropDown = false
+                                            //ShowDegreeDropDown = false
+                                            //ShowSpeclizationDropDown = false
+                                        } label: {
+                                            Text(master.certificationShortName ?? "")
+                                                .padding(5)
+                                                .padding(.leading, 5)
+                                                .foregroundColor(.black)
+                                                .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                         }
-                                        ShowSchoolDropDown = false
-                                        ShowProgramDropDown = false
-                                        //ShowDegreeDropDown = false
-                                        //ShowSpeclizationDropDown = false
-                                    } label: {
-                                        Text(master.certificationShortName ?? "")
-                                            .padding(5)
-                                            .padding(.leading, 5)
-                                            .foregroundColor(.black)
-                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                     }
                                 }
+                                .overlay(
+                                    RoundedRectangle(
+                                        cornerRadius: 4).strokeBorder(borderColor,
+                                                                      style: StrokeStyle(lineWidth: 1.0))
+                                )
+                                .padding(.bottom)
                             }
-                            .overlay(
-                                RoundedRectangle(
-                                    cornerRadius: 4).strokeBorder(borderColor,
-                                                                  style: StrokeStyle(lineWidth: 1.0))
-                            )
-                            .padding(.bottom)
+                            
+    //                        //Degree
+    //                        Button {
+    //                            searchTextDegree = ""
+    //                            ShowDegreeDropDown = true
+    //                        } label: {
+    //                            MaterialDesignTextEditor($viewModel.textDegree,
+    //                                                     placeholder: viewModel.placeholderDegree,
+    //                                                     hint: $viewModel.hintDegree,
+    //                                                     editing: $editingTextFieldDegree,
+    //                                                     valid: $viewModel.textDegreeValid,
+    //                                                     BorderColor: $borderColor,
+    //                                                     placeholderImage: .constant("Enrollment_Degree"))
+    //                            .disabled(true)
+    //                            .multilineTextAlignment(.leading)
+    //                            .foregroundColor(.black )
+    //                            .onChange(of: viewModel.textDegree, perform: { newValue in
+    //                                editingTextFieldDegree = false
+    //                                ShowSchoolDropDown = false
+    //                                ShowProgramDropDown = false
+    //                                ShowDegreeDropDown = false
+    //                                ShowSpeclizationDropDown = false
+    //                            })
+    //                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+    //                            .onSubmit {
+    //                                editingTextFieldDegree = false
+    //                                ShowSchoolDropDown = false
+    //                                ShowProgramDropDown = false
+    //                                ShowDegreeDropDown = false
+    //                                ShowSpeclizationDropDown = false
+    //                            }
+    //                        }
+    //                        .padding(.bottom)
+    //
+    //                        if ShowDegreeDropDown{
+    //                            VStack(alignment: .leading){
+    //                                SearchBar(text: $searchTextDegree)
+    //                                    .frame(width: UIScreen.main.bounds.width - 50)
+    //                                    .padding(.top)
+    //                                    .padding(.leading, 5)
+    //                                ForEach(searchResultsDegree) { master in
+    //                                    Button {
+    //                                        viewModel.textDegree = master.abbrivation ?? ""
+    //                                        self.DegreeID = master.id ?? ""
+    //                                        viewModel.textSpeclization = ""
+    //                                        self.SpeclizationID = ""
+    //
+    //                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+    //                                            arrSchool = SchoolData.data?.school ?? []
+    //                                            arrProgram = SchoolData.data?.program ?? []
+    //                                            arrDegree = SchoolData.data?.degree ?? []
+    //                                            arrSpeclization = SchoolData.data?.specialization ?? []
+    //                                        }
+    //                                        ShowSchoolDropDown = false
+    //                                        ShowProgramDropDown = false
+    //                                        ShowDegreeDropDown = false
+    //                                        ShowSpeclizationDropDown = false
+    //                                    } label: {
+    //                                        Text(master.abbrivation ?? "")
+    //                                            .padding(5)
+    //                                            .padding(.leading, 5)
+    //                                            .foregroundColor(.black)
+    //                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+    //                                    }
+    //                                }
+    //                            }
+    //                            .overlay(
+    //                                RoundedRectangle(
+    //                                    cornerRadius: 4).strokeBorder(borderColor,
+    //                                                                  style: StrokeStyle(lineWidth: 1.0))
+    //                            )
+    //                            .padding(.bottom)
+    //                        }
+    //
+    //                        //Speclization
+    //                        Button {
+    //                            searchTextSpeclization = ""
+    //                            ShowSpeclizationDropDown = true
+    //                        } label: {
+    //                            MaterialDesignTextEditor($viewModel.textSpeclization,
+    //                                                     placeholder: viewModel.placeholderSpeclization,
+    //                                                     hint: $viewModel.hintSpeclization,
+    //                                                     editing: $editingTextFieldSpeclization,
+    //                                                     valid: $viewModel.textSpeclizationValid,
+    //                                                     BorderColor: $borderColor,
+    //                                                     placeholderImage: .constant("Enrollment_Speclizatiom"))
+    //                            .disabled(true)
+    //                            .multilineTextAlignment(.leading)
+    //                            .foregroundColor(.black )
+    //                            .onChange(of: viewModel.textSpeclization, perform: { newValue in
+    //                                editingTextFieldSpeclization = false
+    //                                ShowSchoolDropDown = false
+    //                                ShowProgramDropDown = false
+    //                                ShowDegreeDropDown = false
+    //                                ShowSpeclizationDropDown = false
+    //                            })
+    //                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+    //                            .onSubmit {
+    //                                editingTextFieldSpeclization = false
+    //                                ShowSchoolDropDown = false
+    //                                ShowProgramDropDown = false
+    //                                ShowDegreeDropDown = false
+    //                                ShowSpeclizationDropDown = false
+    //                            }
+    //                        }
+    //                        .padding(.bottom)
+    //
+    //                        if ShowSpeclizationDropDown{
+    //                            VStack(alignment: .leading){
+    //                                SearchBar(text: $searchTextSpeclization)
+    //                                    .frame(width: UIScreen.main.bounds.width - 50)
+    //                                    .padding(.top)
+    //                                    .padding(.leading, 5)
+    //                                ForEach(searchResultsSpeclization) { master in
+    //                                    Button {
+    //                                        viewModel.textSpeclization = master.specialisationName ?? ""
+    //                                        self.SpeclizationID = master.specialisationID ?? ""
+    //
+    //                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+    //                                            arrSchool = SchoolData.data?.school ?? []
+    //                                            arrProgram = SchoolData.data?.program ?? []
+    //                                            arrDegree = SchoolData.data?.degree ?? []
+    //                                            arrSpeclization = SchoolData.data?.specialization ?? []
+    //                                        }
+    //                                        ShowSchoolDropDown = false
+    //                                        ShowProgramDropDown = false
+    //                                        ShowDegreeDropDown = false
+    //                                        ShowSpeclizationDropDown = false
+    //                                    } label: {
+    //                                        Text(master.specialisationName ?? "")
+    //                                            .padding(5)
+    //                                            .padding(.leading, 5)
+    //                                            .foregroundColor(.black)
+    //                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
+    //                                    }
+    //                                }
+    //                            }
+    //                            .overlay(
+    //                                RoundedRectangle(
+    //                                    cornerRadius: 4).strokeBorder(borderColor,
+    //                                                                  style: StrokeStyle(lineWidth: 1.0))
+    //                            )
+    //                            .padding(.bottom)
+    //                        }
                         }
-                        
-//                        //Degree
-//                        Button {
-//                            searchTextDegree = ""
-//                            ShowDegreeDropDown = true
-//                        } label: {
-//                            MaterialDesignTextEditor($viewModel.textDegree,
-//                                                     placeholder: viewModel.placeholderDegree,
-//                                                     hint: $viewModel.hintDegree,
-//                                                     editing: $editingTextFieldDegree,
-//                                                     valid: $viewModel.textDegreeValid,
-//                                                     BorderColor: $borderColor,
-//                                                     placeholderImage: .constant("Enrollment_Degree"))
-//                            .disabled(true)
-//                            .multilineTextAlignment(.leading)
-//                            .foregroundColor(.black )
-//                            .onChange(of: viewModel.textDegree, perform: { newValue in
-//                                editingTextFieldDegree = false
-//                                ShowSchoolDropDown = false
-//                                ShowProgramDropDown = false
-//                                ShowDegreeDropDown = false
-//                                ShowSpeclizationDropDown = false
-//                            })
-//                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-//                            .onSubmit {
-//                                editingTextFieldDegree = false
-//                                ShowSchoolDropDown = false
-//                                ShowProgramDropDown = false
-//                                ShowDegreeDropDown = false
-//                                ShowSpeclizationDropDown = false
-//                            }
-//                        }
-//                        .padding(.bottom)
-//
-//                        if ShowDegreeDropDown{
-//                            VStack(alignment: .leading){
-//                                SearchBar(text: $searchTextDegree)
-//                                    .frame(width: UIScreen.main.bounds.width - 50)
-//                                    .padding(.top)
-//                                    .padding(.leading, 5)
-//                                ForEach(searchResultsDegree) { master in
-//                                    Button {
-//                                        viewModel.textDegree = master.abbrivation ?? ""
-//                                        self.DegreeID = master.id ?? ""
-//                                        viewModel.textSpeclization = ""
-//                                        self.SpeclizationID = ""
-//
-//                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
-//                                            arrSchool = SchoolData.data?.school ?? []
-//                                            arrProgram = SchoolData.data?.program ?? []
-//                                            arrDegree = SchoolData.data?.degree ?? []
-//                                            arrSpeclization = SchoolData.data?.specialization ?? []
-//                                        }
-//                                        ShowSchoolDropDown = false
-//                                        ShowProgramDropDown = false
-//                                        ShowDegreeDropDown = false
-//                                        ShowSpeclizationDropDown = false
-//                                    } label: {
-//                                        Text(master.abbrivation ?? "")
-//                                            .padding(5)
-//                                            .padding(.leading, 5)
-//                                            .foregroundColor(.black)
-//                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
-//                                    }
-//                                }
-//                            }
-//                            .overlay(
-//                                RoundedRectangle(
-//                                    cornerRadius: 4).strokeBorder(borderColor,
-//                                                                  style: StrokeStyle(lineWidth: 1.0))
-//                            )
-//                            .padding(.bottom)
-//                        }
-//
-//                        //Speclization
-//                        Button {
-//                            searchTextSpeclization = ""
-//                            ShowSpeclizationDropDown = true
-//                        } label: {
-//                            MaterialDesignTextEditor($viewModel.textSpeclization,
-//                                                     placeholder: viewModel.placeholderSpeclization,
-//                                                     hint: $viewModel.hintSpeclization,
-//                                                     editing: $editingTextFieldSpeclization,
-//                                                     valid: $viewModel.textSpeclizationValid,
-//                                                     BorderColor: $borderColor,
-//                                                     placeholderImage: .constant("Enrollment_Speclizatiom"))
-//                            .disabled(true)
-//                            .multilineTextAlignment(.leading)
-//                            .foregroundColor(.black )
-//                            .onChange(of: viewModel.textSpeclization, perform: { newValue in
-//                                editingTextFieldSpeclization = false
-//                                ShowSchoolDropDown = false
-//                                ShowProgramDropDown = false
-//                                ShowDegreeDropDown = false
-//                                ShowSpeclizationDropDown = false
-//                            })
-//                            .frame(width: UIScreen.main.bounds.width - 20, height: 60)
-//                            .onSubmit {
-//                                editingTextFieldSpeclization = false
-//                                ShowSchoolDropDown = false
-//                                ShowProgramDropDown = false
-//                                ShowDegreeDropDown = false
-//                                ShowSpeclizationDropDown = false
-//                            }
-//                        }
-//                        .padding(.bottom)
-//
-//                        if ShowSpeclizationDropDown{
-//                            VStack(alignment: .leading){
-//                                SearchBar(text: $searchTextSpeclization)
-//                                    .frame(width: UIScreen.main.bounds.width - 50)
-//                                    .padding(.top)
-//                                    .padding(.leading, 5)
-//                                ForEach(searchResultsSpeclization) { master in
-//                                    Button {
-//                                        viewModel.textSpeclization = master.specialisationName ?? ""
-//                                        self.SpeclizationID = master.specialisationID ?? ""
-//
-//                                        schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
-//                                            arrSchool = SchoolData.data?.school ?? []
-//                                            arrProgram = SchoolData.data?.program ?? []
-//                                            arrDegree = SchoolData.data?.degree ?? []
-//                                            arrSpeclization = SchoolData.data?.specialization ?? []
-//                                        }
-//                                        ShowSchoolDropDown = false
-//                                        ShowProgramDropDown = false
-//                                        ShowDegreeDropDown = false
-//                                        ShowSpeclizationDropDown = false
-//                                    } label: {
-//                                        Text(master.specialisationName ?? "")
-//                                            .padding(5)
-//                                            .padding(.leading, 5)
-//                                            .foregroundColor(.black)
-//                                            .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
-//                                    }
-//                                }
-//                            }
-//                            .overlay(
-//                                RoundedRectangle(
-//                                    cornerRadius: 4).strokeBorder(borderColor,
-//                                                                  style: StrokeStyle(lineWidth: 1.0))
-//                            )
-//                            .padding(.bottom)
-//                        }
-                    }
-                    NavigationLink("", destination: RoomTypeView().navigationBarHidden(true),isActive: $showRoomType).isDetailLink(false)
-                    VStack(alignment: .center){
-                        Button {
-                            if viewModel.hintApplicationId != "Success"{
-                                alertMessage = "Please Enter Application Id"
-                                AlertShow = "0"
-                                focusedField = .applicationid
-                                showingAlert = true
-                            }else if viewModel.hintSchool != "Success"{
-                                alertMessage = "Please Select School"
-                                AlertShow = "0"
-                                showingAlert = true
-                            }else if viewModel.hintProgram != "Success"{
-                                alertMessage = "Please Select Program"
-                                AlertShow = "0"
-                                showingAlert = true
-                            }else{
-                                showRoomType = true
+                        NavigationLink("", destination: RoomTypeView().navigationBarHidden(true),isActive: $showRoomType).isDetailLink(false)
+                        VStack(alignment: .center){
+                            Button {
+                                if viewModel.hintApplicationId != "Success"{
+                                    alertMessage = "Please Enter Application Id"
+                                    AlertShow = "0"
+                                    focusedField = .applicationid
+                                    showingAlert = true
+                                }else if viewModel.hintSchool != "Success"{
+                                    alertMessage = "Please Select School"
+                                    AlertShow = "0"
+                                    showingAlert = true
+                                }else if viewModel.hintProgram != "Success"{
+                                    alertMessage = "Please Select Program"
+                                    AlertShow = "0"
+                                    showingAlert = true
+                                }else{
+                                    submitViewModel.fetchLoginDate(
+                                        school: SchoolID,
+                                        program: ProgramID,
+                                        degree: DegreeID,
+                                        specialization: SpeclizationID,
+                                        appId: studentAppID ?? "") { EnrollmentData in
+                                            if EnrollmentData.status == 1{
+                                                showRoomType = true
+                                            }else{
+                                                alertMessage = EnrollmentData.msg ?? ""
+                                                AlertShow = "0"
+                                                showingAlert = true
+                                            }
+                                        }
+                                }
+                            } label: {
+                                DetailsViewBottom()
                             }
-                        } label: {
-                            DetailsViewBottom()
                         }
+                        .padding(.bottom)
                     }
-                    .padding(.bottom)
+                }
+                if submitViewModel.isLoadingData{
+                    LoadingView()
                 }
             }
             .alert(alertMessage, isPresented: $showingAlert) {

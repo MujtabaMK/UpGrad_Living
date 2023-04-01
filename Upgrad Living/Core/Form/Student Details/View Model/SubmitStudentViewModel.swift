@@ -74,7 +74,6 @@ class SubmitStudentViewModel: ObservableObject {
             "pPincode": pPincode,
             "appId":appId,
         ]
-        
         print(parameter)
         
         resuest.setValue("application/json", forHTTPHeaderField: "Content-Type")

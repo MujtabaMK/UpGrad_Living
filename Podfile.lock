@@ -1,16 +1,20 @@
 PODS:
+  - Introspect (0.2.3)
   - lottie-ios (3.3.0)
 
 DEPENDENCIES:
+  - Introspect
   - lottie-ios
 
 SPEC REPOS:
   trunk:
+    - Introspect
     - lottie-ios
 
 SPEC CHECKSUMS:
+  Introspect: 6917895ed34004271bc8d75a75db6c07839fa971
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
 
-PODFILE CHECKSUM: c60e2a723378a2b4efbfb2ee3079b1cf04f4bd3a
+PODFILE CHECKSUM: a410b224267c2860dda71de1b5f927bc2324189d
 
 COCOAPODS: 1.11.2

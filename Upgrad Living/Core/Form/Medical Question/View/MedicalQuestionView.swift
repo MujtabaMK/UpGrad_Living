@@ -57,6 +57,8 @@ struct MedicalQuestionView: View {
     @State private var showingAlert = false
     @State private var AlertShow = String()
     
+    @State private var isButtonClick = false
+    
     @State private var showDeclerationView = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @StateObject private var SubmitViewModel = SubmitMedicalViewModel()
@@ -1108,124 +1110,125 @@ struct MedicalQuestionView: View {
                             .padding(.horizontal, 4)
                             NavigationLink("", destination: FormDeclerationView().navigationBarHidden(true),isActive: $showDeclerationView).isDetailLink(false)
                             VStack{
-                                Button {
-                                    if foodPrefrence.isEmpty{
-                                        alertMessage = "Do you have any dietary preference or  restriction?"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(1)
-                                        showingAlert = true
-                                    }else if foodPrefrence == "Other" && txtfoodOther.isEmpty{
-                                        alertMessage = "Do you have any dietary preference or  restriction? If Other please specify"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(1)
-                                        showingAlert = true
-                                    }else if foodAllergies.isEmpty{
-                                        alertMessage = "Do you have any food allergies?"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(1)
-                                        showingAlert = true
-                                    }else if foodAllergies == "Yes" && txtFoodAllergies.isEmpty{
-                                        alertMessage = "Do you have any food allergies?.If Yes please specify in detail"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(1)
-                                        showingAlert = true
-                                    }else if healthDisability.isEmpty{
-                                        alertMessage = "Do you have any kind of disability or medical condition (mental or physical)?"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(2)
-                                        showingAlert = true
-                                    }else if healthDisability == "Yes" && txthealthDisability.isEmpty{
-                                        alertMessage = "Do you have any kind of disability or medical condition (mental or physical)?.If Yes please specify in detail"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(2)
-                                        showingAlert = true
-                                    }else if healthTakingMedication.isEmpty{
-                                        alertMessage = "Are you taking any medication for any physical or mental condition?"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(2)
-                                        showingAlert = true
-                                    }else if healthTakingMedication == "Yes" && txthealthTakingMedication.isEmpty{
-                                        alertMessage = "Are you taking any medication for any physical or mental condition?.If Yes please specify in detail"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(2)
-                                        showingAlert = true
-                                    }else if healthAllergies.isEmpty{
-                                        alertMessage = "Do you have any allergies (including any medication, animals and/ or foods)?"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(2)
-                                        showingAlert = true
-                                    }else if healthAllergies == "Yes" && txthealthAllergies.isEmpty{
-                                        alertMessage = "Do you have any allergies (including any medication, animals and/ or foods)?.If Yes please specify in detail"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(2)
-                                        showingAlert = true
-                                    }else if healthSurgery.isEmpty{
-                                        alertMessage = "Have you had any surgery or major injuries in the past five years?"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(2)
-                                        showingAlert = true
-                                    }else if healthSurgery == "Yes" && txthealthSurgery.isEmpty{
-                                        alertMessage = "Have you had any surgery or major injuries in the past five years?.If Yes please specify in detail"
-                                        AlertShow = "0"
-                                        proxy.scrollTo(2)
-                                        showingAlert = true
-                                    }else{
-                                        SubmitViewModel.fetchLoginDate(
-                                            dietry: foodPrefrence,
-                                            dietry_text: txtfoodOther,
-                                            f_allergies: foodAllergies,
-                                            f_allergies_text: txtFoodAllergies,
-                                            health: healthDisability,
-                                            health_text: txthealthDisability,
-                                            medication: healthTakingMedication,
-                                            medication_text: txthealthTakingMedication,
-                                            allergies: healthAllergies,
-                                            allergies_text: txthealthAllergies,
-                                            surgery: healthSurgery,
-                                            surgery_text: txthealthSurgery,
-                                            diagnosed: "",
-                                            diagnosed_text: "",
-                                            diabetes: diabetes,
-                                            diabetes_text: txtdiabetes,
-                                            hypertension: hypertension,
-                                            hypertension_text: txthypertension,
-                                            disorders: respiratory,
-                                            disorders_text: txtrespiratory,
-                                            disease: thyroid,
-                                            disease_text: txtthyroid,
-                                            communicable: hivAids,
-                                            communicable_text: txthivAids,
-                                            liver_d: liver,
-                                            liver_d_text: txtliver,
-                                            heart_d: heart,
-                                            heart_d_text: txtheart,
-                                            arthritis: arthritis,
-                                            arthritis_text: txtarthritis,
-                                            kidney_d: kidney,
-                                            kidney_d_text: txtkidney,
-                                            paralysis: paralysis,
-                                            paralysis_text: txtparalysis,
-                                            congenital: congenital,
-                                            congenital_text: txtcongenital,
-                                            handicaps: physicalHandicaps,
-                                            handicaps_text: txtphysicalHandicaps,
-                                            any_d: anyOtherDisease,
-                                            any_d_text: txtanyOtherDisease,
-                                            appId: studentAppID ?? "",
-                                            complition: { MedicalData in
-                                                if MedicalData.status == 1{
-                                                    showDeclerationView = true
-                                                }else{
-                                                    alertMessage = MedicalData.msg ?? ""
-                                                    AlertShow = "0"
-                                                    showingAlert = true
-                                                }
-                                            })
+                                DetailsViewBottom(textName: "Save & Continue", imageName: "Form_Button_icon_Step5")
+                                    .padding(.top, 5)
+                                    .onTapGesture {
+                                        isButtonClick = true
+                                        if foodPrefrence.isEmpty{
+                                            alertMessage = "Do you have any dietary preference or  restriction?"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(1)
+                                            showingAlert = true
+                                        }else if foodPrefrence == "Other" && txtfoodOther.isEmpty{
+                                            alertMessage = "Do you have any dietary preference or  restriction? If Other please specify"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(1)
+                                            showingAlert = true
+                                        }else if foodAllergies.isEmpty{
+                                            alertMessage = "Do you have any food allergies?"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(1)
+                                            showingAlert = true
+                                        }else if foodAllergies == "Yes" && txtFoodAllergies.isEmpty{
+                                            alertMessage = "Do you have any food allergies?.If Yes please specify in detail"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(1)
+                                            showingAlert = true
+                                        }else if healthDisability.isEmpty{
+                                            alertMessage = "Do you have any kind of disability or medical condition (mental or physical)?"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(2)
+                                            showingAlert = true
+                                        }else if healthDisability == "Yes" && txthealthDisability.isEmpty{
+                                            alertMessage = "Do you have any kind of disability or medical condition (mental or physical)?.If Yes please specify in detail"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(2)
+                                            showingAlert = true
+                                        }else if healthTakingMedication.isEmpty{
+                                            alertMessage = "Are you taking any medication for any physical or mental condition?"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(2)
+                                            showingAlert = true
+                                        }else if healthTakingMedication == "Yes" && txthealthTakingMedication.isEmpty{
+                                            alertMessage = "Are you taking any medication for any physical or mental condition?.If Yes please specify in detail"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(2)
+                                            showingAlert = true
+                                        }else if healthAllergies.isEmpty{
+                                            alertMessage = "Do you have any allergies (including any medication, animals and/ or foods)?"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(2)
+                                            showingAlert = true
+                                        }else if healthAllergies == "Yes" && txthealthAllergies.isEmpty{
+                                            alertMessage = "Do you have any allergies (including any medication, animals and/ or foods)?.If Yes please specify in detail"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(2)
+                                            showingAlert = true
+                                        }else if healthSurgery.isEmpty{
+                                            alertMessage = "Have you had any surgery or major injuries in the past five years?"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(2)
+                                            showingAlert = true
+                                        }else if healthSurgery == "Yes" && txthealthSurgery.isEmpty{
+                                            alertMessage = "Have you had any surgery or major injuries in the past five years?.If Yes please specify in detail"
+                                            AlertShow = "0"
+                                            proxy.scrollTo(2)
+                                            showingAlert = true
+                                        }else{
+                                            SubmitViewModel.fetchLoginDate(
+                                                dietry: foodPrefrence,
+                                                dietry_text: txtfoodOther,
+                                                f_allergies: foodAllergies,
+                                                f_allergies_text: txtFoodAllergies,
+                                                health: healthDisability,
+                                                health_text: txthealthDisability,
+                                                medication: healthTakingMedication,
+                                                medication_text: txthealthTakingMedication,
+                                                allergies: healthAllergies,
+                                                allergies_text: txthealthAllergies,
+                                                surgery: healthSurgery,
+                                                surgery_text: txthealthSurgery,
+                                                diagnosed: "",
+                                                diagnosed_text: "",
+                                                diabetes: diabetes,
+                                                diabetes_text: txtdiabetes,
+                                                hypertension: hypertension,
+                                                hypertension_text: txthypertension,
+                                                disorders: respiratory,
+                                                disorders_text: txtrespiratory,
+                                                disease: thyroid,
+                                                disease_text: txtthyroid,
+                                                communicable: hivAids,
+                                                communicable_text: txthivAids,
+                                                liver_d: liver,
+                                                liver_d_text: txtliver,
+                                                heart_d: heart,
+                                                heart_d_text: txtheart,
+                                                arthritis: arthritis,
+                                                arthritis_text: txtarthritis,
+                                                kidney_d: kidney,
+                                                kidney_d_text: txtkidney,
+                                                paralysis: paralysis,
+                                                paralysis_text: txtparalysis,
+                                                congenital: congenital,
+                                                congenital_text: txtcongenital,
+                                                handicaps: physicalHandicaps,
+                                                handicaps_text: txtphysicalHandicaps,
+                                                any_d: anyOtherDisease,
+                                                any_d_text: txtanyOtherDisease,
+                                                appId: studentAppID ?? "",
+                                                complition: { MedicalData in
+                                                    if MedicalData.status == 1{
+                                                        showDeclerationView = true
+                                                    }else{
+                                                        alertMessage = MedicalData.msg ?? ""
+                                                        AlertShow = "0"
+                                                        showingAlert = true
+                                                    }
+                                                })
+                                        }
                                     }
-                                } label: {
-                                    DetailsViewBottom()
-                                        .padding(.top, 5)
-                                }
+                                    .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                             }
                             .padding(.bottom)
                         }
@@ -1236,6 +1239,8 @@ struct MedicalQuestionView: View {
                 Button("OK", role: .cancel) {
                     if AlertShow == "1"{
                         showDeclerationView = true
+                    }else{
+                        isButtonClick = false
                     }
                 }
             }

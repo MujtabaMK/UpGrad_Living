@@ -13,7 +13,7 @@ struct Upgrad_LivingApp: App {
     var body: some Scene {
         WindowGroup {
             if isLogin{
-                RoomTypeView()
+                FormDeclerationView()
             }else{
                 LoginView()
             }

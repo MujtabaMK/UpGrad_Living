@@ -14,6 +14,8 @@ struct RoomTypeView: View {
     @State private var PaymentMethod = "6 Months"
     @State private var showMedicalQuestion = false
     
+    @State private var isButtonClick = false
+    
     var body: some View {
         NavigationView {
             VStack{
@@ -234,11 +236,12 @@ struct RoomTypeView: View {
                     .padding(.bottom)
                     NavigationLink("", destination: MedicalQuestionView().navigationBarHidden(true),isActive: $showMedicalQuestion).isDetailLink(false)
                     VStack{
-                        Button {
-                            showMedicalQuestion = true
-                        } label: {
-                            DetailsViewBottom()
-                        }
+                        DetailsViewBottom(textName: "Save & Continue", imageName: "Form_Button_icon_Step4")
+                            .onTapGesture {
+                                isButtonClick = true
+                                showMedicalQuestion = true
+                            }
+                            .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                     }
                     .padding(.bottom)
                 }

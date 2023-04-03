@@ -43,6 +43,8 @@ struct ParentsDetailsView: View {
     @State private var showingAlert = false
     @State private var AlertShow = String()
     
+    @State private var isButtonClick = false
+    
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @FocusState private var focusedField: FoucesedParentTextField?
     
@@ -751,83 +753,84 @@ struct ParentsDetailsView: View {
                         }
                         NavigationLink("", destination: EnrollmentDetailsView(getIsEditable: "1").navigationBarHidden(true),isActive: $showEnrollmentDetails).isDetailLink(false)
                         VStack(alignment: .center){
-                            Button {
-                                if viewModel.hintFatherFirstName != "Success"{
-                                    alertMessage = "Please Enter Father's First Name"
-                                    AlertShow = "0"
-                                    focusedField = .fFirstName
-                                    showingAlert = true
-                                }else if viewModel.hintFatherLastName != "Success"{
-                                    alertMessage = "Please Enter Father's Last Name"
-                                    AlertShow = "0"
-                                    focusedField = .fLastName
-                                    showingAlert = true
-                                }else if viewModel.hintFatherMobileNumber != "Success"{
-                                    alertMessage = "Please Enter Father's Mobile Number"
-                                    AlertShow = "0"
-                                    focusedField = .fMobileNumber
-                                    showingAlert = true
-                                }else if viewModel.hintFatherEmail != "Success"{
-                                    alertMessage = "Please Enter Father's Email ID"
-                                    AlertShow = "0"
-                                    focusedField = .fEmailId
-                                    showingAlert = true
-                                }else if viewModel.hintMotherFirstName != "Success"{
-                                    alertMessage = "Please Enter Mother's First Name"
-                                    AlertShow = "0"
-                                    focusedField = .mFirstName
-                                    showingAlert = true
-                                }else if viewModel.hintMotherLastName != "Success"{
-                                    alertMessage = "Please Enter Mother's Last Name"
-                                    AlertShow = "0"
-                                    focusedField = .mLastName
-                                    showingAlert = true
-                                }else if viewModel.hintMotherMobileNumber != "Success"{
-                                    alertMessage = "Please Enter Mother's Mobile Number"
-                                    AlertShow = "0"
-                                    focusedField = .mMobileNumber
-                                    showingAlert = true
-                                }else if viewModel.hintMotherEmail != "Success"{
-                                    alertMessage = "Please Enter Mother's Email Id"
-                                    AlertShow = "0"
-                                    focusedField = .mEmailId
-                                    showingAlert = true
-                                }else{
-                                    submitViewModel.fetchLoginDate(
-                                        fFirstName: viewModel.textFatherFirstName,
-                                        fMiddleName: viewModel.textFatherMiddleName,
-                                        fLastName: viewModel.textFatherLastName,
-                                        fMobile: viewModel.textFatherMobileNumber,
-                                        fEmail: viewModel.textFatherEmail,
-                                        mFirstName: viewModel.textMotherFirstName,
-                                        mMiddleName: viewModel.textMotherMiddleName,
-                                        mLastName: viewModel.textMotherLastName,
-                                        mMobile: viewModel.textMotherMobileNumber,
-                                        mEmail: viewModel.textMotherEmail,
-                                        gFirstName: viewModel.textGuardianFirstName,
-                                        gMiddleName: viewModel.textGuardianMiddleName,
-                                        gLastName: viewModel.textGuardianLastName,
-                                        gMobile: viewModel.textGuardianMobileNumber,
-                                        gEmail: viewModel.textGuardianEmail,
-                                        gRelation: viewModel.textGuardianRelationship,
-                                        gAddress: viewModel.textCurrentAddress,
-                                        gCountry: currentCountryID,
-                                        gState: currentStateId,
-                                        gCity: currentCityId,
-                                        gPincode: viewModel.textCurrentPincode,
-                                        appId: studentAppID ?? "") { ParentDetails in
-                                            if ParentDetails.status == 1{
-                                                showEnrollmentDetails = true
-                                            }else{
-                                                alertMessage = ParentDetails.msg ?? ""
-                                                AlertShow = "0"
-                                                showingAlert = true
+                            DetailsViewBottom(textName: "Save & Continue", imageName: "Form_Button_icon_Step2")
+                                .onTapGesture {
+                                    isButtonClick = true
+                                    if viewModel.hintFatherFirstName != "Success"{
+                                        alertMessage = "Please Enter Father's First Name"
+                                        AlertShow = "0"
+                                        focusedField = .fFirstName
+                                        showingAlert = true
+                                    }else if viewModel.hintFatherLastName != "Success"{
+                                        alertMessage = "Please Enter Father's Last Name"
+                                        AlertShow = "0"
+                                        focusedField = .fLastName
+                                        showingAlert = true
+                                    }else if viewModel.hintFatherMobileNumber != "Success"{
+                                        alertMessage = "Please Enter Father's Mobile Number"
+                                        AlertShow = "0"
+                                        focusedField = .fMobileNumber
+                                        showingAlert = true
+                                    }else if viewModel.hintFatherEmail != "Success"{
+                                        alertMessage = "Please Enter Father's Email ID"
+                                        AlertShow = "0"
+                                        focusedField = .fEmailId
+                                        showingAlert = true
+                                    }else if viewModel.hintMotherFirstName != "Success"{
+                                        alertMessage = "Please Enter Mother's First Name"
+                                        AlertShow = "0"
+                                        focusedField = .mFirstName
+                                        showingAlert = true
+                                    }else if viewModel.hintMotherLastName != "Success"{
+                                        alertMessage = "Please Enter Mother's Last Name"
+                                        AlertShow = "0"
+                                        focusedField = .mLastName
+                                        showingAlert = true
+                                    }else if viewModel.hintMotherMobileNumber != "Success"{
+                                        alertMessage = "Please Enter Mother's Mobile Number"
+                                        AlertShow = "0"
+                                        focusedField = .mMobileNumber
+                                        showingAlert = true
+                                    }else if viewModel.hintMotherEmail != "Success"{
+                                        alertMessage = "Please Enter Mother's Email Id"
+                                        AlertShow = "0"
+                                        focusedField = .mEmailId
+                                        showingAlert = true
+                                    }else{
+                                        submitViewModel.fetchLoginDate(
+                                            fFirstName: viewModel.textFatherFirstName,
+                                            fMiddleName: viewModel.textFatherMiddleName,
+                                            fLastName: viewModel.textFatherLastName,
+                                            fMobile: viewModel.textFatherMobileNumber,
+                                            fEmail: viewModel.textFatherEmail,
+                                            mFirstName: viewModel.textMotherFirstName,
+                                            mMiddleName: viewModel.textMotherMiddleName,
+                                            mLastName: viewModel.textMotherLastName,
+                                            mMobile: viewModel.textMotherMobileNumber,
+                                            mEmail: viewModel.textMotherEmail,
+                                            gFirstName: viewModel.textGuardianFirstName,
+                                            gMiddleName: viewModel.textGuardianMiddleName,
+                                            gLastName: viewModel.textGuardianLastName,
+                                            gMobile: viewModel.textGuardianMobileNumber,
+                                            gEmail: viewModel.textGuardianEmail,
+                                            gRelation: viewModel.textGuardianRelationship,
+                                            gAddress: viewModel.textCurrentAddress,
+                                            gCountry: currentCountryID,
+                                            gState: currentStateId,
+                                            gCity: currentCityId,
+                                            gPincode: viewModel.textCurrentPincode,
+                                            appId: studentAppID ?? "") { ParentDetails in
+                                                if ParentDetails.status == 1{
+                                                    showEnrollmentDetails = true
+                                                }else{
+                                                    alertMessage = ParentDetails.msg ?? ""
+                                                    AlertShow = "0"
+                                                    showingAlert = true
+                                                }
                                             }
-                                        }
+                                    }
                                 }
-                            } label: {
-                                DetailsViewBottom()
-                            }
+                                .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                         }
                         .padding(.bottom)
                     }
@@ -840,6 +843,8 @@ struct ParentsDetailsView: View {
                 Button("OK", role: .cancel) {
                     if AlertShow == "1"{
                         showEnrollmentDetails = true
+                    }else{
+                        isButtonClick = false
                     }
                 }
             }

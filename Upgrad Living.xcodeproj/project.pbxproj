@@ -60,6 +60,13 @@
 		0993226E29D6F0290036C050 /* FoucesedEnrollmentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226D29D6F0290036C050 /* FoucesedEnrollmentTextField.swift */; };
 		0993227029D6F9400036C050 /* SubmitStudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993226F29D6F9400036C050 /* SubmitStudentModel.swift */; };
 		0993227229D6F9810036C050 /* SubmitStudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0993227129D6F9810036C050 /* SubmitStudentViewModel.swift */; };
+		099490CD29DA9CAA002FA2C0 /* BookingPayProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490CC29DA9CAA002FA2C0 /* BookingPayProcessView.swift */; };
+		099490CF29DAAE14002FA2C0 /* BookingParentProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490CE29DAAE14002FA2C0 /* BookingParentProcessView.swift */; };
+		099490D129DAAF9B002FA2C0 /* BookingUploadProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490D029DAAF9B002FA2C0 /* BookingUploadProcessView.swift */; };
+		099490D329DAB5FF002FA2C0 /* BookingStudentProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490D229DAB5FF002FA2C0 /* BookingStudentProcessView.swift */; };
+		099490D529DAB7D9002FA2C0 /* BookingRoomProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490D429DAB7D9002FA2C0 /* BookingRoomProcessView.swift */; };
+		099490D729DAB972002FA2C0 /* BookingSignProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490D629DAB972002FA2C0 /* BookingSignProcessView.swift */; };
+		099490D929DAC89B002FA2C0 /* BookingProcessLogin_Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490D829DAC89B002FA2C0 /* BookingProcessLogin_Image.swift */; };
 		09A33B6129CC1D3C00C01D65 /* Upgrad_LivingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */; };
 		09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6229CC1D3C00C01D65 /* ContentView.swift */; };
 		09A33B6529CC1D4200C01D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A33B6429CC1D4200C01D65 /* Assets.xcassets */; };
@@ -73,6 +80,9 @@
 		09B7A1CA29D8129800EC72EF /* SubmitMedicalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C929D8129800EC72EF /* SubmitMedicalViewModel.swift */; };
 		09B7A1CC29D8264C00EC72EF /* SubmitDocumentaionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1CB29D8264C00EC72EF /* SubmitDocumentaionModel.swift */; };
 		09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1CD29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift */; };
+		09B7A1D429D82A3500EC72EF /* BookingProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1D329D82A3500EC72EF /* BookingProcessView.swift */; };
+		09B7A1D629D841EA00EC72EF /* BookingLoginProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1D529D841EA00EC72EF /* BookingLoginProcessView.swift */; };
+		09C3810B29DA8A52006D82C9 /* BookingSubmitProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */; };
 		09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */; };
 		09CC312629CC71940048BFF5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312529CC71940048BFF5 /* LottieView.swift */; };
 		09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */; };
@@ -148,6 +158,13 @@
 		0993226D29D6F0290036C050 /* FoucesedEnrollmentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucesedEnrollmentTextField.swift; sourceTree = "<group>"; };
 		0993226F29D6F9400036C050 /* SubmitStudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitStudentModel.swift; sourceTree = "<group>"; };
 		0993227129D6F9810036C050 /* SubmitStudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitStudentViewModel.swift; sourceTree = "<group>"; };
+		099490CC29DA9CAA002FA2C0 /* BookingPayProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingPayProcessView.swift; sourceTree = "<group>"; };
+		099490CE29DAAE14002FA2C0 /* BookingParentProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingParentProcessView.swift; sourceTree = "<group>"; };
+		099490D029DAAF9B002FA2C0 /* BookingUploadProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUploadProcessView.swift; sourceTree = "<group>"; };
+		099490D229DAB5FF002FA2C0 /* BookingStudentProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingStudentProcessView.swift; sourceTree = "<group>"; };
+		099490D429DAB7D9002FA2C0 /* BookingRoomProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRoomProcessView.swift; sourceTree = "<group>"; };
+		099490D629DAB972002FA2C0 /* BookingSignProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSignProcessView.swift; sourceTree = "<group>"; };
+		099490D829DAC89B002FA2C0 /* BookingProcessLogin_Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingProcessLogin_Image.swift; sourceTree = "<group>"; };
 		09A33B5D29CC1D3C00C01D65 /* Upgrad Living.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upgrad Living.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrad_LivingApp.swift; sourceTree = "<group>"; };
 		09A33B6229CC1D3C00C01D65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -162,6 +179,9 @@
 		09B7A1C929D8129800EC72EF /* SubmitMedicalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitMedicalViewModel.swift; sourceTree = "<group>"; };
 		09B7A1CB29D8264C00EC72EF /* SubmitDocumentaionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitDocumentaionModel.swift; sourceTree = "<group>"; };
 		09B7A1CD29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitDocumentaionViewModel.swift; sourceTree = "<group>"; };
+		09B7A1D329D82A3500EC72EF /* BookingProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingProcessView.swift; sourceTree = "<group>"; };
+		09B7A1D529D841EA00EC72EF /* BookingLoginProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLoginProcessView.swift; sourceTree = "<group>"; };
+		09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSubmitProcessView.swift; sourceTree = "<group>"; };
 		09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09CC312529CC71940048BFF5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDefine.swift; sourceTree = "<group>"; };
@@ -375,6 +395,7 @@
 		098A04CA29D4075300C9595A /* Form */ = {
 			isa = PBXGroup;
 			children = (
+				09B7A1CF29D829F800EC72EF /* Booking Process */,
 				098A04CB29D4079600C9595A /* Student Details */,
 				09DE74A329D541B3001B105A /* Parents Details */,
 				09DE74AD29D55C1A001B105A /* Enrollment Details */,
@@ -510,6 +531,31 @@
 				09A33B6729CC1D4200C01D65 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		09B7A1CF29D829F800EC72EF /* Booking Process */ = {
+			isa = PBXGroup;
+			children = (
+				09B7A1D029D82A0B00EC72EF /* View */,
+			);
+			path = "Booking Process";
+			sourceTree = "<group>";
+		};
+		09B7A1D029D82A0B00EC72EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09B7A1D329D82A3500EC72EF /* BookingProcessView.swift */,
+				09B7A1D529D841EA00EC72EF /* BookingLoginProcessView.swift */,
+				09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */,
+				099490CC29DA9CAA002FA2C0 /* BookingPayProcessView.swift */,
+				099490CE29DAAE14002FA2C0 /* BookingParentProcessView.swift */,
+				099490D029DAAF9B002FA2C0 /* BookingUploadProcessView.swift */,
+				099490D229DAB5FF002FA2C0 /* BookingStudentProcessView.swift */,
+				099490D429DAB7D9002FA2C0 /* BookingRoomProcessView.swift */,
+				099490D629DAB972002FA2C0 /* BookingSignProcessView.swift */,
+				099490D829DAC89B002FA2C0 /* BookingProcessLogin_Image.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		09CC312229CC70BD0048BFF5 /* JSON File */ = {
@@ -849,6 +895,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0945E26C29CD9F1400F9EA4E /* WalkThrough3.swift in Sources */,
+				099490D729DAB972002FA2C0 /* BookingSignProcessView.swift in Sources */,
 				09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */,
 				0993226C29D6E71D0036C050 /* FoucesedParentTextField.swift in Sources */,
 				098A04D829D42EC700C9595A /* MasterModel.swift in Sources */,
@@ -860,6 +907,7 @@
 				0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */,
 				0993226A29D6C81A0036C050 /* FoucesedStudentTextField.swift in Sources */,
 				098D699029CD770D0000F5A9 /* WalkThrough1.swift in Sources */,
+				099490CF29DAAE14002FA2C0 /* BookingParentProcessView.swift in Sources */,
 				09DE74CC29D58769001B105A /* MedicalQuestionOptionView.swift in Sources */,
 				098A04D029D407C400C9595A /* StudentDetailsView.swift in Sources */,
 				09DE74CE29D588B1001B105A /* MediacalQuestionImage.swift in Sources */,
@@ -872,7 +920,10 @@
 				09DE74C229D5782D001B105A /* RoomTypeTripleView.swift in Sources */,
 				09DE74AA29D54560001B105A /* ParentContentViewModel.swift in Sources */,
 				09DE74B229D55C4E001B105A /* EnrollmentDetailsView.swift in Sources */,
+				099490D529DAB7D9002FA2C0 /* BookingRoomProcessView.swift in Sources */,
 				096A3FE229CC259B00092AAC /* LoginView.swift in Sources */,
+				099490D129DAAF9B002FA2C0 /* BookingUploadProcessView.swift in Sources */,
+				099490D929DAC89B002FA2C0 /* BookingProcessLogin_Image.swift in Sources */,
 				09DE74CA29D5860B001B105A /* MedicalQuestionView.swift in Sources */,
 				09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */,
 				0931A90829D7EE7700F6A209 /* SubmitParentViewModel.swift in Sources */,
@@ -890,12 +941,15 @@
 				09B7A1C829D8125A00EC72EF /* SubmitMedicalModel.swift in Sources */,
 				096A400429CC2D5800092AAC /* HexColour.swift in Sources */,
 				09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */,
+				09B7A1D429D82A3500EC72EF /* BookingProcessView.swift in Sources */,
+				09B7A1D629D841EA00EC72EF /* BookingLoginProcessView.swift in Sources */,
 				09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */,
 				098A04E029D44FE400C9595A /* MaterialDesignTextEditorCountry.swift in Sources */,
 				09DE74BC29D56977001B105A /* RoomTypeView.swift in Sources */,
 				098A04E429D4538200C9595A /* CountryViewModel.swift in Sources */,
 				09DE74B429D55DBD001B105A /* EnrollmentContentViewModel.swift in Sources */,
 				09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */,
+				099490D329DAB5FF002FA2C0 /* BookingStudentProcessView.swift in Sources */,
 				098A04DA29D42F3600C9595A /* MasterViewModel.swift in Sources */,
 				0931A90E29D7FBBF00F6A209 /* MedicalTextEditor.swift in Sources */,
 				0993226E29D6F0290036C050 /* FoucesedEnrollmentTextField.swift in Sources */,
@@ -910,11 +964,13 @@
 				09A6F6DC29CDB96C00689E9F /* BaseAPI.swift in Sources */,
 				09DE74C029D56D01001B105A /* RoomTypeQuardView.swift in Sources */,
 				0931A90C29D7F69D00F6A209 /* SubmitEnrollmentViewModel.swift in Sources */,
+				09C3810B29DA8A52006D82C9 /* BookingSubmitProcessView.swift in Sources */,
 				096A400329CC2D5800092AAC /* HideKeyboard.swift in Sources */,
 				098A04DE29D43BC300C9595A /* MaterialDesignTextFieldDOB.swift in Sources */,
 				09CC312629CC71940048BFF5 /* LottieView.swift in Sources */,
 				09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */,
 				098A04E629D4617000C9595A /* DetailsViewBottom.swift in Sources */,
+				099490CD29DA9CAA002FA2C0 /* BookingPayProcessView.swift in Sources */,
 				09B7A1CA29D8129800EC72EF /* SubmitMedicalViewModel.swift in Sources */,
 				09A33B6129CC1D3C00C01D65 /* Upgrad_LivingApp.swift in Sources */,
 			);

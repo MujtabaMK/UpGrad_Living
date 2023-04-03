@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct StudentDetailsView: View {
+    @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = ContentViewModel()
     @State private var borderColor = Color(hex: 0xF15865)
     @State private var canEditBloodGroup = false
@@ -79,18 +80,36 @@ struct StudentDetailsView: View {
     @State private var searchTextPermentCity = ""
     @State private var ShowPermentCityDropDown = false
     
+    @State private var isButtonClick = false
+    
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @FocusState private var focusedField: FoucesedStudentTextField?
-
+    
     var getIsEditable: String
     var body: some View {
         NavigationView {
             ZStack{
                 VStack{
-                    Text("Profile")
-                        .font(.custom(OpenSans_SemiBold, size: 18))
-                        .foregroundColor(Color(hex: 0x333333))
-                        .padding(.top, 5)
+                    HStack{
+                        Button {
+                            withAnimation() {
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        } label: {
+                            Image("back_Button")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding(.leading, 20)
+                        }
+                        Spacer(minLength: 0)
+                        Text("Profile")
+                            .font(.custom(OpenSans_Bold, size: 18))
+                            .foregroundColor(Color(hex: 0x000000))
+                            .padding(.trailing, 30)
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.top)
                     Divider()
                     ScrollViewReader { value in
                         ScrollView(showsIndicators: false){
@@ -729,11 +748,11 @@ struct StudentDetailsView: View {
                                 }
                                 //Current PinCode
                                 MaterialDesignTextFieldwithoutImage($viewModel.textCurrentPinCode,
-                                                        placeholder: viewModel.placeholderCurrentPinCode,
-                                                        hint: $viewModel.hintCurrentPinCode,
-                                                        editing: $editingTextFieldCurrentPinCode,
-                                                        valid: $viewModel.textCurrentPinCodeValid,
-                                                        BorderColor: $borderColor)
+                                                                    placeholder: viewModel.placeholderCurrentPinCode,
+                                                                    hint: $viewModel.hintCurrentPinCode,
+                                                                    editing: $editingTextFieldCurrentPinCode,
+                                                                    valid: $viewModel.textCurrentPinCodeValid,
+                                                                    BorderColor: $borderColor)
                                 .focused($focusedField, equals: .currentPinCode)
                                 .disableAutocorrection(true)
                                 .keyboardType(.numberPad)
@@ -1015,11 +1034,11 @@ struct StudentDetailsView: View {
                                 }
                                 //Perment PinCode
                                 MaterialDesignTextFieldwithoutImage($viewModel.textPermanentPinCode,
-                                                        placeholder: viewModel.placeholderPermanentPinCode,
-                                                        hint: $viewModel.hintPermanentPinCode,
-                                                        editing: $editingTextFieldPermentPinCode,
-                                                        valid: $viewModel.textPermanentPinCodeValid,
-                                                        BorderColor: $borderColor)
+                                                                    placeholder: viewModel.placeholderPermanentPinCode,
+                                                                    hint: $viewModel.hintPermanentPinCode,
+                                                                    editing: $editingTextFieldPermentPinCode,
+                                                                    valid: $viewModel.textPermanentPinCodeValid,
+                                                                    BorderColor: $borderColor)
                                 .focused($focusedField, equals: .permentPinCode)
                                 .disableAutocorrection(true)
                                 .keyboardType(.numberPad)
@@ -1038,157 +1057,148 @@ struct StudentDetailsView: View {
                             .id(6)
                             NavigationLink("", destination: ParentsDetailsView(getIsEditable: "1").navigationBarHidden(true),isActive: $showPrentsDetails).isDetailLink(false)
                             VStack(alignment: .center){
-                                Button {
-                                    if viewModel.hintFirstName != "Success"{
-                                        alertMessage = "Please Enter First Name"
-                                        AlertShow = "0"
-                                        focusedField = .firstName
-                                        showingAlert = true
-                                    }else if viewModel.hintLastName != "Success"{
-                                        alertMessage = "Please Enter Last Name"
-                                        AlertShow = "0"
-                                        focusedField = .lastName
-                                        showingAlert = true
-                                    }else if viewModel.hintMobileNumber != "Success"{
-                                        alertMessage = "Please Enter 10 Digit Mobile Number"
-                                        AlertShow = "0"
-                                        focusedField = .mobileNumber
-                                        showingAlert = true
-                                    }else if viewModel.hintEmail != "Success"{
-                                        alertMessage = "Please Enter Correct Email Id"
-                                        AlertShow = "0"
-                                        focusedField = .emailId
-                                        showingAlert = true
-                                    }else if viewModel.hintBloodGroup != "Success"{
-                                        alertMessage = "Please Select Blood Group"
-                                        AlertShow = "0"
-                                        value.scrollTo(2)
-                                        showingAlert = true
-                                    }else if viewModel.hintGender != "Success"{
-                                        alertMessage = "Please Select Gender"
-                                        AlertShow = "0"
-                                        value.scrollTo(2)
-                                        showingAlert = true
-                                    }else if viewModel.hintDOB != "Success"{
-                                        alertMessage = "Please Select Date of Birth"
-                                        AlertShow = "0"
-                                        value.scrollTo(2)
-                                        showingAlert = true
-                                    }else if viewModel.hintPOB != "Success"{
-                                        alertMessage = "Please Enter Place of Birth"
-                                        AlertShow = "0"
-                                        focusedField = .placeOfBirth
-                                        showingAlert = true
-                                    }else if viewModel.hintNationality != "Success"{
-                                        alertMessage = "Please Enter Nationality"
-                                        AlertShow = "0"
-                                        focusedField = .nationality
-                                        showingAlert = true
-                                    }else if viewModel.hintAadhar != "Success"{
-                                        alertMessage = "Please Enter Aadhar Card Number"
-                                        AlertShow = "0"
-                                        focusedField = .aadharCard
-                                        showingAlert = true
-                                    }else if viewModel.hintPan != "Success"{
-                                        alertMessage = "Please Enter Pan Card Number"
-                                        AlertShow = "0"
-                                        focusedField = .panCard
-                                        showingAlert = true
-                                    }else if viewModel.hintPassport != "Success"{
-                                        alertMessage = "Please Enter Passport Number"
-                                        AlertShow = "0"
-                                        focusedField = .passport
-                                        showingAlert = true
-                                    }else if viewModel.hintCurrentAddress != "Success"{
-                                        alertMessage = "Please Enter Address of Current Residence"
-                                        AlertShow = "0"
-                                        focusedField = .currentAddress
-                                        showingAlert = true
-                                    }else if viewModel.hintCurrentCountry != "Success"{
-                                        alertMessage = "Please Select Country "
-                                        AlertShow = "0"
-                                        value.scrollTo(4)
-                                        showingAlert = true
-                                    }else if viewModel.hintCurrentState != "Success"{
-                                        alertMessage = "Please Select State "
-                                        AlertShow = "0"
-                                        value.scrollTo(4)
-                                        showingAlert = true
-                                    }else if viewModel.hintCurrentCity != "Success"{
-                                        alertMessage = "Please Select City "
-                                        AlertShow = "0"
-                                        value.scrollTo(4)
-                                        showingAlert = true
-                                    }else if viewModel.hintCurrentPinCode != "Success"{
-                                        alertMessage = "Please Enter Pin Code"
-                                        AlertShow = "0"
-                                        focusedField = .currentPinCode
-                                        showingAlert = true
-                                    }else if viewModel.hintPermanentAddress != "Success"{
-                                        alertMessage = "Please Enter Address of Permanent Residence"
-                                        AlertShow = "0"
-                                        focusedField = .permentAddress
-                                        showingAlert = true
-                                    }else if viewModel.hintPermanentCountry != "Success"{
-                                        alertMessage = "Please Select Country "
-                                        AlertShow = "0"
-                                        value.scrollTo(6)
-                                        showingAlert = true
-                                    }else if viewModel.hintPermanentState != "Success"{
-                                        alertMessage = "Please Select State "
-                                        AlertShow = "0"
-                                        value.scrollTo(6)
-                                        showingAlert = true
-                                    }else if viewModel.hintPermanentCity != "Success"{
-                                        alertMessage = "Please Select City "
-                                        AlertShow = "0"
-                                        value.scrollTo(6)
-                                        showingAlert = true
-                                    }else if viewModel.hintPermanentPinCode != "Success"{
-                                        alertMessage = "Please Enter Pin Code"
-                                        AlertShow = "0"
-                                        focusedField = .permentPinCode
-                                        showingAlert = true
-                                    } else{
-                                        SubmitViewModel.fetchLoginDate(
-                                            firstName: viewModel.textFirstName,
-                                            middleName: viewModel.textMiddleName,
-                                            lastName: viewModel.textLastName,
-                                            mobile: viewModel.textMobileNumber,
-                                            email: viewModel.textEmail,
-                                            bloddGroup: viewModel.textBloodGroup,
-                                            bloddGroupId: bloodGroupId,
-                                            gender: genderId,
-                                            dateOfBirth: viewModel.textDOB,
-                                            placeOfBirth: viewModel.textPOB,
-                                            nationality: viewModel.textNationality,
-                                            aadhar: viewModel.textAadharCard,
-                                            pancard: viewModel.textPanCard,
-                                            passport: viewModel.textPassport,
-                                            cAddress: viewModel.textCurrentAddress,
-                                            cCountry: currentCountryID,
-                                            cState: currentStateId,
-                                            cCity: currentCityId,
-                                            cPincode: viewModel.textCurrentPinCode,
-                                            isSameAddress: isSelect ? "on" : "",
-                                            pAddress: viewModel.textPermanentAddress,
-                                            pCountry: permentCountryID,
-                                            pState: permentStateId,
-                                            pCity: permentCityId,
-                                            pPincode: viewModel.textPermanentPinCode,
-                                            appId: studentAppID ?? "") { Studentdata in
-                                                if Studentdata.status == 1{
-                                                    showPrentsDetails = true
-                                                }else{
-                                                    alertMessage = Studentdata.msg ?? ""
-                                                    AlertShow = "0"
-                                                    showingAlert = true
+                                DetailsViewBottom(textName: "Save & Continue", imageName: "Form_Button_icon_Step1")
+                                    .onTapGesture(perform: {
+                                        isButtonClick = true
+                                        if viewModel.hintFirstName != "Success"{
+                                            alertMessage = "Please Enter First Name"
+                                            AlertShow = "0"
+                                            focusedField = .firstName
+                                            showingAlert = true
+                                        }else if viewModel.hintLastName != "Success"{
+                                            alertMessage = "Please Enter Last Name"
+                                            AlertShow = "0"
+                                            focusedField = .lastName
+                                            showingAlert = true
+                                        }else if viewModel.hintMobileNumber != "Success"{
+                                            alertMessage = "Please Enter 10 Digit Mobile Number"
+                                            AlertShow = "0"
+                                            focusedField = .mobileNumber
+                                            showingAlert = true
+                                        }else if viewModel.hintEmail != "Success"{
+                                            alertMessage = "Please Enter Correct Email Id"
+                                            AlertShow = "0"
+                                            focusedField = .emailId
+                                            showingAlert = true
+                                        }else if viewModel.hintBloodGroup != "Success"{
+                                            alertMessage = "Please Select Blood Group"
+                                            AlertShow = "0"
+                                            value.scrollTo(2)
+                                            showingAlert = true
+                                        }else if viewModel.hintGender != "Success"{
+                                            alertMessage = "Please Select Gender"
+                                            AlertShow = "0"
+                                            value.scrollTo(2)
+                                            showingAlert = true
+                                        }else if viewModel.hintDOB != "Success"{
+                                            alertMessage = "Please Select Date of Birth"
+                                            AlertShow = "0"
+                                            value.scrollTo(2)
+                                            showingAlert = true
+                                        }else if viewModel.hintPOB != "Success"{
+                                            alertMessage = "Please Enter Place of Birth"
+                                            AlertShow = "0"
+                                            focusedField = .placeOfBirth
+                                            showingAlert = true
+                                        }else if viewModel.hintNationality != "Success"{
+                                            alertMessage = "Please Enter Nationality"
+                                            AlertShow = "0"
+                                            focusedField = .nationality
+                                            showingAlert = true
+                                        }else if viewModel.hintAadhar != "Success"{
+                                            alertMessage = "Please Enter Aadhar Card Number"
+                                            AlertShow = "0"
+                                            focusedField = .aadharCard
+                                            showingAlert = true
+                                        }else if viewModel.hintCurrentAddress != "Success"{
+                                            alertMessage = "Please Enter Address of Current Residence"
+                                            AlertShow = "0"
+                                            focusedField = .currentAddress
+                                            showingAlert = true
+                                        }else if viewModel.hintCurrentCountry != "Success"{
+                                            alertMessage = "Please Select Country "
+                                            AlertShow = "0"
+                                            value.scrollTo(4)
+                                            showingAlert = true
+                                        }else if viewModel.hintCurrentState != "Success"{
+                                            alertMessage = "Please Select State "
+                                            AlertShow = "0"
+                                            value.scrollTo(4)
+                                            showingAlert = true
+                                        }else if viewModel.hintCurrentCity != "Success"{
+                                            alertMessage = "Please Select City "
+                                            AlertShow = "0"
+                                            value.scrollTo(4)
+                                            showingAlert = true
+                                        }else if viewModel.hintCurrentPinCode != "Success"{
+                                            alertMessage = "Please Enter Pin Code"
+                                            AlertShow = "0"
+                                            focusedField = .currentPinCode
+                                            showingAlert = true
+                                        }else if viewModel.hintPermanentAddress != "Success"{
+                                            alertMessage = "Please Enter Address of Permanent Residence"
+                                            AlertShow = "0"
+                                            focusedField = .permentAddress
+                                            showingAlert = true
+                                        }else if viewModel.hintPermanentCountry != "Success"{
+                                            alertMessage = "Please Select Country "
+                                            AlertShow = "0"
+                                            value.scrollTo(6)
+                                            showingAlert = true
+                                        }else if viewModel.hintPermanentState != "Success"{
+                                            alertMessage = "Please Select State "
+                                            AlertShow = "0"
+                                            value.scrollTo(6)
+                                            showingAlert = true
+                                        }else if viewModel.hintPermanentCity != "Success"{
+                                            alertMessage = "Please Select City "
+                                            AlertShow = "0"
+                                            value.scrollTo(6)
+                                            showingAlert = true
+                                        }else if viewModel.hintPermanentPinCode != "Success"{
+                                            alertMessage = "Please Enter Pin Code"
+                                            AlertShow = "0"
+                                            focusedField = .permentPinCode
+                                            showingAlert = true
+                                        } else{
+                                            SubmitViewModel.fetchLoginDate(
+                                                firstName: viewModel.textFirstName,
+                                                middleName: viewModel.textMiddleName,
+                                                lastName: viewModel.textLastName,
+                                                mobile: viewModel.textMobileNumber,
+                                                email: viewModel.textEmail,
+                                                bloddGroup: viewModel.textBloodGroup,
+                                                bloddGroupId: bloodGroupId,
+                                                gender: genderId,
+                                                dateOfBirth: viewModel.textDOB,
+                                                placeOfBirth: viewModel.textPOB,
+                                                nationality: viewModel.textNationality,
+                                                aadhar: viewModel.textAadharCard,
+                                                pancard: viewModel.textPanCard,
+                                                passport: viewModel.textPassport,
+                                                cAddress: viewModel.textCurrentAddress,
+                                                cCountry: currentCountryID,
+                                                cState: currentStateId,
+                                                cCity: currentCityId,
+                                                cPincode: viewModel.textCurrentPinCode,
+                                                isSameAddress: isSelect ? "on" : "",
+                                                pAddress: viewModel.textPermanentAddress,
+                                                pCountry: permentCountryID,
+                                                pState: permentStateId,
+                                                pCity: permentCityId,
+                                                pPincode: viewModel.textPermanentPinCode,
+                                                appId: studentAppID ?? "") { Studentdata in
+                                                    if Studentdata.status == 1{
+                                                        showPrentsDetails = true
+                                                    }else{
+                                                        alertMessage = Studentdata.msg ?? ""
+                                                        AlertShow = "0"
+                                                        showingAlert = true
+                                                    }
                                                 }
-                                            }
-                                    }
-                                } label: {
-                                    DetailsViewBottom()
-                                }
+                                        }
+                                    })
+                                    .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                             }
                             .padding(.bottom)
                         }
@@ -1202,6 +1212,8 @@ struct StudentDetailsView: View {
                 Button("OK", role: .cancel) {
                     if AlertShow == "1"{
                         showPrentsDetails = true
+                    }else{
+                        isButtonClick = false
                     }
                 }
             }

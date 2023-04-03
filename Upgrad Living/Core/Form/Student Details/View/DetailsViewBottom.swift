@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct DetailsViewBottom: View {
+    var textName: String
+    var imageName: String
     var body: some View {
         ZStack(alignment: .trailing){
-            Text("Save & Continue")
+            Text(textName)//Save & Continue
                 .font(.custom(OpenSans_SemiBold, size: 15))
                 .frame(width: 250, alignment: .center)
                 .font(.custom(OpenSans_SemiBold, size: 14))
@@ -24,7 +26,7 @@ struct DetailsViewBottom: View {
                         endPoint: .trailing))
                 .clipShape(Capsule())
             
-            Image("Form_Button_icon")
+            Image(imageName)//Form_Button_icon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 27, height: 27)
@@ -35,6 +37,6 @@ struct DetailsViewBottom: View {
 
 struct DetailsViewBottom_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsViewBottom()
+        DetailsViewBottom(textName: "", imageName: "")
     }
 }

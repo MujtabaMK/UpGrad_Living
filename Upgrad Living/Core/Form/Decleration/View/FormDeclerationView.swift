@@ -16,6 +16,10 @@ struct FormDeclerationView: View {
     @State private var alertMessage = String()
     @State private var showingAlert = false
     @State private var AlertShow = String()
+    @State private var isAccept = false
+    @State private var AcceptText = ""
+    
+    @State private var isButtonClick = false
     
     var body: some View {
         NavigationView {
@@ -44,38 +48,48 @@ struct FormDeclerationView: View {
                     Divider()
                     ScrollView(showsIndicators: false) {
                         VStack(alignment: .leading){
-                            Text("1. I am enrolled as a Student of ATLAS and thus eligible to apply for the Student Housing accommodation provided by upGrad. \n\n 2. I shall not be entitled to stay in the Student Housing if I cease to be a Student of ATLAS for any reason whatsoever, and in such event I shall not be entitled to the receive the refund of the Security Deposit, Student Housing Fees or any other amounts paid by me to upGrad.\n\n 3. I have provided true and correct information to the best of my knowledge in this Application for Student Housing or any other document/s submitted by me. In the event upGrad learns about any false or misleading information provided by me in this Application for Student Housing or any other documents submitted by me, I may be asked to leave my accommodation in the Student Housing immediately and I will not receive a refund of any amounts paid by me to upGrad.\n\n 4. I am paying an amount of Rs. 50,000/- (Rupees Fifty Thousand Only) towards Security Deposit on submission of this Application for Student Housing.\n\n 5. In the event my Application for Student Housing is accepted, the full refund of the interest free Security Deposit will be received by me only after the competition of accommodation duration of Semester 1 (one) and Semester 2 (two) i.e, 11 (eleven) months, subject to refund policy as may be prescribed by upGrad from time to time.\n\n 6. In the event my application is rejected, the full refund of Security Deposit will be received as per the timeline prescribed by upGrad, subject to refund policy as may be prescribed by upGrad from time to time.\n\n 7. At the time of filling this Application for Student Housing and executing the Student Housing Agreement with upGrad, the Student Housing in question is under construction and yet to be completed. The proposed date for completion of the construction of the Student Housing is [ ] June 2023, such date is subject to a 1 (one) month grace period.\n\n 8. Pursuant to my Application for Student Housing being accepted by upGrad, I will read through and execute the Student Housing Agreement with upGrad enumerating the conditions of stay in the Student Housing. \n\n 9. Pursuant to the execution of the Student Housing Agreement by and between upGrad and me, the Student Housing Fees shall be paid by me in full for the preferred duration of accommodation as selected by me in Clause III hereinabove.\n\n 10. I will be required to pay the Student Housing Fees in advance for the duration of accommodation I opt to semester wise.\n\n 11. The Student Housing Fees are non-refundable, non-negotiable and may increase or decrease at upGrad’s sole discretion for the duration of my stay.\n\n 12. At the time of execution of the Student Housing Agreement I will be handed over a hard copy / sent a digital copy of the Student’s Handbook and I shall agree to the conditions mentioned therein as part of the application process.\n\n 13. The Student’s Handbook will be updated from time to time at upGrad’s sole discretion and I will abide by all terms and updated terms in the Student’s Handbook in its entirety, and not dispute the same.\n\n 14. I will live in a shared accommodation with other students.\n\n 15. I shall always maintain a friendly and cordial behavior towards everyone.\n\n 16. I shall not smoke, drink alcohol, vape, consume narcotics and psychotropic substances or do or indulge in any illegal or morally repugnant acts or any such other acts in the Student Housing or any other premises of upGrad and adhere to the Student Housing Agreement and the Student’s Handbook.\n\n 17. I shall not create any nuisance in the Student Housing, not do perform or commit any crime, fraud, negligence, wilful misconduct, or any intentional act or omission or any other any acts detrimental to the interest of upGrad or other students or any other person.\n\n 18. I am conscious about the cleanliness and shall maintain the same in my room, the common areas of the Student Housing and its surroundings.\n\n 19. I will not bring or keep any pets or animals in the Student Housing.\n\n 20. I shall switch off the lights, fans, other electrical appliances and/or air conditioner etc. when not in use.\n\n 21. I will abide by the circulars, and notices issued by upGrad from time to time, howsoever communicated.\n\n 22. I have disclosed my entire medical history in this Application for Student Housing and in the medical certificate of the doctor uploaded with this Application for Student Housing.\n\n 23. In the event upGrad learns about any concealment of any relevant medical history or any other requisite information from me, upGrad may initiate necessary action against me, including termination of my accommodation at the Student Housing.\n\n 24. I shall not cause any damage to the premises, building, land, furniture, fixtures of the Student Housing or any other property or services provided to me by upGrad and in the event any such damage is caused by me due to my negligence, mistake, or any act or omission by me, I shall be liable to get the same repaired and shall also bear all costs and expenses towards the same without any recourse to upGrad, upGrad also has the right to forfeit the full Security deposit or deduct such costs from the Security Deposit as may be incurred by upGrad for the damage occurred.\n\n 25. Neither upGrad nor any of its personnel, officers, employees, agents or representatives shall be liable in any way whatsoever for any actions involving me now or in the future.\n\n 26. Failure by me to abide by the terms of this Application for Student Housing, the Student Housing Agreement to be executed by and between upGrad and me and the Student’s Handbook to be received by me at the time of execution of the Student Housing Agreement, I may be asked to leave my accommodation at the Student Housing immediately, and I will not receive a refund of any amounts paid to upGrad.\n\n I , do hereby confirm that I have read and understood the above mentioned declaration and hereby accept to adhere by it.")
+                            Text("\n1. I am enrolled as a Student of ATLAS SkillTech University (“ATLAS”) and thus eligible to apply for the Student Housing provided by upGrad.\n\n2. I shall not be entitled to stay in the Student Housing if I cease to be a Student of ATLAS for any reason whatsoever, and in such event I shall not be entitled to the receive the refund of the Security Deposit, Student Housing Service Fees or any other amounts paid by me to upGrad.\n\n3. I shall not be entitled to stay in the Student Housing if I cease to be a Student of ATLAS for any reason whatsoever, and in such event I shall not be entitled to the receive the refund of the Security Deposit, Student Housing Service Fees or any other amounts paid by me to upGrad.\n\n4. I am paying an amount of Rs. 50,000/- (Rupees Fifty Thousand Only) towards interest free Security Deposit on submission of this Application for Student Housing.\n\n5. In the event my Application for Student Housing is accepted, the full refund of the interest free Security Deposit will be received by me only after the completion of the entire duration of 11 (eleven) months i.e. Semester 1 (one) and Semester 2 (two), subject to the refund policy as may be prescribed by upGrad from time to time.\n\n6. In the event my Application for Student Housing is accepted, the full refund of the interest free Security Deposit will be received by me only after the completion of the entire duration of 11 (eleven) months i.e. Semester 1 (one) and Semester 2 (two), subject to the refund policy as may be prescribed by upGrad from time to time.\n\n7. At the time of filling this Application for Student Housing and executing the Student Housing Services Agreement with upGrad, the Student Housing in question is under construction and yet to be completed. The proposed date for completion of the construction of the Student Housing is 30th June 2023, such date is subject to a 1 (one) month grace period.\n\n8. Pursuant to my Application for Student Housing being accepted by upGrad, I will read through and execute the Student Housing Services Agreement with upGrad enumerating the conditions of stay in the Student Housing.\n\n9. Pursuant to the execution of the Student Housing Services Agreement with upGrad, the Student Housing Service Fees shall be paid to confirm the accommodation as selected.\n\n10. The Student Housing Service Fees is to be paid in advance and failure to pay within the notified timeline will result in the Student being asked to leave the Student Housing immediately without refund of any amounts paid to upGrad.\n\n11. The Student Housing Service Fees are non-refundable and non-negotiable.\n\n12. At the time of execution of the Student Housing Services Agreement I will be handed over a digital copy of the Resident Student’s Handbook and I shall agree to and abide by the conditions mentioned therein as part of the application process.\n\n13. The Resident Student’s Handbook will be updated from time to time at upGrad’s sole discretion and I will abide by all terms and updated terms in the Resident Student’s Handbook in its entirety, and not dispute the same.\n\n14. I am aware that I will be living in a shared accommodation with other students.\n\n15. I shall always maintain a friendly and cordial behaviour towards everyone.\n\n16. I shall not smoke, vape, consume alcohol or narcotics and psychotropic substances or do or indulge in any illegal or morally repugnant acts or any such other acts in the Student Housing or any other premises of upGrad and adhere to the Student Housing Services Agreement and the Resident Student’s Handbook.\n\n17. I shall not create any nuisance in the Student Housing, nor perform or commit any crime, fraud, negligence, wilful misconduct, or any intentional act or omission or any other any acts detrimental to the interest of upGrad or other students or any other person including those of ATLAS.\n\n18. I have read and understood the provisions of the UGC Regulations on Curbing the Menace of Ragging in Higher Education Institutions, 2009, as amended from time to time (“Regulations”) as well as the provisions of any other law for the time being in force, and am aware of the prohibition of ragging and the punishments prescribed, both under penal laws as well as under the Regulations and affirm I have not been expelled and/or debarred by any institution and aver that I shall not indulge, actively or passively, in the act or abet the act of ragging and if found guilty of ragging and/or abetting ragging, am liable to be proceeded against under these Regulations or under any penal law or any other law for the time being in force and such action would include but is not limited to my debarment or expulsion.\n\n19. I am conscious about the cleanliness and shall maintain the same in my room, the common areas of the Student Housing and its surroundings.\n\n20. I will not bring or keep any pets or animals in the Student Housing.\n\n21. I shall switch off the lights, fans, other electrical appliances and/or air conditioner etc. when not in use.\n\n22. I will abide by the circulars, and notices issued by upGrad from time to time, howsoever communicated.\n\n23. I have disclosed my entire medical history in this Application for Student Housing and will upload the necessary certificate of medical & physical fitness by a registered doctor prior to signing of the Student Housing Services Agreement.\n\n24. In the event upGrad learns about any concealment of any relevant medical history or any other requisite information from the Student, upGrad may initiate necessary action against the Student, including termination of the Student’s accommodation at the Student Housing which will result in the Student being asked to leave the Student Housing immediately without refund of any amounts paid to upGrad.\n\n25. I shall not cause any damage to the premises, building, land, furniture, fixtures of the Student Housing or any other property or services provided to me by upGrad and in the event any such damage is caused by me due to my negligence, mistake, or any act or omission by me, I shall be liable to get the same repaired and shall also bear all costs and expenses towards the same without any recourse to upGrad, upGrad also has the right to forfeit the full Security Deposit or deduct such costs from the Security Deposit as may be incurred by upGrad for the damage occurred.\n\n26. Neither upGrad nor ATLAS nor any of its personnel, officers, employees, agents or representatives shall be liable in any way whatsoever for any actions involving me now or in the future.\n  27. Failure by me to abide by the terms of this Application for Student Housing, the Student Housing Services Agreement to be executed with upGrad and the Resident Student’s Handbook to be received by me at the time of execution of the Student Housing Services Agreement, I may be asked to leave my accommodation at the Student Housing immediately, and I will not receive a refund of any amounts paid to upGrad.\n\n I , do hereby confirm that I have read and understood the above mentioned declaration and hereby accept to adhere by it.")
+                                .padding(.bottom, 20)
+                            
+                            Button {
+                                isAccept.toggle()
+                            } label: {
+                                HStack{
+                                    Image(isAccept ? "Form_Accept" : "Form_Not_Accept")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 30, height: 30)
+                                    Text("I Accept*")
+                                        .font(.custom(OpenSans_SemiBold, size: 14))
+                                        .foregroundColor(Color(hex: 0x333333))
+                                }
+                                .padding(.bottom, 20)
+                            }
                         }
                         .padding(.horizontal)
                         VStack{
-                            Button {
-                                submitViewModel.fetchLoginDate(
-                                    accept: "on",
-                                    appId: studentAppID ?? "") { DocumentationData in
-                                        if DocumentationData.status == 1{
-                                            
-                                        }else{
-                                            alertMessage = DocumentationData.msg ?? ""
-                                            AlertShow = "0"
-                                            showingAlert = true
+                            DetailsViewBottom(textName: "Submit", imageName: "")
+                                .onTapGesture {
+                                    isButtonClick = true
+                                    if !isAccept{
+                                        alertMessage = "Please Accept"
+                                        AlertShow = "0"
+                                        showingAlert = true
+                                    }else{
+                                        submitViewModel.fetchLoginDate(
+                                            accept: "on",
+                                            appId: studentAppID ?? "") { DocumentationData in
+                                                if DocumentationData.status == 1{
+                                                    
+                                                }else{
+                                                    alertMessage = DocumentationData.msg ?? ""
+                                                    AlertShow = "0"
+                                                    showingAlert = true
+                                                }
                                         }
+                                    }
                                 }
-                                
-                            } label: {
-                                Text("I Agree")
-                                    .frame(width: 250, alignment: .center)
-                                    .font(.custom(OpenSans_SemiBold, size: 14))
-                                    .padding()
-                                    .foregroundColor(.white)
-                                    .background(
-                                        LinearGradient(
-                                            colors: [Color(hex: 0xEE2C3C),
-                                                     Color(hex: 0xB20710)],
-                                            startPoint: .leading,
-                                            endPoint: .trailing))
-                                    .clipShape(Capsule())
-                                    .padding(.top, 8)
-                            }
+                                .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                         }
                         .padding(.bottom)
                     }
@@ -87,6 +101,9 @@ struct FormDeclerationView: View {
             .alert(alertMessage, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) {
                     if AlertShow == "1"{
+                        
+                    }else{
+                        isButtonClick = false
                     }
                 }
             }

@@ -1476,12 +1476,12 @@ struct StudentDetailsView: View {
         print(viewModel.textDOB)
     }
     //MARK: - Show Date Picker
-    func showDatePickerAlert() {
-        let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
+    func showDatePickerAlert() {//\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+        let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
         let datePicker: UIDatePicker = UIDatePicker()
         
         datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .inline
+        datePicker.preferredDatePickerStyle = .wheels
         datePicker.maximumDate = Date()
         alertVC.view.addSubview(datePicker)
         datePicker.frame.size.width = UIScreen.main.bounds.width

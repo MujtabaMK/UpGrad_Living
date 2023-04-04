@@ -53,6 +53,12 @@ class SubmitMedicalViewModel: ObservableObject {
                         handicaps_text: String,
                         any_d: String,
                         any_d_text: String,
+                        clotting: String,
+                        clotting_text: String,
+                        recently_covid: String,
+                        recently_covid_text: String,
+                        covid_vaccine: String,
+                        covid_vaccine_text: String,
                         appId: String,
                         complition: @escaping (SubmitMedicalModel) -> Void){
         self.isLoadingData = true
@@ -102,6 +108,12 @@ class SubmitMedicalViewModel: ObservableObject {
             "handicaps_text": handicaps_text,
             "any_d": any_d,
             "any_d_text": any_d_text,
+            "clotting": clotting,
+            "clotting_text": clotting_text,
+            "recently_covid": recently_covid,
+            "recently_covid_text": recently_covid_text,
+            "covid_vaccine": covid_vaccine,
+            "covid_vaccine_text": covid_vaccine_text,
             "appId":appId,
         ]
         print(parameter)

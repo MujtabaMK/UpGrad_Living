@@ -16,8 +16,12 @@
 		0934F12D29CC3DD70076AD56 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934F12C29CC3DD70076AD56 /* OTPView.swift */; };
 		0934F12F29CC57AE0076AD56 /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934F12E29CC57AE0076AD56 /* OTPViewModel.swift */; };
 		0934F13129CC581C0076AD56 /* OTPViewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0934F13029CC581C0076AD56 /* OTPViewTextField.swift */; };
+		093BB15529DAE91D0019C91F /* PaymentMethod6Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093BB15429DAE91D0019C91F /* PaymentMethod6Month.swift */; };
+		093BB15829DAEB530019C91F /* PaymentMethod11Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093BB15729DAEB530019C91F /* PaymentMethod11Month.swift */; };
 		0945E26A29CD8C3D00F9EA4E /* WalkThrough2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945E26929CD8C3D00F9EA4E /* WalkThrough2.swift */; };
 		0945E26C29CD9F1400F9EA4E /* WalkThrough3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945E26B29CD9F1400F9EA4E /* WalkThrough3.swift */; };
+		095AD00729DAEF9F000CABA8 /* SubmitRoomTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095AD00629DAEF9F000CABA8 /* SubmitRoomTypeModel.swift */; };
+		095AD00929DAF01E000CABA8 /* SubmitRoomTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095AD00829DAF01E000CABA8 /* SubmitRoomTypeViewModel.swift */; };
 		096A3FE029CC255E00092AAC /* LoginTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A3FDF29CC255E00092AAC /* LoginTopView.swift */; };
 		096A3FE229CC259B00092AAC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A3FE129CC259B00092AAC /* LoginView.swift */; };
 		096A3FF129CC2A5500092AAC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 096A3FE529CC2A5300092AAC /* OpenSans-Light.ttf */; };
@@ -113,8 +117,12 @@
 		0934F12C29CC3DD70076AD56 /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
 		0934F12E29CC57AE0076AD56 /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
 		0934F13029CC581C0076AD56 /* OTPViewTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewTextField.swift; sourceTree = "<group>"; };
+		093BB15429DAE91D0019C91F /* PaymentMethod6Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod6Month.swift; sourceTree = "<group>"; };
+		093BB15729DAEB530019C91F /* PaymentMethod11Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod11Month.swift; sourceTree = "<group>"; };
 		0945E26929CD8C3D00F9EA4E /* WalkThrough2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThrough2.swift; sourceTree = "<group>"; };
 		0945E26B29CD9F1400F9EA4E /* WalkThrough3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThrough3.swift; sourceTree = "<group>"; };
+		095AD00629DAEF9F000CABA8 /* SubmitRoomTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRoomTypeModel.swift; sourceTree = "<group>"; };
+		095AD00829DAF01E000CABA8 /* SubmitRoomTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRoomTypeViewModel.swift; sourceTree = "<group>"; };
 		096A3FDF29CC255E00092AAC /* LoginTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTopView.swift; sourceTree = "<group>"; };
 		096A3FE129CC259B00092AAC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		096A3FE329CC26C700092AAC /* Upgrad-Living-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Upgrad-Living-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -655,6 +663,8 @@
 				09DE74BF29D56D01001B105A /* RoomTypeQuardView.swift */,
 				09DE74C129D5782D001B105A /* RoomTypeTripleView.swift */,
 				09DE74C329D5783F001B105A /* RoomTypeTwinView.swift */,
+				093BB15429DAE91D0019C91F /* PaymentMethod6Month.swift */,
+				093BB15729DAEB530019C91F /* PaymentMethod11Month.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -662,6 +672,7 @@
 		09DE74B729D56945001B105A /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				095AD00829DAF01E000CABA8 /* SubmitRoomTypeViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -669,6 +680,7 @@
 		09DE74B829D5694C001B105A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				095AD00629DAEF9F000CABA8 /* SubmitRoomTypeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -924,6 +936,7 @@
 				096A3FE229CC259B00092AAC /* LoginView.swift in Sources */,
 				099490D129DAAF9B002FA2C0 /* BookingUploadProcessView.swift in Sources */,
 				099490D929DAC89B002FA2C0 /* BookingProcessLogin_Image.swift in Sources */,
+				095AD00729DAEF9F000CABA8 /* SubmitRoomTypeModel.swift in Sources */,
 				09DE74CA29D5860B001B105A /* MedicalQuestionView.swift in Sources */,
 				09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */,
 				0931A90829D7EE7700F6A209 /* SubmitParentViewModel.swift in Sources */,
@@ -957,6 +970,7 @@
 				098D698929CD70230000F5A9 /* ContentViewModel.swift in Sources */,
 				0934F12D29CC3DD70076AD56 /* OTPView.swift in Sources */,
 				09DE74D029D59E2B001B105A /* MediacalQuestionSubImage.swift in Sources */,
+				093BB15529DAE91D0019C91F /* PaymentMethod6Month.swift in Sources */,
 				09ECD9DD29D3FA60008465A2 /* APIFunction.swift in Sources */,
 				0993227229D6F9810036C050 /* SubmitStudentViewModel.swift in Sources */,
 				0934F13129CC581C0076AD56 /* OTPViewTextField.swift in Sources */,
@@ -972,6 +986,8 @@
 				098A04E629D4617000C9595A /* DetailsViewBottom.swift in Sources */,
 				099490CD29DA9CAA002FA2C0 /* BookingPayProcessView.swift in Sources */,
 				09B7A1CA29D8129800EC72EF /* SubmitMedicalViewModel.swift in Sources */,
+				095AD00929DAF01E000CABA8 /* SubmitRoomTypeViewModel.swift in Sources */,
+				093BB15829DAEB530019C91F /* PaymentMethod11Month.swift in Sources */,
 				09A33B6129CC1D3C00C01D65 /* Upgrad_LivingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

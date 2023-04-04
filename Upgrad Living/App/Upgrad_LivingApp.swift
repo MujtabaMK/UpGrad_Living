@@ -10,13 +10,19 @@ import SwiftUI
 @main
 struct Upgrad_LivingApp: App {
     @State private var isLogin = UserDefaults.standard.bool(forKey: "isLogin")
+    @State private var isWalkThrough = UserDefaults.standard.bool(forKey: "isWalkThrough")
     var body: some Scene {
         WindowGroup {
-            if isLogin{
-                FormDeclerationView()
+            if isWalkThrough{
+                if isLogin{
+                    FormDeclerationView()
+                }else{
+                    LoginView()
+                }
             }else{
-                LoginView()
+                WalkThrough1()
             }
+            
            //LoginView()
             //WalkThrough1()
         }

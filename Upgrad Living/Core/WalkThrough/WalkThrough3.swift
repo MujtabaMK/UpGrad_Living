@@ -36,6 +36,7 @@ struct WalkThrough3: View {
                     .padding(.bottom, 6)
                 Button {
                     withAnimation {
+                        UserDefaults.standard.set(true, forKey: "isWalkThrough")
                         isLogin = true
                     }
                 } label: {
@@ -66,6 +67,7 @@ struct WalkThrough3: View {
                 if value.translation.width < 0 {
                     // left
                     withAnimation {
+                        UserDefaults.standard.set(true, forKey: "isWalkThrough")
                         isLogin = true
                     }
                 }

@@ -11,13 +11,13 @@ struct FormDeclerationView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var borderColor = Color(hex: 0xE75798)
     @StateObject private var submitViewModel = SubmitDocumentaionViewModel()
+    @StateObject private var GetViewModel = GetFormViewModel()
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     
     @State private var alertMessage = String()
     @State private var showingAlert = false
     @State private var AlertShow = String()
     @State private var isAccept = false
-    @State private var AcceptText = ""
     
     @State private var isButtonClick = false
     
@@ -96,6 +96,9 @@ struct FormDeclerationView: View {
                     if submitViewModel.isLoadingData{
                         LoadingView()
                     }
+                    if GetViewModel.isLoadingData{
+                        LoadingView()
+                    }
                 }
             }
             .alert(alertMessage, isPresented: $showingAlert) {
@@ -108,6 +111,23 @@ struct FormDeclerationView: View {
                 }
             }
             .navigationBarHidden(true)
+        }
+        .onAppear(perform: delayText)
+    }
+    private func delayText() {
+        // Delay of 0.2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            
+            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                if formData.status == 1{
+                    let CheckValue = formData.data?.accept ?? ""
+                    if CheckValue == "on"{
+                        isAccept = true
+                    }else{
+                        isAccept = false
+                    }
+                }
+            }
         }
     }
 }

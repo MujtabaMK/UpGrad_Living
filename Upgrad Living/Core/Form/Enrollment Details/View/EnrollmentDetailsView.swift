@@ -11,6 +11,7 @@ struct EnrollmentDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = EnrollmentContentViewModel()
     @StateObject private var submitViewModel = SubmitEnrollmentViewModel()
+    @StateObject private var GetViewModel = GetFormViewModel()
     @State private var borderColor = Color(hex: 0x685BC7)
     
     @State private var canEditSchool = false
@@ -442,6 +443,9 @@ struct EnrollmentDetailsView: View {
                 if submitViewModel.isLoadingData{
                     LoadingView()
                 }
+                if GetViewModel.isLoadingData{
+                    LoadingView()
+                }
             }
             .alert(alertMessage, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) {
@@ -457,8 +461,8 @@ struct EnrollmentDetailsView: View {
         .onAppear(perform: delayText)
     }
     private func delayText() {
-        // Delay of 1.5 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        // Delay of 0.2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             viewModel.textApplicationID = studentAppID ?? ""
             
             schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
@@ -478,6 +482,12 @@ struct EnrollmentDetailsView: View {
                 //                    canEditDegree = false
                 //                    canEditSpeclization = false
                 //                }
+            }
+            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                if formData.status == 1{
+                    //School
+                    //Program
+                }
             }
         }
     }

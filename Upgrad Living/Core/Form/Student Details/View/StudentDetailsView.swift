@@ -35,6 +35,7 @@ struct StudentDetailsView: View {
     @StateObject private var masterViewModel = MasterViewModel()
     @StateObject private var countryViewModel = CountryViewModel()
     @StateObject private var SubmitViewModel = SubmitStudentViewModel()
+    @StateObject private var GetViewModel = GetFormViewModel()
     
     //Module array
     @State private var arrGender = [gender]()
@@ -1207,6 +1208,9 @@ struct StudentDetailsView: View {
                 if SubmitViewModel.isLoadingData{
                     LoadingView()
                 }
+                if GetViewModel.isLoadingData{
+                    LoadingView()
+                }
             }
             .alert(alertMessage, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) {
@@ -1222,8 +1226,9 @@ struct StudentDetailsView: View {
         .onAppear(perform: delayText)
     }
     private func delayText() {
-        // Delay of 0.5 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        // Delay of 0.2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+
             masterViewModel.MasterGet { MasterData in
                 arrGender = MasterData.data?.gender ?? []
                 arrCountry = MasterData.data?.countries ?? []
@@ -1256,6 +1261,41 @@ struct StudentDetailsView: View {
                 countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
                     arrStatePerment = CountryData.data?.states ?? []
                     arrCityPerment = CountryData.data?.cities ?? []
+                }
+            }
+            
+            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                if formData.status == 1{
+                    viewModel.textFirstName = formData.data?.firstName ?? ""
+                    viewModel.textMiddleName = formData.data?.middleName ?? ""
+                    viewModel.textLastName = formData.data?.lastName ?? ""
+                    viewModel.textMobileNumber = formData.data?.mobile ?? ""
+                    viewModel.textEmail = formData.data?.email ?? ""
+                    
+                    //Blood Group
+                    //Date Gender
+                    viewModel.textDOB = formData.data?.dateOfBirth ?? ""
+                    viewModel.textPOB = formData.data?.placeOfBirth ?? ""
+                    viewModel.textNationality = formData.data?.nationality ?? ""
+                    viewModel.textAadharCard = formData.data?.aadhar ?? ""
+                    viewModel.textPanCard = formData.data?.pancard ?? ""
+                    viewModel.textPassport = formData.data?.passport ?? ""
+                    viewModel.textCurrentAddress = formData.data?.cAddress ?? ""
+                    //Current Country
+                    //Current State
+                    //Current City
+                    viewModel.textCurrentPinCode = formData.data?.cPincode ?? ""
+                    let valueSelect = formData.data?.isSameAddress ?? ""
+                    if valueSelect == "on"{
+                        isSelect = true
+                    }else{
+                        isSelect = false
+                    }
+                    viewModel.textPermanentAddress = formData.data?.pAddress ?? ""
+                    //Perment Country
+                    //Perment State
+                    //Perment City
+                    viewModel.textPermanentPinCode = formData.data?.pPincode ?? ""
                 }
             }
         }
@@ -1384,7 +1424,9 @@ struct StudentDetailsView: View {
             return arrBloodGroup.filter {
                 $0.name!.contains(searchTextBloodGroup) ||
                 $0.name!.lowercased().contains(searchTextBloodGroup) ||
-                $0.name!.uppercased().contains(searchTextBloodGroup)
+                $0.name!.uppercased().contains(searchTextBloodGroup) || $0.id!.contains(searchTextBloodGroup) ||
+                $0.id!.lowercased().contains(searchTextBloodGroup) ||
+                $0.id!.uppercased().contains(searchTextBloodGroup)
             }
         }
     }

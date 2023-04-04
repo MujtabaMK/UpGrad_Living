@@ -68,6 +68,7 @@ struct MedicalQuestionView: View {
     @State private var showDeclerationView = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @StateObject private var SubmitViewModel = SubmitMedicalViewModel()
+    @StateObject private var GetViewModel = GetFormViewModel()
     
     var body: some View {
         NavigationView {
@@ -1568,8 +1569,6 @@ struct MedicalQuestionView: View {
                                                 allergies_text: txthealthAllergies,
                                                 surgery: healthSurgery,
                                                 surgery_text: txthealthSurgery,
-                                                diagnosed: "",
-                                                diagnosed_text: "",
                                                 diabetes: diabetes,
                                                 diabetes_text: txtdiabetes,
                                                 hypertension: hypertension,
@@ -1620,6 +1619,12 @@ struct MedicalQuestionView: View {
                         }
                     }
                 }
+                if SubmitViewModel.isLoadingData{
+                    LoadingView()
+                }
+                if GetViewModel.isLoadingData{
+                    LoadingView()
+                }
             }
             .alert(alertMessage, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) {
@@ -1631,6 +1636,56 @@ struct MedicalQuestionView: View {
                 }
             }
             .navigationBarHidden(true)
+        }
+        .onAppear(perform: delayText)
+    }
+    private func delayText() {
+        // Delay of 0.2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            
+            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                if formData.status == 1{
+                    foodPrefrence = formData.data?.dietry ?? ""
+                    txtfoodOther = formData.data?.dietryText ?? ""
+                    foodAllergies = formData.data?.fAllergies ?? ""
+                    txtFoodAllergies = formData.data?.fAllergiesText ?? ""
+                    healthDisability = formData.data?.health ?? ""
+                    txthealthDisability = formData.data?.healthText ?? ""
+                    healthTakingMedication = formData.data?.medication ?? ""
+                    txthealthTakingMedication = formData.data?.medicationText ?? ""
+                    healthAllergies = formData.data?.allergies ?? ""
+                    txthealthAllergies = formData.data?.allergiesText ?? ""
+                    healthSurgery = formData.data?.surgery ?? ""
+                    txthealthSurgery = formData.data?.surgeryText ?? ""
+                    diabetes = formData.data?.diabetes ?? ""
+                    txtdiabetes = formData.data?.diabetesText ?? ""
+                    hypertension = formData.data?.hypertension ?? ""
+                    txthypertension = formData.data?.hypertensionText ?? ""
+                    respiratory = formData.data?.disorders ?? ""
+                    txtrespiratory = formData.data?.disordersText ?? ""
+                    thyroid = formData.data?.disease ?? ""
+                    txtthyroid = formData.data?.diseaseText ?? ""
+                    hivAids = formData.data?.communicable ?? ""
+                    txthivAids = formData.data?.communicableText ?? ""
+                    //Any Blood
+                    liver = formData.data?.liverD ?? ""
+                    txtliver = formData.data?.liverDText ?? ""
+                    heart = formData.data?.heartD ?? ""
+                    txtheart = formData.data?.heartDText ?? ""
+                    arthritis = formData.data?.arthritis ?? ""
+                    txtarthritis =  formData.data?.arthritisText ?? ""
+                    kidney = formData.data?.kidneyD ?? ""
+                    txtkidney = formData.data?.kidneyDText ?? ""
+                    paralysis = formData.data?.paralysis ?? ""
+                    txtparalysis = formData.data?.paralysisText ?? ""
+                    congenital = formData.data?.congenital ?? ""
+                    txtcongenital = formData.data?.congenitalText ?? ""
+                    physicalHandicaps = formData.data?.handicaps ?? ""
+                    txtphysicalHandicaps = formData.data?.handicapsText ?? ""
+                    anyOtherDisease = formData.data?.anyD ?? ""
+                    txtanyOtherDisease = formData.data?.anyDText ?? ""
+                }
+            }
         }
     }
 }

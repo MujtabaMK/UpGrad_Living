@@ -10,6 +10,7 @@ import SwiftUI
 struct RoomTypeView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var submitViewModel = SubmitRoomTypeViewModel()
+    @StateObject private var GetViewModel = GetFormViewModel()
     @State private var borderColor = Color(hex: 0x3CA0D1)
     @State private var SelectedValue = "3"
     @State private var RoomName = "Four Sharing"
@@ -274,6 +275,9 @@ struct RoomTypeView: View {
                 if submitViewModel.isLoadingData{
                     LoadingView()
                 }
+                if GetViewModel.isLoadingData{
+                    LoadingView()
+                }
             }
             .alert(alertMessage, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) {
@@ -284,6 +288,20 @@ struct RoomTypeView: View {
                 }
             }
             .navigationBarHidden(true)
+        }
+        .onAppear(perform: delayText)
+    }
+    private func delayText() {
+        // Delay of 0.2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            
+            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                if formData.status == 1{
+                    SelectedValue = formData.data?.roomTypeID ?? ""
+                    RoomName = formData.data?.roomType ?? ""
+                    PaymentMethod = formData.data?.paymentOption ?? ""
+                }
+            }
         }
     }
 }

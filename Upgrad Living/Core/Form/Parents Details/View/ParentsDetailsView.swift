@@ -12,6 +12,7 @@ struct ParentsDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = ParentContentViewModel()
     @StateObject private var submitViewModel = SubmitParentViewModel()
+    @StateObject private var GetViewModel = GetFormViewModel()
     @State private var borderColor = Color(hex: 0x00B2BA)
     @State private var canEditCurrentCountry = false
     @State private var canEditCurrentState = false
@@ -47,7 +48,7 @@ struct ParentsDetailsView: View {
     
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @FocusState private var focusedField: FoucesedParentTextField?
-    
+        
     var getIsEditable: String
     var body: some View {
         NavigationView {
@@ -838,6 +839,9 @@ struct ParentsDetailsView: View {
                 if submitViewModel.isLoadingData{
                     LoadingView()
                 }
+                if GetViewModel.isLoadingData{
+                    LoadingView()
+                }
             }
             .alert(alertMessage, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) {
@@ -854,8 +858,8 @@ struct ParentsDetailsView: View {
     }
     
     private func delayText() {
-        // Delay of 1.5 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        // Delay of 0.2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             masterViewModel.MasterGet { MasterData in
                 arrCountry = MasterData.data?.countries ?? []
                 
@@ -873,9 +877,33 @@ struct ParentsDetailsView: View {
                     arrCityCurrent = CountryData.data?.cities ?? []
                 }
             }
+            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                if formData.status == 1{
+                    viewModel.textFatherFirstName = formData.data?.fFirstName ?? ""
+                    viewModel.textFatherMiddleName = formData.data?.fMiddleName ?? ""
+                    viewModel.textFatherLastName = formData.data?.fLastName ?? ""
+                    viewModel.textFatherMobileNumber = formData.data?.fMobile ?? ""
+                    viewModel.textFatherEmail = formData.data?.fEmail ?? ""
+                    viewModel.textMotherFirstName = formData.data?.mFirstName ?? ""
+                    viewModel.textMotherMiddleName = formData.data?.mMiddleName ?? ""
+                    viewModel.textMotherLastName = formData.data?.mLastName ?? ""
+                    viewModel.textMotherMobileNumber = formData.data?.mMobile ?? ""
+                    viewModel.textMotherEmail = formData.data?.mEmail ?? ""
+                    viewModel.textGuardianFirstName = formData.data?.gFirstName ?? ""
+                    viewModel.textGuardianMiddleName = formData.data?.gMiddleName ?? ""
+                    viewModel.textGuardianLastName = formData.data?.gLastName ?? ""
+                    viewModel.textGuardianMobileNumber = formData.data?.gMobile ?? ""
+                    viewModel.textGuardianEmail = formData.data?.gEmail ?? ""
+                    viewModel.textGuardianRelationship = formData.data?.gRelation ?? ""
+                    viewModel.textCurrentAddress = formData.data?.gAddress ?? ""
+                    //Country
+                    //State
+                    //City
+                    viewModel.textCurrentPincode = formData.data?.gPincode ?? ""
+                }
+            }
         }
     }
-    
     
     //Father
     @State private var editingTextFieldFatherFirstName = false {
@@ -1030,8 +1058,8 @@ struct ParentsDetailsView: View {
     }
 }
 
-struct ParentsDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ParentsDetailsView(getIsEditable: "1")
-    }
-}
+//struct ParentsDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ParentsDetailsView(getIsEditable: "1", formData: <#FormDataClass#>)
+//    }
+//}

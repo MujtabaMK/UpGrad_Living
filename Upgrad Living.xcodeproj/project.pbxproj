@@ -41,6 +41,8 @@
 		096A400429CC2D5800092AAC /* HexColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A400029CC2D5700092AAC /* HexColour.swift */; };
 		096A400529CC2D5800092AAC /* extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A400129CC2D5700092AAC /* extention.swift */; };
 		096A400629CC2D5800092AAC /* customLodingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A400229CC2D5800092AAC /* customLodingIndicator.swift */; };
+		0981D9B729DBFA650025575D /* GetFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981D9B629DBFA650025575D /* GetFormModel.swift */; };
+		0981D9B929DBFBF50025575D /* GetFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981D9B829DBFBF50025575D /* GetFormViewModel.swift */; };
 		098A04D029D407C400C9595A /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A04CF29D407C400C9595A /* StudentDetailsView.swift */; };
 		098A04D429D4111100C9595A /* DetailsViewTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A04D329D4111100C9595A /* DetailsViewTop.swift */; };
 		098A04D829D42EC700C9595A /* MasterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A04D729D42EC700C9595A /* MasterModel.swift */; };
@@ -143,6 +145,8 @@
 		096A400029CC2D5700092AAC /* HexColour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColour.swift; sourceTree = "<group>"; };
 		096A400129CC2D5700092AAC /* extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extention.swift; sourceTree = "<group>"; };
 		096A400229CC2D5800092AAC /* customLodingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customLodingIndicator.swift; sourceTree = "<group>"; };
+		0981D9B629DBFA650025575D /* GetFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormModel.swift; sourceTree = "<group>"; };
+		0981D9B829DBFBF50025575D /* GetFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormViewModel.swift; sourceTree = "<group>"; };
 		098A04CF29D407C400C9595A /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
 		098A04D329D4111100C9595A /* DetailsViewTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewTop.swift; sourceTree = "<group>"; };
 		098A04D729D42EC700C9595A /* MasterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterModel.swift; sourceTree = "<group>"; };
@@ -441,6 +445,7 @@
 				098A04E329D4538200C9595A /* CountryViewModel.swift */,
 				0993226929D6C81A0036C050 /* FoucesedStudentTextField.swift */,
 				0993227129D6F9810036C050 /* SubmitStudentViewModel.swift */,
+				0981D9B829DBFBF50025575D /* GetFormViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				098A04D729D42EC700C9595A /* MasterModel.swift */,
 				098A04E129D452F800C9595A /* CountryModel.swift */,
 				0993226F29D6F9400036C050 /* SubmitStudentModel.swift */,
+				0981D9B629DBFA650025575D /* GetFormModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -941,6 +947,7 @@
 				09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */,
 				0931A90829D7EE7700F6A209 /* SubmitParentViewModel.swift in Sources */,
 				098D698B29CD702C0000F5A9 /* MaterialDesignTextField.swift in Sources */,
+				0981D9B929DBFBF50025575D /* GetFormViewModel.swift in Sources */,
 				09DE74AC29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift in Sources */,
 				0934F12F29CC57AE0076AD56 /* OTPViewModel.swift in Sources */,
 				0993227029D6F9400036C050 /* SubmitStudentModel.swift in Sources */,
@@ -960,6 +967,7 @@
 				098A04E029D44FE400C9595A /* MaterialDesignTextEditorCountry.swift in Sources */,
 				09DE74BC29D56977001B105A /* RoomTypeView.swift in Sources */,
 				098A04E429D4538200C9595A /* CountryViewModel.swift in Sources */,
+				0981D9B729DBFA650025575D /* GetFormModel.swift in Sources */,
 				09DE74B429D55DBD001B105A /* EnrollmentContentViewModel.swift in Sources */,
 				09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */,
 				099490D329DAB5FF002FA2C0 /* BookingStudentProcessView.swift in Sources */,

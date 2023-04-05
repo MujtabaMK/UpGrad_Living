@@ -1,0 +1,15 @@
+<svg width="152" height="151" viewBox="0 0 152 151" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="42.5" y="38" width="76" height="75" rx="37.5" fill="#F36773"/>
+<path d="M63.5 76.2245L74.6781 87L97.5 65" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M118.5 119C120.552 119.221 124.925 121.524 126.65 124.069C128.376 126.615 129.356 131.02 129.5 133" stroke="#00C5CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.9348 98.3276C22.2832 98.459 22.6328 98.5658 22.9828 98.6498C23.6901 96.2604 23.7528 94.0364 23.4565 92.9641C22.8043 90.6041 19.5435 87.8149 17.1522 89.5313C14.7609 91.2477 14.5435 95.5386 21.9348 98.3276Z" fill="#CDC8EC"/>
+<path d="M36.5 92.9641C34.1087 95.6816 27.8478 100.559 21.9348 98.3276C14.5435 95.5386 14.7609 91.2477 17.1522 89.5313C19.5435 87.8149 22.8043 90.6041 23.4565 92.9641C24.1087 95.324 23.0217 103.262 17.1522 106.266C11.2826 109.269 3.45652 107.768 1.5 106.266" stroke="#CDC8EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M130.5 17.0445C127.706 16.686 121.859 18.335 120.827 27.7993C119.795 37.2637 111.512 39.1996 107.5 38.9845" stroke="#3D5CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="24.5" cy="56" r="5" fill="#00B2BA"/>
+<circle cx="56" cy="15.5" r="4.5" fill="#F9B3B9"/>
+<circle cx="69" cy="23.5" r="2.5" fill="#F9B3B9"/>
+<circle cx="138" cy="72.5" r="4.5" fill="#CDC8EC"/>
+<circle cx="41.5" cy="125" r="5" fill="#F9B3B9"/>
+<circle cx="99" cy="138.5" r="4.5" fill="#F9D2DD"/>
+<circle cx="85.5" cy="134" r="3" fill="#F04957"/>
+</svg>

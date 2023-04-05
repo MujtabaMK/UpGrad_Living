@@ -18,6 +18,7 @@ struct FormDeclerationView: View {
     @State private var showingAlert = false
     @State private var AlertShow = String()
     @State private var isAccept = false
+    @State private var isSecurityDeposit = false
     
     @State private var isButtonClick = false
     
@@ -80,7 +81,7 @@ struct FormDeclerationView: View {
                                             accept: "on",
                                             appId: studentAppID ?? "") { DocumentationData in
                                                 if DocumentationData.status == 1{
-                                                    
+                                                    isSecurityDeposit = true
                                                 }else{
                                                     alertMessage = DocumentationData.msg ?? ""
                                                     AlertShow = "0"
@@ -92,6 +93,7 @@ struct FormDeclerationView: View {
                                 .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                         }
                         .padding(.bottom)
+                        NavigationLink("", destination: SecurityDepositView().navigationBarHidden(true),isActive: $isSecurityDeposit).isDetailLink(false)
                     }
                     if submitViewModel.isLoadingData{
                         LoadingView()

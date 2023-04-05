@@ -104,7 +104,7 @@ struct StudentDetailsView: View {
                                 .padding(.leading, 20)
                         }
                         Spacer(minLength: 0)
-                        Text("Profile")
+                        Text("Application Form")
                             .font(.custom(OpenSans_Bold, size: 18))
                             .foregroundColor(Color(hex: 0x000000))
                             .padding(.trailing, 30)
@@ -391,11 +391,11 @@ struct StudentDetailsView: View {
                                 .onTapGesture {
                                     editingTextFieldDOB = true
                                     showDatePickerAlert()
-                                    convertDate()
+                                    //convertDate()
                                 }
                                 .onSubmit {
                                     editingTextFieldDOB = true
-                                    convertDate()
+                                    //convertDate()
                                 }
                                 
                                 //Place of Birth
@@ -1086,7 +1086,7 @@ struct StudentDetailsView: View {
                                             AlertShow = "0"
                                             value.scrollTo(2)
                                             showingAlert = true
-                                        }else if viewModel.hintGender != "Success"{
+                                        }else if viewModel.textGender.isEmpty{
                                             alertMessage = "Please Select Gender"
                                             AlertShow = "0"
                                             value.scrollTo(2)
@@ -1106,7 +1106,7 @@ struct StudentDetailsView: View {
                                             AlertShow = "0"
                                             focusedField = .nationality
                                             showingAlert = true
-                                        }else if viewModel.hintAadhar != "Success"{
+                                        }else if viewModel.textAadharCard.isEmpty{
                                             alertMessage = "Please Enter Aadhar Card Number"
                                             AlertShow = "0"
                                             focusedField = .aadharCard
@@ -1228,7 +1228,61 @@ struct StudentDetailsView: View {
     private func delayText() {
         // Delay of 0.2 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-
+            
+            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                if formData.status == 1{
+                    viewModel.textFirstName = formData.data?.firstName ?? ""
+                    viewModel.textMiddleName = formData.data?.middleName ?? ""
+                    viewModel.textLastName = formData.data?.lastName ?? ""
+                    viewModel.textMobileNumber = formData.data?.mobile ?? ""
+                    viewModel.textEmail = formData.data?.email ?? ""
+                    viewModel.textBloodGroup = formData.data?.bloddGroup ?? ""
+                    bloodGroupId = formData.data?.bloddGroupID ?? ""
+                    viewModel.textGender = formData.data?.genderName ?? ""
+                    genderId = formData.data?.gender ?? ""
+                    viewModel.textDOB = formData.data?.dateOfBirth ?? ""
+                    viewModel.textPOB = formData.data?.placeOfBirth ?? ""
+                    viewModel.textNationality = formData.data?.nationality ?? ""
+                    viewModel.textAadharCard = formData.data?.aadhar ?? ""
+                    viewModel.textPanCard = formData.data?.pancard ?? ""
+                    viewModel.textPassport = formData.data?.passport ?? ""
+                    viewModel.textCurrentAddress = formData.data?.cAddress ?? ""
+                    viewModel.textCurrentCountry = formData.data?.cCountryName ?? ""
+                    currentCountryID = formData.data?.cCountry ?? ""
+                    print(currentCountryID)
+                    viewModel.textCurrentState = formData.data?.cStateName ?? ""
+                    currentStateId = formData.data?.cState ?? ""
+                    viewModel.textCurrentCity = formData.data?.cCityName ?? ""
+                    currentCityId = formData.data?.cCity ?? ""
+                    print(currentCityId)
+                    
+                    viewModel.textCurrentPinCode = formData.data?.cPincode ?? ""
+                    let valueSelect = formData.data?.isSameAddress ?? ""
+                    if valueSelect == "on"{
+                        isSelect = true
+                    }else{
+                        isSelect = false
+                    }
+                    viewModel.textPermanentAddress = formData.data?.pAddress ?? ""
+                    viewModel.textPermanentCountry = formData.data?.pCountryName ?? ""
+                    permentCountryID = formData.data?.pCountry ?? ""
+                    viewModel.textPermanentState = formData.data?.pStateName ?? ""
+                    permentStateId = formData.data?.pState ?? ""
+                    viewModel.textPermanentCity = formData.data?.pCityName ?? ""
+                    permentCityId = formData.data?.pCity ?? ""
+                    viewModel.textPermanentPinCode = formData.data?.pPincode ?? ""
+                    
+                    countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
+                        arrStateCurrent = CountryData.data?.states ?? []
+                        arrCityCurrent = CountryData.data?.cities ?? []
+                    }
+                    countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
+                        arrStatePerment = CountryData.data?.states ?? []
+                        arrCityPerment = CountryData.data?.cities ?? []                        
+                    }
+                }
+            }
+            
             masterViewModel.MasterGet { MasterData in
                 arrGender = MasterData.data?.gender ?? []
                 arrCountry = MasterData.data?.countries ?? []
@@ -1254,50 +1308,20 @@ struct StudentDetailsView: View {
                     canEditPermentState = false
                     canEditPermentCity = false
                 }
+                
                 countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
                     arrStateCurrent = CountryData.data?.states ?? []
                     arrCityCurrent = CountryData.data?.cities ?? []
+                    print(arrCityCurrent)
+                    
                 }
                 countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
                     arrStatePerment = CountryData.data?.states ?? []
                     arrCityPerment = CountryData.data?.cities ?? []
                 }
             }
-            
-            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
-                if formData.status == 1{
-                    viewModel.textFirstName = formData.data?.firstName ?? ""
-                    viewModel.textMiddleName = formData.data?.middleName ?? ""
-                    viewModel.textLastName = formData.data?.lastName ?? ""
-                    viewModel.textMobileNumber = formData.data?.mobile ?? ""
-                    viewModel.textEmail = formData.data?.email ?? ""
-                    
-                    //Blood Group
-                    //Date Gender
-                    viewModel.textDOB = formData.data?.dateOfBirth ?? ""
-                    viewModel.textPOB = formData.data?.placeOfBirth ?? ""
-                    viewModel.textNationality = formData.data?.nationality ?? ""
-                    viewModel.textAadharCard = formData.data?.aadhar ?? ""
-                    viewModel.textPanCard = formData.data?.pancard ?? ""
-                    viewModel.textPassport = formData.data?.passport ?? ""
-                    viewModel.textCurrentAddress = formData.data?.cAddress ?? ""
-                    //Current Country
-                    //Current State
-                    //Current City
-                    viewModel.textCurrentPinCode = formData.data?.cPincode ?? ""
-                    let valueSelect = formData.data?.isSameAddress ?? ""
-                    if valueSelect == "on"{
-                        isSelect = true
-                    }else{
-                        isSelect = false
-                    }
-                    viewModel.textPermanentAddress = formData.data?.pAddress ?? ""
-                    //Perment Country
-                    //Perment State
-                    //Perment City
-                    viewModel.textPermanentPinCode = formData.data?.pPincode ?? ""
-                }
-            }
+           
+
         }
     }
     @State private var editingTextFieldFirstName = false {
@@ -1509,10 +1533,8 @@ struct StudentDetailsView: View {
     func convertDate(){
         // Create Date Formatter
         let dateFormatter = DateFormatter()
-        
         // Set Date Format
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        
         // Convert Date to String
         viewModel.textDOB =  dateFormatter.string(from: todayDate)
         print(viewModel.textDOB)

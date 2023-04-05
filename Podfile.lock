@@ -1,20 +1,32 @@
 PODS:
   - Introspect (0.2.3)
   - lottie-ios (3.3.0)
+  - Macaw (0.9.7):
+    - SWXMLHash
+  - SVGView (1.0.4)
+  - SWXMLHash (7.0.0)
 
 DEPENDENCIES:
   - Introspect
   - lottie-ios
+  - Macaw (= 0.9.7)
+  - SVGView
 
 SPEC REPOS:
   trunk:
     - Introspect
     - lottie-ios
+    - Macaw
+    - SVGView
+    - SWXMLHash
 
 SPEC CHECKSUMS:
   Introspect: 6917895ed34004271bc8d75a75db6c07839fa971
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  Macaw: 4a931baf9a9826b06d0d8ecf300014c962ab9d50
+  SVGView: 4813b73e85fcea6c7ff92720cf1e778c48d0f0db
+  SWXMLHash: cf8682ebf12f124e77554d6a5f9170830626d99e
 
-PODFILE CHECKSUM: a410b224267c2860dda71de1b5f927bc2324189d
+PODFILE CHECKSUM: 9d8f6c817ecd15f656fad0157b6c8ae263af42fb
 
 COCOAPODS: 1.11.2

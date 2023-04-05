@@ -8,6 +8,7 @@ target 'Upgrad Living' do
   # Pods for Upgrad Living
   pod 'lottie-ios'
   pod 'Introspect'
-
+  pod "Macaw", "0.9.7"
+  pod 'SVGView'
 
 end

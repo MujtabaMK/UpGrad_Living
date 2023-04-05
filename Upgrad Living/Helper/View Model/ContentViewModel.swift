@@ -202,7 +202,7 @@ final class ContentViewModel: ObservableObject {
         }
     }
     func validateTextAadhar() {
-        if textAadharCard.count > 2{
+        if textAadharCard.count > 1{
             textAadharValid = true
             hintAadhar = "Success"
         }else{

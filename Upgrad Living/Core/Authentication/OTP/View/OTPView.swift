@@ -14,7 +14,7 @@ struct OTPView: View {
     @State private var OTP3 = ""
     @State private var OTP4 = ""
     @FocusState private var loginFieldFocus: LogInField?
-    @State private var isStudentView = false
+    @State private var isBookingView = false
     @State private var Last4DigitMobileNumber = ""
     @Binding var newMobile: String
     @Binding var isApplicationId: Bool
@@ -22,6 +22,7 @@ struct OTPView: View {
     @State private var showingAlert = false
     @State private var AlertMessage = String()
     @StateObject var viewModel = OTPViewModel()
+    @StateObject private var loginViewModel = LoginViewModel()
     @State private var loginDict = [String: Any?]()
     var body: some View {
         NavigationView{
@@ -114,8 +115,11 @@ struct OTPView: View {
                             HStack{
                                 Spacer()
                                 Button {
-                                    
-                                    
+                                    loginViewModel.fetchLoginDate(mobile: newMobile) { loginData in
+                                        if loginData.status == 1{
+                                            
+                                        }
+                                    }
                                 } label: {
                                     Text("Didn’t receive code?")
                                         .font(.custom(OpenSans_Regular, size: 12))
@@ -140,7 +144,7 @@ struct OTPView: View {
                                                 }
 //                                                loginDict = getLoginOTPData(dict: OTPData.data!)
                                                 UserDefaults.standard.set(true, forKey: "isLogin")
-                                                isStudentView = true
+                                                isBookingView = true
                                             }
                                         }else{
                                             AlertMessage = OTPData.msg ?? ""
@@ -177,7 +181,7 @@ struct OTPView: View {
                             .shadow(color: .gray, radius: 10, x: 0, y: 0)
                     )
                     Spacer()
-                    NavigationLink("", destination: StudentDetailsView(getIsEditable: "1").navigationBarHidden(true),isActive: $isStudentView).isDetailLink(false)
+                    NavigationLink("", destination: BookingProcessView().navigationBarHidden(true),isActive: $isBookingView).isDetailLink(false)
                 }
                 .onAppear{
                     let lastDigit = Last4dight(MobileNumber: newMobile)
@@ -186,6 +190,9 @@ struct OTPView: View {
                     
                 }
                 if viewModel.isLoadingData{
+                    LoadingView()
+                }
+                if loginViewModel.isLoadingData{
                     LoadingView()
                 }
             }

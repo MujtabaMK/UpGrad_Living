@@ -485,8 +485,10 @@ struct EnrollmentDetailsView: View {
             }
             GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
                 if formData.status == 1{
-                    //School
-                    //Program
+                    viewModel.textSchool = formData.data?.schoolName ?? ""
+                    SchoolID = formData.data?.school ?? ""
+                    viewModel.textProgram = formData.data?.programName ?? ""
+                    ProgramID = formData.data?.program ?? ""
                 }
             }
         }

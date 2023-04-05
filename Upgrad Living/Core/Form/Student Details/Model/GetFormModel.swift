@@ -40,6 +40,12 @@ struct FormDataClass: Codable {
     let kidneyD, kidneyDText, paralysis, paralysisText: String?
     let congenital, congenitalText, handicaps, handicapsText: String?
     let anyD, anyDText, accept: String?
+    let clotting, clottingText, recentlyCovid, recentlyCovidText: String?
+    let covidVaccine, covidVaccineText: String?
+    let genderName,cCountryName, cStateName,cCityName: String?
+    let pCountryName, pStateName,pCityName: String?
+    let schoolName, programName: String?
+    let gCountryName, gStateName, gCityName: String?
     
     enum CodingKeys: String, CodingKey {
         case pkid, firstName, middleName, lastName, mobile, email
@@ -88,5 +94,15 @@ struct FormDataClass: Codable {
         case anyD = "any_d"
         case anyDText = "any_d_text"
         case accept
+        case clotting
+        case clottingText = "clotting_text"
+        case recentlyCovid = "recently_covid"
+        case recentlyCovidText = "recently_covid_text"
+        case covidVaccine = "covid_vaccine"
+        case covidVaccineText = "covid_vaccine_text"
+        case genderName,cCountryName,cStateName,cCityName
+        case pCountryName,pStateName,pCityName
+        case schoolName,programName
+        case gCountryName,gStateName,gCityName
     }
 }

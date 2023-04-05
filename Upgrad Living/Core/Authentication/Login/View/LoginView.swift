@@ -48,37 +48,43 @@ struct LoginView: View {
                     .padding(.horizontal)
                     
                     VStack(alignment: .center){
-                        TextField("", text: $txtMobile)
-                            .keyboardType(.phonePad)
-                            .disableAutocorrection(true)
-                            .multilineTextAlignment(.center)
-                            .frame(height: 40)
-                            .cornerRadius(4)
-                            .overlay(
-                                RoundedRectangle(
-                                    cornerRadius: 4).strokeBorder(Color(hex: 0x969696),
-                                                                  style: StrokeStyle(lineWidth: 0.5))
-                            )
-                            .toolbar {
-                                ToolbarItemGroup(placement: .keyboard) {
-                                    Spacer()
-                                    Button("Done") {
-                                        hideKeyboard()
+                        HStack{
+                            Rectangle()
+                                .fill(.clear)
+                                .frame(width: 4, height: 40)
+                            TextField("", text: $txtMobile)
+                                .keyboardType(.phonePad)
+                                .disableAutocorrection(true)
+                                .multilineTextAlignment(.leading)
+                                .frame(height: 40)
+                                .cornerRadius(4)
+                                .toolbar {
+                                    ToolbarItemGroup(placement: .keyboard) {
+                                        Spacer()
+                                        Button("Done") {
+                                            hideKeyboard()
+                                        }
                                     }
                                 }
-                            }
-                            .onChange(of: txtMobile, perform: { newValue in
-                                if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
-     
-                                } else {
-                                   
+                                .onChange(of: txtMobile, perform: { newValue in
+                                    if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
+         
+                                    } else {
+                                       
+                                    }
+                                })
+                                .onReceive(Just(txtMobile)) { newValue in
+                                    if txtMobile.count > 10 {
+                                        txtMobile = String(txtMobile.prefix(10))
+                                    }
                                 }
-                            })
-                            .onReceive(Just(txtMobile)) { newValue in
-                                if txtMobile.count > 10 {
-                                    txtMobile = String(txtMobile.prefix(10))
-                                }
-                            }
+                        }
+                        .overlay(
+                            RoundedRectangle(
+                                cornerRadius: 4).strokeBorder(Color(hex: 0x969696),
+                                                              style: StrokeStyle(lineWidth: 0.5))
+                        )
+
                     }
                     .padding()
                     VStack{

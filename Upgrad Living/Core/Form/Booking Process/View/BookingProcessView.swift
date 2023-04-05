@@ -63,7 +63,6 @@ struct BookingProcessView: View {
                                     .frame(width: 186, height: 205)
                             }
                             .padding(.top, -860)
-                            
                         }
                     }
                 }

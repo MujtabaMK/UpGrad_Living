@@ -549,8 +549,8 @@ struct ParentsDetailsView: View {
                                     ShowCurrentStateDropDown = false
                                     ShowCurrentCityDropDown = false
                                 }
+                                .padding(.bottom, ShowCurrentStateDropDown ? 0 : 10)
                             }
-                            .padding(.bottom)
                             
                             if ShowCurrentCountryDropDown{
                                 VStack(alignment: .leading){
@@ -618,7 +618,7 @@ struct ParentsDetailsView: View {
                                     ShowCurrentStateDropDown = false
                                     ShowCurrentCityDropDown = false
                                 }
-                                .padding(.bottom)
+                                .padding(.bottom, ShowCurrentStateDropDown ? 0 : 10)
                             }
                             if !viewModel.textCurrentCountry.isEmpty{
                                 if ShowCurrentStateDropDown{
@@ -685,9 +685,8 @@ struct ParentsDetailsView: View {
                                     ShowCurrentStateDropDown = false
                                     ShowCurrentCityDropDown = false
                                 }
+                                .padding(.bottom, ShowCurrentStateDropDown ? 0 : 10)
                             }
-                            .padding(.bottom)
-                            
                             if !viewModel.textCurrentState.isEmpty{
                                 if ShowCurrentCityDropDown{
                                     VStack(alignment: .leading){
@@ -872,10 +871,12 @@ struct ParentsDetailsView: View {
                     canEditCurrentState = false
                     canEditCurrentCity = false
                 }
+                
                 countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
                     arrStateCurrent = CountryData.data?.states ?? []
                     arrCityCurrent = CountryData.data?.cities ?? []
                 }
+                
             }
             GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
                 if formData.status == 1{
@@ -896,10 +897,18 @@ struct ParentsDetailsView: View {
                     viewModel.textGuardianEmail = formData.data?.gEmail ?? ""
                     viewModel.textGuardianRelationship = formData.data?.gRelation ?? ""
                     viewModel.textCurrentAddress = formData.data?.gAddress ?? ""
-                    //Country
-                    //State
-                    //City
+                    viewModel.textCurrentCountry = formData.data?.gCountryName ?? ""
+                    currentCountryID = formData.data?.gCountry ?? ""
+                    viewModel.textCurrentState = formData.data?.gStateName ?? ""
+                    currentStateId = formData.data?.gState ?? ""
+                    viewModel.textCurrentCity = formData.data?.gCityName ?? ""
+                    currentCityId = formData.data?.gCity ?? ""
                     viewModel.textCurrentPincode = formData.data?.gPincode ?? ""
+                    
+                    countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
+                        arrStateCurrent = CountryData.data?.states ?? []
+                        arrCityCurrent = CountryData.data?.cities ?? []
+                    }
                 }
             }
         }

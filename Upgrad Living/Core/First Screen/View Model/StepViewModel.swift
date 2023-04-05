@@ -1,30 +1,27 @@
 //
-//  SubmitDocumentaionViewModel.swift
+//  StepViewModel.swift
 //  Upgrad Living
 //
-//  Created by Mujtaba Khan on 01/04/23.
+//  Created by Mujtaba Khan on 05/04/23.
 //
 
 import Foundation
 
-class SubmitDocumentaionViewModel: ObservableObject {
-    @Published var coins = SubmitDocumentaionModel.self
+class StepViewModel: ObservableObject {
+    @Published var coins = StepModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""
 
-    func fetchLoginDate(accept: String,
-                        appId: String,
-                        complition: @escaping (SubmitDocumentaionModel) -> Void){
+    func fetchLoginDate(appId: String,complition: @escaping (StepModel) -> Void){
         self.isLoadingData = true
-        let urlString = Documentation_Details_Submit_API
+        let urlString = GET_Step
         
         guard let url = URL(string: urlString) else { return }
         var resuest = URLRequest(url: url)
         resuest.httpMethod = "POST"
         let parameter = [
-            "accept": accept,
-            "appId":appId,
+            "appId": appId,
         ]
         
         print(parameter)
@@ -54,7 +51,7 @@ class SubmitDocumentaionViewModel: ObservableObject {
             guard let datavalue = data else { return }
             print(datavalue)
             do{
-                let login = try JSONDecoder().decode(SubmitDocumentaionModel.self, from: datavalue)
+                let login = try JSONDecoder().decode(StepModel.self, from: datavalue)
                 DispatchQueue.main.async {
                     self.isLoadingData = false
                     complition(login)
@@ -68,4 +65,3 @@ class SubmitDocumentaionViewModel: ObservableObject {
         }.resume()
     }
 }
-

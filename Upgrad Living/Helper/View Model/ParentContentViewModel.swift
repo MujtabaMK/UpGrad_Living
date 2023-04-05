@@ -29,7 +29,7 @@ final class ParentContentViewModel: ObservableObject {
     let placeholderGuardianLastName = "Guardian’s Last Name"
     let placeholderGuardianMobileNumber = "Guardian’s Mobile Number"
     let placeholderGuardianEmail = "Guardian’s Email"
-    let placeholderGuardianRelationship = "Relationship to you"
+    let placeholderGuardianRelationship = "Relationship with student"
     
     //Adress
     let placeholderCurrentAddress = "Address of Current Residence"
@@ -58,7 +58,7 @@ final class ParentContentViewModel: ObservableObject {
     @Published var hintGuardianLastName = "Guardian’s Last Name"
     @Published var hintGuardianMobileNumber = "Guardian’s Mobile Number"
     @Published var hintGuardianEmail = "Guardian’s Email"
-    @Published var hintGuardianRelationship = "Relationship to you"
+    @Published var hintGuardianRelationship = "Relationship with student"
     
     //Adress
     @Published var hintCurrentAddress = "Address of Current Residence"

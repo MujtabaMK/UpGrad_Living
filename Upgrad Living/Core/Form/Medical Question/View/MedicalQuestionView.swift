@@ -1667,7 +1667,6 @@ struct MedicalQuestionView: View {
                     txtthyroid = formData.data?.diseaseText ?? ""
                     hivAids = formData.data?.communicable ?? ""
                     txthivAids = formData.data?.communicableText ?? ""
-                    //Any Blood
                     liver = formData.data?.liverD ?? ""
                     txtliver = formData.data?.liverDText ?? ""
                     heart = formData.data?.heartD ?? ""
@@ -1684,6 +1683,12 @@ struct MedicalQuestionView: View {
                     txtphysicalHandicaps = formData.data?.handicapsText ?? ""
                     anyOtherDisease = formData.data?.anyD ?? ""
                     txtanyOtherDisease = formData.data?.anyDText ?? ""
+                    anyBlood = formData.data?.clotting ?? ""
+                    txtAnyBlood = formData.data?.clottingText ?? ""
+                    testedPositive = formData.data?.recentlyCovid ?? ""
+                    txttestedPositive = formData.data?.recentlyCovidText ?? ""
+                    bothDoses = formData.data?.covidVaccine ?? ""
+                    txtBothDoses = formData.data?.covidVaccineText ?? ""
                 }
             }
         }

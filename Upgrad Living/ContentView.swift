@@ -9,58 +9,85 @@ import SwiftUI
 //import SVGView
 
 struct ContentView: View {
-    
+    @Environment(\.presentationMode) var presentationMode
     @State private var isUpper = false
     @State private var isLeft = false
     @State private var isRight = false
     @State private var isBottom = false
     var body: some View {
-        VStack{
-            EmailShape()
-                .frame(width: 60, height: 50)
-                .foregroundColor(.black)
-                .onTapGesture {
-                    print("Clicked")
-                }
-            
-            ZStack{
-                ZStack{
-                    EmailBorder()
-                }
-                ZStack{
-                    EmailUpper()
-                        .foregroundColor(isUpper ? .blue : .white)
-                        .onTapGesture {
-                            print("Upper")
-                            isUpper.toggle()
+        NavigationView {
+            VStack{
+                HStack{
+                    Button {
+                        withAnimation() {
+                            presentationMode.wrappedValue.dismiss()
                         }
+                    } label: {
+                        Image("back_Button")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .padding(.leading, 20)
+                    }
+                    Spacer(minLength: 0)
+                    Text("Declaration")
+                        .font(.custom(OpenSans_SemiBold, size: 18))
+                        .foregroundColor(Color(hex: 0x000000))
+                        .padding(.trailing, 30)
+                    Spacer(minLength: 0)
                 }
+                .padding(.top)
+                Divider()
+                Spacer()
+                
+                EmailShape()
+                    .frame(width: 60, height: 50)
+                    .foregroundColor(.black)
+                    .onTapGesture {
+                        print("Clicked")
+                    }
+                
                 ZStack{
-                    EmailLeft()
-                        .foregroundColor(isLeft ? .red : .white)
-                        .onTapGesture {
-                            print("Left")
-                            isLeft.toggle()
-                        }
+                    ZStack{
+                        EmailBorder()
+                    }
+                    ZStack{
+                        EmailUpper()
+                            .foregroundColor(isUpper ? .blue : .white)
+                            .onTapGesture {
+                                print("Upper")
+                                isUpper.toggle()
+                            }
+                    }
+                    ZStack{
+                        EmailLeft()
+                            .foregroundColor(isLeft ? .red : .white)
+                            .onTapGesture {
+                                print("Left")
+                                isLeft.toggle()
+                            }
+                    }
+                    ZStack{
+                        EmailRight()
+                            .foregroundColor(isRight ? .orange : .white)
+                            .onTapGesture {
+                                print("Right")
+                                isRight.toggle()
+                            }
+                    }
+                    ZStack{
+                        EmailBotton()
+                            .foregroundColor(isBottom ? .purple : .white)
+                            .onTapGesture {
+                                print("Bottom")
+                                isBottom.toggle()
+                            }
+                    }
                 }
-                ZStack{
-                    EmailRight()
-                        .foregroundColor(isRight ? .orange : .white)
-                        .onTapGesture {
-                            print("Right")
-                            isRight.toggle()
-                        }
-                }
-                ZStack{
-                    EmailBotton()
-                        .foregroundColor(isBottom ? .purple : .white)
-                        .onTapGesture {
-                            print("Bottom")
-                            isBottom.toggle()
-                        }
-                }
+                .frame(width: 100, height: 90)
+                Spacer()
             }
-            .frame(width: 100, height: 90)
+            .navigationBarHidden(true)
         }
     }
 }

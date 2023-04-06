@@ -9,9 +9,11 @@ import SwiftUI
 
 struct SecurityDepositSuccess: View {
     @State private var isButtonClick = false
+    @State private var isUploadDocument = false
     var body: some View {
         NavigationView {
             VStack(alignment: .center){
+                Spacer()
                 Image("Security_Payment_Success")
                     .resizable()
                     .scaledToFit()
@@ -43,14 +45,17 @@ struct SecurityDepositSuccess: View {
                     .padding(.bottom, 3)
                     .onTapGesture {
                         isButtonClick = true
+                        isUploadDocument = true
                     }
                     .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                 Text("*You will be able to upload the \ndocuments only post 15th April 2023")
                     .font(.custom(OpenSans_SemiBold, size: 14))
                     .foregroundColor(Color(hex: 0xDE1223))
                     .multilineTextAlignment(.center)
+                NavigationLink("", destination: ContentView().navigationBarHidden(true),isActive: $isUploadDocument).isDetailLink(false)
                 Spacer()
             }
+            .navigationBarHidden(true)
         }
     }
 }

@@ -23,7 +23,11 @@ struct OTPView: View {
     @State private var AlertMessage = String()
     @StateObject var viewModel = OTPViewModel()
     @StateObject private var loginViewModel = LoginViewModel()
+    @StateObject private var stepViewModel = StepViewModel()
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var loginDict = [String: Any?]()
+    @State private var isSecurityDeposite = false
+    @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     var body: some View {
         NavigationView{
             ZStack{
@@ -136,20 +140,35 @@ struct OTPView: View {
                             Button {
                                 let MobileOTP = OTP1 + OTP2 + OTP3 + OTP4
                                 if MobileOTP.count == 4{
-                                    viewModel.fetchLoginDate(mobile: newMobile, otp: MobileOTP) { OTPData in
-                                        if OTPData.status == 1{
-                                            if OTPData.data?.userid?.count != 0{
-                                                saveLoginOTPData(dict: OTPData.data!) { returnvalue in
-                                                    print("DEBUG: School Name = ",returnvalue.school ?? "")
+                                    if networkMonitor.isConnected{
+                                        viewModel.fetchLoginDate(mobile: newMobile, otp: MobileOTP) { OTPData in
+                                            if OTPData.status == 1{
+                                                if OTPData.data?.userid?.count != 0{
+                                                    saveLoginOTPData(dict: OTPData.data!) { returnvalue in
+                                                        print("DEBUG: School Name = ",returnvalue.school ?? "")
+                                                    }
+                                                    //                                                loginDict = getLoginOTPData(dict: OTPData.data!)
+                                                    UserDefaults.standard.set(true, forKey: "isLogin")
+                                                    stepViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
+                                                        if Step.status == 1{
+                                                            if Step.data?.step == "0"{
+                                                                isBookingView = true
+                                                            }else if Step.data?.step == "1"{
+                                                                isSecurityDeposite = true
+                                                            }
+                                                        }else{
+                                                            isBookingView = true
+                                                        }
+                                                    }
                                                 }
-//                                                loginDict = getLoginOTPData(dict: OTPData.data!)
-                                                UserDefaults.standard.set(true, forKey: "isLogin")
-                                                isBookingView = true
+                                            }else{
+                                                AlertMessage = OTPData.msg ?? ""
+                                                showingAlert = true
                                             }
-                                        }else{
-                                            AlertMessage = OTPData.msg ?? ""
-                                            showingAlert = true
                                         }
+                                    }else{
+                                        AlertMessage = "Please Check Your Internet Connection"
+                                        showingAlert = true
                                     }
                                 }
                             } label: {
@@ -182,6 +201,10 @@ struct OTPView: View {
                     )
                     Spacer()
                     NavigationLink("", destination: BookingProcessView().navigationBarHidden(true),isActive: $isBookingView).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: SecurityDepositView().navigationBarHidden(true),
+                        isActive: $isSecurityDeposite).isDetailLink(false)
                 }
                 .onAppear{
                     let lastDigit = Last4dight(MobileNumber: newMobile)

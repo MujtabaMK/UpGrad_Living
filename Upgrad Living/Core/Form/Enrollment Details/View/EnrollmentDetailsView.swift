@@ -20,6 +20,7 @@ struct EnrollmentDetailsView: View {
     @State private var canEditSpeclization = false
     
     @StateObject private var schoolViewModel = SchoolViewModel()
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var arrSchool = [School]()
     @State private var arrProgram = [Program]()
     @State private var arrDegree = [Degree]()
@@ -419,20 +420,25 @@ struct EnrollmentDetailsView: View {
                                         AlertShow = "0"
                                         showingAlert = true
                                     }else{
-                                        submitViewModel.fetchLoginDate(
-                                            school: SchoolID,
-                                            program: ProgramID,
-                                            degree: DegreeID,
-                                            specialization: SpeclizationID,
-                                            appId: studentAppID ?? "") { EnrollmentData in
-                                                if EnrollmentData.status == 1{
-                                                    showRoomType = true
-                                                }else{
-                                                    alertMessage = EnrollmentData.msg ?? ""
-                                                    AlertShow = "0"
-                                                    showingAlert = true
+                                        if networkMonitor.isConnected{
+                                            submitViewModel.fetchLoginDate(
+                                                school: SchoolID,
+                                                program: ProgramID,
+                                                degree: DegreeID,
+                                                specialization: SpeclizationID,
+                                                appId: studentAppID ?? "") { EnrollmentData in
+                                                    if EnrollmentData.status == 1{
+                                                        showRoomType = true
+                                                    }else{
+                                                        alertMessage = EnrollmentData.msg ?? ""
+                                                        AlertShow = "0"
+                                                        showingAlert = true
+                                                    }
                                                 }
-                                            }
+                                        }else{
+                                            alertMessage = "Please Check Your Internet Connection"
+                                            showingAlert = true
+                                        }
                                     }
                                 }
                                 .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
@@ -464,32 +470,36 @@ struct EnrollmentDetailsView: View {
         // Delay of 0.2 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             viewModel.textApplicationID = studentAppID ?? ""
-            
-            schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
-                arrSchool = SchoolData.data?.school ?? []
-                arrProgram = SchoolData.data?.program ?? []
-                //                arrDegree = SchoolData.data?.degree ?? []
-                //                arrSpeclization = SchoolData.data?.specialization ?? []
-                //
-                //                if getIsEditable == "1"{
-                //                    canEditSchool = true
-                //                    canEditProgram = true
-                //                    canEditDegree = true
-                //                    canEditSpeclization = true
-                //                }else{
-                //                    canEditSchool = false
-                //                    canEditProgram = false
-                //                    canEditDegree = false
-                //                    canEditSpeclization = false
-                //                }
-            }
-            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
-                if formData.status == 1{
-                    viewModel.textSchool = formData.data?.schoolName ?? ""
-                    SchoolID = formData.data?.school ?? ""
-                    viewModel.textProgram = formData.data?.programName ?? ""
-                    ProgramID = formData.data?.program ?? ""
+            if networkMonitor.isConnected{
+                schoolViewModel.fetchLoginDate(schoolId: SchoolID, programId: ProgramID, degreeId: DegreeID) { SchoolData in
+                    arrSchool = SchoolData.data?.school ?? []
+                    arrProgram = SchoolData.data?.program ?? []
+                    //                arrDegree = SchoolData.data?.degree ?? []
+                    //                arrSpeclization = SchoolData.data?.specialization ?? []
+                    //
+                    //                if getIsEditable == "1"{
+                    //                    canEditSchool = true
+                    //                    canEditProgram = true
+                    //                    canEditDegree = true
+                    //                    canEditSpeclization = true
+                    //                }else{
+                    //                    canEditSchool = false
+                    //                    canEditProgram = false
+                    //                    canEditDegree = false
+                    //                    canEditSpeclization = false
+                    //                }
                 }
+                GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                    if formData.status == 1{
+                        viewModel.textSchool = formData.data?.schoolName ?? ""
+                        SchoolID = formData.data?.school ?? ""
+                        viewModel.textProgram = formData.data?.programName ?? ""
+                        ProgramID = formData.data?.program ?? ""
+                    }
+                }
+            }else{
+                alertMessage = "Please Check Your Internet Connection"
+                showingAlert = true
             }
         }
     }

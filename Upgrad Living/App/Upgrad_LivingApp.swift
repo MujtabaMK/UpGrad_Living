@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct Upgrad_LivingApp: App {
+    @StateObject var networkMonitor = NetworkMonitor()
     @Environment(\.scenePhase) var scenePhase
     @State private var isLogin = UserDefaults.standard.bool(forKey: "isLogin")
     @State private var isWalkThrough = UserDefaults.standard.bool(forKey: "isWalkThrough")
@@ -17,9 +18,11 @@ struct Upgrad_LivingApp: App {
             if isWalkThrough{
                 if isLogin{
                     FirstView()
+                        .environmentObject(networkMonitor)
                     //ContentView()
                 }else{
                     LoginView()
+                        .environmentObject(networkMonitor)
                 }
             }else{
                 WalkThrough1()

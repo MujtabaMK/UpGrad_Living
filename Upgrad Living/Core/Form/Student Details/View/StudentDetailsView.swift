@@ -36,6 +36,7 @@ struct StudentDetailsView: View {
     @StateObject private var countryViewModel = CountryViewModel()
     @StateObject private var SubmitViewModel = SubmitStudentViewModel()
     @StateObject private var GetViewModel = GetFormViewModel()
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     
     //Module array
     @State private var arrGender = [gender]()
@@ -1162,42 +1163,48 @@ struct StudentDetailsView: View {
                                             focusedField = .permentPinCode
                                             showingAlert = true
                                         } else{
-                                            SubmitViewModel.fetchLoginDate(
-                                                firstName: viewModel.textFirstName,
-                                                middleName: viewModel.textMiddleName,
-                                                lastName: viewModel.textLastName,
-                                                mobile: viewModel.textMobileNumber,
-                                                email: viewModel.textEmail,
-                                                bloddGroup: viewModel.textBloodGroup,
-                                                bloddGroupId: bloodGroupId,
-                                                gender: genderId,
-                                                dateOfBirth: viewModel.textDOB,
-                                                placeOfBirth: viewModel.textPOB,
-                                                nationality: viewModel.textNationality,
-                                                aadhar: viewModel.textAadharCard,
-                                                pancard: viewModel.textPanCard,
-                                                passport: viewModel.textPassport,
-                                                cAddress: viewModel.textCurrentAddress,
-                                                cCountry: currentCountryID,
-                                                cState: currentStateId,
-                                                cCity: currentCityId,
-                                                cPincode: viewModel.textCurrentPinCode,
-                                                isSameAddress: isSelect ? "on" : "",
-                                                pAddress: viewModel.textPermanentAddress,
-                                                pCountry: permentCountryID,
-                                                pState: permentStateId,
-                                                pCity: permentCityId,
-                                                pPincode: viewModel.textPermanentPinCode,
-                                                appId: studentAppID ?? "") { Studentdata in
-                                                    if Studentdata.status == 1{
-                                                        showPrentsDetails = true
-                                                    }else{
-                                                        alertMessage = Studentdata.msg ?? ""
-                                                        AlertShow = "0"
-                                                        showingAlert = true
+                                            if networkMonitor.isConnected{
+                                                SubmitViewModel.fetchLoginDate(
+                                                    firstName: viewModel.textFirstName,
+                                                    middleName: viewModel.textMiddleName,
+                                                    lastName: viewModel.textLastName,
+                                                    mobile: viewModel.textMobileNumber,
+                                                    email: viewModel.textEmail,
+                                                    bloddGroup: viewModel.textBloodGroup,
+                                                    bloddGroupId: bloodGroupId,
+                                                    gender: genderId,
+                                                    dateOfBirth: viewModel.textDOB,
+                                                    placeOfBirth: viewModel.textPOB,
+                                                    nationality: viewModel.textNationality,
+                                                    aadhar: viewModel.textAadharCard,
+                                                    pancard: viewModel.textPanCard,
+                                                    passport: viewModel.textPassport,
+                                                    cAddress: viewModel.textCurrentAddress,
+                                                    cCountry: currentCountryID,
+                                                    cState: currentStateId,
+                                                    cCity: currentCityId,
+                                                    cPincode: viewModel.textCurrentPinCode,
+                                                    isSameAddress: isSelect ? "on" : "",
+                                                    pAddress: viewModel.textPermanentAddress,
+                                                    pCountry: permentCountryID,
+                                                    pState: permentStateId,
+                                                    pCity: permentCityId,
+                                                    pPincode: viewModel.textPermanentPinCode,
+                                                    appId: studentAppID ?? "") { Studentdata in
+                                                        if Studentdata.status == 1{
+                                                            showPrentsDetails = true
+                                                        }else{
+                                                            alertMessage = Studentdata.msg ?? ""
+                                                            AlertShow = "0"
+                                                            showingAlert = true
+                                                        }
                                                     }
-                                                }
+                                            }else{
+                                                alertMessage = "Please Check Your Internet Connection"
+                                                showingAlert = true
+                                            }
                                         }
+                                        
                                     })
                                     .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                             }
@@ -1228,100 +1235,102 @@ struct StudentDetailsView: View {
     private func delayText() {
         // Delay of 0.2 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            
-            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
-                if formData.status == 1{
-                    viewModel.textFirstName = formData.data?.firstName ?? ""
-                    viewModel.textMiddleName = formData.data?.middleName ?? ""
-                    viewModel.textLastName = formData.data?.lastName ?? ""
-                    viewModel.textMobileNumber = formData.data?.mobile ?? ""
-                    viewModel.textEmail = formData.data?.email ?? ""
-                    viewModel.textBloodGroup = formData.data?.bloddGroup ?? ""
-                    bloodGroupId = formData.data?.bloddGroupID ?? ""
-                    viewModel.textGender = formData.data?.genderName ?? ""
-                    genderId = formData.data?.gender ?? ""
-                    viewModel.textDOB = formData.data?.dateOfBirth ?? ""
-                    viewModel.textPOB = formData.data?.placeOfBirth ?? ""
-                    viewModel.textNationality = formData.data?.nationality ?? ""
-                    viewModel.textAadharCard = formData.data?.aadhar ?? ""
-                    viewModel.textPanCard = formData.data?.pancard ?? ""
-                    viewModel.textPassport = formData.data?.passport ?? ""
-                    viewModel.textCurrentAddress = formData.data?.cAddress ?? ""
-                    viewModel.textCurrentCountry = formData.data?.cCountryName ?? ""
-                    currentCountryID = formData.data?.cCountry ?? ""
-                    print(currentCountryID)
-                    viewModel.textCurrentState = formData.data?.cStateName ?? ""
-                    currentStateId = formData.data?.cState ?? ""
-                    viewModel.textCurrentCity = formData.data?.cCityName ?? ""
-                    currentCityId = formData.data?.cCity ?? ""
-                    print(currentCityId)
-                    
-                    viewModel.textCurrentPinCode = formData.data?.cPincode ?? ""
-                    let valueSelect = formData.data?.isSameAddress ?? ""
-                    if valueSelect == "on"{
-                        isSelect = true
-                    }else{
-                        isSelect = false
+            if networkMonitor.isConnected{
+                GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                    if formData.status == 1{
+                        viewModel.textFirstName = formData.data?.firstName ?? ""
+                        viewModel.textMiddleName = formData.data?.middleName ?? ""
+                        viewModel.textLastName = formData.data?.lastName ?? ""
+                        viewModel.textMobileNumber = formData.data?.mobile ?? ""
+                        viewModel.textEmail = formData.data?.email ?? ""
+                        viewModel.textBloodGroup = formData.data?.bloddGroup ?? ""
+                        bloodGroupId = formData.data?.bloddGroupID ?? ""
+                        viewModel.textGender = formData.data?.genderName ?? ""
+                        genderId = formData.data?.gender ?? ""
+                        viewModel.textDOB = formData.data?.dateOfBirth ?? ""
+                        viewModel.textPOB = formData.data?.placeOfBirth ?? ""
+                        viewModel.textNationality = formData.data?.nationality ?? ""
+                        viewModel.textAadharCard = formData.data?.aadhar ?? ""
+                        viewModel.textPanCard = formData.data?.pancard ?? ""
+                        viewModel.textPassport = formData.data?.passport ?? ""
+                        viewModel.textCurrentAddress = formData.data?.cAddress ?? ""
+                        viewModel.textCurrentCountry = formData.data?.cCountryName ?? ""
+                        currentCountryID = formData.data?.cCountry ?? ""
+                        print(currentCountryID)
+                        viewModel.textCurrentState = formData.data?.cStateName ?? ""
+                        currentStateId = formData.data?.cState ?? ""
+                        viewModel.textCurrentCity = formData.data?.cCityName ?? ""
+                        currentCityId = formData.data?.cCity ?? ""
+                        print(currentCityId)
+                        
+                        viewModel.textCurrentPinCode = formData.data?.cPincode ?? ""
+                        let valueSelect = formData.data?.isSameAddress ?? ""
+                        if valueSelect == "on"{
+                            isSelect = true
+                        }else{
+                            isSelect = false
+                        }
+                        viewModel.textPermanentAddress = formData.data?.pAddress ?? ""
+                        viewModel.textPermanentCountry = formData.data?.pCountryName ?? ""
+                        permentCountryID = formData.data?.pCountry ?? ""
+                        viewModel.textPermanentState = formData.data?.pStateName ?? ""
+                        permentStateId = formData.data?.pState ?? ""
+                        viewModel.textPermanentCity = formData.data?.pCityName ?? ""
+                        permentCityId = formData.data?.pCity ?? ""
+                        viewModel.textPermanentPinCode = formData.data?.pPincode ?? ""
+                        
+                        countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
+                            arrStateCurrent = CountryData.data?.states ?? []
+                            arrCityCurrent = CountryData.data?.cities ?? []
+                        }
+                        countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
+                            arrStatePerment = CountryData.data?.states ?? []
+                            arrCityPerment = CountryData.data?.cities ?? []
+                        }
                     }
-                    viewModel.textPermanentAddress = formData.data?.pAddress ?? ""
-                    viewModel.textPermanentCountry = formData.data?.pCountryName ?? ""
-                    permentCountryID = formData.data?.pCountry ?? ""
-                    viewModel.textPermanentState = formData.data?.pStateName ?? ""
-                    permentStateId = formData.data?.pState ?? ""
-                    viewModel.textPermanentCity = formData.data?.pCityName ?? ""
-                    permentCityId = formData.data?.pCity ?? ""
-                    viewModel.textPermanentPinCode = formData.data?.pPincode ?? ""
+                }
+                
+                masterViewModel.MasterGet { MasterData in
+                    arrGender = MasterData.data?.gender ?? []
+                    arrCountry = MasterData.data?.countries ?? []
+                    arrBloodGroup = MasterData.data?.bloodGroups ?? []
+                    arrCountryPerment = MasterData.data?.countries ?? []
+                    
+                    if getIsEditable == "1"{
+                        canEditBloodGroup = true
+                        canEditGender = true
+                        canEditCurrentCountry = true
+                        canEditCurrentState = true
+                        canEditCurrentCity = true
+                        canEditPermentCountry = true
+                        canEditPermentState = true
+                        canEditPermentCity = true
+                    }else{
+                        canEditBloodGroup = false
+                        canEditGender = false
+                        canEditCurrentCountry = false
+                        canEditCurrentState = false
+                        canEditCurrentCity = false
+                        canEditPermentCountry = false
+                        canEditPermentState = false
+                        canEditPermentCity = false
+                    }
                     
                     countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
                         arrStateCurrent = CountryData.data?.states ?? []
                         arrCityCurrent = CountryData.data?.cities ?? []
+                        print(arrCityCurrent)
+                        
                     }
                     countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
                         arrStatePerment = CountryData.data?.states ?? []
-                        arrCityPerment = CountryData.data?.cities ?? []                        
+                        arrCityPerment = CountryData.data?.cities ?? []
                     }
                 }
+            }else{
+                alertMessage = "Please Check Your Internet Connection"
+                showingAlert = true
             }
-            
-            masterViewModel.MasterGet { MasterData in
-                arrGender = MasterData.data?.gender ?? []
-                arrCountry = MasterData.data?.countries ?? []
-                arrBloodGroup = MasterData.data?.bloodGroups ?? []
-                arrCountryPerment = MasterData.data?.countries ?? []
-                
-                if getIsEditable == "1"{
-                    canEditBloodGroup = true
-                    canEditGender = true
-                    canEditCurrentCountry = true
-                    canEditCurrentState = true
-                    canEditCurrentCity = true
-                    canEditPermentCountry = true
-                    canEditPermentState = true
-                    canEditPermentCity = true
-                }else{
-                    canEditBloodGroup = false
-                    canEditGender = false
-                    canEditCurrentCountry = false
-                    canEditCurrentState = false
-                    canEditCurrentCity = false
-                    canEditPermentCountry = false
-                    canEditPermentState = false
-                    canEditPermentCity = false
-                }
-                
-                countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
-                    arrStateCurrent = CountryData.data?.states ?? []
-                    arrCityCurrent = CountryData.data?.cities ?? []
-                    print(arrCityCurrent)
-                    
-                }
-                countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
-                    arrStatePerment = CountryData.data?.states ?? []
-                    arrCityPerment = CountryData.data?.cities ?? []
-                }
-            }
-           
-
         }
     }
     @State private var editingTextFieldFirstName = false {

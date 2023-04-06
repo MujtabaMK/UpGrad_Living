@@ -20,6 +20,7 @@ struct ParentsDetailsView: View {
     
     @StateObject private var masterViewModel = MasterViewModel()
     @StateObject private var countryViewModel = CountryViewModel()
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var arrCountry = [countries]()
     @State private var arrStateCurrent = [states]()
     @State private var arrCityCurrent = [City]()
@@ -48,7 +49,7 @@ struct ParentsDetailsView: View {
     
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @FocusState private var focusedField: FoucesedParentTextField?
-        
+    
     var getIsEditable: String
     var body: some View {
         NavigationView {
@@ -797,37 +798,42 @@ struct ParentsDetailsView: View {
                                         focusedField = .mEmailId
                                         showingAlert = true
                                     }else{
-                                        submitViewModel.fetchLoginDate(
-                                            fFirstName: viewModel.textFatherFirstName,
-                                            fMiddleName: viewModel.textFatherMiddleName,
-                                            fLastName: viewModel.textFatherLastName,
-                                            fMobile: viewModel.textFatherMobileNumber,
-                                            fEmail: viewModel.textFatherEmail,
-                                            mFirstName: viewModel.textMotherFirstName,
-                                            mMiddleName: viewModel.textMotherMiddleName,
-                                            mLastName: viewModel.textMotherLastName,
-                                            mMobile: viewModel.textMotherMobileNumber,
-                                            mEmail: viewModel.textMotherEmail,
-                                            gFirstName: viewModel.textGuardianFirstName,
-                                            gMiddleName: viewModel.textGuardianMiddleName,
-                                            gLastName: viewModel.textGuardianLastName,
-                                            gMobile: viewModel.textGuardianMobileNumber,
-                                            gEmail: viewModel.textGuardianEmail,
-                                            gRelation: viewModel.textGuardianRelationship,
-                                            gAddress: viewModel.textCurrentAddress,
-                                            gCountry: currentCountryID,
-                                            gState: currentStateId,
-                                            gCity: currentCityId,
-                                            gPincode: viewModel.textCurrentPincode,
-                                            appId: studentAppID ?? "") { ParentDetails in
-                                                if ParentDetails.status == 1{
-                                                    showEnrollmentDetails = true
-                                                }else{
-                                                    alertMessage = ParentDetails.msg ?? ""
-                                                    AlertShow = "0"
-                                                    showingAlert = true
+                                        if networkMonitor.isConnected{
+                                            submitViewModel.fetchLoginDate(
+                                                fFirstName: viewModel.textFatherFirstName,
+                                                fMiddleName: viewModel.textFatherMiddleName,
+                                                fLastName: viewModel.textFatherLastName,
+                                                fMobile: viewModel.textFatherMobileNumber,
+                                                fEmail: viewModel.textFatherEmail,
+                                                mFirstName: viewModel.textMotherFirstName,
+                                                mMiddleName: viewModel.textMotherMiddleName,
+                                                mLastName: viewModel.textMotherLastName,
+                                                mMobile: viewModel.textMotherMobileNumber,
+                                                mEmail: viewModel.textMotherEmail,
+                                                gFirstName: viewModel.textGuardianFirstName,
+                                                gMiddleName: viewModel.textGuardianMiddleName,
+                                                gLastName: viewModel.textGuardianLastName,
+                                                gMobile: viewModel.textGuardianMobileNumber,
+                                                gEmail: viewModel.textGuardianEmail,
+                                                gRelation: viewModel.textGuardianRelationship,
+                                                gAddress: viewModel.textCurrentAddress,
+                                                gCountry: currentCountryID,
+                                                gState: currentStateId,
+                                                gCity: currentCityId,
+                                                gPincode: viewModel.textCurrentPincode,
+                                                appId: studentAppID ?? "") { ParentDetails in
+                                                    if ParentDetails.status == 1{
+                                                        showEnrollmentDetails = true
+                                                    }else{
+                                                        alertMessage = ParentDetails.msg ?? ""
+                                                        AlertShow = "0"
+                                                        showingAlert = true
+                                                    }
                                                 }
-                                            }
+                                        }else{
+                                            alertMessage = "Please Check Your Internet Connection"
+                                            showingAlert = true
+                                        }
                                     }
                                 }
                                 .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
@@ -859,57 +865,62 @@ struct ParentsDetailsView: View {
     private func delayText() {
         // Delay of 0.2 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            masterViewModel.MasterGet { MasterData in
-                arrCountry = MasterData.data?.countries ?? []
-                
-                if getIsEditable == "1"{
-                    canEditCurrentCountry = true
-                    canEditCurrentState = true
-                    canEditCurrentCity = true
-                }else{
-                    canEditCurrentCountry = false
-                    canEditCurrentState = false
-                    canEditCurrentCity = false
-                }
-                
-                countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
-                    arrStateCurrent = CountryData.data?.states ?? []
-                    arrCityCurrent = CountryData.data?.cities ?? []
-                }
-                
-            }
-            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
-                if formData.status == 1{
-                    viewModel.textFatherFirstName = formData.data?.fFirstName ?? ""
-                    viewModel.textFatherMiddleName = formData.data?.fMiddleName ?? ""
-                    viewModel.textFatherLastName = formData.data?.fLastName ?? ""
-                    viewModel.textFatherMobileNumber = formData.data?.fMobile ?? ""
-                    viewModel.textFatherEmail = formData.data?.fEmail ?? ""
-                    viewModel.textMotherFirstName = formData.data?.mFirstName ?? ""
-                    viewModel.textMotherMiddleName = formData.data?.mMiddleName ?? ""
-                    viewModel.textMotherLastName = formData.data?.mLastName ?? ""
-                    viewModel.textMotherMobileNumber = formData.data?.mMobile ?? ""
-                    viewModel.textMotherEmail = formData.data?.mEmail ?? ""
-                    viewModel.textGuardianFirstName = formData.data?.gFirstName ?? ""
-                    viewModel.textGuardianMiddleName = formData.data?.gMiddleName ?? ""
-                    viewModel.textGuardianLastName = formData.data?.gLastName ?? ""
-                    viewModel.textGuardianMobileNumber = formData.data?.gMobile ?? ""
-                    viewModel.textGuardianEmail = formData.data?.gEmail ?? ""
-                    viewModel.textGuardianRelationship = formData.data?.gRelation ?? ""
-                    viewModel.textCurrentAddress = formData.data?.gAddress ?? ""
-                    viewModel.textCurrentCountry = formData.data?.gCountryName ?? ""
-                    currentCountryID = formData.data?.gCountry ?? ""
-                    viewModel.textCurrentState = formData.data?.gStateName ?? ""
-                    currentStateId = formData.data?.gState ?? ""
-                    viewModel.textCurrentCity = formData.data?.gCityName ?? ""
-                    currentCityId = formData.data?.gCity ?? ""
-                    viewModel.textCurrentPincode = formData.data?.gPincode ?? ""
+            if networkMonitor.isConnected{
+                masterViewModel.MasterGet { MasterData in
+                    arrCountry = MasterData.data?.countries ?? []
+                    
+                    if getIsEditable == "1"{
+                        canEditCurrentCountry = true
+                        canEditCurrentState = true
+                        canEditCurrentCity = true
+                    }else{
+                        canEditCurrentCountry = false
+                        canEditCurrentState = false
+                        canEditCurrentCity = false
+                    }
                     
                     countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
                         arrStateCurrent = CountryData.data?.states ?? []
                         arrCityCurrent = CountryData.data?.cities ?? []
                     }
+                    
                 }
+                GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                    if formData.status == 1{
+                        viewModel.textFatherFirstName = formData.data?.fFirstName ?? ""
+                        viewModel.textFatherMiddleName = formData.data?.fMiddleName ?? ""
+                        viewModel.textFatherLastName = formData.data?.fLastName ?? ""
+                        viewModel.textFatherMobileNumber = formData.data?.fMobile ?? ""
+                        viewModel.textFatherEmail = formData.data?.fEmail ?? ""
+                        viewModel.textMotherFirstName = formData.data?.mFirstName ?? ""
+                        viewModel.textMotherMiddleName = formData.data?.mMiddleName ?? ""
+                        viewModel.textMotherLastName = formData.data?.mLastName ?? ""
+                        viewModel.textMotherMobileNumber = formData.data?.mMobile ?? ""
+                        viewModel.textMotherEmail = formData.data?.mEmail ?? ""
+                        viewModel.textGuardianFirstName = formData.data?.gFirstName ?? ""
+                        viewModel.textGuardianMiddleName = formData.data?.gMiddleName ?? ""
+                        viewModel.textGuardianLastName = formData.data?.gLastName ?? ""
+                        viewModel.textGuardianMobileNumber = formData.data?.gMobile ?? ""
+                        viewModel.textGuardianEmail = formData.data?.gEmail ?? ""
+                        viewModel.textGuardianRelationship = formData.data?.gRelation ?? ""
+                        viewModel.textCurrentAddress = formData.data?.gAddress ?? ""
+                        viewModel.textCurrentCountry = formData.data?.gCountryName ?? ""
+                        currentCountryID = formData.data?.gCountry ?? ""
+                        viewModel.textCurrentState = formData.data?.gStateName ?? ""
+                        currentStateId = formData.data?.gState ?? ""
+                        viewModel.textCurrentCity = formData.data?.gCityName ?? ""
+                        currentCityId = formData.data?.gCity ?? ""
+                        viewModel.textCurrentPincode = formData.data?.gPincode ?? ""
+                        
+                        countryViewModel.fetchLoginDate(countryId: currentCountryID, stateId: currentStateId) { CountryData in
+                            arrStateCurrent = CountryData.data?.states ?? []
+                            arrCityCurrent = CountryData.data?.cities ?? []
+                        }
+                    }
+                }
+            }else{
+                alertMessage = "Please Check Your Internet Connection"
+                showingAlert = true
             }
         }
     }

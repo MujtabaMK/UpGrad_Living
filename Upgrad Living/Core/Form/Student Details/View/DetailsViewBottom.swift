@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailsViewBottom: View {
     var textName: String
-    var imageName: String
+    var imageName: String?
     var body: some View {
         ZStack(alignment: .trailing){
             Text(textName)//Save & Continue
@@ -26,7 +26,7 @@ struct DetailsViewBottom: View {
                         endPoint: .trailing))
                 .clipShape(Capsule())
             
-            Image(imageName)//Form_Button_icon
+            Image(imageName ?? "")//Form_Button_icon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 27, height: 27)

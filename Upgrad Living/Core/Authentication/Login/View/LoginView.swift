@@ -16,6 +16,7 @@ struct LoginView: View {
     @State private var showingAlert = false
     @State private var AlertMessage = String()
     @StateObject var viewModel = LoginViewModel()
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     var body: some View {
         NavigationView{
             ZStack{
@@ -68,9 +69,9 @@ struct LoginView: View {
                                 }
                                 .onChange(of: txtMobile, perform: { newValue in
                                     if(newValue.range(of:"^[0-9+]{0,1}+[0-9]{5,10}$", options: .regularExpression) != nil) {
-         
+                                        
                                     } else {
-                                       
+                                        
                                     }
                                 })
                                 .onReceive(Just(txtMobile)) { newValue in
@@ -84,24 +85,29 @@ struct LoginView: View {
                                 cornerRadius: 4).strokeBorder(Color(hex: 0x969696),
                                                               style: StrokeStyle(lineWidth: 0.5))
                         )
-
+                        
                     }
                     .padding()
                     VStack{
                         Button {
                             if txtMobile.count == 10 || txtMobile.count == 7 || txtMobile.count == 8{
+                                if networkMonitor.isConnected{
                                     viewModel.fetchLoginDate(mobile: txtMobile) { loginData in
-                                       if loginData.status == 1{
-                                           print(loginData.data?.studentMobile ?? "")
-                                           print(loginData.data?.studentAppID ?? "")
-                                           UserDefaults.standard.set(loginData.data?.studentAppID ?? "", forKey: "studentAppID")
-                                           isApplicationId = false
-                                           isShowOTP = true
+                                        if loginData.status == 1{
+                                            print(loginData.data?.studentMobile ?? "")
+                                            print(loginData.data?.studentAppID ?? "")
+                                            UserDefaults.standard.set(loginData.data?.studentAppID ?? "", forKey: "studentAppID")
+                                            isApplicationId = false
+                                            isShowOTP = true
                                         }else{
                                             AlertMessage = loginData.msg ?? ""
                                             isShowAlert = true
                                         }
                                     }
+                                }else{
+                                    AlertMessage = "Please Check Your Internet Connection"
+                                    isShowAlert = true
+                                }
                             }else{
                                 AlertMessage = "Please Enter valid Application Id or Mobile Number"
                                 isShowAlert = true

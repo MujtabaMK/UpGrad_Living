@@ -95,6 +95,7 @@
 		09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1CD29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift */; };
 		09B7A1D429D82A3500EC72EF /* BookingProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1D329D82A3500EC72EF /* BookingProcessView.swift */; };
 		09B7A1D629D841EA00EC72EF /* BookingLoginProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1D529D841EA00EC72EF /* BookingLoginProcessView.swift */; };
+		09B84CD129DE9DAA000FC1C6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CD029DE9DAA000FC1C6 /* Network.swift */; };
 		09C3810B29DA8A52006D82C9 /* BookingSubmitProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */; };
 		09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */; };
 		09CC312629CC71940048BFF5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312529CC71940048BFF5 /* LottieView.swift */; };
@@ -209,6 +210,7 @@
 		09B7A1CD29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitDocumentaionViewModel.swift; sourceTree = "<group>"; };
 		09B7A1D329D82A3500EC72EF /* BookingProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingProcessView.swift; sourceTree = "<group>"; };
 		09B7A1D529D841EA00EC72EF /* BookingLoginProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLoginProcessView.swift; sourceTree = "<group>"; };
+		09B84CD029DE9DAA000FC1C6 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSubmitProcessView.swift; sourceTree = "<group>"; };
 		09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09CC312529CC71940048BFF5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -607,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				096A3FE329CC26C700092AAC /* Upgrad-Living-Info.plist */,
+				09B84CCF29DE9D86000FC1C6 /* Check Network */,
 				096A3FDC29CC252A00092AAC /* App */,
 				096A3FDB29CC252000092AAC /* API Finction */,
 				096A3FDA29CC251400092AAC /* Singleton Class */,
@@ -653,6 +656,14 @@
 				099490D829DAC89B002FA2C0 /* BookingProcessLogin_Image.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		09B84CCF29DE9D86000FC1C6 /* Check Network */ = {
+			isa = PBXGroup;
+			children = (
+				09B84CD029DE9DAA000FC1C6 /* Network.swift */,
+			);
+			path = "Check Network";
 			sourceTree = "<group>";
 		};
 		09CC312229CC70BD0048BFF5 /* JSON File */ = {
@@ -1005,6 +1016,7 @@
 				098A04D829D42EC700C9595A /* MasterModel.swift in Sources */,
 				0981D9BE29DC273F0025575D /* SecurityDepositTopView.swift in Sources */,
 				09DE74D629D5AAFA001B105A /* FormDeclerationView.swift in Sources */,
+				09B84CD129DE9DAA000FC1C6 /* Network.swift in Sources */,
 				0993226529D6B37B0036C050 /* SchoolModel.swift in Sources */,
 				0931A90A29D7F67000F6A209 /* SubmitEnrollmentModel.swift in Sources */,
 				09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */,

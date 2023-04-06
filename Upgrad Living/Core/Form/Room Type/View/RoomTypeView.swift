@@ -11,6 +11,7 @@ struct RoomTypeView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var submitViewModel = SubmitRoomTypeViewModel()
     @StateObject private var GetViewModel = GetFormViewModel()
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var borderColor = Color(hex: 0x3CA0D1)
     @State private var SelectedValue = "3"
     @State private var RoomName = "Four Sharing"
@@ -253,19 +254,24 @@ struct RoomTypeView: View {
                             DetailsViewBottom(textName: "Save & Continue", imageName: "Form_Button_icon_Step4")
                                 .onTapGesture {
                                     isButtonClick = true
-                                    submitViewModel.fetchLoginDate(
-                                        roomType: RoomName,
-                                        paymentOption: PaymentMethod,
-                                        roomTypeId: SelectedValue,
-                                        appId: studentAppID ?? "") { RoomData in
-                                            if RoomData.status == 1{
-                                                showMedicalQuestion = true
-                                            }else{
-                                                alertMessage = RoomData.msg ?? ""
-                                                AlertShow = "0"
-                                                showingAlert = true
+                                    if networkMonitor.isConnected{
+                                        submitViewModel.fetchLoginDate(
+                                            roomType: RoomName,
+                                            paymentOption: PaymentMethod,
+                                            roomTypeId: SelectedValue,
+                                            appId: studentAppID ?? "") { RoomData in
+                                                if RoomData.status == 1{
+                                                    showMedicalQuestion = true
+                                                }else{
+                                                    alertMessage = RoomData.msg ?? ""
+                                                    AlertShow = "0"
+                                                    showingAlert = true
+                                                }
                                             }
-                                        }
+                                    }else{
+                                        alertMessage = "Please Check Your Internet Connection"
+                                        showingAlert = true
+                                    }
                                 }
                                 .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                         }
@@ -294,13 +300,17 @@ struct RoomTypeView: View {
     private func delayText() {
         // Delay of 0.2 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            
-            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
-                if formData.status == 1{
-                    SelectedValue = formData.data?.roomTypeID ?? ""
-                    RoomName = formData.data?.roomType ?? ""
-                    PaymentMethod = formData.data?.paymentOption ?? ""
+            if networkMonitor.isConnected{
+                GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                    if formData.status == 1{
+                        SelectedValue = formData.data?.roomTypeID ?? ""
+                        RoomName = formData.data?.roomType ?? ""
+                        PaymentMethod = formData.data?.paymentOption ?? ""
+                    }
                 }
+            }else{
+                alertMessage = "Please Check Your Internet Connection"
+                showingAlert = true
             }
         }
     }

@@ -12,6 +12,7 @@ struct FormDeclerationView: View {
     @State private var borderColor = Color(hex: 0xE75798)
     @StateObject private var submitViewModel = SubmitDocumentaionViewModel()
     @StateObject private var GetViewModel = GetFormViewModel()
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     
     @State private var alertMessage = String()
@@ -77,16 +78,21 @@ struct FormDeclerationView: View {
                                         AlertShow = "0"
                                         showingAlert = true
                                     }else{
-                                        submitViewModel.fetchLoginDate(
-                                            accept: "on",
-                                            appId: studentAppID ?? "") { DocumentationData in
-                                                if DocumentationData.status == 1{
-                                                    isSecurityDeposit = true
-                                                }else{
-                                                    alertMessage = DocumentationData.msg ?? ""
-                                                    AlertShow = "0"
-                                                    showingAlert = true
+                                        if networkMonitor.isConnected{
+                                            submitViewModel.fetchLoginDate(
+                                                accept: "on",
+                                                appId: studentAppID ?? "") { DocumentationData in
+                                                    if DocumentationData.status == 1{
+                                                        isSecurityDeposit = true
+                                                    }else{
+                                                        alertMessage = DocumentationData.msg ?? ""
+                                                        AlertShow = "0"
+                                                        showingAlert = true
+                                                    }
                                                 }
+                                        }else{
+                                            alertMessage = "Please Check Your Internet Connection"
+                                            showingAlert = true
                                         }
                                     }
                                 }
@@ -119,16 +125,20 @@ struct FormDeclerationView: View {
     private func delayText() {
         // Delay of 0.2 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            
-            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
-                if formData.status == 1{
-                    let CheckValue = formData.data?.accept ?? ""
-                    if CheckValue == "on"{
-                        isAccept = true
-                    }else{
-                        isAccept = false
+            if networkMonitor.isConnected{
+                GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                    if formData.status == 1{
+                        let CheckValue = formData.data?.accept ?? ""
+                        if CheckValue == "on"{
+                            isAccept = true
+                        }else{
+                            isAccept = false
+                        }
                     }
                 }
+            }else{
+                alertMessage = "Please Check Your Internet Connection"
+                showingAlert = true
             }
         }
     }

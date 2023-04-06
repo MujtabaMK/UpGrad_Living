@@ -69,6 +69,7 @@ struct MedicalQuestionView: View {
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @StateObject private var SubmitViewModel = SubmitMedicalViewModel()
     @StateObject private var GetViewModel = GetFormViewModel()
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     
     var body: some View {
         NavigationView {
@@ -206,9 +207,9 @@ struct MedicalQuestionView: View {
                                         Divider()
                                             .frame(width: UIScreen.main.bounds.width - 40)
                                     }
-                                   
+                                    
                                     VStack(alignment: .leading) {
-                                       
+                                        
                                         HStack(spacing: 8){
                                             MediacalQuestionImage(text: "02")
                                             Text("Do you have any food allergies?*")
@@ -950,7 +951,7 @@ struct MedicalQuestionView: View {
                                 }
                                 .id(4)
                                 VStack(alignment: .leading){
-    
+                                    
                                     VStack(alignment: .leading) {
                                         //Kidney
                                         HStack(spacing: 8) {
@@ -1066,7 +1067,7 @@ struct MedicalQuestionView: View {
                                         }
                                         .padding(.horizontal, 40)
                                         .padding(.bottom, 5)
-           
+                                        
                                         HStack(spacing: 15){
                                             if congenital == "Yes"{
                                                 MedicalQuestionOptionView(text: "Yes", isSelect: .constant(true))
@@ -1556,61 +1557,66 @@ struct MedicalQuestionView: View {
                                             proxy.scrollTo(6)
                                             showingAlert = true
                                         }else{
-                                            SubmitViewModel.fetchLoginDate(
-                                                dietry: foodPrefrence,
-                                                dietry_text: txtfoodOther,
-                                                f_allergies: foodAllergies,
-                                                f_allergies_text: txtFoodAllergies,
-                                                health: healthDisability,
-                                                health_text: txthealthDisability,
-                                                medication: healthTakingMedication,
-                                                medication_text: txthealthTakingMedication,
-                                                allergies: healthAllergies,
-                                                allergies_text: txthealthAllergies,
-                                                surgery: healthSurgery,
-                                                surgery_text: txthealthSurgery,
-                                                diabetes: diabetes,
-                                                diabetes_text: txtdiabetes,
-                                                hypertension: hypertension,
-                                                hypertension_text: txthypertension,
-                                                disorders: respiratory,
-                                                disorders_text: txtrespiratory,
-                                                disease: thyroid,
-                                                disease_text: txtthyroid,
-                                                communicable: hivAids,
-                                                communicable_text: txthivAids,
-                                                liver_d: liver,
-                                                liver_d_text: txtliver,
-                                                heart_d: heart,
-                                                heart_d_text: txtheart,
-                                                arthritis: arthritis,
-                                                arthritis_text: txtarthritis,
-                                                kidney_d: kidney,
-                                                kidney_d_text: txtkidney,
-                                                paralysis: paralysis,
-                                                paralysis_text: txtparalysis,
-                                                congenital: congenital,
-                                                congenital_text: txtcongenital,
-                                                handicaps: physicalHandicaps,
-                                                handicaps_text: txtphysicalHandicaps,
-                                                any_d: anyOtherDisease,
-                                                any_d_text: txtanyOtherDisease,
-                                                clotting: anyBlood,
-                                                clotting_text: txtAnyBlood,
-                                                recently_covid: testedPositive,
-                                                recently_covid_text: txttestedPositive,
-                                                covid_vaccine: bothDoses,
-                                                covid_vaccine_text: txtBothDoses,
-                                                appId: studentAppID ?? "",
-                                                complition: { MedicalData in
-                                                    if MedicalData.status == 1{
-                                                        showDeclerationView = true
-                                                    }else{
-                                                        alertMessage = MedicalData.msg ?? ""
-                                                        AlertShow = "0"
-                                                        showingAlert = true
-                                                    }
-                                                })
+                                            if networkMonitor.isConnected{
+                                                SubmitViewModel.fetchLoginDate(
+                                                    dietry: foodPrefrence,
+                                                    dietry_text: txtfoodOther,
+                                                    f_allergies: foodAllergies,
+                                                    f_allergies_text: txtFoodAllergies,
+                                                    health: healthDisability,
+                                                    health_text: txthealthDisability,
+                                                    medication: healthTakingMedication,
+                                                    medication_text: txthealthTakingMedication,
+                                                    allergies: healthAllergies,
+                                                    allergies_text: txthealthAllergies,
+                                                    surgery: healthSurgery,
+                                                    surgery_text: txthealthSurgery,
+                                                    diabetes: diabetes,
+                                                    diabetes_text: txtdiabetes,
+                                                    hypertension: hypertension,
+                                                    hypertension_text: txthypertension,
+                                                    disorders: respiratory,
+                                                    disorders_text: txtrespiratory,
+                                                    disease: thyroid,
+                                                    disease_text: txtthyroid,
+                                                    communicable: hivAids,
+                                                    communicable_text: txthivAids,
+                                                    liver_d: liver,
+                                                    liver_d_text: txtliver,
+                                                    heart_d: heart,
+                                                    heart_d_text: txtheart,
+                                                    arthritis: arthritis,
+                                                    arthritis_text: txtarthritis,
+                                                    kidney_d: kidney,
+                                                    kidney_d_text: txtkidney,
+                                                    paralysis: paralysis,
+                                                    paralysis_text: txtparalysis,
+                                                    congenital: congenital,
+                                                    congenital_text: txtcongenital,
+                                                    handicaps: physicalHandicaps,
+                                                    handicaps_text: txtphysicalHandicaps,
+                                                    any_d: anyOtherDisease,
+                                                    any_d_text: txtanyOtherDisease,
+                                                    clotting: anyBlood,
+                                                    clotting_text: txtAnyBlood,
+                                                    recently_covid: testedPositive,
+                                                    recently_covid_text: txttestedPositive,
+                                                    covid_vaccine: bothDoses,
+                                                    covid_vaccine_text: txtBothDoses,
+                                                    appId: studentAppID ?? "",
+                                                    complition: { MedicalData in
+                                                        if MedicalData.status == 1{
+                                                            showDeclerationView = true
+                                                        }else{
+                                                            alertMessage = MedicalData.msg ?? ""
+                                                            AlertShow = "0"
+                                                            showingAlert = true
+                                                        }
+                                                    })
+                                            }else{
+                                                alertMessage = "Please Check Your Internet Connection"
+                                                showingAlert = true
+                                            }
                                         }
                                     }
                                     .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
@@ -1642,54 +1648,58 @@ struct MedicalQuestionView: View {
     private func delayText() {
         // Delay of 0.2 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            
-            GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
-                if formData.status == 1{
-                    foodPrefrence = formData.data?.dietry ?? ""
-                    txtfoodOther = formData.data?.dietryText ?? ""
-                    foodAllergies = formData.data?.fAllergies ?? ""
-                    txtFoodAllergies = formData.data?.fAllergiesText ?? ""
-                    healthDisability = formData.data?.health ?? ""
-                    txthealthDisability = formData.data?.healthText ?? ""
-                    healthTakingMedication = formData.data?.medication ?? ""
-                    txthealthTakingMedication = formData.data?.medicationText ?? ""
-                    healthAllergies = formData.data?.allergies ?? ""
-                    txthealthAllergies = formData.data?.allergiesText ?? ""
-                    healthSurgery = formData.data?.surgery ?? ""
-                    txthealthSurgery = formData.data?.surgeryText ?? ""
-                    diabetes = formData.data?.diabetes ?? ""
-                    txtdiabetes = formData.data?.diabetesText ?? ""
-                    hypertension = formData.data?.hypertension ?? ""
-                    txthypertension = formData.data?.hypertensionText ?? ""
-                    respiratory = formData.data?.disorders ?? ""
-                    txtrespiratory = formData.data?.disordersText ?? ""
-                    thyroid = formData.data?.disease ?? ""
-                    txtthyroid = formData.data?.diseaseText ?? ""
-                    hivAids = formData.data?.communicable ?? ""
-                    txthivAids = formData.data?.communicableText ?? ""
-                    liver = formData.data?.liverD ?? ""
-                    txtliver = formData.data?.liverDText ?? ""
-                    heart = formData.data?.heartD ?? ""
-                    txtheart = formData.data?.heartDText ?? ""
-                    arthritis = formData.data?.arthritis ?? ""
-                    txtarthritis =  formData.data?.arthritisText ?? ""
-                    kidney = formData.data?.kidneyD ?? ""
-                    txtkidney = formData.data?.kidneyDText ?? ""
-                    paralysis = formData.data?.paralysis ?? ""
-                    txtparalysis = formData.data?.paralysisText ?? ""
-                    congenital = formData.data?.congenital ?? ""
-                    txtcongenital = formData.data?.congenitalText ?? ""
-                    physicalHandicaps = formData.data?.handicaps ?? ""
-                    txtphysicalHandicaps = formData.data?.handicapsText ?? ""
-                    anyOtherDisease = formData.data?.anyD ?? ""
-                    txtanyOtherDisease = formData.data?.anyDText ?? ""
-                    anyBlood = formData.data?.clotting ?? ""
-                    txtAnyBlood = formData.data?.clottingText ?? ""
-                    testedPositive = formData.data?.recentlyCovid ?? ""
-                    txttestedPositive = formData.data?.recentlyCovidText ?? ""
-                    bothDoses = formData.data?.covidVaccine ?? ""
-                    txtBothDoses = formData.data?.covidVaccineText ?? ""
+            if networkMonitor.isConnected{
+                GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                    if formData.status == 1{
+                        foodPrefrence = formData.data?.dietry ?? ""
+                        txtfoodOther = formData.data?.dietryText ?? ""
+                        foodAllergies = formData.data?.fAllergies ?? ""
+                        txtFoodAllergies = formData.data?.fAllergiesText ?? ""
+                        healthDisability = formData.data?.health ?? ""
+                        txthealthDisability = formData.data?.healthText ?? ""
+                        healthTakingMedication = formData.data?.medication ?? ""
+                        txthealthTakingMedication = formData.data?.medicationText ?? ""
+                        healthAllergies = formData.data?.allergies ?? ""
+                        txthealthAllergies = formData.data?.allergiesText ?? ""
+                        healthSurgery = formData.data?.surgery ?? ""
+                        txthealthSurgery = formData.data?.surgeryText ?? ""
+                        diabetes = formData.data?.diabetes ?? ""
+                        txtdiabetes = formData.data?.diabetesText ?? ""
+                        hypertension = formData.data?.hypertension ?? ""
+                        txthypertension = formData.data?.hypertensionText ?? ""
+                        respiratory = formData.data?.disorders ?? ""
+                        txtrespiratory = formData.data?.disordersText ?? ""
+                        thyroid = formData.data?.disease ?? ""
+                        txtthyroid = formData.data?.diseaseText ?? ""
+                        hivAids = formData.data?.communicable ?? ""
+                        txthivAids = formData.data?.communicableText ?? ""
+                        liver = formData.data?.liverD ?? ""
+                        txtliver = formData.data?.liverDText ?? ""
+                        heart = formData.data?.heartD ?? ""
+                        txtheart = formData.data?.heartDText ?? ""
+                        arthritis = formData.data?.arthritis ?? ""
+                        txtarthritis =  formData.data?.arthritisText ?? ""
+                        kidney = formData.data?.kidneyD ?? ""
+                        txtkidney = formData.data?.kidneyDText ?? ""
+                        paralysis = formData.data?.paralysis ?? ""
+                        txtparalysis = formData.data?.paralysisText ?? ""
+                        congenital = formData.data?.congenital ?? ""
+                        txtcongenital = formData.data?.congenitalText ?? ""
+                        physicalHandicaps = formData.data?.handicaps ?? ""
+                        txtphysicalHandicaps = formData.data?.handicapsText ?? ""
+                        anyOtherDisease = formData.data?.anyD ?? ""
+                        txtanyOtherDisease = formData.data?.anyDText ?? ""
+                        anyBlood = formData.data?.clotting ?? ""
+                        txtAnyBlood = formData.data?.clottingText ?? ""
+                        testedPositive = formData.data?.recentlyCovid ?? ""
+                        txttestedPositive = formData.data?.recentlyCovidText ?? ""
+                        bothDoses = formData.data?.covidVaccine ?? ""
+                        txtBothDoses = formData.data?.covidVaccineText ?? ""
+                    }
                 }
+            }else{
+                alertMessage = "Please Check Your Internet Connection"
+                showingAlert = true
             }
         }
     }

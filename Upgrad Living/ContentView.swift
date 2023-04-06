@@ -39,53 +39,53 @@ struct ContentView: View {
                 .padding(.top)
                 Divider()
                 Spacer()
-                
-                EmailShape()
-                    .frame(width: 60, height: 50)
-                    .foregroundColor(.black)
-                    .onTapGesture {
-                        print("Clicked")
-                    }
-                
-                ZStack{
+                ZoomableScrollView {
+                    EmailShape()
+                        .frame(width: 60, height: 50)
+                        .foregroundColor(.black)
+                        .onTapGesture {
+                            print("Clicked")
+                        }
                     ZStack{
-                        EmailBorder()
+                        ZStack{
+                            EmailBorder()
+                        }
+                        ZStack{
+                            EmailUpper()
+                                .foregroundColor(isUpper ? .blue : .white)
+                                .onTapGesture {
+                                    print("Upper")
+                                    isUpper.toggle()
+                                }
+                        }
+                        ZStack{
+                            EmailLeft()
+                                .foregroundColor(isLeft ? .red : .white)
+                                .onTapGesture {
+                                    print("Left")
+                                    isLeft.toggle()
+                                }
+                        }
+                        ZStack{
+                            EmailRight()
+                                .foregroundColor(isRight ? .orange : .white)
+                                .onTapGesture {
+                                    print("Right")
+                                    isRight.toggle()
+                                }
+                        }
+                        ZStack{
+                            EmailBotton()
+                                .foregroundColor(isBottom ? .purple : .white)
+                                .onTapGesture {
+                                    print("Bottom")
+                                    isBottom.toggle()
+                                }
+                        }
                     }
-                    ZStack{
-                        EmailUpper()
-                            .foregroundColor(isUpper ? .blue : .white)
-                            .onTapGesture {
-                                print("Upper")
-                                isUpper.toggle()
-                            }
-                    }
-                    ZStack{
-                        EmailLeft()
-                            .foregroundColor(isLeft ? .red : .white)
-                            .onTapGesture {
-                                print("Left")
-                                isLeft.toggle()
-                            }
-                    }
-                    ZStack{
-                        EmailRight()
-                            .foregroundColor(isRight ? .orange : .white)
-                            .onTapGesture {
-                                print("Right")
-                                isRight.toggle()
-                            }
-                    }
-                    ZStack{
-                        EmailBotton()
-                            .foregroundColor(isBottom ? .purple : .white)
-                            .onTapGesture {
-                                print("Bottom")
-                                isBottom.toggle()
-                            }
-                    }
+                    .frame(width: 100, height: 90)
+                    Spacer()
                 }
-                .frame(width: 100, height: 90)
-                Spacer()
             }
             .navigationBarHidden(true)
         }

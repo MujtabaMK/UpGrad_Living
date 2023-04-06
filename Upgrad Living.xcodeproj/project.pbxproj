@@ -96,6 +96,7 @@
 		09B7A1D429D82A3500EC72EF /* BookingProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1D329D82A3500EC72EF /* BookingProcessView.swift */; };
 		09B7A1D629D841EA00EC72EF /* BookingLoginProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1D529D841EA00EC72EF /* BookingLoginProcessView.swift */; };
 		09B84CD129DE9DAA000FC1C6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CD029DE9DAA000FC1C6 /* Network.swift */; };
+		09B84CD629DED6B5000FC1C6 /* ZoomableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CD529DED6B5000FC1C6 /* ZoomableScrollView.swift */; };
 		09C3810B29DA8A52006D82C9 /* BookingSubmitProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */; };
 		09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */; };
 		09CC312629CC71940048BFF5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312529CC71940048BFF5 /* LottieView.swift */; };
@@ -211,6 +212,7 @@
 		09B7A1D329D82A3500EC72EF /* BookingProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingProcessView.swift; sourceTree = "<group>"; };
 		09B7A1D529D841EA00EC72EF /* BookingLoginProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLoginProcessView.swift; sourceTree = "<group>"; };
 		09B84CD029DE9DAA000FC1C6 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		09B84CD529DED6B5000FC1C6 /* ZoomableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableScrollView.swift; sourceTree = "<group>"; };
 		09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSubmitProcessView.swift; sourceTree = "<group>"; };
 		09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09CC312529CC71940048BFF5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				096A3FFF29CC2D5700092AAC /* HideKeyboard.swift */,
 				09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */,
 				09CC312529CC71940048BFF5 /* LottieView.swift */,
+				09B84CD529DED6B5000FC1C6 /* ZoomableScrollView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1030,6 +1033,7 @@
 				098A04D029D407C400C9595A /* StudentDetailsView.swift in Sources */,
 				09DE74CE29D588B1001B105A /* MediacalQuestionImage.swift in Sources */,
 				096A400529CC2D5800092AAC /* extention.swift in Sources */,
+				09B84CD629DED6B5000FC1C6 /* ZoomableScrollView.swift in Sources */,
 				09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */,
 				09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */,
 				096A3FE029CC255E00092AAC /* LoginTopView.swift in Sources */,

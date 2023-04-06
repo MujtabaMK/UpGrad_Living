@@ -10,6 +10,7 @@ import Combine
 
 struct LoginView: View {
     @State private var txtMobile = ""
+    @State private var MobileNumber = ""
     @State private var isShowOTP = false
     @State private var isShowAlert = false
     @State private var isApplicationId = false
@@ -94,7 +95,9 @@ struct LoginView: View {
                                 if networkMonitor.isConnected{
                                     viewModel.fetchLoginDate(mobile: txtMobile) { loginData in
                                         if loginData.status == 1{
+                                            MobileNumber = loginData.data?.studentMobile ?? ""
                                             print(loginData.data?.studentMobile ?? "")
+                                            
                                             print(loginData.data?.studentAppID ?? "")
                                             UserDefaults.standard.set(loginData.data?.studentAppID ?? "", forKey: "studentAppID")
                                             isApplicationId = false
@@ -131,7 +134,7 @@ struct LoginView: View {
                             NavigationLink(
                                 "",
                                 destination: OTPView(
-                                    newMobile: $txtMobile,
+                                    newMobile: $MobileNumber,
                                     isApplicationId: $isApplicationId
                                 ).navigationBarHidden(true),
                                 isActive: $isShowOTP).isDetailLink(false)

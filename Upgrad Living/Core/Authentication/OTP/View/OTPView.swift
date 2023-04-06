@@ -94,6 +94,8 @@ struct OTPView: View {
                                     .onChange(of: OTP2, perform: { newValue in
                                         if !OTP2.isEmpty{
                                             loginFieldFocus = .otp3
+                                        }else{
+                                            loginFieldFocus = .otp1
                                         }
                                     })
                                 
@@ -102,6 +104,8 @@ struct OTPView: View {
                                     .onChange(of: OTP3, perform: { newValue in
                                         if !OTP3.isEmpty{
                                             loginFieldFocus = .otp4
+                                        }else{
+                                            loginFieldFocus = .otp2
                                         }
                                     })
                                 
@@ -110,6 +114,8 @@ struct OTPView: View {
                                     .onChange(of: OTP4, perform: { newValue in
                                         if !OTP4.isEmpty{
                                             hideKeyboard()
+                                        }else{
+                                            loginFieldFocus = .otp3
                                         }
                                     })
                             }

@@ -9,65 +9,59 @@ import SwiftUI
 //import SVGView
 
 struct ContentView: View {
+    
+    @State private var isUpper = false
+    @State private var isLeft = false
+    @State private var isRight = false
+    @State private var isBottom = false
     var body: some View {
-//         SVGImageNew(svgName: "Blood_Group")
-//         .frame(width: 200, height: 200)
-//         .foregroundColor(.red)
-//         SVGView(contentsOf: Bundle.main.url(forResource: "Blood_Group", withExtension: "svg")!)
-//            .frame(width: 30, height: 30)
-        
-        
-//        let view = SVGView(contentsOf: Bundle.main.url(forResource: "Blood_Group", withExtension: "svg")!)
-//        let path1 = view.getNode(byId: "eye")
-//        path1?.onTapGesture{
-//            print("Path1 Click")
-//        }
-//
-//        let path2 = view.getNode(byId: "eye1")
-//        path2?.onTapGesture {
-//            print("Path2 Click")
-//        }
-//        return view
-        
-//        Image("Email")
-//            .resizable()
-//            .scaledToFit()
-//            .frame(width: 60, height: 60)
-//            .foregroundStyle(.yellow)
-        
-        
-        EmailShape()
-            .frame(width: 60, height: 50)
-            .foregroundColor(.red)
-            .onTapGesture {
-                print("Clicked")
+        VStack{
+            EmailShape()
+                .frame(width: 60, height: 50)
+                .foregroundColor(.black)
+                .onTapGesture {
+                    print("Clicked")
+                }
+            
+            ZStack{
+                ZStack{
+                    EmailBorder()
+                }
+                ZStack{
+                    EmailUpper()
+                        .foregroundColor(isUpper ? .blue : .white)
+                        .onTapGesture {
+                            print("Upper")
+                            isUpper.toggle()
+                        }
+                }
+                ZStack{
+                    EmailLeft()
+                        .foregroundColor(isLeft ? .red : .white)
+                        .onTapGesture {
+                            print("Left")
+                            isLeft.toggle()
+                        }
+                }
+                ZStack{
+                    EmailRight()
+                        .foregroundColor(isRight ? .orange : .white)
+                        .onTapGesture {
+                            print("Right")
+                            isRight.toggle()
+                        }
+                }
+                ZStack{
+                    EmailBotton()
+                        .foregroundColor(isBottom ? .purple : .white)
+                        .onTapGesture {
+                            print("Bottom")
+                            isBottom.toggle()
+                        }
+                }
             }
-        
-
-        
-
-//
-//        if let part = view.getNode(byId: "left") {
-//            part.onTapGesture {
-////                part.opacity = 0.2
-//                print("Clicked")
-//            }
-//        }
-//        SVGImage(width: 40,height: 40)
-//        print("ID = ",view.svg?.getNode(byId: "center") as Any)
-//        return view
-
-        
-      //  Image(uiImage: UIImage(named: "Blood_Group") ?? UIImage())
-
-//        BloodGroupView()
-//            .frame(width: 200, height: 200)
-//            .foregroundColor(.pink)
-//            .onTapGesture {
-//                print("Clicked")
-//            }
-
-
+            .frame(width: 100, height: 90)
+        }
     }
 }
 
@@ -150,6 +144,96 @@ struct ContentView_Previews: PreviewProvider {
 //        return path
 //    }
 //}
+
+struct EmailBorder: Shape{
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.size.width
+        let height = rect.size.height
+        path.move(to: CGPoint(x: 0.09383*width, y: 0.00065*height))
+        path.addCurve(to: CGPoint(x: 0.00093*width, y: 0.14322*height), control1: CGPoint(x: 0.04277*width, y: 0.00065*height), control2: CGPoint(x: 0.00093*width, y: 0.06485*height))
+        path.addLine(to: CGPoint(x: 0.00093*width, y: 0.85603*height))
+        path.addCurve(to: CGPoint(x: 0.09383*width, y: 0.99859*height), control1: CGPoint(x: 0.00093*width, y: 0.93439*height), control2: CGPoint(x: 0.04277*width, y: 0.99859*height))
+        path.addLine(to: CGPoint(x: 0.90669*width, y: 0.99859*height))
+        path.addCurve(to: CGPoint(x: 0.99959*width, y: 0.85603*height), control1: CGPoint(x: 0.95775*width, y: 0.99859*height), control2: CGPoint(x: 0.99959*width, y: 0.93439*height))
+        path.addLine(to: CGPoint(x: 0.99959*width, y: 0.14322*height))
+        path.addCurve(to: CGPoint(x: 0.90669*width, y: 0.00065*height), control1: CGPoint(x: 0.99959*width, y: 0.06485*height), control2: CGPoint(x: 0.95775*width, y: 0.00065*height))
+        path.addLine(to: CGPoint(x: 0.09383*width, y: 0.00065*height))
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct EmailUpper: Shape{
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.size.width
+        let height = rect.size.height
+        path.move(to: CGPoint(x: 0.09383*width, y: 0.07193*height))
+        path.addLine(to: CGPoint(x: 0.90669*width, y: 0.07193*height))
+        path.addCurve(to: CGPoint(x: 0.91539*width, y: 0.0736*height), control1: CGPoint(x: 0.90971*width, y: 0.07193*height), control2: CGPoint(x: 0.91255*width, y: 0.0728*height))
+        path.addLine(to: CGPoint(x: 0.52058*width, y: 0.61543*height))
+        path.addCurve(to: CGPoint(x: 0.47993*width, y: 0.61543*height), control1: CGPoint(x: 0.5107*width, y: 0.62898*height), control2: CGPoint(x: 0.48982*width, y: 0.62898*height))
+        path.addLine(to: CGPoint(x: 0.08512*width, y: 0.0736*height))
+        path.addCurve(to: CGPoint(x: 0.09382*width, y: 0.07193*height), control1: CGPoint(x: 0.08796*width, y: 0.0728*height), control2: CGPoint(x: 0.09081*width, y: 0.07193*height))
+        path.addLine(to: CGPoint(x: 0.09383*width, y: 0.07193*height))
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct EmailLeft: Shape{
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.size.width
+        let height = rect.size.height
+        path.move(to: CGPoint(x: 0.04992*width, y: 0.12092*height))
+        path.addLine(to: CGPoint(x: 0.33732*width, y: 0.5152*height))
+        path.addLine(to: CGPoint(x: 0.05027*width, y: 0.87997*height))
+        path.addCurve(to: CGPoint(x: 0.04737*width, y: 0.85603*height), control1: CGPoint(x: 0.04864*width, y: 0.87257*height), control2: CGPoint(x: 0.04737*width, y: 0.86439*height))
+        path.addLine(to: CGPoint(x: 0.04737*width, y: 0.14322*height))
+        path.addCurve(to: CGPoint(x: 0.04992*width, y: 0.12095*height), control1: CGPoint(x: 0.04737*width, y: 0.13529*height), control2: CGPoint(x: 0.04843*width, y: 0.12801*height))
+        path.addLine(to: CGPoint(x: 0.04992*width, y: 0.12092*height))
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct EmailRight: Shape{
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.size.width
+        let height = rect.size.height
+        path.move(to: CGPoint(x: 0.95059*width, y: 0.12092*height))
+        path.addCurve(to: CGPoint(x: 0.95314*width, y: 0.1432*height), control1: CGPoint(x: 0.95207*width, y: 0.12799*height), control2: CGPoint(x: 0.95314*width, y: 0.13527*height))
+        path.addLine(to: CGPoint(x: 0.95314*width, y: 0.85601*height))
+        path.addCurve(to: CGPoint(x: 0.95024*width, y: 0.87995*height), control1: CGPoint(x: 0.95314*width, y: 0.86439*height), control2: CGPoint(x: 0.95187*width, y: 0.87257*height))
+        path.addLine(to: CGPoint(x: 0.66319*width, y: 0.51521*height))
+        path.addLine(to: CGPoint(x: 0.95059*width, y: 0.12094*height))
+        path.addLine(to: CGPoint(x: 0.95059*width, y: 0.12092*height))
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct EmailBotton: Shape{
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.size.width
+        let height = rect.size.height
+        path.move(to: CGPoint(x: 0.37251*width, y: 0.56363*height))
+        path.addLine(to: CGPoint(x: 0.44908*width, y: 0.66832*height))
+        path.addCurve(to: CGPoint(x: 0.55142*width, y: 0.66832*height), control1: CGPoint(x: 0.47812*width, y: 0.70815*height), control2: CGPoint(x: 0.52238*width, y: 0.70815*height))
+        path.addLine(to: CGPoint(x: 0.62799*width, y: 0.56363*height))
+        path.addLine(to: CGPoint(x: 0.91359*width, y: 0.92671*height))
+        path.addCurve(to: CGPoint(x: 0.90669*width, y: 0.92726*height), control1: CGPoint(x: 0.91131*width, y: 0.92721*height), control2: CGPoint(x: 0.90908*width, y: 0.92726*height))
+        path.addLine(to: CGPoint(x: 0.09384*width, y: 0.92726*height))
+        path.addCurve(to: CGPoint(x: 0.08695*width, y: 0.92671*height), control1: CGPoint(x: 0.09146*width, y: 0.92726*height), control2: CGPoint(x: 0.08922*width, y: 0.92726*height))
+        path.addLine(to: CGPoint(x: 0.37251*width, y: 0.56363*height))
+        path.closeSubpath()
+        return path
+    }
+}
 
 struct EmailShape: Shape {
     func path(in rect: CGRect) -> Path {

@@ -26,10 +26,8 @@ struct Upgrad_LivingApp: App {
                 }
             }else{
                 WalkThrough1()
+                    .environmentObject(networkMonitor)
             }
-            
-          // LoginView()
-            //WalkThrough1()
         }
         .onChange(of: scenePhase) { newScenePhase in
             switch newScenePhase {
@@ -44,9 +42,9 @@ struct Upgrad_LivingApp: App {
                 break
             @unknown default:
                 print("Oh - interesting: I received an unexpected new value.")
-               
+                
             }
         }
-
+        
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct StudentDetailsView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = ContentViewModel()
     @State private var borderColor = Color(hex: 0xF15865)
@@ -268,7 +269,7 @@ struct StudentDetailsView: View {
                                     .disabled(true)
                                     .focused($focusedField, equals: .bloodGroup)
                                     .multilineTextAlignment(.leading)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                     .onChange(of: viewModel.textBloodGroup, perform: { newValue in
                                         editingTextFieldBloodGroup = false
                                         ShowBloodGroupDropDown = false
@@ -296,7 +297,7 @@ struct StudentDetailsView: View {
                                                 Text(master.name ?? "")
                                                     .padding(5)
                                                     .padding(.leading, 5)
-                                                    .foregroundColor(.black)
+                                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                                     .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                             }
                                         }
@@ -333,7 +334,7 @@ struct StudentDetailsView: View {
                                                                      placeholderImage: .constant("Student_Gender"))
                                             .disabled(true)
                                             .multilineTextAlignment(.leading)
-                                            .foregroundColor(.black )
+                                            .foregroundColor(colorScheme == .light ? .black : .white)
                                             .onChange(of: viewModel.textGender, perform: { newValue in
                                                 editingTextFieldGender = false
                                             })
@@ -564,7 +565,7 @@ struct StudentDetailsView: View {
                                                                     BorderColor: $borderColor)
                                     .disabled(true)
                                     .multilineTextAlignment(.leading)
-                                    .foregroundColor(.black )
+                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                     .onChange(of: viewModel.textCurrentCountry, perform: { newValue in
                                         editingTextFieldCurrentCountry = false
                                         ShowCurrentCountryDropDown = false
@@ -607,7 +608,7 @@ struct StudentDetailsView: View {
                                                 Text(master.name ?? "")
                                                     .padding(5)
                                                     .padding(.leading, 5)
-                                                    .foregroundColor(.black)
+                                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                                     .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                             }
                                         }
@@ -633,7 +634,7 @@ struct StudentDetailsView: View {
                                                                     BorderColor: $borderColor)
                                     .disabled(true)
                                     .multilineTextAlignment(.leading)
-                                    .foregroundColor(.black )
+                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                     .onChange(of: viewModel.textCurrentState, perform: { newValue in
                                         editingTextFieldCurrentState = false
                                         ShowCurrentCountryDropDown = false
@@ -673,7 +674,7 @@ struct StudentDetailsView: View {
                                                     Text(master.name ?? "")
                                                         .padding(5)
                                                         .padding(.leading, 5)
-                                                        .foregroundColor(.black)
+                                                        .foregroundColor(colorScheme == .light ? .black : .white)
                                                         .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                                 }
                                             }
@@ -700,7 +701,7 @@ struct StudentDetailsView: View {
                                                                     BorderColor: $borderColor)
                                     .disabled(true)
                                     .multilineTextAlignment(.leading)
-                                    .foregroundColor(.black )
+                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                     .onChange(of: viewModel.textCurrentCity, perform: { newValue in
                                         editingTextFieldCurrentCity = false
                                         ShowCurrentCountryDropDown = false
@@ -735,7 +736,7 @@ struct StudentDetailsView: View {
                                                     Text(master.name ?? "")
                                                         .padding(5)
                                                         .padding(.leading, 5)
-                                                        .foregroundColor(.black)
+                                                        .foregroundColor(colorScheme == .light ? .black : .white)
                                                         .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                                 }
                                             }
@@ -799,12 +800,14 @@ struct StudentDetailsView: View {
                                     HStack{
                                         Image(isSelect ? "Student_Select" : "Student_UnSelect")
                                             .resizable()
+                                            .renderingMode(.template)
+                                            .foregroundColor(colorScheme == .light ? Color(hex: 0x555555) : Color(hex: 0xFFFFFF))
                                             .scaledToFit()
                                             .frame(width: 20, height: 20, alignment: .leading)
                                             .padding(2)
                                         Text("Same as above")
                                             .font(.custom(OpenSans_SemiBold, size: 10))
-                                            .foregroundColor(Color(hex: 0x555555))
+                                            .foregroundColor(colorScheme == .light ? Color(hex: 0x555555) : Color(hex: 0xFFFFFF))
                                     }
                                     .frame(width: UIScreen.main.bounds.width - 20, alignment: .leading)
                                 }
@@ -848,7 +851,7 @@ struct StudentDetailsView: View {
                                                                     BorderColor: $borderColor)
                                     .disabled(true)
                                     .multilineTextAlignment(.leading)
-                                    .foregroundColor(.black )
+                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                     .onChange(of: viewModel.textPermanentCountry, perform: { newValue in
                                         editingTextFieldPermentCountry = false
                                         ShowPermentCountryDropDown = false
@@ -890,7 +893,7 @@ struct StudentDetailsView: View {
                                                 Text(master.name ?? "")
                                                     .padding(5)
                                                     .padding(.leading, 5)
-                                                    .foregroundColor(.black)
+                                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                                     .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                             }
                                         }
@@ -917,7 +920,7 @@ struct StudentDetailsView: View {
                                                                     BorderColor: $borderColor)
                                     .disabled(true)
                                     .multilineTextAlignment(.leading)
-                                    .foregroundColor(.black )
+                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                     .onChange(of: viewModel.textPermanentState, perform: { newValue in
                                         editingTextFieldPermentState = false
                                         ShowPermentCountryDropDown = false
@@ -958,7 +961,7 @@ struct StudentDetailsView: View {
                                                     Text(master.name ?? "")
                                                         .padding(5)
                                                         .padding(.leading, 5)
-                                                        .foregroundColor(.black)
+                                                        .foregroundColor(colorScheme == .light ? .black : .white)
                                                         .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                                 }
                                             }
@@ -986,7 +989,7 @@ struct StudentDetailsView: View {
                                                                     BorderColor: $borderColor)
                                     .disabled(true)
                                     .multilineTextAlignment(.leading)
-                                    .foregroundColor(.black )
+                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                     .onChange(of: viewModel.textPermanentCity, perform: { newValue in
                                         editingTextFieldPermentCity = false
                                         ShowPermentCountryDropDown = false
@@ -1021,7 +1024,7 @@ struct StudentDetailsView: View {
                                                     Text(master.name ?? "")
                                                         .padding(5)
                                                         .padding(.leading, 5)
-                                                        .foregroundColor(.black)
+                                                        .foregroundColor(colorScheme == .light ? .black : .white)
                                                         .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                                 }
                                             }

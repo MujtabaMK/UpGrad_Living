@@ -9,6 +9,7 @@ import SwiftUI
 import Introspect
 
 struct MedicalTextEditor: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Binding var textField: String
     var isYesSelect: Bool
     @State private var borderColor = Color(hex: 0xE75798)
@@ -16,7 +17,7 @@ struct MedicalTextEditor: View {
         VStack(alignment: .leading){
             Text(isYesSelect ? "If yes, please specify in detail" : "If other, please specify in detail")
                 .font(.custom(OpenSans_SemiBold, size: 12))
-                .foregroundColor(Color(hex: 0x969696))
+                .foregroundColor(colorScheme == .light ? Color(hex: 0x969696) : .white)
                 .padding(.bottom, 4)
             HStack{
                 Rectangle()

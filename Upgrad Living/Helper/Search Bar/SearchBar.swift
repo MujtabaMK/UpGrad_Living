@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchBar: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Binding var text: String
     @State private var isEditing = false
     var body: some View {
@@ -15,7 +16,7 @@ struct SearchBar: View {
             TextField("Search ...", text: $text)
                 .padding(7)
                 .padding(.horizontal, 25)
-                .foregroundColor(Color(.systemGray))
+                .foregroundColor(colorScheme == .light ? Color(.systemGray) : .black)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
                 .padding(.horizontal, 10)

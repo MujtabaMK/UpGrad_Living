@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct OTPView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var OTP1 = ""
     @State private var OTP2 = ""
     @State private var OTP3 = ""
@@ -198,11 +199,11 @@ struct OTPView: View {
                         .padding(.bottom, 20)
                     }
                     .frame(maxWidth: UIScreen.main.bounds.width - 60)
-                    .background(.white)
+                    .background(colorScheme == .light ? .white : Color(hex: 0xFEEEF0, alpha: 1.0))
                     .padding(.horizontal)
                     .background(
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.white)
+                            .fill(colorScheme == .light ? .white : Color(hex: 0xFEEEF0, alpha: 1.0))
                             .shadow(color: .gray, radius: 10, x: 0, y: 0)
                     )
                     Spacer()
@@ -225,6 +226,7 @@ struct OTPView: View {
                     LoadingView()
                 }
             }
+            .background(colorScheme == .light ? .white : Color(hex: 0xD24752))
             .ignoresSafeArea()
             .navigationBarHidden(true)
         }

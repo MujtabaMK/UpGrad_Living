@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FormDeclerationView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
     @State private var borderColor = Color(hex: 0xE75798)
     @StateObject private var submitViewModel = SubmitDocumentaionViewModel()
@@ -42,7 +43,7 @@ struct FormDeclerationView: View {
                         Spacer(minLength: 0)
                         Text("Declaration")
                             .font(.custom(OpenSans_SemiBold, size: 18))
-                            .foregroundColor(Color(hex: 0x000000))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
                             .padding(.trailing, 30)
                         Spacer(minLength: 0)
                     }
@@ -59,11 +60,13 @@ struct FormDeclerationView: View {
                                 HStack{
                                     Image(isAccept ? "Form_Accept" : "Form_Not_Accept")
                                         .resizable()
+                                        .renderingMode(.template)
+                                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                         .scaledToFit()
                                         .frame(width: 30, height: 30)
                                     Text("I Accept*")
                                         .font(.custom(OpenSans_SemiBold, size: 14))
-                                        .foregroundColor(Color(hex: 0x333333))
+                                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                 }
                                 .padding(.bottom, 20)
                             }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MedicalQuestionView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
     @State private var borderColor = Color(hex: 0xE75798)
     
@@ -107,7 +108,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionImage(text: "01")
                                             Text("Do you have any dietary preference or  restriction?*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         
@@ -214,7 +215,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionImage(text: "02")
                                             Text("Do you have any food allergies?*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.bottom, 5)
@@ -277,7 +278,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionImage(text: "01")
                                             Text("Do you have any kind of disability or medical condition (mental or physical)?*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.bottom, 5)
@@ -325,7 +326,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionImage(text: "02")
                                             Text("Are you taking any medication for any physical or mental condition?*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.bottom, 5)
@@ -374,7 +375,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionImage(text: "03")
                                             Text("Do you have any allergies (including food,  medication and/ or animals)?*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.bottom, 5)
@@ -422,7 +423,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionImage(text: "04")
                                             Text("Have you had any surgery or major injuries in the past 5 (five) years?*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.bottom, 5)
@@ -472,7 +473,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionImage(text: "05")
                                             Text("Have you currently or in the past been diagnosed/ suffered/ treated/ taken medication for any of the following conditions?")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.bottom, 20)
@@ -484,7 +485,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "A")
                                             Text("Diabetes*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -536,7 +537,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "B")
                                             Text("Hypertension/ high blood pressure/ low or high cholesterol*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -587,7 +588,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "C")
                                             Text("Respiratory disorders/ asthma/ tuberculosis/ COPD/ bronchitis/ Covid 19*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -638,7 +639,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "D")
                                             Text("Thyroid disease/ Cushing’s disease/ parathyroid/ or any other disease or disorder of the endocrine system*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -694,7 +695,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "E")
                                             Text("Any Communicable Deseases?*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -746,7 +747,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "F")
                                             Text("Any blood or clotting disorders*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -798,7 +799,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "G")
                                             Text("Liver Disease*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -850,7 +851,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "H")
                                             Text("Heart disease or disorder, chest pain or discomfort, irregular heartbeats, palpitations, murmurs*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -903,7 +904,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "I")
                                             Text("Arthritis or joint pain*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -958,7 +959,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "J")
                                             Text("Kidney disease*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -1010,7 +1011,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "K")
                                             Text("Epilepsy/ Seizures/ Mental or Psychiatric illness/ Depression/ Anxiety/ Dementia/ Mania/ Paralysis/ Stroke or any other disease of the brain of nervous system*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -1062,7 +1063,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "L")
                                             Text("Congenital disease*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -1114,7 +1115,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "M")
                                             Text("Physical handicaps or disease of the eye, nose or throat (except any sight related problems corrected by prescription lenses)*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -1167,7 +1168,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionSubImage(text: "N")
                                             Text("Any other disease/ health adversity/ injury/ condition/ treatment/ deficiency not mentioned above*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.horizontal, 40)
@@ -1231,7 +1232,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionImage(text: "01")
                                             Text("Have you been tested positive for COVID-19 recently?*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.bottom, 5)
@@ -1282,7 +1283,7 @@ struct MedicalQuestionView: View {
                                             MediacalQuestionImage(text: "02")
                                             Text("Have you had both doses of the COVID-19 vaccine?*")
                                                 .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(Color(hex: 0x333333))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                                 .padding(.trailing, 4)
                                         }
                                         .padding(.bottom, 5)

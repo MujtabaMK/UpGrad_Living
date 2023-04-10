@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct LoginView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var txtMobile = ""
     @State private var MobileNumber = ""
     @State private var isShowOTP = false
@@ -60,6 +61,7 @@ struct LoginView: View {
                                 .multilineTextAlignment(.leading)
                                 .frame(height: 40)
                                 .cornerRadius(4)
+                                .foregroundColor(.black)
                                 .toolbar {
                                     ToolbarItemGroup(placement: .keyboard) {
                                         Spacer()
@@ -86,6 +88,7 @@ struct LoginView: View {
                                 cornerRadius: 4).strokeBorder(Color(hex: 0x969696),
                                                               style: StrokeStyle(lineWidth: 0.5))
                         )
+                        .background(colorScheme == .light ? .white : .white)
                         
                     }
                     .padding()
@@ -143,17 +146,18 @@ struct LoginView: View {
                     .padding(.bottom, 20)
                 }
                 .frame(width: UIScreen.main.bounds.width - 60)
-                .background(.white)
+                .background(colorScheme == .light ? .white : Color(hex: 0xFEEEF0, alpha: 1.0))
                 .padding(.horizontal)
                 .background(
                     RoundedRectangle(cornerRadius: 15)
-                        .fill(Color.white)
+                        .fill(colorScheme == .light ? .white : Color(hex: 0xFEEEF0, alpha: 1.0))
                         .shadow(color: .gray, radius: 10, x: 0, y: 0)
                 )
                 if viewModel.isLoadingData{
                     LoadingView()
                 }
             }
+            .background(colorScheme == .light ? .white : Color(hex: 0xD24752))
             .ignoresSafeArea()
             .navigationBarHidden(true)
         }

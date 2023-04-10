@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailsViewTop: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var Step: String
     var body: some View {
         VStack{
@@ -123,7 +124,7 @@ struct DetailsViewTop: View {
                         Spacer()
                     Text("Begin your journey by telling us about you...")
                         .font(.custom(OpenSans_Bold, size: 20))
-                        .foregroundColor(Color(hex: 0x333333))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                         Spacer()
                 }
                 Text("Student’s Details")
@@ -142,7 +143,7 @@ struct DetailsViewTop: View {
                         Spacer()
                     Text("Fill in your parent’s and/or guardian’s details")
                         .font(.custom(OpenSans_Bold, size: 20))
-                        .foregroundColor(Color(hex: 0x333333))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                         Spacer()
                 }
                 Text("Parent’s Details")
@@ -161,7 +162,7 @@ struct DetailsViewTop: View {
                         Spacer()
                     Text("Fill in your enrollment details")
                         .font(.custom(OpenSans_Bold, size: 20))
-                        .foregroundColor(Color(hex: 0x333333))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                         Spacer()
                 }
                 Text("Enrollment Details")
@@ -180,7 +181,7 @@ struct DetailsViewTop: View {
                         Spacer()
                     Text("Select your accommodation and payment options")
                         .font(.custom(OpenSans_Bold, size: 20))
-                        .foregroundColor(Color(hex: 0x333333))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                         Spacer()
                 }
                 Text("Select the Room Type")
@@ -199,7 +200,7 @@ struct DetailsViewTop: View {
                         Spacer()
                     Text("Choose your dietary requirements and medical information")
                         .font(.custom(OpenSans_Bold, size: 20))
-                        .foregroundColor(Color(hex: 0x333333))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                         Spacer()
                 }
                 Text("Dietary Requirements")

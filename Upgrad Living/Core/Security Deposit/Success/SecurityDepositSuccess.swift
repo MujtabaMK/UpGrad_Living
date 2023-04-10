@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SecurityDepositSuccess: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var isButtonClick = false
     @State private var isUploadDocument = false
     var body: some View {
@@ -20,17 +21,17 @@ struct SecurityDepositSuccess: View {
                     .frame(width: 150,height: 151)
                 Text("Payment successful!")
                     .font(.custom(OpenSans_Bold, size: 20))
-                    .foregroundColor(Color(hex: 0x333333))
+                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                     .padding(5)
                 Text("Thank you for making the security deposit. \nThe receipt will be sent to your email.")
                     .font(.custom(OpenSans_SemiBold, size: 14))
-                    .foregroundColor(Color(hex: 0x868686))
+                    .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : .white)
                     .multilineTextAlignment(.center)
                     .padding(5)
                     .padding(.bottom, 20)
                 Text("Please proceed to \nupload your documents")
                     .font(.custom(OpenSans_SemiBold, size: 16))
-                    .foregroundColor(Color(hex: 0x333333))
+                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                     .multilineTextAlignment(.center)
                     .padding(10)
                 

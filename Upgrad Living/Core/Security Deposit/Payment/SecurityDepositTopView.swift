@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SecurityDepositTopView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var body: some View {
         ZStack{
             Color(hex: 0xFDE1E3)
@@ -19,7 +20,7 @@ struct SecurityDepositTopView: View {
                     .padding()
                 Text("Book your bed and get ready to dream in comfort!")
                     .font(.custom(OpenSans_Bold, size: 20))
-                    .foregroundColor(Color(hex: 0x333333))
+                    .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
                     .frame(width: 200, alignment: .center)
                     .multilineTextAlignment(.center)
                 

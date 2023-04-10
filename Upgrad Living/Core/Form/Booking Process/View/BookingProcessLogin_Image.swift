@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BookingProcessLogin_Image: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var body: some View {
         VStack{
             Image("Login_Image_Booking")//1

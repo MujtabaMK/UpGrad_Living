@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MediacalQuestionSubImage: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var text: String
     var body: some View {
         VStack{
@@ -18,7 +19,7 @@ struct MediacalQuestionSubImage: View {
                 .overlay(
                     Text(text)
                         .font(.custom(OpenSans_SemiBold, size: 12))
-                        .foregroundColor(Color(hex: 0x333333))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
                 )
         }
     }

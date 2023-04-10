@@ -12,6 +12,7 @@ struct EnrollmentDetailsView: View {
     @StateObject private var viewModel = EnrollmentContentViewModel()
     @StateObject private var submitViewModel = SubmitEnrollmentViewModel()
     @StateObject private var GetViewModel = GetFormViewModel()
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var borderColor = Color(hex: 0x685BC7)
     
     @State private var canEditSchool = false
@@ -119,7 +120,7 @@ struct EnrollmentDetailsView: View {
                                                          placeholderImage: .constant("Enrollment_School"))
                                 .disabled(true)
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
+                                .foregroundColor(colorScheme == .light ? .black : .white)
                                 .onChange(of: viewModel.textSchool, perform: { newValue in
                                     editingTextFieldSchool = false
                                     ShowSchoolDropDown = false
@@ -169,7 +170,7 @@ struct EnrollmentDetailsView: View {
                                             Text(master.schoolFullName ?? "")
                                                 .padding(5)
                                                 .padding(.leading, 5)
-                                                .foregroundColor(.black)
+                                                .foregroundColor(colorScheme == .light ? .black : .white)
                                                 .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                         }
                                     }
@@ -196,7 +197,7 @@ struct EnrollmentDetailsView: View {
                                                          placeholderImage: .constant("Enrollment_Program"))
                                 .disabled(true)
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
+                                .foregroundColor(colorScheme == .light ? .black : .white)
                                 .onChange(of: viewModel.textProgram, perform: { newValue in
                                     editingTextFieldProgram = false
                                     ShowSchoolDropDown = false
@@ -244,7 +245,7 @@ struct EnrollmentDetailsView: View {
                                             Text(master.certificationShortName ?? "")
                                                 .padding(5)
                                                 .padding(.leading, 5)
-                                                .foregroundColor(.black)
+                                                .foregroundColor(colorScheme == .light ? .black : .white)
                                                 .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                         }
                                     }

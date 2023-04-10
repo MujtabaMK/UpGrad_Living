@@ -132,9 +132,9 @@ struct MaterialDesignTextEditorCountry: View {
     
     private func updatePlaceholderColor() {
         if valid {
-            placeholderColor = editing ? Color(hex: 0x5A5858) : Color(hex: 0x5A5858)
+            placeholderColor = editing ? colorScheme == .light ? Color(hex: 0x5A5858) : Color(hex: 0xFFFFFF) : colorScheme == .light ? Color(hex: 0x5A5858) : Color(hex: 0xFFFFFF)
         } else if text.isEmpty {
-            placeholderColor = editing ? Color(hex: 0x5A5858) : Color(hex: 0x5A5858)
+            placeholderColor = editing ? colorScheme == .light ? Color(hex: 0x5A5858) : Color(hex: 0xFFFFFF) : colorScheme == .light ? Color(hex: 0x5A5858) : Color(hex: 0xFFFFFF)
         } else {
             placeholderColor = Color(hex: 0x5A5858)
         }

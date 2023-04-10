@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct ParentsDetailsView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
     @StateObject private var viewModel = ParentContentViewModel()
     @StateObject private var submitViewModel = SubmitParentViewModel()
@@ -536,7 +537,7 @@ struct ParentsDetailsView: View {
                                                                 BorderColor: $borderColor)
                                 .disabled(true)
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
+                                .foregroundColor(colorScheme == .light ? .black : .white)
                                 .onChange(of: viewModel.textCurrentCountry, perform: { newValue in
                                     editingTextFieldCurrentCountry = false
                                     ShowCurrentCountryDropDown = false
@@ -579,7 +580,7 @@ struct ParentsDetailsView: View {
                                             Text(master.name ?? "")
                                                 .padding(5)
                                                 .padding(.leading, 5)
-                                                .foregroundColor(.black)
+                                                .foregroundColor(colorScheme == .light ? .black : .white)
                                                 .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                         }
                                     }
@@ -605,7 +606,7 @@ struct ParentsDetailsView: View {
                                                                 BorderColor: $borderColor)
                                 .disabled(true)
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
+                                .foregroundColor(colorScheme == .light ? .black : .white)
                                 .onChange(of: viewModel.textCurrentState, perform: { newValue in
                                     editingTextFieldCurrentState = false
                                     ShowCurrentCountryDropDown = false
@@ -645,7 +646,7 @@ struct ParentsDetailsView: View {
                                                 Text(master.name ?? "")
                                                     .padding(5)
                                                     .padding(.leading, 5)
-                                                    .foregroundColor(.black)
+                                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                                     .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                             }
                                         }
@@ -672,7 +673,7 @@ struct ParentsDetailsView: View {
                                                                 BorderColor: $borderColor)
                                 .disabled(true)
                                 .multilineTextAlignment(.leading)
-                                .foregroundColor(.black )
+                                .foregroundColor(colorScheme == .light ? .black : .white)
                                 .onChange(of: viewModel.textCurrentCity, perform: { newValue in
                                     editingTextFieldCurrentCity = false
                                     ShowCurrentCountryDropDown = false
@@ -706,7 +707,7 @@ struct ParentsDetailsView: View {
                                                 Text(master.name ?? "")
                                                     .padding(5)
                                                     .padding(.leading, 5)
-                                                    .foregroundColor(.black)
+                                                    .foregroundColor(colorScheme == .light ? .black : .white)
                                                     .frame(width: UIScreen.main.bounds.width - 20,alignment: .leading)
                                             }
                                         }

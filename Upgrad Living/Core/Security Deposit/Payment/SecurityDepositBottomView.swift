@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SecurityDepositBottomView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     var textvalue: String
     var body: some View {
         HStack{
@@ -17,7 +18,7 @@ struct SecurityDepositBottomView: View {
                 .frame(width: 14, height: 14)
             Text(textvalue)
                 .font(.custom(OpenSans_SemiBold, size: 14))
-                .foregroundColor(Color(hex: 0x868686))
+                .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
                 .padding(.trailing, 2)
         }.padding(.leading)
     }

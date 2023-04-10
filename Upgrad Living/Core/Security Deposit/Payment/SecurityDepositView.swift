@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SecurityDepositView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var isPaymentSuccess = false
     @State private var isButtonClick = false
     var body: some View {
@@ -20,14 +21,16 @@ struct SecurityDepositView: View {
                         .foregroundColor(.white)
                         .font(.custom(OpenSans_Bold, size: 18))
                         .padding(8)
-                        .frame(width: UIScreen.main.bounds.width, alignment: .center)
+                        .frame(
+                            width: UIScreen.main.bounds.width,
+                            alignment: .center)
                         .background(Color(hex: 0xF36773))
                         .padding(.top, -12)
                 }
                 VStack(alignment: .leading) {
                     Text("Please note:")
                         .font(.custom(OpenSans_SemiBold, size: 18))
-                        .foregroundColor(Color(hex: 0x000000))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
                         .frame(alignment: .leading)
                         .padding(.top)
                         .padding(.leading)
@@ -35,7 +38,10 @@ struct SecurityDepositView: View {
                     SecurityDepositBottomView(textvalue: "The security deposit will be fully refunded only on completion of 11 month stay")
                     SecurityDepositBottomView(textvalue: "However, if you cancel your booking on or before 15th May 2023, this security deposit will be fully refunded")
                 }
-                NavigationLink("", destination: SecurityDepositSuccess().navigationBarHidden(true),isActive: $isPaymentSuccess).isDetailLink(false)
+                NavigationLink(
+                    "",
+                    destination: SecurityDepositSuccess().navigationBarHidden(true),
+                    isActive: $isPaymentSuccess).isDetailLink(false)
                 VStack(alignment: .center) {
                     DetailsViewBottom(textName: "Pay Now", imageName: "")
                         .padding()
@@ -44,7 +50,12 @@ struct SecurityDepositView: View {
                             isButtonClick = true
                             isPaymentSuccess = true
                         }
-                        .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
+                        .shadow(
+                            color: isButtonClick ? .gray : .clear,
+                            radius: isButtonClick ? 10 : 0,
+                            x: 0,
+                            y: 0
+                        )
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 Spacer(minLength: 0)

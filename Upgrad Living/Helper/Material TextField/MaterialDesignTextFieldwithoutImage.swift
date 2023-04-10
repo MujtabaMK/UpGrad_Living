@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct MaterialDesignTextFieldwithoutImage: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var ColourValue = Color(.white)
     @Binding var BorderColor: Color
     var body: some View {
@@ -23,7 +24,7 @@ struct MaterialDesignTextFieldwithoutImage: View {
             
             HStack {
                 ZStack {
-                    Color(.white)
+                    Color(colorScheme == .light ? .white : .black)
                     //Color(PlaceHolderBackgroundColour)
                         .cornerRadius(4.0)
                         .opacity(placeholderBackgroundOpacity)
@@ -131,9 +132,9 @@ struct MaterialDesignTextFieldwithoutImage: View {
     
     private func updatePlaceholderColor() {
         if valid {
-            placeholderColor = editing ? Color(hex: 0x5A5858) : Color(hex: 0x5A5858)
+            placeholderColor = editing ? colorScheme == .light ? Color(hex: 0x5A5858) : Color(hex: 0xFFFFFF) : colorScheme == .light ? Color(hex: 0x5A5858) : Color(hex: 0xFFFFFF)
         } else if text.isEmpty {
-            placeholderColor = editing ? Color(hex: 0x5A5858) : Color(hex: 0x5A5858)
+            placeholderColor = editing ? colorScheme == .light ? Color(hex: 0x5A5858) : Color(hex: 0xFFFFFF) : colorScheme == .light ? Color(hex: 0x5A5858) : Color(hex: 0xFFFFFF)
         } else {
             placeholderColor = Color(hex: 0x5A5858)
         }

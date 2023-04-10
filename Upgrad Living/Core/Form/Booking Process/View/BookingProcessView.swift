@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BookingProcessView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var isStudentDetails = false
     @State private var isButtonClick = false
     var body: some View {
@@ -16,7 +17,7 @@ struct BookingProcessView: View {
                 VStack{
                     Text("Booking Process")
                         .font(.custom(OpenSans_Bold, size: 18))
-                        .foregroundColor(Color(hex: 0x333333))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                         .padding(.top)
                     Divider()
                     ScrollView(showsIndicators: false) {
@@ -31,11 +32,11 @@ struct BookingProcessView: View {
                                     .padding(.top, 40)
                                 }
                                 .frame(maxWidth: UIScreen.main.bounds.width - 60)
-                                .background(.white)
+                                .background(colorScheme == .light ? Color(hex: 0xFFFFFF) : Color(hex: 0xFFF4F6))
                                 .padding(.horizontal)
                                 .background(
                                     RoundedRectangle(cornerRadius: 15)
-                                        .fill(Color.white)
+                                        .fill(colorScheme == .light ? Color(hex: 0xFFFFFF) : Color(hex: 0xFFF4F6))
                                         .shadow(color: .gray, radius: 2, x: 0, y: 0)
                                 )
                             .padding(.top, 200)
@@ -55,7 +56,7 @@ struct BookingProcessView: View {
                             HStack{
                                 Text("The booking process at upGrad Living consists of \nnine easy steps... ")
                                     .font(.custom(OpenSans_Bold, size: 20))
-                                    .foregroundColor(Color(hex: 0x333333))
+                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                     .padding(.leading, 5)
                                 Image("Booking_Process_Top")
                                     .resizable()

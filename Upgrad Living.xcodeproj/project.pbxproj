@@ -44,6 +44,9 @@
 		09768B0F29DD81B800CB05F5 /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09768B0E29DD81B800CB05F5 /* StepModel.swift */; };
 		09768B1129DD81EC00CB05F5 /* StepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09768B1029DD81EC00CB05F5 /* StepViewModel.swift */; };
 		09768B1529DD846D00CB05F5 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09768B1429DD846D00CB05F5 /* FirstView.swift */; };
+		097E043329E5351200F91647 /* StudentProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E043229E5351200F91647 /* StudentProfileView.swift */; };
+		097E043B29E5356E00F91647 /* StudentProfileCreativity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E043A29E5356E00F91647 /* StudentProfileCreativity.swift */; };
+		097E043D29E539BB00F91647 /* ColourDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E043C29E539BB00F91647 /* ColourDefine.swift */; };
 		0981D9B729DBFA650025575D /* GetFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981D9B629DBFA650025575D /* GetFormModel.swift */; };
 		0981D9B929DBFBF50025575D /* GetFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981D9B829DBFBF50025575D /* GetFormViewModel.swift */; };
 		0981D9BC29DC26BB0025575D /* SecurityDepositView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981D9BB29DC26BA0025575D /* SecurityDepositView.swift */; };
@@ -97,6 +100,8 @@
 		09B7A1D629D841EA00EC72EF /* BookingLoginProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1D529D841EA00EC72EF /* BookingLoginProcessView.swift */; };
 		09B84CD129DE9DAA000FC1C6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CD029DE9DAA000FC1C6 /* Network.swift */; };
 		09B84CD629DED6B5000FC1C6 /* ZoomableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CD529DED6B5000FC1C6 /* ZoomableScrollView.swift */; };
+		09C0ED5329E4039F009123D2 /* UploadDocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0ED5229E4039F009123D2 /* UploadDocumentsView.swift */; };
+		09C0ED5529E4345B009123D2 /* InputDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0ED5429E4345B009123D2 /* InputDocument.swift */; };
 		09C3810B29DA8A52006D82C9 /* BookingSubmitProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */; };
 		09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */; };
 		09CC312629CC71940048BFF5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312529CC71940048BFF5 /* LottieView.swift */; };
@@ -159,6 +164,9 @@
 		09768B0E29DD81B800CB05F5 /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
 		09768B1029DD81EC00CB05F5 /* StepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewModel.swift; sourceTree = "<group>"; };
 		09768B1429DD846D00CB05F5 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		097E043229E5351200F91647 /* StudentProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileView.swift; sourceTree = "<group>"; };
+		097E043A29E5356E00F91647 /* StudentProfileCreativity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileCreativity.swift; sourceTree = "<group>"; };
+		097E043C29E539BB00F91647 /* ColourDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourDefine.swift; sourceTree = "<group>"; };
 		0981D9B629DBFA650025575D /* GetFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormModel.swift; sourceTree = "<group>"; };
 		0981D9B829DBFBF50025575D /* GetFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFormViewModel.swift; sourceTree = "<group>"; };
 		0981D9BB29DC26BA0025575D /* SecurityDepositView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityDepositView.swift; sourceTree = "<group>"; };
@@ -213,6 +221,8 @@
 		09B7A1D529D841EA00EC72EF /* BookingLoginProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingLoginProcessView.swift; sourceTree = "<group>"; };
 		09B84CD029DE9DAA000FC1C6 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		09B84CD529DED6B5000FC1C6 /* ZoomableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableScrollView.swift; sourceTree = "<group>"; };
+		09C0ED5229E4039F009123D2 /* UploadDocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentsView.swift; sourceTree = "<group>"; };
+		09C0ED5429E4345B009123D2 /* InputDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDocument.swift; sourceTree = "<group>"; };
 		09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSubmitProcessView.swift; sourceTree = "<group>"; };
 		09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09CC312529CC71940048BFF5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -320,6 +330,8 @@
 				096A3FDD29CC254100092AAC /* Authentication */,
 				098A04CA29D4075300C9595A /* Form */,
 				0981D9BA29DC260C0025575D /* Security Deposit */,
+				09C0ED5129E40361009123D2 /* Upload Documents */,
+				097E043129E534EE00F91647 /* Student Profile */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -340,6 +352,7 @@
 				096A3FFD29CC2B0300092AAC /* FountsDefine.swift */,
 				09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */,
 				09A6F6DD29CDB9B300689E9F /* APIDefine.swift */,
+				097E043C29E539BB00F91647 /* ColourDefine.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -354,6 +367,7 @@
 				09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */,
 				09CC312529CC71940048BFF5 /* LottieView.swift */,
 				09B84CD529DED6B5000FC1C6 /* ZoomableScrollView.swift */,
+				09C0ED5429E4345B009123D2 /* InputDocument.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -463,6 +477,61 @@
 				09768B1429DD846D00CB05F5 /* FirstView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		097E043129E534EE00F91647 /* Student Profile */ = {
+			isa = PBXGroup;
+			children = (
+				097E043929E5354B00F91647 /* Model */,
+				097E043829E5354400F91647 /* View Model */,
+				097E043429E5351B00F91647 /* View */,
+			);
+			path = "Student Profile";
+			sourceTree = "<group>";
+		};
+		097E043429E5351B00F91647 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				097E043229E5351200F91647 /* StudentProfileView.swift */,
+				097E043A29E5356E00F91647 /* StudentProfileCreativity.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		097E043529E5352200F91647 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09C0ED5229E4039F009123D2 /* UploadDocumentsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		097E043629E5352F00F91647 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		097E043729E5353600F91647 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		097E043829E5354400F91647 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		097E043929E5354B00F91647 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0981D9BA29DC260C0025575D /* Security Deposit */ = {
@@ -667,6 +736,16 @@
 				09B84CD029DE9DAA000FC1C6 /* Network.swift */,
 			);
 			path = "Check Network";
+			sourceTree = "<group>";
+		};
+		09C0ED5129E40361009123D2 /* Upload Documents */ = {
+			isa = PBXGroup;
+			children = (
+				097E043729E5353600F91647 /* Model */,
+				097E043629E5352F00F91647 /* View Model */,
+				097E043529E5352200F91647 /* View */,
+			);
+			path = "Upload Documents";
 			sourceTree = "<group>";
 		};
 		09CC312229CC70BD0048BFF5 /* JSON File */ = {
@@ -1026,6 +1105,7 @@
 				0981D9C029DC2F3A0025575D /* SecurityDepositBottomView.swift in Sources */,
 				09DE74C429D5783F001B105A /* RoomTypeTwinView.swift in Sources */,
 				0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */,
+				097E043B29E5356E00F91647 /* StudentProfileCreativity.swift in Sources */,
 				0993226A29D6C81A0036C050 /* FoucesedStudentTextField.swift in Sources */,
 				098D699029CD770D0000F5A9 /* WalkThrough1.swift in Sources */,
 				099490CF29DAAE14002FA2C0 /* BookingParentProcessView.swift in Sources */,
@@ -1044,6 +1124,7 @@
 				09DE74B229D55C4E001B105A /* EnrollmentDetailsView.swift in Sources */,
 				099490D529DAB7D9002FA2C0 /* BookingRoomProcessView.swift in Sources */,
 				0981D9BC29DC26BB0025575D /* SecurityDepositView.swift in Sources */,
+				097E043329E5351200F91647 /* StudentProfileView.swift in Sources */,
 				096A3FE229CC259B00092AAC /* LoginView.swift in Sources */,
 				099490D129DAAF9B002FA2C0 /* BookingUploadProcessView.swift in Sources */,
 				099490D929DAC89B002FA2C0 /* BookingProcessLogin_Image.swift in Sources */,
@@ -1057,6 +1138,7 @@
 				09768B1529DD846D00CB05F5 /* FirstView.swift in Sources */,
 				0934F12F29CC57AE0076AD56 /* OTPViewModel.swift in Sources */,
 				0993227029D6F9400036C050 /* SubmitStudentModel.swift in Sources */,
+				09C0ED5329E4039F009123D2 /* UploadDocumentsView.swift in Sources */,
 				09B7A1CC29D8264C00EC72EF /* SubmitDocumentaionModel.swift in Sources */,
 				09DE74A829D541F5001B105A /* ParentsDetailsView.swift in Sources */,
 				096A3FFE29CC2B0300092AAC /* FountsDefine.swift in Sources */,
@@ -1071,6 +1153,7 @@
 				09B7A1D629D841EA00EC72EF /* BookingLoginProcessView.swift in Sources */,
 				09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */,
 				098A04E029D44FE400C9595A /* MaterialDesignTextEditorCountry.swift in Sources */,
+				09C0ED5529E4345B009123D2 /* InputDocument.swift in Sources */,
 				09DE74BC29D56977001B105A /* RoomTypeView.swift in Sources */,
 				098A04E429D4538200C9595A /* CountryViewModel.swift in Sources */,
 				0981D9B729DBFA650025575D /* GetFormModel.swift in Sources */,
@@ -1083,6 +1166,7 @@
 				0993226E29D6F0290036C050 /* FoucesedEnrollmentTextField.swift in Sources */,
 				0945E26A29CD8C3D00F9EA4E /* WalkThrough2.swift in Sources */,
 				098D698929CD70230000F5A9 /* ContentViewModel.swift in Sources */,
+				097E043D29E539BB00F91647 /* ColourDefine.swift in Sources */,
 				0981D9C429DC345F0025575D /* SecurityDepositSuccess.swift in Sources */,
 				0934F12D29CC3DD70076AD56 /* OTPView.swift in Sources */,
 				09DE74D029D59E2B001B105A /* MediacalQuestionSubImage.swift in Sources */,

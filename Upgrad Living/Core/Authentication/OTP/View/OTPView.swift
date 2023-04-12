@@ -28,6 +28,8 @@ struct OTPView: View {
     @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var loginDict = [String: Any?]()
     @State private var isSecurityDeposite = false
+    @State private var isUploadDocuments = false
+    @State private var isStudentProfile = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     var body: some View {
         NavigationView{
@@ -162,6 +164,10 @@ struct OTPView: View {
                                                                 isBookingView = true
                                                             }else if Step.data?.step == "1"{
                                                                 isSecurityDeposite = true
+                                                            }else if Step.data?.step == "2"{
+                                                                isUploadDocuments = true
+                                                            }else if Step.data?.step == "3"{
+                                                                isStudentProfile = true
                                                             }
                                                         }else{
                                                             isBookingView = true
@@ -212,6 +218,14 @@ struct OTPView: View {
                         "",
                         destination: SecurityDepositView().navigationBarHidden(true),
                         isActive: $isSecurityDeposite).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: UploadDocumentsView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
+                        isActive: $isUploadDocuments).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: StudentProfileView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
+                        isActive: $isStudentProfile).isDetailLink(false)
                 }
                 .onAppear{
                     let lastDigit = Last4dight(MobileNumber: newMobile)

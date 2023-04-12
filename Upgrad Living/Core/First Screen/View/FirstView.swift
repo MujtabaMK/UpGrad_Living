@@ -10,6 +10,8 @@ import SwiftUI
 struct FirstView: View {
     @State private var isBookingProcess = false
     @State private var isSecurityDeposite = false
+    @State private var isUploadDocument = false
+    @State private var isStudentProfile = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @State private var showingAlert = false
     @State private var AlertMessage = String()
@@ -30,6 +32,14 @@ struct FirstView: View {
                         "",
                         destination: SecurityDepositView().navigationBarHidden(true),
                         isActive: $isSecurityDeposite).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: UploadDocumentsView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
+                        isActive: $isUploadDocument).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: StudentProfileView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
+                        isActive: $isStudentProfile).isDetailLink(false)
                 }
             }
             .ignoresSafeArea()
@@ -43,6 +53,8 @@ struct FirstView: View {
 //                                isBookingProcess = true
 //                            }else if Step.data?.step == "1"{
 //                                isSecurityDeposite = true
+//                            }else if Step.data?.step == "2"{
+//                                isUploadDocument = true
 //                            }
                             isSecurityDeposite = true
                         }else{

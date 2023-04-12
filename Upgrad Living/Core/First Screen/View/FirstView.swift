@@ -55,6 +55,8 @@ struct FirstView: View {
 //                                isSecurityDeposite = true
 //                            }else if Step.data?.step == "2"{
 //                                isUploadDocument = true
+//                            }else if Step.data?.step == "3"{
+//                                isSecurityDeposite = true
 //                            }
                             isSecurityDeposite = true
                         }else{

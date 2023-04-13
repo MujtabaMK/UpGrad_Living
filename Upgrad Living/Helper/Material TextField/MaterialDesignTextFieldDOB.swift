@@ -46,16 +46,16 @@ struct MaterialDesignTextFieldDOB: View {
                 .padding([.bottom], placeholderBottomPadding)
                 Spacer()
             }
-//            HStack {
-//                VStack {
-//                    Spacer()
-//                    Text(hint)
-//                        .font(.system(size: 10.0))
-//                        .foregroundColor(.gray)
-//                        .padding([.leading], 10.0)
-//                }
-//                Spacer()
-//            }
+            //            HStack {
+            //                VStack {
+            //                    Spacer()
+            //                    Text(hint)
+            //                        .font(.system(size: 10.0))
+            //                        .foregroundColor(.gray)
+            //                        .padding([.leading], 10.0)
+            //                }
+            //                Spacer()
+            //            }
         }
         .onChange(of: editing) {
             focusField = $0 ? .textField : nil

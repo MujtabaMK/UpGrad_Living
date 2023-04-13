@@ -49,15 +49,15 @@ struct FirstView: View {
                     ViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
                         print("Step value = ", Step)
                         if Step.status == 1{
-//                            if Step.data?.step == "0"{
-//                                isBookingProcess = true
-//                            }else if Step.data?.step == "1"{
-//                                isSecurityDeposite = true
-//                            }else if Step.data?.step == "2"{
-//                                isUploadDocument = true
-//                            }else if Step.data?.step == "3"{
-//                                isSecurityDeposite = true
-//                            }
+                            //                            if Step.data?.step == "0"{
+                            //                                isBookingProcess = true
+                            //                            }else if Step.data?.step == "1"{
+                            //                                isSecurityDeposite = true
+                            //                            }else if Step.data?.step == "2"{
+                            //                                isUploadDocument = true
+                            //                            }else if Step.data?.step == "3"{
+                            //                                isSecurityDeposite = true
+                            //                            }
                             isSecurityDeposite = true
                         }else{
                             isBookingProcess = true

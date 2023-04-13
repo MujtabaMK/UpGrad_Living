@@ -12,7 +12,7 @@ class SubmitMedicalViewModel: ObservableObject {
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""
-
+    
     func fetchLoginDate(dietry: String,
                         dietry_text: String,
                         f_allergies: String,

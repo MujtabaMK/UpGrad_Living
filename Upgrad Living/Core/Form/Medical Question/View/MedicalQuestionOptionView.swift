@@ -16,7 +16,6 @@ struct MedicalQuestionOptionView: View {
             Image(isSelect ? "Medical_Question_Select" : "Mediacal_Question_Unselect")
                 .resizable()
                 .scaledToFit()
-            
                 .frame(width: 24, height: 24)
             Text(text)
                 .font(.custom(OpenSans_SemiBold, size: 12))

@@ -15,12 +15,11 @@ class MasterViewModel: ObservableObject{
     @Published var arrCountry = [countries]()
     @Published var arrGender = [gender]()
     @Published var arrBloodGroup = [BloodGroup]()
-
+    
     func MasterGet(MasterComplition: @escaping (MasterModel) -> Void){
         self.isLoadingData = true
         let urlString = Master_API
         guard let url = URL(string: urlString) else { return }
-        
         
         URLSession.shared.dataTask(with: url) { newdata, response, error in
             if let error = error{

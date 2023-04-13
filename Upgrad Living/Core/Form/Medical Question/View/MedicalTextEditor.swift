@@ -25,7 +25,7 @@ struct MedicalTextEditor: View {
                     .frame(width: 2, height: 30)
                 TextField("", text: $textField)
                     .font(.custom(OpenSans_SemiBold, size: 14))
-                    
+                
                     .introspectTextField(customize: {
                         (textField) in
                         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: textField.frame.size.width, height: 44))
@@ -42,11 +42,10 @@ struct MedicalTextEditor: View {
                 RoundedRectangle(cornerRadius: 5, style: .continuous)
                     .stroke(borderColor, lineWidth: 1)
             )
-            
         }
         .padding(.leading, 40)
         .padding(.top, 8)
-     
+        
     }
 }
 

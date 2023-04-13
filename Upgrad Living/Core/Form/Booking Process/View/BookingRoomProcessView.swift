@@ -33,7 +33,7 @@ struct BookingRoomProcessView: View {
                     .font(.custom(OpenSans_SemiBold, size: 14))
                     .foregroundColor(Color(hex: 0x868686))
                     .padding(.top, -25)
-           }
+            }
             .padding(.top, -20)
         }
     }

@@ -89,7 +89,6 @@ struct LoginView: View {
                                                               style: StrokeStyle(lineWidth: 0.5))
                         )
                         .background(colorScheme == .light ? .white : .white)
-                        
                     }
                     .padding()
                     VStack{

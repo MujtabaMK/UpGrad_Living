@@ -52,10 +52,10 @@ struct WalkThrough2: View {
                     .renderingMode(.original)
                     .frame(width: 38, height: 10)
                     .padding(.bottom, 40)
-                    NavigationLink(
-                        "",
-                        destination: WalkThrough3().navigationBarHidden(true),
-                        isActive: $isWalkThrough3).isDetailLink(false)
+                NavigationLink(
+                    "",
+                    destination: WalkThrough3().navigationBarHidden(true),
+                    isActive: $isWalkThrough3).isDetailLink(false)
             }
         }
         .ignoresSafeArea()

@@ -25,7 +25,7 @@ struct OTPViewTextField: View {
             .overlay(
                 RoundedRectangle(
                     cornerRadius: 10).strokeBorder(Color(hex: 0x969696),
-                                                  style: StrokeStyle(lineWidth: 0.5))
+                                                   style: StrokeStyle(lineWidth: 0.5))
             )
             .padding(.horizontal, 8)
     }

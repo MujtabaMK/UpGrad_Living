@@ -35,10 +35,9 @@ struct BookingPayProcessView: View {
                     .foregroundColor(Color(hex: 0x868686))
                     .padding(.top, -45)
                     .padding(.leading, -2)
-           }
+            }
             .padding(.top, -20)
         }
-
     }
 }
 

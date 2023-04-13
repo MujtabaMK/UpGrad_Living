@@ -90,7 +90,7 @@ struct UploadDocumentsView: View {
                             .background(colorScheme == .light ? Color(hex: 0xFEF0F1, alpha: 1.0) : Color(hex: 0xFEF0F1, alpha: 1.0))
                             
                             .padding(.bottom, 5)
-
+                            
                             HStack{
                                 Rectangle()
                                     .fill(.clear)
@@ -186,7 +186,7 @@ struct UploadDocumentsView: View {
                             .background(colorScheme == .light ? Color(hex: 0xFEF0F1, alpha: 1.0) : Color(hex: 0xFEF0F1, alpha: 1.0))
                             
                             .padding(.bottom, 15)
-
+                            
                         }
                         .background(
                             RoundedRectangle(
@@ -240,26 +240,26 @@ struct UploadDocumentsView: View {
                             
                             .padding(.bottom, 15)
                             //Text(document.input)
-//                            .fileImporter(
-//                                isPresented: $isImporting,
-//                                allowedContentTypes: [.plainText],
-//                                allowsMultipleSelection: false
-//                            ) { result in
-//                                do {
-//                                    guard let selectedFile: URL = try result.get().first else { return }
-//                                    if selectedFile.startAccessingSecurityScopedResource() {
-//                                        guard let input = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
-//                                        defer { selectedFile.stopAccessingSecurityScopedResource() }
-//                                        document.input = input
-//                                    } else {
-//                                        // Handle denied access
-//                                    }
-//                                } catch {
-//                                    // Handle failure.
-//                                    print("Unable to read file contents")
-//                                    print(error.localizedDescription)
-//                                }
-//                            }
+                            //                            .fileImporter(
+                            //                                isPresented: $isImporting,
+                            //                                allowedContentTypes: [.plainText],
+                            //                                allowsMultipleSelection: false
+                            //                            ) { result in
+                            //                                do {
+                            //                                    guard let selectedFile: URL = try result.get().first else { return }
+                            //                                    if selectedFile.startAccessingSecurityScopedResource() {
+                            //                                        guard let input = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
+                            //                                        defer { selectedFile.stopAccessingSecurityScopedResource() }
+                            //                                        document.input = input
+                            //                                    } else {
+                            //                                        // Handle denied access
+                            //                                    }
+                            //                                } catch {
+                            //                                    // Handle failure.
+                            //                                    print("Unable to read file contents")
+                            //                                    print(error.localizedDescription)
+                            //                                }
+                            //                            }
                         }
                         .background(
                             RoundedRectangle(
@@ -279,7 +279,7 @@ struct UploadDocumentsView: View {
                                 .shadow(color: .gray, radius: 5, x: 0, y: 0)
                         )
                         .padding(.bottom)
-
+                        
                         VStack{
                             Text("Passport size photograph*")
                                 .font(.custom(OpenSans_Bold, size: 16))

@@ -546,9 +546,9 @@
 		0981D9C129DC34120025575D /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				0981D9BB29DC26BA0025575D /* SecurityDepositView.swift */,
-				0981D9BD29DC273F0025575D /* SecurityDepositTopView.swift */,
-				0981D9BF29DC2F3A0025575D /* SecurityDepositBottomView.swift */,
+				09A919D129E7D1AD00968B05 /* Model */,
+				09A919D029E7D1A500968B05 /* View Model */,
+				09A919CF29E7D19F00968B05 /* View */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -703,6 +703,30 @@
 				09A33B6729CC1D4200C01D65 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		09A919CF29E7D19F00968B05 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0981D9BB29DC26BA0025575D /* SecurityDepositView.swift */,
+				0981D9BD29DC273F0025575D /* SecurityDepositTopView.swift */,
+				0981D9BF29DC2F3A0025575D /* SecurityDepositBottomView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09A919D029E7D1A500968B05 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		09A919D129E7D1AD00968B05 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		09B7A1CF29D829F800EC72EF /* Booking Process */ = {

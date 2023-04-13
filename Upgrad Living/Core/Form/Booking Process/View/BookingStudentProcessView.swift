@@ -34,7 +34,7 @@ struct BookingStudentProcessView: View {
                     .font(.custom(OpenSans_SemiBold, size: 14))
                     .foregroundColor(Color(hex: 0x868686))
                     .padding(.top, -45)
-           }
+            }
             .padding(.top, -20)
         }
     }

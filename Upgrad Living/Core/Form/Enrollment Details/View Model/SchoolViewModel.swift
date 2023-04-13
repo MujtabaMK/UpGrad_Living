@@ -12,7 +12,7 @@ class SchoolViewModel: ObservableObject {
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""
-
+    
     func fetchLoginDate(schoolId: String, programId: String,degreeId: String,complition: @escaping (SchoolModel) -> Void){
         self.isLoadingData = true
         let urlString = School_API

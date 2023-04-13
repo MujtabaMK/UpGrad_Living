@@ -56,7 +56,7 @@ final class ContentViewModel: ObservableObject {
     @Published var hintPermanentState = "State"
     @Published var hintPermanentCity = "City"
     @Published var hintPermanentPinCode = "Pin Code"
-
+    
     @Published var textFirstName = ""
     @Published var textMiddleName = ""
     @Published var textLastName = ""
@@ -80,7 +80,7 @@ final class ContentViewModel: ObservableObject {
     @Published var textPermanentState = ""
     @Published var textPermanentCity = ""
     @Published var textPermanentPinCode = ""
-
+    
     @Published var textFirstNameValid = false
     @Published var textMiddleNameValid = true
     @Published var textLastNameValid = true
@@ -318,5 +318,4 @@ final class ContentViewModel: ObservableObject {
             hintPermanentPinCode = "Not Valid"
         }
     }
-    
 }

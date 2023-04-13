@@ -121,11 +121,11 @@ struct DetailsViewTop: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 235, height: 235, alignment: .leading)
-                        Spacer()
+                    Spacer()
                     Text("Begin your journey by telling us about you...")
                         .font(.custom(OpenSans_Bold, size: 20))
                         .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
-                        Spacer()
+                    Spacer()
                 }
                 Text("Student’s Details")
                     .foregroundColor(.white)
@@ -140,11 +140,11 @@ struct DetailsViewTop: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 235, height: 235, alignment: .leading)
-                        Spacer()
+                    Spacer()
                     Text("Fill in your parent’s and/or guardian’s details")
                         .font(.custom(OpenSans_Bold, size: 20))
                         .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
-                        Spacer()
+                    Spacer()
                 }
                 Text("Parent’s Details")
                     .foregroundColor(.white)
@@ -159,11 +159,11 @@ struct DetailsViewTop: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 235, height: 235, alignment: .leading)
-                        Spacer()
+                    Spacer()
                     Text("Fill in your enrollment details")
                         .font(.custom(OpenSans_Bold, size: 20))
                         .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
-                        Spacer()
+                    Spacer()
                 }
                 Text("Enrollment Details")
                     .foregroundColor(.white)
@@ -178,11 +178,11 @@ struct DetailsViewTop: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 235, height: 235, alignment: .leading)
-                        Spacer()
+                    Spacer()
                     Text("Select your accommodation and payment options")
                         .font(.custom(OpenSans_Bold, size: 20))
                         .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
-                        Spacer()
+                    Spacer()
                 }
                 Text("Select the Room Type")
                     .foregroundColor(.white)
@@ -197,11 +197,11 @@ struct DetailsViewTop: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 235, height: 235, alignment: .leading)
-                        Spacer()
+                    Spacer()
                     Text("Choose your dietary requirements and medical information")
                         .font(.custom(OpenSans_Bold, size: 20))
                         .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
-                        Spacer()
+                    Spacer()
                 }
                 Text("Dietary Requirements")
                     .foregroundColor(.white)
@@ -211,8 +211,6 @@ struct DetailsViewTop: View {
                     .background(Color(hex: 0xE75798))
                     .padding(.top, -30)
             }
-            
-            
         }
     }
 }

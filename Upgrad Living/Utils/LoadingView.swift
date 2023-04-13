@@ -38,8 +38,8 @@ struct LoadingView: View {
                             .foregroundColor(Color(hex: 0xCC1120))
                             .padding(6)
                         LottieView(name: "Loading", loopMode: .loop)
-                                    .frame(width: 100, height: 20)
-                                    .padding(.bottom, 20)
+                            .frame(width: 100, height: 20)
+                            .padding(.bottom, 20)
                     }
                 }
             }
@@ -51,8 +51,6 @@ struct LoadingView: View {
                     .fill(Color.white)
                     .shadow(color: .gray, radius: 10, x: 0, y: 0)
             )
-          
-            
         }.ignoresSafeArea()
     }
 }

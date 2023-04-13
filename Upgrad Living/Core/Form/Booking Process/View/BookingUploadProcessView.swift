@@ -96,14 +96,13 @@ struct BookingUploadProcessView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 14, height: 14)
-                            Text("Anti-Ragging Annexure II (to be notarized)\n")
-                                .font(.custom(OpenSans_SemiBold, size: 12))
-                                .foregroundColor(Color(hex: 0x868686))
-                            +
-                            Text("Note: 2 original copies have to be physically submitted as well")
-                                .font(.custom(OpenSans_SemiBold, size: 12))
-                                .foregroundColor(Color(hex: 0xF47781))
-                       
+                        Text("Anti-Ragging Annexure II (to be notarized)\n")
+                            .font(.custom(OpenSans_SemiBold, size: 12))
+                            .foregroundColor(Color(hex: 0x868686))
+                        +
+                        Text("Note: 2 original copies have to be physically submitted as well")
+                            .font(.custom(OpenSans_SemiBold, size: 12))
+                            .foregroundColor(Color(hex: 0xF47781))
                     }
                     .padding(.leading)
                     .padding(.top, -5)
@@ -112,14 +111,13 @@ struct BookingUploadProcessView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 14, height: 14)
-                            Text("Anti-Ragging Annexure I (to be notarized)\n")
-                                .font(.custom(OpenSans_SemiBold, size: 12))
-                                .foregroundColor(Color(hex: 0x868686))
-                            +
-                            Text("Note: 2 original copies have to be physically submitted as well")
-                                .font(.custom(OpenSans_SemiBold, size: 12))
-                                .foregroundColor(Color(hex: 0xF47781))
-                       
+                        Text("Anti-Ragging Annexure I (to be notarized)\n")
+                            .font(.custom(OpenSans_SemiBold, size: 12))
+                            .foregroundColor(Color(hex: 0x868686))
+                        +
+                        Text("Note: 2 original copies have to be physically submitted as well")
+                            .font(.custom(OpenSans_SemiBold, size: 12))
+                            .foregroundColor(Color(hex: 0xF47781))
                     }
                     .padding(.leading)
                     .padding(.top, -1)

@@ -39,7 +39,6 @@ struct PaymentMethod6Month: View {
                             .font(.custom(OpenSans_SemiBold, size: 12))
                             .foregroundColor(Color(hex: 0x868686))
                     }
-                    
                 }
             }
         }

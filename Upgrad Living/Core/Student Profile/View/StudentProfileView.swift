@@ -131,6 +131,8 @@ struct StudentProfileView: View {
     
     @Binding var isBackButtonShow: Bool
     
+    @State private var isContentView = false
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading){
@@ -735,12 +737,17 @@ struct StudentProfileView: View {
                         .padding(.trailing)
                         .padding(.bottom, 20)
                     }
+                    NavigationLink(
+                        "",
+                        destination: ContentView().navigationBarHidden(true),
+                        isActive: $isContentView).isDetailLink(false)
                     VStack(alignment: .center) {
                         DetailsViewBottom(textName: "Done", imageName: "Smile_Profile")
                             .padding()
                             .frame(alignment: .center)
                             .onTapGesture {
                                 isButtonClick = true
+                                isContentView = true
                             }
                             .shadow(
                                 color: isButtonClick ? .gray : .clear,

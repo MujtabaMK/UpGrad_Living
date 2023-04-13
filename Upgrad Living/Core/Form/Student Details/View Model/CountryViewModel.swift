@@ -12,7 +12,7 @@ class CountryViewModel: ObservableObject {
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""
-
+    
     func fetchLoginDate(countryId: String, stateId: String,complition: @escaping (CountryModel) -> Void){
         self.isLoadingData = true
         let urlString = Countries_API

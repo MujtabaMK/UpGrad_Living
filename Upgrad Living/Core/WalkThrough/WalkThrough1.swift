@@ -59,7 +59,6 @@ struct WalkThrough1: View {
                         isActive: $isWalkThrough2).isDetailLink(false)
                 }
                 .padding(.bottom, 40)
-                
             }
             .ignoresSafeArea()
             .navigationBarHidden(true)
@@ -74,7 +73,7 @@ struct WalkThrough1: View {
                     
                     if value.translation.width > 0 {
                         // right
-                       
+                        
                     }
                     if value.translation.height < 0 {
                         // up
@@ -84,7 +83,7 @@ struct WalkThrough1: View {
                         // down
                     }
                 }))
-        }       
+        }
     }
 }
 

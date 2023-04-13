@@ -97,7 +97,7 @@ public struct TextFieldAlertModifier: ViewModifier {
 }
 
 extension  UITextField {
-   @objc func doneButtonTapped(button:UIBarButtonItem) -> Void {
-      self.resignFirstResponder()
-   }
+    @objc func doneButtonTapped(button:UIBarButtonItem) -> Void {
+        self.resignFirstResponder()
+    }
 }

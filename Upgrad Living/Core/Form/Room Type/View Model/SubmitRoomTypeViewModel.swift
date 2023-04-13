@@ -12,7 +12,7 @@ class SubmitRoomTypeViewModel: ObservableObject {
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""
-
+    
     func fetchLoginDate(roomType: String,
                         paymentOption: String,
                         roomTypeId: String,

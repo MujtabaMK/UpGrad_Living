@@ -583,7 +583,6 @@ struct EnrollmentDetailsView: View {
     //    }
 }
 
-
 struct EnrollmentDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         EnrollmentDetailsView(getIsEditable: "1")

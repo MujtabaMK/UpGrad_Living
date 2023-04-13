@@ -26,7 +26,7 @@ struct BookingProcessView: View {
                                 VStack{
                                     VStack{
                                         VStack{
-                                             BookingProcessLogin_Image()
+                                            BookingProcessLogin_Image()
                                         }
                                     }
                                     .padding(.top, 40)
@@ -39,7 +39,7 @@ struct BookingProcessView: View {
                                         .fill(colorScheme == .light ? Color(hex: 0xFFFFFF) : Color(hex: 0xFFF4F6))
                                         .shadow(color: .gray, radius: 2, x: 0, y: 0)
                                 )
-                            .padding(.top, 200)
+                                .padding(.top, 200)
                                 VStack{
                                     DetailsViewBottom(textName: "Let’s go", imageName: "lets_go_Image")
                                         .padding(.top, 20)

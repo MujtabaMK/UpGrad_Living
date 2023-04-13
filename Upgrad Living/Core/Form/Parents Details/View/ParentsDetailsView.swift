@@ -869,7 +869,6 @@ struct ParentsDetailsView: View {
             if networkMonitor.isConnected{
                 masterViewModel.MasterGet { MasterData in
                     arrCountry = MasterData.data?.countries ?? []
-                    
                     if getIsEditable == "1"{
                         canEditCurrentCountry = true
                         canEditCurrentState = true
@@ -884,8 +883,8 @@ struct ParentsDetailsView: View {
                         arrStateCurrent = CountryData.data?.states ?? []
                         arrCityCurrent = CountryData.data?.cities ?? []
                     }
-                    
                 }
+                
                 GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
                     if formData.status == 1{
                         viewModel.textFatherFirstName = formData.data?.fFirstName ?? ""

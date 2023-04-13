@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var isUpper = false
     @State private var isLeft = false
     @State private var isRight = false
@@ -42,7 +43,7 @@ struct ContentView: View {
                 ZoomableScrollView {
                     EmailShape()
                         .frame(width: 60, height: 50)
-                        .foregroundColor(.black)
+                        .foregroundColor(colorScheme == .light ? .black : .white)
                         .onTapGesture {
                             print("Clicked")
                         }
@@ -52,7 +53,7 @@ struct ContentView: View {
                         }
                         ZStack{
                             EmailUpper()
-                                .foregroundColor(isUpper ? .blue : .white)
+                                .foregroundColor(isUpper ? .blue : colorScheme == .light ? .white : .black)
                                 .onTapGesture {
                                     print("Upper")
                                     isUpper.toggle()
@@ -60,7 +61,7 @@ struct ContentView: View {
                         }
                         ZStack{
                             EmailLeft()
-                                .foregroundColor(isLeft ? .red : .white)
+                                .foregroundColor(isLeft ? .red : colorScheme == .light ? .white : .black)
                                 .onTapGesture {
                                     print("Left")
                                     isLeft.toggle()
@@ -68,7 +69,7 @@ struct ContentView: View {
                         }
                         ZStack{
                             EmailRight()
-                                .foregroundColor(isRight ? .orange : .white)
+                                .foregroundColor(isRight ? .orange : colorScheme == .light ? .white : .black)
                                 .onTapGesture {
                                     print("Right")
                                     isRight.toggle()
@@ -76,7 +77,7 @@ struct ContentView: View {
                         }
                         ZStack{
                             EmailBotton()
-                                .foregroundColor(isBottom ? .purple : .white)
+                                .foregroundColor(isBottom ? .purple : colorScheme == .light ? .white : .black)
                                 .onTapGesture {
                                     print("Bottom")
                                     isBottom.toggle()
@@ -319,8 +320,6 @@ struct EmailShape: Shape {
         return path
     }
 }
-
-
 
 //struct SVGImageNew: UIViewRepresentable {
 //

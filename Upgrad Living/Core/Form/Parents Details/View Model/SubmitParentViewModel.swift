@@ -12,7 +12,7 @@ class SubmitParentViewModel: ObservableObject {
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""
-
+    
     func fetchLoginDate(fFirstName: String,
                         fMiddleName: String,
                         fLastName: String,

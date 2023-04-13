@@ -12,7 +12,7 @@ class LoginViewModel: ObservableObject {
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""
-
+    
     func fetchLoginDate(mobile: String, complition: @escaping (LoginModel) -> Void){
         self.isLoadingData = true
         let urlString = Login_API

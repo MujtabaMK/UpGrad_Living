@@ -21,26 +21,26 @@ struct SearchBar: View {
                 .cornerRadius(8)
                 .padding(.horizontal, 10)
                 .keyboardType(.webSearch)
-                
+            
                 .onTapGesture {
                     self.isEditing = true
                 }
-//            if isEditing {
-//                Button(action: {
-//                    self.isEditing = false
-//                    self.text = ""
-//                    hideKeyboard()
-//                }) {
-//                    if text.isEmpty{
-//                        Text("Cancel")
-//                    }else{
-//                        Text("Done")
-//                    }
-//                }
-//                .padding(.trailing, 10)
-//                .transition(.move(edge: .trailing))
-//                .animation(.default)
-//            }
+            //            if isEditing {
+            //                Button(action: {
+            //                    self.isEditing = false
+            //                    self.text = ""
+            //                    hideKeyboard()
+            //                }) {
+            //                    if text.isEmpty{
+            //                        Text("Cancel")
+            //                    }else{
+            //                        Text("Done")
+            //                    }
+            //                }
+            //                .padding(.trailing, 10)
+            //                .transition(.move(edge: .trailing))
+            //                .animation(.default)
+            //            }
             Image("searchlight")
                 .resizable()
                 .renderingMode(.original)

@@ -376,7 +376,6 @@ struct StudentDetailsView: View {
                                 }
                                 
                                 //Date
-                                
                                 MaterialDesignTextFieldDOB($viewModel.textDOB,
                                                            placeholder: viewModel.placeholderDOB,
                                                            hint: $viewModel.hintDOB,
@@ -907,7 +906,6 @@ struct StudentDetailsView: View {
                                 }
                                 
                                 //Perment State
-                                
                                 Button {
                                     searchTextPermentState = ""
                                     ShowPermentStateDropDown = true
@@ -976,7 +974,6 @@ struct StudentDetailsView: View {
                                 }
                                 
                                 //Perment City
-                                
                                 Button {
                                     searchTextPermentCity = ""
                                     ShowPermentCityDropDown = true
@@ -1037,6 +1034,7 @@ struct StudentDetailsView: View {
                                         .padding(.bottom)
                                     }
                                 }
+                                
                                 //Perment PinCode
                                 MaterialDesignTextFieldwithoutImage($viewModel.textPermanentPinCode,
                                                                     placeholder: viewModel.placeholderPermanentPinCode,
@@ -1323,7 +1321,6 @@ struct StudentDetailsView: View {
                         arrStateCurrent = CountryData.data?.states ?? []
                         arrCityCurrent = CountryData.data?.cities ?? []
                         print(arrCityCurrent)
-                        
                     }
                     countryViewModel.fetchLoginDate(countryId: permentCountryID, stateId: permentStateId) { CountryData in
                         arrStatePerment = CountryData.data?.states ?? []

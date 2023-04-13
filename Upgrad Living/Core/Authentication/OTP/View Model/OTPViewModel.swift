@@ -14,22 +14,12 @@ enum LogInField {
     case otp4
 }
 
-
-//
-//  OTPViewModel.swift
-//  Upgrad Living
-//
-//  Created by Mujtaba Khan on 29/03/23.
-//
-
-import Foundation
-
 class OTPViewModel: ObservableObject {
     @Published var coins = OTPModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""
-
+    
     func fetchLoginDate(mobile: String,otp: String, complition: @escaping (OTPModel) -> Void){
         self.isLoadingData = true
         let urlString = Login_OTP_Verify_API
@@ -83,4 +73,3 @@ class OTPViewModel: ObservableObject {
         }.resume()
     }
 }
-

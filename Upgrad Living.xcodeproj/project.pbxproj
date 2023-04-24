@@ -124,6 +124,8 @@
 		09E4E86F29DD4C380029AD58 /* Blood_Group.svg in Resources */ = {isa = PBXBuildFile; fileRef = 09E4E86E29DD4C380029AD58 /* Blood_Group.svg */; };
 		09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ECD9DA29D3F680008465A2 /* OTPModel.swift */; };
 		09ECD9DD29D3FA60008465A2 /* APIFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ECD9DC29D3FA60008465A2 /* APIFunction.swift */; };
+		09F7909829ED2B1700758907 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7909729ED2B1700758907 /* WebView.swift */; };
+		09F7909A29ED2B6500758907 /* DepositPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7909929ED2B6500758907 /* DepositPaymentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -245,6 +247,8 @@
 		09E4E86E29DD4C380029AD58 /* Blood_Group.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Blood_Group.svg; sourceTree = "<group>"; };
 		09ECD9DA29D3F680008465A2 /* OTPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPModel.swift; sourceTree = "<group>"; };
 		09ECD9DC29D3FA60008465A2 /* APIFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFunction.swift; sourceTree = "<group>"; };
+		09F7909729ED2B1700758907 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		09F7909929ED2B6500758907 /* DepositPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositPaymentView.swift; sourceTree = "<group>"; };
 		42FC69D1BCE0EB9CB9343A47 /* Pods_Upgrad_Living.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Upgrad_Living.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3DD8EBA0C63FEA03A808A5 /* Pods-Upgrad Living.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.release.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.release.xcconfig"; sourceTree = "<group>"; };
 		DE0620C48538023C275F94CA /* Pods-Upgrad Living.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.debug.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.debug.xcconfig"; sourceTree = "<group>"; };
@@ -368,6 +372,7 @@
 				09CC312529CC71940048BFF5 /* LottieView.swift */,
 				09B84CD529DED6B5000FC1C6 /* ZoomableScrollView.swift */,
 				09C0ED5429E4345B009123D2 /* InputDocument.swift */,
+				09F7909729ED2B1700758907 /* WebView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -711,6 +716,7 @@
 				0981D9BB29DC26BA0025575D /* SecurityDepositView.swift */,
 				0981D9BD29DC273F0025575D /* SecurityDepositTopView.swift */,
 				0981D9BF29DC2F3A0025575D /* SecurityDepositBottomView.swift */,
+				09F7909929ED2B6500758907 /* DepositPaymentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1175,6 +1181,8 @@
 				09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */,
 				09B7A1D429D82A3500EC72EF /* BookingProcessView.swift in Sources */,
 				09B7A1D629D841EA00EC72EF /* BookingLoginProcessView.swift in Sources */,
+				09F7909829ED2B1700758907 /* WebView.swift in Sources */,
+				09F7909A29ED2B6500758907 /* DepositPaymentView.swift in Sources */,
 				09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */,
 				098A04E029D44FE400C9595A /* MaterialDesignTextEditorCountry.swift in Sources */,
 				09C0ED5529E4345B009123D2 /* InputDocument.swift in Sources */,

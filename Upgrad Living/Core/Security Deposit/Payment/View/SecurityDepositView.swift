@@ -9,8 +9,12 @@ import SwiftUI
 
 struct SecurityDepositView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var isPaymentSuccess = false
     @State private var isButtonClick = false
+    @State private var alertMessage = String()
+    @State private var showingAlert = false
+    @State private var AlertShow = String()
     var body: some View {
         NavigationView {
             VStack(alignment: .leading){
@@ -40,15 +44,20 @@ struct SecurityDepositView: View {
                 }
                 NavigationLink(
                     "",
-                    destination: SecurityDepositSuccess().navigationBarHidden(true),
+                    destination: DepositPaymentView().navigationBarHidden(true),
                     isActive: $isPaymentSuccess).isDetailLink(false)
                 VStack(alignment: .center) {
                     DetailsViewBottom(textName: "Pay Now", imageName: "")
                         .padding()
                         .frame(alignment: .center)
                         .onTapGesture {
-                            isButtonClick = true
-                            isPaymentSuccess = true
+                            if networkMonitor.isConnected{
+                                isButtonClick = true
+                                isPaymentSuccess = true
+                            }else{
+                                alertMessage = "Please Check Your Internet Connection"
+                                showingAlert = true
+                            }
                         }
                         .shadow(
                             color: isButtonClick ? .gray : .clear,
@@ -59,6 +68,15 @@ struct SecurityDepositView: View {
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 Spacer(minLength: 0)
+            }
+            .alert(alertMessage, isPresented: $showingAlert) {
+                Button("OK", role: .cancel) {
+                    if AlertShow == "1"{
+                        
+                    }else{
+                        isButtonClick = false
+                    }
+                }
             }
             .navigationBarHidden(true)
         }

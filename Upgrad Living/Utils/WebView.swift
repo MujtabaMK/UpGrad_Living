@@ -44,14 +44,15 @@ struct WebView: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+            print(webView.url as Any)
             parent.loadStatusChanged?(true, nil)
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            print(webView.url as Any)
             parent.title = webView.title ?? ""
             webView.evaluateJavaScript("document.getElementsByName('applnID')[0].value='\(studentAppID!)'", completionHandler: nil)
             parent.loadStatusChanged?(false, nil)
-            
         }
 
         func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {

@@ -12,6 +12,7 @@ struct FirstView: View {
     @State private var isSecurityDeposite = false
     @State private var isUploadDocument = false
     @State private var isStudentProfile = false
+    @State private var isHomeView = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @State private var showingAlert = false
     @State private var AlertMessage = String()
@@ -40,6 +41,10 @@ struct FirstView: View {
                         "",
                         destination: StudentProfileView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
                         isActive: $isStudentProfile).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: HomeView().navigationBarHidden(true),
+                        isActive: $isHomeView).isDetailLink(false)
                 }
             }
             .ignoresSafeArea()
@@ -58,7 +63,8 @@ struct FirstView: View {
                             //                            }else if Step.data?.step == "3"{
                             //                                isSecurityDeposite = true
                             //                            }
-                            isSecurityDeposite = true
+                           // isSecurityDeposite = true
+                            isUploadDocument = true
                         }else{
                             isBookingProcess = true
                         }

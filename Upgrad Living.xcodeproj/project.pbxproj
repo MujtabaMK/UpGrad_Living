@@ -91,6 +91,7 @@
 		09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6DD29CDB9B300689E9F /* APIDefine.swift */; };
 		09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6DF29CDBA3400689E9F /* LoginModel.swift */; };
 		09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6E129CDBA5400689E9F /* LoginViewModel.swift */; };
+		09B0258229F79E5D0086190A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0258129F79E5D0086190A /* HomeView.swift */; };
 		09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */; };
 		09B7A1C829D8125A00EC72EF /* SubmitMedicalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */; };
 		09B7A1CA29D8129800EC72EF /* SubmitMedicalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C929D8129800EC72EF /* SubmitMedicalViewModel.swift */; };
@@ -103,6 +104,15 @@
 		09C0ED5329E4039F009123D2 /* UploadDocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0ED5229E4039F009123D2 /* UploadDocumentsView.swift */; };
 		09C0ED5529E4345B009123D2 /* InputDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0ED5429E4345B009123D2 /* InputDocument.swift */; };
 		09C3810B29DA8A52006D82C9 /* BookingSubmitProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */; };
+		09C72FB829F8ED17005C197D /* UploadDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C72FB729F8ED17005C197D /* UploadDocumentCell.swift */; };
+		09C72FBA29F8F41B005C197D /* PostDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C72FB929F8F41B005C197D /* PostDocumentModel.swift */; };
+		09C72FBC29F8F441005C197D /* PostDocumentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C72FBB29F8F441005C197D /* PostDocumentViewModel.swift */; };
+		09C72FBE29F8F57A005C197D /* VerifyDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C72FBD29F8F57A005C197D /* VerifyDocumentModel.swift */; };
+		09C72FC029F8F5B5005C197D /* VerifyDocumentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C72FBF29F8F5B5005C197D /* VerifyDocumentViewModel.swift */; };
+		09C72FC229F8F753005C197D /* GetDocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C72FC129F8F753005C197D /* GetDocumentModel.swift */; };
+		09C72FC429F8F83A005C197D /* GetDocumentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C72FC329F8F83A005C197D /* GetDocumentViewModel.swift */; };
+		09C72FC629F8FBC9005C197D /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C72FC529F8FBC9005C197D /* ProfileModel.swift */; };
+		09C72FC829F90D60005C197D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C72FC729F90D60005C197D /* ProfileViewModel.swift */; };
 		09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */; };
 		09CC312629CC71940048BFF5 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312529CC71940048BFF5 /* LottieView.swift */; };
 		09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */; };
@@ -126,6 +136,8 @@
 		09ECD9DD29D3FA60008465A2 /* APIFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ECD9DC29D3FA60008465A2 /* APIFunction.swift */; };
 		09F7909829ED2B1700758907 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7909729ED2B1700758907 /* WebView.swift */; };
 		09F7909A29ED2B6500758907 /* DepositPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7909929ED2B6500758907 /* DepositPaymentView.swift */; };
+		09FB936529F7CFF100E3B0FD /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */; };
+		09FB936A29F7D74200E3B0FD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB936929F7D74200E3B0FD /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +226,7 @@
 		09A6F6DD29CDB9B300689E9F /* APIDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
 		09A6F6DF29CDBA3400689E9F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		09A6F6E129CDBA5400689E9F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		09B0258129F79E5D0086190A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucesedMedicalTextEditor.swift; sourceTree = "<group>"; };
 		09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitMedicalModel.swift; sourceTree = "<group>"; };
 		09B7A1C929D8129800EC72EF /* SubmitMedicalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitMedicalViewModel.swift; sourceTree = "<group>"; };
@@ -226,6 +239,15 @@
 		09C0ED5229E4039F009123D2 /* UploadDocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentsView.swift; sourceTree = "<group>"; };
 		09C0ED5429E4345B009123D2 /* InputDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDocument.swift; sourceTree = "<group>"; };
 		09C3810A29DA8A52006D82C9 /* BookingSubmitProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSubmitProcessView.swift; sourceTree = "<group>"; };
+		09C72FB729F8ED17005C197D /* UploadDocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocumentCell.swift; sourceTree = "<group>"; };
+		09C72FB929F8F41B005C197D /* PostDocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDocumentModel.swift; sourceTree = "<group>"; };
+		09C72FBB29F8F441005C197D /* PostDocumentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDocumentViewModel.swift; sourceTree = "<group>"; };
+		09C72FBD29F8F57A005C197D /* VerifyDocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyDocumentModel.swift; sourceTree = "<group>"; };
+		09C72FBF29F8F5B5005C197D /* VerifyDocumentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyDocumentViewModel.swift; sourceTree = "<group>"; };
+		09C72FC129F8F753005C197D /* GetDocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDocumentModel.swift; sourceTree = "<group>"; };
+		09C72FC329F8F83A005C197D /* GetDocumentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDocumentViewModel.swift; sourceTree = "<group>"; };
+		09C72FC529F8FBC9005C197D /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		09C72FC729F90D60005C197D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		09CC311D29CC6B7F0048BFF5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		09CC312529CC71940048BFF5 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		09CC312F29CC83BE0048BFF5 /* DeviceDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDefine.swift; sourceTree = "<group>"; };
@@ -249,6 +271,8 @@
 		09ECD9DC29D3FA60008465A2 /* APIFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFunction.swift; sourceTree = "<group>"; };
 		09F7909729ED2B1700758907 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		09F7909929ED2B6500758907 /* DepositPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositPaymentView.swift; sourceTree = "<group>"; };
+		09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
+		09FB936929F7D74200E3B0FD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		42FC69D1BCE0EB9CB9343A47 /* Pods_Upgrad_Living.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Upgrad_Living.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3DD8EBA0C63FEA03A808A5 /* Pods-Upgrad Living.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.release.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.release.xcconfig"; sourceTree = "<group>"; };
 		DE0620C48538023C275F94CA /* Pods-Upgrad Living.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.debug.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.debug.xcconfig"; sourceTree = "<group>"; };
@@ -336,6 +360,7 @@
 				0981D9BA29DC260C0025575D /* Security Deposit */,
 				09C0ED5129E40361009123D2 /* Upload Documents */,
 				097E043129E534EE00F91647 /* Student Profile */,
+				09B0258029F79E480086190A /* Home View */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -373,6 +398,7 @@
 				09B84CD529DED6B5000FC1C6 /* ZoomableScrollView.swift */,
 				09C0ED5429E4345B009123D2 /* InputDocument.swift */,
 				09F7909729ED2B1700758907 /* WebView.swift */,
+				09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -507,6 +533,7 @@
 			isa = PBXGroup;
 			children = (
 				09C0ED5229E4039F009123D2 /* UploadDocumentsView.swift */,
+				09C72FB729F8ED17005C197D /* UploadDocumentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -514,6 +541,9 @@
 		097E043629E5352F00F91647 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				09C72FBB29F8F441005C197D /* PostDocumentViewModel.swift */,
+				09C72FBF29F8F5B5005C197D /* VerifyDocumentViewModel.swift */,
+				09C72FC329F8F83A005C197D /* GetDocumentViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -521,6 +551,9 @@
 		097E043729E5353600F91647 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09C72FB929F8F41B005C197D /* PostDocumentModel.swift */,
+				09C72FBD29F8F57A005C197D /* VerifyDocumentModel.swift */,
+				09C72FC129F8F753005C197D /* GetDocumentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -528,6 +561,7 @@
 		097E043829E5354400F91647 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				09C72FC729F90D60005C197D /* ProfileViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -535,6 +569,7 @@
 		097E043929E5354B00F91647 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09C72FC529F8FBC9005C197D /* ProfileModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -733,6 +768,16 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		09B0258029F79E480086190A /* Home View */ = {
+			isa = PBXGroup;
+			children = (
+				09FB936829F7D72900E3B0FD /* Model */,
+				09FB936729F7D72200E3B0FD /* View Model */,
+				09FB936629F7D71800E3B0FD /* View */,
+			);
+			path = "Home View";
 			sourceTree = "<group>";
 		};
 		09B7A1CF29D829F800EC72EF /* Booking Process */ = {
@@ -970,6 +1015,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		09FB936629F7D71800E3B0FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09B0258129F79E5D0086190A /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09FB936729F7D72200E3B0FD /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		09FB936829F7D72900E3B0FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09FB936929F7D74200E3B0FD /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		61B811BA70591BBBDF446A90 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1133,7 +1201,9 @@
 				0931A90A29D7F67000F6A209 /* SubmitEnrollmentModel.swift in Sources */,
 				09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */,
 				0981D9C029DC2F3A0025575D /* SecurityDepositBottomView.swift in Sources */,
+				09B0258229F79E5D0086190A /* HomeView.swift in Sources */,
 				09DE74C429D5783F001B105A /* RoomTypeTwinView.swift in Sources */,
+				09C72FC629F8FBC9005C197D /* ProfileModel.swift in Sources */,
 				0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */,
 				097E043B29E5356E00F91647 /* StudentProfileCreativity.swift in Sources */,
 				0993226A29D6C81A0036C050 /* FoucesedStudentTextField.swift in Sources */,
@@ -1143,6 +1213,7 @@
 				098A04D029D407C400C9595A /* StudentDetailsView.swift in Sources */,
 				09DE74CE29D588B1001B105A /* MediacalQuestionImage.swift in Sources */,
 				096A400529CC2D5800092AAC /* extention.swift in Sources */,
+				09FB936529F7CFF100E3B0FD /* SnapCarousel.swift in Sources */,
 				09B84CD629DED6B5000FC1C6 /* ZoomableScrollView.swift in Sources */,
 				09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */,
 				09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */,
@@ -1150,6 +1221,7 @@
 				098A04D429D4111100C9595A /* DetailsViewTop.swift in Sources */,
 				0993226329D6939C0036C050 /* SearchBar.swift in Sources */,
 				09DE74C229D5782D001B105A /* RoomTypeTripleView.swift in Sources */,
+				09C72FC829F90D60005C197D /* ProfileViewModel.swift in Sources */,
 				09DE74AA29D54560001B105A /* ParentContentViewModel.swift in Sources */,
 				09DE74B229D55C4E001B105A /* EnrollmentDetailsView.swift in Sources */,
 				099490D529DAB7D9002FA2C0 /* BookingRoomProcessView.swift in Sources */,
@@ -1159,8 +1231,11 @@
 				099490D129DAAF9B002FA2C0 /* BookingUploadProcessView.swift in Sources */,
 				099490D929DAC89B002FA2C0 /* BookingProcessLogin_Image.swift in Sources */,
 				095AD00729DAEF9F000CABA8 /* SubmitRoomTypeModel.swift in Sources */,
+				09C72FBE29F8F57A005C197D /* VerifyDocumentModel.swift in Sources */,
 				09DE74CA29D5860B001B105A /* MedicalQuestionView.swift in Sources */,
+				09C72FBA29F8F41B005C197D /* PostDocumentModel.swift in Sources */,
 				09CC313029CC83BE0048BFF5 /* DeviceDefine.swift in Sources */,
+				09FB936A29F7D74200E3B0FD /* Post.swift in Sources */,
 				0931A90829D7EE7700F6A209 /* SubmitParentViewModel.swift in Sources */,
 				098D698B29CD702C0000F5A9 /* MaterialDesignTextField.swift in Sources */,
 				0981D9B929DBFBF50025575D /* GetFormViewModel.swift in Sources */,
@@ -1171,6 +1246,7 @@
 				09C0ED5329E4039F009123D2 /* UploadDocumentsView.swift in Sources */,
 				09B7A1CC29D8264C00EC72EF /* SubmitDocumentaionModel.swift in Sources */,
 				09DE74A829D541F5001B105A /* ParentsDetailsView.swift in Sources */,
+				09C72FB829F8ED17005C197D /* UploadDocumentCell.swift in Sources */,
 				096A3FFE29CC2B0300092AAC /* FountsDefine.swift in Sources */,
 				098A04E229D452F800C9595A /* CountryModel.swift in Sources */,
 				098A04DC29D4339500C9595A /* MaterialDesignTextEditor.swift in Sources */,
@@ -1184,7 +1260,9 @@
 				09F7909829ED2B1700758907 /* WebView.swift in Sources */,
 				09F7909A29ED2B6500758907 /* DepositPaymentView.swift in Sources */,
 				09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */,
+				09C72FC029F8F5B5005C197D /* VerifyDocumentViewModel.swift in Sources */,
 				098A04E029D44FE400C9595A /* MaterialDesignTextEditorCountry.swift in Sources */,
+				09C72FC429F8F83A005C197D /* GetDocumentViewModel.swift in Sources */,
 				09C0ED5529E4345B009123D2 /* InputDocument.swift in Sources */,
 				09DE74BC29D56977001B105A /* RoomTypeView.swift in Sources */,
 				098A04E429D4538200C9595A /* CountryViewModel.swift in Sources */,
@@ -1211,6 +1289,7 @@
 				09DE74C029D56D01001B105A /* RoomTypeQuardView.swift in Sources */,
 				0931A90C29D7F69D00F6A209 /* SubmitEnrollmentViewModel.swift in Sources */,
 				09C3810B29DA8A52006D82C9 /* BookingSubmitProcessView.swift in Sources */,
+				09C72FBC29F8F441005C197D /* PostDocumentViewModel.swift in Sources */,
 				096A400329CC2D5800092AAC /* HideKeyboard.swift in Sources */,
 				098A04DE29D43BC300C9595A /* MaterialDesignTextFieldDOB.swift in Sources */,
 				09CC312629CC71940048BFF5 /* LottieView.swift in Sources */,
@@ -1221,6 +1300,7 @@
 				095AD00929DAF01E000CABA8 /* SubmitRoomTypeViewModel.swift in Sources */,
 				093BB15829DAEB530019C91F /* PaymentMethod11Month.swift in Sources */,
 				09A33B6129CC1D3C00C01D65 /* Upgrad_LivingApp.swift in Sources */,
+				09C72FC229F8F753005C197D /* GetDocumentModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

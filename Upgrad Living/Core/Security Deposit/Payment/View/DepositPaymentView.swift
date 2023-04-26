@@ -21,8 +21,7 @@ struct DepositPaymentView: View {
                             print("Loading started")
                             self.title = "Loading…"
                             isLoadig = true
-                        }
-                        else {
+                        }else {
                             isLoadig = false
                             print("Done loading.")
                             if let error = error {
@@ -30,8 +29,7 @@ struct DepositPaymentView: View {
                                 if self.title.isEmpty {
                                     self.title = "Error"
                                 }
-                            }
-                            else if self.title.isEmpty {
+                            }else if self.title.isEmpty {
                                 self.title = "Some Place"
                             }
                         }

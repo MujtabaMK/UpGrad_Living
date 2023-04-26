@@ -19,6 +19,7 @@ struct UploadDocumentsView: View {
     @State private var isButtonClick = false
     @State private var isStudentProfile = false
     @Binding var isBackButtonShow: Bool
+    @State private var base64PDF = ""
     
     var body: some View {
         NavigationView {
@@ -58,6 +59,11 @@ struct UploadDocumentsView: View {
                             .scaledToFit()
                             .frame(width: 343, height: 58)
                             .padding(.bottom)
+                        
+                        VStack{
+                            UploadDocumentCell(MainTitle: "Identity & Address proof")
+                        }
+                        
                         VStack{
                             Text("Identity & Address proof")
                                 .font(.custom(OpenSans_Bold, size: 16))
@@ -265,13 +271,13 @@ struct UploadDocumentsView: View {
                             RoundedRectangle(
                                 cornerRadius: 15).strokeBorder(Color(hex: 0x00B2BA),
                                                                style: StrokeStyle(lineWidth: 1.0))
-                                .padding(.top, -8)
-                                .padding(.leading, -15)
+                                .padding(.top, -5)
+                                .padding(.leading, -20)
                                 .padding(.trailing, -10)
                                 .padding(.bottom, 5)
                         )
                         .frame(width: UIScreen.main.bounds.width - 80)
-                        //.background(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
+                        .background(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
                         .padding(.horizontal)
                         .background(
                             RoundedRectangle(cornerRadius: 15)
@@ -317,6 +323,29 @@ struct UploadDocumentsView: View {
                                     do{
                                         let fileUrl = try result.get()
                                         self.fileName = fileUrl.lastPathComponent
+                                        print(fileUrl)
+                                        
+                                        if fileUrl.startAccessingSecurityScopedResource() {
+                                            defer {
+                                                DispatchQueue.main.async {
+                                                    fileUrl.stopAccessingSecurityScopedResource()
+                                                }
+                                            }
+                                            
+                                            do {
+                                                
+                                                let fileData = try Data.init(contentsOf: fileUrl)
+                                                let fileStream:String = fileData.base64EncodedString()
+                                                print(fileStream)
+                                                base64PDF = fileStream
+                                                print(base64PDF)
+                                                
+                                            } catch {
+                                                print("error")
+                                                print(error.localizedDescription)
+                                            }
+                                        }
+                                        
                                     }catch{
                                         print("Error reading docs")
                                         print(error.localizedDescription)

@@ -100,7 +100,7 @@ struct SnapCarousel<Content: View,T: Identifiable>: View {
         let checkBetween = currentIndex >= 0 && currentIndex > list.count ? (getIndex(item: item) - 1 == currentIndex ? previous : next) : 0
        //Checking current
         //if sp shifting view to top
-        return getIndex(item: item) == currentIndex ? -60 - topOffset : checkBetween
+        return getIndex(item: item) == currentIndex ? -20 - topOffset : checkBetween
     }
     
     //Fetching Index...

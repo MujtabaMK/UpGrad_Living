@@ -11,6 +11,10 @@ import UniformTypeIdentifiers
 struct UploadDocumentsView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var networkMonitor: NetworkMonitor
+    @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
+    @StateObject private var verifyViewModel = VerifyDocumentViewModel()
+    @StateObject private var ViewModel = GetDocumentViewModel()
     
     @State private var document: InputDoument = InputDoument(input: "")
     @State private var isImporting: Bool = false
@@ -20,381 +24,165 @@ struct UploadDocumentsView: View {
     @State private var isStudentProfile = false
     @Binding var isBackButtonShow: Bool
     @State private var base64PDF = ""
+    @State private var callAPI = false
+    @State private var showLoader = false
+    
+    @State private var alertMessage = String()
+    @State private var showingAlert = false
+    @State private var AlertShow = String()
+    
+    @State private var arrDoc = [GetDocument]()
     
     var body: some View {
         NavigationView {
-            VStack{
-                HStack{
-                    if isBackButtonShow{
-                        Button {
-                            withAnimation() {
-                                presentationMode.wrappedValue.dismiss()
+            ZStack{
+                VStack{
+                    HStack{
+                        if isBackButtonShow{
+                            Button {
+                                withAnimation() {
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                            } label: {
+                                Image("back_Button")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                    .padding(.leading, 20)
                             }
-                        } label: {
-                            Image("back_Button")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30, height: 30)
-                                .padding(.leading, 20)
                         }
+                        Spacer(minLength: 0)
+                        Text("Upload Documents")
+                            .font(.custom(OpenSans_SemiBold, size: 18))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
+                            .padding(.trailing, 30)
+                        Spacer(minLength: 0)
                     }
-                    Spacer(minLength: 0)
-                    Text("Upload Documents")
-                        .font(.custom(OpenSans_SemiBold, size: 18))
-                        .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
-                        .padding(.trailing, 30)
-                    Spacer(minLength: 0)
-                }
-                .padding(.top)
-                Divider()
-                ScrollView(showsIndicators: false) {
-                    Image("Upload_Documents_Top_Image")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 198, height: 188)
-                        .padding(.bottom)
-                    VStack{
-                        Image(colorScheme == .light ? "Submit_Upload_Document_Light" : "Submit_Upload_Document_Dark")
+                    .padding(.top)
+                    Divider()
+                    ScrollView(showsIndicators: false) {
+                        Image("Upload_Documents_Top_Image")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 343, height: 58)
+                            .frame(width: 198, height: 188)
                             .padding(.bottom)
-                        
                         VStack{
-                            UploadDocumentCell(MainTitle: "Identity & Address proof")
-                        }
-                        
-                        VStack{
-                            Text("Identity & Address proof")
-                                .font(.custom(OpenSans_Bold, size: 16))
-                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
-                                .padding(.top)
+                            Image(colorScheme == .light ? "Submit_Upload_Document_Light" : "Submit_Upload_Document_Dark")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 343, height: 58)
+                                .padding(.bottom)
                             
-                            HStack{
-                                Button {
-                                    isImporting = true
-                                } label: {
-                                    Rectangle()
-                                        .fill(.clear)
-                                        .frame(width: 30, height: 30)
-                                    Text("Aadhar Card")
-                                        .font(.custom(OpenSans_SemiBold, size: 16))
-                                        .foregroundColor(colorScheme == .light ? Color(hex: 0x33333) : Color(hex: 0x333333))
-                                        .multilineTextAlignment(.trailing)
-                                        .frame(width: 100, alignment: .trailing)
-                                    Image("Upload_Image")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 43, height: 30, alignment: .leading)
-                                    Rectangle()
-                                        .fill(.clear)
-                                        .frame(width: 50, height: 30)
+                            VStack{
+                                ForEach(arrDoc) { document in
+                                    UploadDocumentCell(
+                                        MainTitle: document.title ?? "",
+                                        getDocs: document.docs ?? [],
+                                        CallAPI: $callAPI,
+                                        CallLoader: $showLoader,
+                                        isShowPopup: $showingAlert,
+                                        popupMsg: $alertMessage)
                                 }
                             }
-                            .padding(7)
-                            .frame(width: UIScreen.main.bounds.width - 80)
-                            .background(colorScheme == .light ? Color(hex: 0xFEF0F1, alpha: 1.0) : Color(hex: 0xFEF0F1, alpha: 1.0))
                             
-                            .padding(.bottom, 5)
-                            
-                            HStack{
-                                Rectangle()
-                                    .fill(.clear)
-                                    .frame(width: 30, height: 30)
-                                Text("Voter ID")
-                                    .multilineTextAlignment(.trailing)
-                                    .frame(width: 100, alignment: .trailing)
-                                    .font(.custom(OpenSans_SemiBold, size: 16))
-                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x33333) : Color(hex: 0x333333))
-                                Image("Upload_Image")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 43, height: 30)
-                                Rectangle()
-                                    .fill(.clear)
-                                    .frame(width: 50, height: 30)
-                            }
-                            .padding(7)
-                            .frame(width: UIScreen.main.bounds.width - 80)
-                            .background(colorScheme == .light ? Color(hex: 0xFEF0F1, alpha: 1.0) : Color(hex: 0xFEF0F1, alpha: 1.0))
-                            .padding(.bottom, 5)
-                            
-                            HStack{
-                                Rectangle()
-                                    .fill(.clear)
-                                    .frame(width: 30, height: 30)
-                                Text("Passport")
-                                    .font(.custom(OpenSans_SemiBold, size: 16))
-                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x33333) : Color(hex: 0x3333333))
-                                    .multilineTextAlignment(.trailing)
-                                    .frame(width: 100, alignment: .trailing)
-                                Image("Upload_Image")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 43, height: 30)
-                                Rectangle()
-                                    .fill(.clear)
-                                    .frame(width: 50, height: 30)
-                            }
-                            .padding(7)
-                            .frame(width: UIScreen.main.bounds.width - 80)
-                            .background(colorScheme == .light ? Color(hex: 0xFEF0F1, alpha: 1.0) : Color(hex: 0xFEF0F1, alpha: 1.0))
-                            .padding(.bottom, 15)
-                        }
-                        .overlay(
-                            RoundedRectangle(
-                                cornerRadius: 15).strokeBorder(Color(hex: 0x00B2BA),
-                                                               style: StrokeStyle(lineWidth: 1.0))
-                                .padding(.top, -8)
-                                .padding(.leading, -15)
-                                .padding(.trailing, -10)
-                                .padding(.bottom, 5)
-                        )
-                        .frame(width: UIScreen.main.bounds.width - 80)
-                        //.background(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
-                        .padding(.horizontal)
-                        .background(
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
-                                .shadow(color: .gray, radius: 5, x: 0, y: 0)
-                        )
-                        .padding(.bottom)
-                        
-                        VStack{
-                            Text("Passport size photograph*")
-                                .font(.custom(OpenSans_Bold, size: 16))
-                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
-                                .padding(.top)
-                            
-                            HStack{
-                                Button {
-                                    isImporting = true
-                                } label: {
-                                    Rectangle()
-                                        .fill(.clear)
-                                        .frame(width: 30, height: 30)
-                                    Text("Photo")
-                                        .font(.custom(OpenSans_SemiBold, size: 16))
-                                        .foregroundColor(colorScheme == .light ? Color(hex: 0x33333) : Color(hex: 0x333333))
-                                        .multilineTextAlignment(.trailing)
-                                        .frame(width: 100, alignment: .trailing)
-                                    Image("Upload_Image")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 43, height: 30, alignment: .leading)
-                                    Rectangle()
-                                        .fill(.clear)
-                                        .frame(width: 50, height: 30)
-                                }
-                            }
-                            .padding(7)
-                            .frame(width: UIScreen.main.bounds.width - 80)
-                            .background(colorScheme == .light ? Color(hex: 0xFEF0F1, alpha: 1.0) : Color(hex: 0xFEF0F1, alpha: 1.0))
-                            
-                            .padding(.bottom, 15)
-                            
-                        }
-                        .background(
-                            RoundedRectangle(
-                                cornerRadius: 15).strokeBorder(Color(hex: 0x00B2BA),
-                                                               style: StrokeStyle(lineWidth: 1.0))
-                                .padding(.top, -8)
-                                .padding(.leading, -15)
-                                .padding(.trailing, -10)
-                                .padding(.bottom, 5)
-                        )
-                        .frame(width: UIScreen.main.bounds.width - 80)
-                        //.background(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
-                        .padding(.horizontal)
-                        .background(
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
-                                .shadow(color: .gray, radius: 5, x: 0, y: 0)
-                        )
-                        .padding(.bottom)
-                        
-                        VStack{
-                            Text("Certificate of Medical & Physical fitness by a registered doctor*")
-                                .font(.custom(OpenSans_Bold, size: 16))
-                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
-                                .padding(.top)
-                            
-                            HStack{
-                                Button {
-                                    isImporting = true
-                                } label: {
-                                    Rectangle()
-                                        .fill(.clear)
-                                        .frame(width: 30, height: 30)
-                                    Text("Certificate")
-                                        .font(.custom(OpenSans_SemiBold, size: 16))
-                                        .foregroundColor(colorScheme == .light ? Color(hex: 0x33333) : Color(hex: 0x333333))
-                                        .multilineTextAlignment(.trailing)
-                                        .frame(width: 100, alignment: .trailing)
-                                    Image("Upload_Image")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 43, height: 30, alignment: .leading)
-                                    Rectangle()
-                                        .fill(.clear)
-                                        .frame(width: 50, height: 30)
-                                }
-                            }
-                            .padding(7)
-                            .frame(width: UIScreen.main.bounds.width - 80)
-                            .background(colorScheme == .light ? Color(hex: 0xFEF0F1, alpha: 1.0) : Color(hex: 0xFEF0F1, alpha: 1.0))
-                            
-                            .padding(.bottom, 15)
-                            //Text(document.input)
-                            //                            .fileImporter(
-                            //                                isPresented: $isImporting,
-                            //                                allowedContentTypes: [.plainText],
-                            //                                allowsMultipleSelection: false
-                            //                            ) { result in
-                            //                                do {
-                            //                                    guard let selectedFile: URL = try result.get().first else { return }
-                            //                                    if selectedFile.startAccessingSecurityScopedResource() {
-                            //                                        guard let input = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
-                            //                                        defer { selectedFile.stopAccessingSecurityScopedResource() }
-                            //                                        document.input = input
-                            //                                    } else {
-                            //                                        // Handle denied access
-                            //                                    }
-                            //                                } catch {
-                            //                                    // Handle failure.
-                            //                                    print("Unable to read file contents")
-                            //                                    print(error.localizedDescription)
-                            //                                }
-                            //                            }
-                        }
-                        .background(
-                            RoundedRectangle(
-                                cornerRadius: 15).strokeBorder(Color(hex: 0x00B2BA),
-                                                               style: StrokeStyle(lineWidth: 1.0))
-                                .padding(.top, -5)
-                                .padding(.leading, -20)
-                                .padding(.trailing, -10)
-                                .padding(.bottom, 5)
-                        )
-                        .frame(width: UIScreen.main.bounds.width - 80)
-                        .background(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
-                        .padding(.horizontal)
-                        .background(
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
-                                .shadow(color: .gray, radius: 5, x: 0, y: 0)
-                        )
-                        .padding(.bottom)
-                        
-                        VStack{
-                            Text("Passport size photograph*")
-                                .font(.custom(OpenSans_Bold, size: 16))
-                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
-                                .padding(.top)
-                            
-                            HStack{
-                                Button {
-                                    isImporting = true
-                                } label: {
-                                    Rectangle()
-                                        .fill(.clear)
-                                        .frame(width: 30, height: 30)
-                                    Text("Photo")
-                                        .font(.custom(OpenSans_SemiBold, size: 16))
-                                        .foregroundColor(colorScheme == .light ? Color(hex: 0x33333) : Color(hex: 0x333333))
-                                        .multilineTextAlignment(.trailing)
-                                        .frame(width: 100, alignment: .trailing)
-                                    Image("Upload_Image")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 43, height: 30, alignment: .leading)
-                                    Rectangle()
-                                        .fill(.clear)
-                                        .frame(width: 50, height: 30)
-                                }
-                            }
-                            .padding(7)
-                            .frame(width: UIScreen.main.bounds.width - 80)
-                            .background(colorScheme == .light ? Color(hex: 0xFEF0F1, alpha: 1.0) : Color(hex: 0xFEF0F1, alpha: 1.0))
-                            
-                            .padding(.bottom, 25)
-                            Text(fileName)
-                                .fileImporter(isPresented: $isImporting, allowedContentTypes: [.audio, .pdf]) { result in
-                                    do{
-                                        let fileUrl = try result.get()
-                                        self.fileName = fileUrl.lastPathComponent
-                                        print(fileUrl)
-                                        
-                                        if fileUrl.startAccessingSecurityScopedResource() {
-                                            defer {
-                                                DispatchQueue.main.async {
-                                                    fileUrl.stopAccessingSecurityScopedResource()
+                            NavigationLink(
+                                "",
+                                destination: StudentProfileView(isBackButtonShow: .constant(true)).navigationBarHidden(true),
+                                isActive: $isStudentProfile).isDetailLink(false)
+                            VStack(alignment: .center) {
+                                DetailsViewBottom(textName: "Next", imageName: "")
+                                    .padding()
+                                    .frame(alignment: .center)
+                                    .onTapGesture {
+                                        if networkMonitor.isConnected{
+                                            verifyViewModel.verifyUploadDocument(appId: studentAppID ?? "") { verify in
+                                                if verify.status == 1{
+                                                    alertMessage = verify.msg ?? ""
+                                                    AlertShow = "1"
+                                                    showingAlert = true
+                                                }else{
+                                                    alertMessage = verify.msg ?? ""
+                                                    AlertShow = "0"
+                                                    showingAlert = true
                                                 }
                                             }
-                                            
-                                            do {
-                                                
-                                                let fileData = try Data.init(contentsOf: fileUrl)
-                                                let fileStream:String = fileData.base64EncodedString()
-                                                print(fileStream)
-                                                base64PDF = fileStream
-                                                print(base64PDF)
-                                                
-                                            } catch {
-                                                print("error")
-                                                print(error.localizedDescription)
-                                            }
+                                        }else{
+                                            alertMessage = "Please Check Your Internet Connection"
+                                            AlertShow = "0"
+                                            showingAlert = true
                                         }
-                                        
-                                    }catch{
-                                        print("Error reading docs")
-                                        print(error.localizedDescription)
                                     }
-                                }
+                                    .shadow(
+                                        color: isButtonClick ? .gray : .clear,
+                                        radius: isButtonClick ? 10 : 0,
+                                        x: 0,
+                                        y: 0
+                                    )
+                            }
+                            .frame(width: UIScreen.main.bounds.width)
                         }
-                        .background(
-                            RoundedRectangle(
-                                cornerRadius: 15).strokeBorder(Color(hex: 0x00B2BA),
-                                                               style: StrokeStyle(lineWidth: 1.0))
-                                .padding(.top, -8)
-                                .padding(.leading, -15)
-                                .padding(.trailing, -10)
-                                .padding(.bottom, 5)
-                        )
-                        .frame(width: UIScreen.main.bounds.width - 80)
-                        //.background(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
-                        .padding(.horizontal)
-                        .background(
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
-                                .shadow(color: .gray, radius: 5, x: 0, y: 0)
-                        )
-                        .padding(.bottom)
-                        
-                        NavigationLink(
-                            "",
-                            destination: StudentProfileView(isBackButtonShow: .constant(true)).navigationBarHidden(true),
-                            isActive: $isStudentProfile).isDetailLink(false)
-                        VStack(alignment: .center) {
-                            DetailsViewBottom(textName: "Next", imageName: "")
-                                .padding()
-                                .frame(alignment: .center)
-                                .onTapGesture {
-                                    isButtonClick = true
-                                    isStudentProfile = true
-                                }
-                                .shadow(
-                                    color: isButtonClick ? .gray : .clear,
-                                    radius: isButtonClick ? 10 : 0,
-                                    x: 0,
-                                    y: 0
-                                )
-                        }
-                        .frame(width: UIScreen.main.bounds.width)
                     }
                 }
+                .alert(alertMessage, isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) {
+                        if callAPI{
+                            isButtonClick = false
+                            if networkMonitor.isConnected{
+                                ViewModel.getUploadDocument(appId: studentAppID ?? "") { document in
+                                    if document.status == 1{
+                                        arrDoc = document.data ?? []
+                                    }else{
+                                        alertMessage = document.msg ?? ""
+                                        AlertShow = "0"
+                                        showingAlert = true
+                                    }
+                                }
+                            }else{
+                                alertMessage = "Please Check Your Internet Connection"
+                                AlertShow = "0"
+                                showingAlert = true
+                            }
+                        }else{
+                            if AlertShow == "1"{
+                                isButtonClick = true
+                                isStudentProfile = true
+                            }else{
+                                isButtonClick = false
+                            }
+                        }
+                    }
+                }
+                .navigationBarHidden(true)
+                if ViewModel.isLoadingData{
+                    LoadingView()
+                }
+                if verifyViewModel.isLoadingData{
+                    LoadingView()
+                }
+                if showLoader{
+                    LoadingView()
+                }
             }
-            .navigationBarHidden(true)
+            .onAppear{
+                if networkMonitor.isConnected{
+                    ViewModel.getUploadDocument(appId: studentAppID ?? "") { document in
+                        if document.status == 1{
+                            print(document)
+                            
+                            arrDoc = document.data ?? []
+                            print(document.data ?? [])
+                        }else{
+                            alertMessage = document.msg ?? ""
+                            AlertShow = "0"
+                            showingAlert = true
+                        }
+                    }
+                }else{
+                    alertMessage = "Please Check Your Internet Connection"
+                    AlertShow = "0"
+                    showingAlert = true
+                }
+            }
         }
     }
 }

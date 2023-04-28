@@ -41,6 +41,7 @@
 		096A400429CC2D5800092AAC /* HexColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A400029CC2D5700092AAC /* HexColour.swift */; };
 		096A400529CC2D5800092AAC /* extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A400129CC2D5700092AAC /* extention.swift */; };
 		096A400629CC2D5800092AAC /* customLodingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A400229CC2D5800092AAC /* customLodingIndicator.swift */; };
+		096ADFCB29FAA0F60025A275 /* CornerRadiusStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096ADFCA29FAA0F60025A275 /* CornerRadiusStyle.swift */; };
 		09768B0F29DD81B800CB05F5 /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09768B0E29DD81B800CB05F5 /* StepModel.swift */; };
 		09768B1129DD81EC00CB05F5 /* StepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09768B1029DD81EC00CB05F5 /* StepViewModel.swift */; };
 		09768B1529DD846D00CB05F5 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09768B1429DD846D00CB05F5 /* FirstView.swift */; };
@@ -91,6 +92,11 @@
 		09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6DD29CDB9B300689E9F /* APIDefine.swift */; };
 		09A6F6E029CDBA3400689E9F /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6DF29CDBA3400689E9F /* LoginModel.swift */; };
 		09A6F6E229CDBA5400689E9F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6F6E129CDBA5400689E9F /* LoginViewModel.swift */; };
+		09A7553D29FB855D00BCE3F7 /* HomeViewTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7553C29FB855D00BCE3F7 /* HomeViewTabBar.swift */; };
+		09A7554029FB8DE900BCE3F7 /* TabItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7553F29FB8DE900BCE3F7 /* TabItemData.swift */; };
+		09A7554229FB8E7100BCE3F7 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7554129FB8E7100BCE3F7 /* TabItemView.swift */; };
+		09A7554429FB8EB500BCE3F7 /* TabBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7554329FB8EB500BCE3F7 /* TabBottomView.swift */; };
+		09A7554629FB8EEE00BCE3F7 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7554529FB8EEE00BCE3F7 /* CustomTabView.swift */; };
 		09B0258229F79E5D0086190A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0258129F79E5D0086190A /* HomeView.swift */; };
 		09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */; };
 		09B7A1C829D8125A00EC72EF /* SubmitMedicalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */; };
@@ -175,6 +181,7 @@
 		096A400029CC2D5700092AAC /* HexColour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColour.swift; sourceTree = "<group>"; };
 		096A400129CC2D5700092AAC /* extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extention.swift; sourceTree = "<group>"; };
 		096A400229CC2D5800092AAC /* customLodingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customLodingIndicator.swift; sourceTree = "<group>"; };
+		096ADFCA29FAA0F60025A275 /* CornerRadiusStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadiusStyle.swift; sourceTree = "<group>"; };
 		09768B0E29DD81B800CB05F5 /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
 		09768B1029DD81EC00CB05F5 /* StepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewModel.swift; sourceTree = "<group>"; };
 		09768B1429DD846D00CB05F5 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
@@ -226,6 +233,11 @@
 		09A6F6DD29CDB9B300689E9F /* APIDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
 		09A6F6DF29CDBA3400689E9F /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		09A6F6E129CDBA5400689E9F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		09A7553C29FB855D00BCE3F7 /* HomeViewTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTabBar.swift; sourceTree = "<group>"; };
+		09A7553F29FB8DE900BCE3F7 /* TabItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemData.swift; sourceTree = "<group>"; };
+		09A7554129FB8E7100BCE3F7 /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
+		09A7554329FB8EB500BCE3F7 /* TabBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBottomView.swift; sourceTree = "<group>"; };
+		09A7554529FB8EEE00BCE3F7 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		09B0258129F79E5D0086190A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucesedMedicalTextEditor.swift; sourceTree = "<group>"; };
 		09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitMedicalModel.swift; sourceTree = "<group>"; };
@@ -399,6 +411,7 @@
 				09C0ED5429E4345B009123D2 /* InputDocument.swift */,
 				09F7909729ED2B1700758907 /* WebView.swift */,
 				09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */,
+				096ADFCA29FAA0F60025A275 /* CornerRadiusStyle.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -745,6 +758,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		09A7553E29FB8DC700BCE3F7 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				09A7553F29FB8DE900BCE3F7 /* TabItemData.swift */,
+				09A7554129FB8E7100BCE3F7 /* TabItemView.swift */,
+				09A7554329FB8EB500BCE3F7 /* TabBottomView.swift */,
+				09A7554529FB8EEE00BCE3F7 /* CustomTabView.swift */,
+				09A7553C29FB855D00BCE3F7 /* HomeViewTabBar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		09A919CF29E7D19F00968B05 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,6 +1043,7 @@
 		09FB936629F7D71800E3B0FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				09A7553E29FB8DC700BCE3F7 /* TabBar */,
 				09B0258129F79E5D0086190A /* HomeView.swift */,
 			);
 			path = View;
@@ -1191,7 +1217,10 @@
 				0945E26C29CD9F1400F9EA4E /* WalkThrough3.swift in Sources */,
 				09768B0F29DD81B800CB05F5 /* StepModel.swift in Sources */,
 				099490D729DAB972002FA2C0 /* BookingSignProcessView.swift in Sources */,
+				09A7554029FB8DE900BCE3F7 /* TabItemData.swift in Sources */,
 				09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */,
+				096ADFCB29FAA0F60025A275 /* CornerRadiusStyle.swift in Sources */,
+				09A7554429FB8EB500BCE3F7 /* TabBottomView.swift in Sources */,
 				0993226C29D6E71D0036C050 /* FoucesedParentTextField.swift in Sources */,
 				098A04D829D42EC700C9595A /* MasterModel.swift in Sources */,
 				0981D9BE29DC273F0025575D /* SecurityDepositTopView.swift in Sources */,
@@ -1212,12 +1241,15 @@
 				09DE74CC29D58769001B105A /* MedicalQuestionOptionView.swift in Sources */,
 				098A04D029D407C400C9595A /* StudentDetailsView.swift in Sources */,
 				09DE74CE29D588B1001B105A /* MediacalQuestionImage.swift in Sources */,
+				09A7554629FB8EEE00BCE3F7 /* CustomTabView.swift in Sources */,
 				096A400529CC2D5800092AAC /* extention.swift in Sources */,
 				09FB936529F7CFF100E3B0FD /* SnapCarousel.swift in Sources */,
+				09A7553D29FB855D00BCE3F7 /* HomeViewTabBar.swift in Sources */,
 				09B84CD629DED6B5000FC1C6 /* ZoomableScrollView.swift in Sources */,
 				09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */,
 				09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */,
 				096A3FE029CC255E00092AAC /* LoginTopView.swift in Sources */,
+				09A7554229FB8E7100BCE3F7 /* TabItemView.swift in Sources */,
 				098A04D429D4111100C9595A /* DetailsViewTop.swift in Sources */,
 				0993226329D6939C0036C050 /* SearchBar.swift in Sources */,
 				09DE74C229D5782D001B105A /* RoomTypeTripleView.swift in Sources */,

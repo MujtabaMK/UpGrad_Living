@@ -10,17 +10,29 @@ import Foundation
 struct GetDocumentModel: Codable {
     let status: Int?
     let msg: String?
-    let data: [Document]?
+    let data: [GetDocument]?
 }
 
 // MARK: - Datum
-struct Document: Codable {
-    let documentID, documentName: String?
+struct GetDocument: Codable, Identifiable{
+    let title, id: String?
+    let docs: [Doc]?
+    
+    enum CodingKeys: String, CodingKey {
+            case title
+            case id = "groupId"
+            case docs
+        }
+}
+
+// MARK: - Doc
+struct Doc: Codable, Identifiable {
+    let id, documentName, documentNameAbbr: String?
     let documentURL: String?
     let status: String?
 
     enum CodingKeys: String, CodingKey {
-        case documentID = "documentId"
-        case documentName, documentURL, status
+        case id = "documentId"
+        case documentName, documentNameAbbr, documentURL, status
     }
 }

@@ -13,9 +13,9 @@ class GetDocumentViewModel: ObservableObject {
     @Published var ShowAlert = false
     @Published var PrintError = ""
     
-    func verifyUploadDocument(appId: String, complition: @escaping (GetDocumentModel) -> Void){
+    func getUploadDocument(appId: String, complition: @escaping (GetDocumentModel) -> Void){
         self.isLoadingData = true
-        let urlString = VERIFY_Upload_Document
+        let urlString = GET_Upload_Document
         
         guard let url = URL(string: urlString) else { return }
         var resuest = URLRequest(url: url)

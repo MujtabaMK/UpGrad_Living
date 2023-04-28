@@ -101,3 +101,18 @@ extension  UITextField {
         self.resignFirstResponder()
     }
 }
+
+extension UIColor {
+    class var tabBarColour: UIColor {
+        return UIColor(named: "tabBarColour")!
+    }
+}
+
+extension Color {
+    static var tabBarColour: Color {
+        return Color("tabBarColour")
+    }
+    static var tabBarColourBack: Color {
+        return Color("tabBarColourBack")
+    }
+}

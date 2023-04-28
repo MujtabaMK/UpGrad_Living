@@ -11,12 +11,21 @@ import UniformTypeIdentifiers
 struct UploadDocumentCell: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var document: InputDoument = InputDoument(input: "")
+    @StateObject private var viewModel = PostDocumentViewModel()
+    @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @State private var isImporting: Bool = false
     @State private var fileName = ""
-    
     @State private var base64PDF = ""
-    
+    @State private var docName = ""
+    @State private var docID = ""
     var MainTitle = "Identity & Address proof"
+    var getDocs: [Doc]
+    
+    @Binding var CallAPI: Bool
+    @Binding var CallLoader: Bool
+    @Binding var isShowPopup: Bool
+    @Binding var popupMsg: String
+   
     
     var body: some View {
         VStack{
@@ -24,20 +33,22 @@ struct UploadDocumentCell: View {
                 .font(.custom(OpenSans_Bold, size: 16))
                 .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
                 .padding(.top)
-            ForEach(1...5, id: \.self) { index in
+            ForEach(getDocs) { docs in
                 HStack{
                     Button {
+                        docName = docs.documentName ?? ""
+                        docID = docs.id ?? ""
                         isImporting = true
                     } label: {
                         Rectangle()
                             .fill(.clear)
                             .frame(width: 30, height: 30)
-                        Text("Aadhar Card")
+                        Text(docs.documentNameAbbr ?? "")
                             .font(.custom(OpenSans_SemiBold, size: 16))
                             .foregroundColor(colorScheme == .light ? Color(hex: 0x33333) : Color(hex: 0x333333))
                             .multilineTextAlignment(.trailing)
                             .frame(width: 100, alignment: .trailing)
-                        Image("Upload_Image")
+                        Image(docs.status == "1" ? "Uploaded_Image" : "Upload_Image")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 43, height: 30, alignment: .leading)
@@ -49,31 +60,62 @@ struct UploadDocumentCell: View {
                 .padding(7)
                 .frame(width: UIScreen.main.bounds.width - 80)
                 .background(colorScheme == .light ? Color(hex: 0xFEF0F1, alpha: 1.0) : Color(hex: 0xFEF0F1, alpha: 1.0))
-                .padding(.bottom, 5)
-                .fileImporter(isPresented: $isImporting, allowedContentTypes: [.png,.jpeg, .pdf]) { result in
+                .padding(.bottom, 15)
+                .fileImporter(isPresented: $isImporting, allowedContentTypes: [.png, .jpeg, .pdf]) { result in
+                    CallAPI = false
+                    CallLoader = false
                     do{
+                        CallAPI = false
+                        CallLoader = false
                         let fileUrl = try result.get()
-                        self.fileName = fileUrl.lastPathComponent
-                        print(fileUrl)
+                        let NewFileNmae = fileUrl.lastPathComponent
+                        let fullNameArr = NewFileNmae.components(separatedBy: ".")
+                        if fullNameArr.count > 1{
+                            self.fileName = fullNameArr[1]
+                        }
                         if fileUrl.startAccessingSecurityScopedResource() {
+                            CallAPI = false
+                            CallLoader = false
                             defer {
                                 DispatchQueue.main.async {
+                                    CallAPI = false
                                     fileUrl.stopAccessingSecurityScopedResource()
                                 }
                             }
                             do {
+                                CallAPI = false
+                                CallLoader = false
                                 let fileData = try Data.init(contentsOf: fileUrl)
                                 let fileStream:String = fileData.base64EncodedString()
                                 print(fileStream)
                                 base64PDF = fileStream
-                                print(base64PDF)
-                                
+                                CallLoader = true
+                                viewModel.postUploadDocument(file_name: docName,
+                                                             file_base64: base64PDF,
+                                                             file_ext: fileName,
+                                                             doc_upload_doc_id: docID,
+                                                             appId: studentAppID ?? "") { postDoc in
+                                    if postDoc.status == 1{
+                                        popupMsg = postDoc.msg ?? ""
+                                        isShowPopup = true
+                                        CallAPI = true
+                                        CallLoader = false
+                                    }else{
+                                        popupMsg = postDoc.msg ?? ""
+                                        isShowPopup = true
+                                        CallAPI = false
+                                        CallLoader = false
+                                    }
+                                }
                             } catch {
+                                CallAPI = false
+                                CallLoader = false
                                 print("error")
                                 print(error.localizedDescription)
                             }
                         }
                     }catch{
+                        CallAPI = false
                         print("Error reading docs")
                         print(error.localizedDescription)
                     }
@@ -98,11 +140,14 @@ struct UploadDocumentCell: View {
                 .shadow(color: .gray, radius: 5, x: 0, y: 0)
         )
         .padding(.bottom)
+        .onAppear{
+            CallAPI = false
+        }
     }
 }
 
-struct UploadDocumentCell_Previews: PreviewProvider {
-    static var previews: some View {
-        UploadDocumentCell()
-    }
-}
+//struct UploadDocumentCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UploadDocumentCell(CallAPI: [], CallLoader: .constant(false), isShowPopup: .constant(false))
+//    }
+//}

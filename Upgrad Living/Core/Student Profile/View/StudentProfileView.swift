@@ -208,11 +208,11 @@ struct StudentProfileView: View {
                                         }else{
                                             txtCreativityWriting = ""
                                             if let index = arrCreavity.firstIndex(of: "Writing")  {
-                                               print("Index of \(txtCreativityWriting) is \(index)")
+                                                print("Index of \(txtCreativityWriting) is \(index)")
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativityWriting) is not in the list")
+                                                print("\(txtCreativityWriting) is not in the list")
                                             }
                                         }
                                     }
@@ -229,7 +229,7 @@ struct StudentProfileView: View {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativityDesign) is not in the list")
+                                                print("\(txtCreativityDesign) is not in the list")
                                             }
                                         }
                                     }
@@ -246,7 +246,7 @@ struct StudentProfileView: View {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativityArt) is not in the list")
+                                                print("\(txtCreativityArt) is not in the list")
                                             }
                                         }
                                     }
@@ -263,7 +263,7 @@ struct StudentProfileView: View {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativitySinging) is not in the list")
+                                                print("\(txtCreativitySinging) is not in the list")
                                             }
                                         }
                                     }
@@ -280,7 +280,7 @@ struct StudentProfileView: View {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativityDancing) is not in the list")
+                                                print("\(txtCreativityDancing) is not in the list")
                                             }
                                         }
                                     }
@@ -297,7 +297,7 @@ struct StudentProfileView: View {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativityMakeUp) is not in the list")
+                                                print("\(txtCreativityMakeUp) is not in the list")
                                             }
                                         }
                                     }
@@ -314,7 +314,7 @@ struct StudentProfileView: View {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativityBanking) is not in the list")
+                                                print("\(txtCreativityBanking) is not in the list")
                                             }
                                         }
                                     }
@@ -331,7 +331,7 @@ struct StudentProfileView: View {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativityCooking) is not in the list")
+                                                print("\(txtCreativityCooking) is not in the list")
                                             }
                                         }
                                     }
@@ -348,7 +348,7 @@ struct StudentProfileView: View {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativityPhotography) is not in the list")
+                                                print("\(txtCreativityPhotography) is not in the list")
                                             }
                                         }
                                     }
@@ -365,7 +365,7 @@ struct StudentProfileView: View {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
-                                               print("\(txtCreativityVideography) is not in the list")
+                                                print("\(txtCreativityVideography) is not in the list")
                                             }
                                         }
                                     }
@@ -398,7 +398,7 @@ struct StudentProfileView: View {
                                                 arrSports.remove(at: index)
                                                 print(arrSports)
                                             } else {
-                                               print("\(txtSportsCircket) is not in the list")
+                                                print("\(txtSportsCircket) is not in the list")
                                             }
                                         }
                                     }
@@ -415,7 +415,7 @@ struct StudentProfileView: View {
                                                 arrSports.remove(at: index)
                                                 print(arrSports)
                                             } else {
-                                               print("\(txtSportsFoodball) is not in the list")
+                                                print("\(txtSportsFoodball) is not in the list")
                                             }
                                         }
                                     }
@@ -432,7 +432,7 @@ struct StudentProfileView: View {
                                                 arrSports.remove(at: index)
                                                 print(arrSports)
                                             } else {
-                                               print("\(txtSportsAthletics) is not in the list")
+                                                print("\(txtSportsAthletics) is not in the list")
                                             }
                                         }
                                     }
@@ -449,7 +449,7 @@ struct StudentProfileView: View {
                                                 arrSports.remove(at: index)
                                                 print(arrSports)
                                             } else {
-                                               print("\(txtSportsBasketball) is not in the list")
+                                                print("\(txtSportsBasketball) is not in the list")
                                             }
                                         }
                                     }
@@ -466,7 +466,7 @@ struct StudentProfileView: View {
                                                 arrSports.remove(at: index)
                                                 print(arrSports)
                                             } else {
-                                               print("\(txtSportsBadminton) is not in the list")
+                                                print("\(txtSportsBadminton) is not in the list")
                                             }
                                         }
                                     }
@@ -483,7 +483,7 @@ struct StudentProfileView: View {
                                                 arrSports.remove(at: index)
                                                 print(arrSports)
                                             } else {
-                                               print("\(txtSportsSwimming) is not in the list")
+                                                print("\(txtSportsSwimming) is not in the list")
                                             }
                                         }
                                     }
@@ -500,7 +500,7 @@ struct StudentProfileView: View {
                                                 arrSports.remove(at: index)
                                                 print(arrSports)
                                             } else {
-                                               print("\(txtSportsTableTennis) is not in the list")
+                                                print("\(txtSportsTableTennis) is not in the list")
                                             }
                                         }
                                     }
@@ -532,7 +532,7 @@ struct StudentProfileView: View {
                                                 arrEntertainment.remove(at: index)
                                                 print(arrEntertainment)
                                             } else {
-                                               print("\(txtEntertainmentReading) is not in the list")
+                                                print("\(txtEntertainmentReading) is not in the list")
                                             }
                                         }
                                     }
@@ -549,7 +549,7 @@ struct StudentProfileView: View {
                                                 arrEntertainment.remove(at: index)
                                                 print(arrEntertainment)
                                             } else {
-                                               print("\(txtEntertainmentMusic) is not in the list")
+                                                print("\(txtEntertainmentMusic) is not in the list")
                                             }
                                         }
                                     }
@@ -566,7 +566,7 @@ struct StudentProfileView: View {
                                                 arrEntertainment.remove(at: index)
                                                 print(arrEntertainment)
                                             } else {
-                                               print("\(txtEntertainmentDancing) is not in the list")
+                                                print("\(txtEntertainmentDancing) is not in the list")
                                             }
                                         }
                                     }
@@ -583,7 +583,7 @@ struct StudentProfileView: View {
                                                 arrEntertainment.remove(at: index)
                                                 print(arrEntertainment)
                                             } else {
-                                               print("\(txtEntertainmentTVSeries) is not in the list")
+                                                print("\(txtEntertainmentTVSeries) is not in the list")
                                             }
                                         }
                                     }
@@ -600,7 +600,7 @@ struct StudentProfileView: View {
                                                 arrEntertainment.remove(at: index)
                                                 print(arrEntertainment)
                                             } else {
-                                               print("\(txtEntertainmentFlims) is not in the list")
+                                                print("\(txtEntertainmentFlims) is not in the list")
                                             }
                                         }
                                     }
@@ -632,7 +632,7 @@ struct StudentProfileView: View {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
-                                               print("\(txtGoingOutCafe) is not in the list")
+                                                print("\(txtGoingOutCafe) is not in the list")
                                             }
                                         }
                                     }
@@ -649,7 +649,7 @@ struct StudentProfileView: View {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
-                                               print("\(txtGoingOutConcerts) is not in the list")
+                                                print("\(txtGoingOutConcerts) is not in the list")
                                             }
                                         }
                                     }
@@ -666,7 +666,7 @@ struct StudentProfileView: View {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
-                                               print("\(txtGoingOutFestivals) is not in the list")
+                                                print("\(txtGoingOutFestivals) is not in the list")
                                             }
                                         }
                                     }
@@ -683,7 +683,7 @@ struct StudentProfileView: View {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
-                                               print("\(txtGoingOutKaraoke) is not in the list")
+                                                print("\(txtGoingOutKaraoke) is not in the list")
                                             }
                                         }
                                     }
@@ -700,7 +700,7 @@ struct StudentProfileView: View {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
-                                               print("\(txtGoingOutStandUp) is not in the list")
+                                                print("\(txtGoingOutStandUp) is not in the list")
                                             }
                                         }
                                     }
@@ -717,7 +717,7 @@ struct StudentProfileView: View {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
-                                               print("\(txtGoingOutTheatre) is not in the list")
+                                                print("\(txtGoingOutTheatre) is not in the list")
                                             }
                                         }
                                     }
@@ -737,7 +737,7 @@ struct StudentProfileView: View {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
-                                               print("\(txtGoingOutMusems) is not in the list")
+                                                print("\(txtGoingOutMusems) is not in the list")
                                             }
                                         }
                                     }
@@ -771,7 +771,7 @@ struct StudentProfileView: View {
                                                 arrStayingIn.remove(at: index)
                                                 print(arrStayingIn)
                                             } else {
-                                               print("\(txtStayingBoardGames) is not in the list")
+                                                print("\(txtStayingBoardGames) is not in the list")
                                             }
                                         }
                                     }
@@ -788,7 +788,7 @@ struct StudentProfileView: View {
                                                 arrStayingIn.remove(at: index)
                                                 print(arrStayingIn)
                                             } else {
-                                               print("\(txtStayingVideoGames) is not in the list")
+                                                print("\(txtStayingVideoGames) is not in the list")
                                             }
                                         }
                                     }
@@ -805,7 +805,7 @@ struct StudentProfileView: View {
                                                 arrStayingIn.remove(at: index)
                                                 print(arrStayingIn)
                                             } else {
-                                               print("\(txtStayingBaking) is not in the list")
+                                                print("\(txtStayingBaking) is not in the list")
                                             }
                                         }
                                     }
@@ -822,7 +822,7 @@ struct StudentProfileView: View {
                                                 arrStayingIn.remove(at: index)
                                                 print(arrStayingIn)
                                             } else {
-                                               print("\(txtStayingCooking) is not in the list")
+                                                print("\(txtStayingCooking) is not in the list")
                                             }
                                         }
                                     }
@@ -839,7 +839,7 @@ struct StudentProfileView: View {
                                                 arrStayingIn.remove(at: index)
                                                 print(arrStayingIn)
                                             } else {
-                                               print("\(txtStayingTakeOuts) is not in the list")
+                                                print("\(txtStayingTakeOuts) is not in the list")
                                             }
                                         }
                                     }
@@ -856,7 +856,7 @@ struct StudentProfileView: View {
                                                 arrStayingIn.remove(at: index)
                                                 print(arrStayingIn)
                                             } else {
-                                               print("\(txtStayingGardening) is not in the list")
+                                                print("\(txtStayingGardening) is not in the list")
                                             }
                                         }
                                     }
@@ -889,7 +889,7 @@ struct StudentProfileView: View {
                                                 arrFoodAndDrink.remove(at: index)
                                                 print(arrFoodAndDrink)
                                             } else {
-                                               print("\(txtFoodVeg) is not in the list")
+                                                print("\(txtFoodVeg) is not in the list")
                                             }
                                         }
                                     }
@@ -906,7 +906,7 @@ struct StudentProfileView: View {
                                                 arrFoodAndDrink.remove(at: index)
                                                 print(arrFoodAndDrink)
                                             } else {
-                                               print("\(txtFoodNonVeg) is not in the list")
+                                                print("\(txtFoodNonVeg) is not in the list")
                                             }
                                         }
                                     }
@@ -923,7 +923,7 @@ struct StudentProfileView: View {
                                                 arrFoodAndDrink.remove(at: index)
                                                 print(arrFoodAndDrink)
                                             } else {
-                                               print("\(txtFoodVegan) is not in the list")
+                                                print("\(txtFoodVegan) is not in the list")
                                             }
                                         }
                                     }
@@ -956,7 +956,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesAmbitious) is not in the list")
+                                                print("\(txtValuesAmbitious) is not in the list")
                                             }
                                         }
                                     }
@@ -973,7 +973,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesActive) is not in the list")
+                                                print("\(txtValuesActive) is not in the list")
                                             }
                                         }
                                     }
@@ -990,7 +990,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesConfident) is not in the list")
+                                                print("\(txtValuesConfident) is not in the list")
                                             }
                                         }
                                     }
@@ -1007,7 +1007,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesCreative) is not in the list")
+                                                print("\(txtValuesCreative) is not in the list")
                                             }
                                         }
                                     }
@@ -1024,7 +1024,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesEmpathetic) is not in the list")
+                                                print("\(txtValuesEmpathetic) is not in the list")
                                             }
                                         }
                                     }
@@ -1041,7 +1041,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesIntelligent) is not in the list")
+                                                print("\(txtValuesIntelligent) is not in the list")
                                             }
                                         }
                                     }
@@ -1058,7 +1058,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesOptimistic) is not in the list")
+                                                print("\(txtValuesOptimistic) is not in the list")
                                             }
                                         }
                                     }
@@ -1075,7 +1075,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesSelfAware) is not in the list")
+                                                print("\(txtValuesSelfAware) is not in the list")
                                             }
                                         }
                                     }
@@ -1092,7 +1092,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesFamilyOriented) is not in the list")
+                                                print("\(txtValuesFamilyOriented) is not in the list")
                                             }
                                         }
                                     }
@@ -1113,7 +1113,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesAdventurous) is not in the list")
+                                                print("\(txtValuesAdventurous) is not in the list")
                                             }
                                         }
                                     }
@@ -1130,7 +1130,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesSociallyAware) is not in the list")
+                                                print("\(txtValuesSociallyAware) is not in the list")
                                             }
                                         }
                                     }
@@ -1147,7 +1147,7 @@ struct StudentProfileView: View {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
-                                               print("\(txtValuesFunny) is not in the list")
+                                                print("\(txtValuesFunny) is not in the list")
                                             }
                                         }
                                     }
@@ -1164,28 +1164,59 @@ struct StudentProfileView: View {
                                 .padding()
                                 .frame(alignment: .center)
                                 .onTapGesture {
-                                    if networkMonitor.isConnected{
-                                        viewModel.postProfile(appId: studentAppID ?? "",
-                                                              creativity: arrCreavity as NSArray,
-                                                              sports: arrSports as NSArray,
-                                                              entertainment: arrEntertainment as NSArray,
-                                                              goingOut: arrGoingOut as NSArray,
-                                                              stayingIn: arrStayingIn as NSArray,
-                                                              foodAndDrink: arrFoodAndDrink as NSArray,
-                                                              values: arrValues as NSArray) { Profile in
-                                            if Profile.status == 1{
-                                                alertMessage = Profile.msg ?? ""
-                                                AlertShow = "1"
-                                                showingAlert = true
-                                            }else{
-                                                alertMessage = Profile.msg ?? ""
-                                                AlertShow = "0"
-                                                showingAlert = true
-                                            }
-                                        }
-                                    }else{
-                                        alertMessage = "Please Check Your Internet Connection"
+                                    if arrCreavity.count == 0{
+                                        alertMessage = "Please pick favourites from Creativity"
+                                        AlertShow = "0"
                                         showingAlert = true
+                                    }else if arrSports.count == 0{
+                                        alertMessage = "Please pick favourites from Sports"
+                                        AlertShow = "0"
+                                        showingAlert = true
+                                    }else if arrEntertainment.count == 0{
+                                        alertMessage = "Please pick favourites from Entertainment"
+                                        AlertShow = "0"
+                                        showingAlert = true
+                                    }else if arrGoingOut.count == 0{
+                                        alertMessage = "Please pick favourites from Going Out"
+                                        AlertShow = "0"
+                                        showingAlert = true
+                                    }else if arrStayingIn.count == 0{
+                                        alertMessage = "Please pick favourites from Staying In"
+                                        AlertShow = "0"
+                                        showingAlert = true
+                                    }else if arrFoodAndDrink.count == 0{
+                                        alertMessage = "Please pick favourites from Food & Drink"
+                                        AlertShow = "0"
+                                        showingAlert = true
+                                    }else if arrValues.count == 0{
+                                        alertMessage = "Please pick favourites from Values & Traits"
+                                        AlertShow = "0"
+                                        showingAlert = true
+                                    }else{
+                                        if networkMonitor.isConnected{
+                                            viewModel.postProfile(appId: studentAppID ?? "",
+                                                                  creativity: arrCreavity as NSArray,
+                                                                  sports: arrSports as NSArray,
+                                                                  entertainment: arrEntertainment as NSArray,
+                                                                  goingOut: arrGoingOut as NSArray,
+                                                                  stayingIn: arrStayingIn as NSArray,
+                                                                  foodAndDrink: arrFoodAndDrink as NSArray,
+                                                                  values: arrValues as NSArray) { Profile in
+                                                if Profile.status == 1{
+                                                    alertMessage = Profile.msg ?? ""
+                                                    AlertShow = "1"
+                                                    showingAlert = true
+                                                }else{
+                                                    alertMessage = Profile.msg ?? ""
+                                                    AlertShow = "0"
+                                                    showingAlert = true
+                                                }
+                                            }
+                                        }else{
+                                            alertMessage = "Please Check Your Internet Connection"
+                                            AlertShow = "0"
+                                            showingAlert = true
+                                        }
                                     }
                                 }
                                 .shadow(

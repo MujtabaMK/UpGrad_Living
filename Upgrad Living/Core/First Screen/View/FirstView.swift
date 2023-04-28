@@ -43,7 +43,7 @@ struct FirstView: View {
                         isActive: $isStudentProfile).isDetailLink(false)
                     NavigationLink(
                         "",
-                        destination: HomeView().navigationBarHidden(true),
+                        destination: HomeViewTabBar().navigationBarHidden(true),
                         isActive: $isHomeView).isDetailLink(false)
                 }
             }

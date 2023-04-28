@@ -58,7 +58,7 @@ struct SecurityDepositSuccess: View {
                     .font(.custom(OpenSans_SemiBold, size: 14))
                     .foregroundColor(colorScheme == .light ? Color(hex: 0xDE1223) : Color(hex: 0xCC1120))
                     .multilineTextAlignment(.center)
-                NavigationLink("", destination: UploadDocumentsView(isBackButtonShow: .constant(true)).navigationBarHidden(true),isActive: $isUploadDocument).isDetailLink(false)
+                NavigationLink("", destination: UploadDocumentsView(isBackButtonShow: .constant(false)).navigationBarHidden(true),isActive: $isUploadDocument).isDetailLink(false)
                 Spacer()
             }
             .navigationBarHidden(true)

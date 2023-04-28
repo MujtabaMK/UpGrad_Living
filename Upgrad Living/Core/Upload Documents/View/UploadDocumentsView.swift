@@ -87,7 +87,7 @@ struct UploadDocumentsView: View {
                             
                             NavigationLink(
                                 "",
-                                destination: StudentProfileView(isBackButtonShow: .constant(true)).navigationBarHidden(true),
+                                destination: StudentProfileView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
                                 isActive: $isStudentProfile).isDetailLink(false)
                             VStack(alignment: .center) {
                                 DetailsViewBottom(textName: "Next", imageName: "")

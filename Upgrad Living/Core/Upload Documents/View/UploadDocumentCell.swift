@@ -26,12 +26,12 @@ struct UploadDocumentCell: View {
     @Binding var CallLoader: Bool
     @Binding var isShowPopup: Bool
     @Binding var popupMsg: String
-   
     
     var body: some View {
         VStack{
             Text(MainTitle)
                 .font(.custom(OpenSans_Bold, size: 16))
+                .multilineTextAlignment(.center)
                 .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
                 .padding(.top)
             ForEach(getDocs) { docs in

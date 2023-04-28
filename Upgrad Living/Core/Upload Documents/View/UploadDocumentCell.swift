@@ -18,6 +18,7 @@ struct UploadDocumentCell: View {
     @State private var base64PDF = ""
     @State private var docName = ""
     @State private var docID = ""
+    @State private var documentNameAbbr = ""
     var MainTitle = "Identity & Address proof"
     var getDocs: [Doc]
     
@@ -38,6 +39,7 @@ struct UploadDocumentCell: View {
                     Button {
                         docName = docs.documentName ?? ""
                         docID = docs.id ?? ""
+                        documentNameAbbr = docs.documentNameAbbr ?? ""
                         isImporting = true
                     } label: {
                         Rectangle()
@@ -63,10 +65,9 @@ struct UploadDocumentCell: View {
                 .padding(.bottom, 15)
                 .fileImporter(isPresented: $isImporting, allowedContentTypes: [.png, .jpeg, .pdf]) { result in
                     CallAPI = false
-                    CallLoader = false
+                    CallLoader = true
                     do{
                         CallAPI = false
-                        CallLoader = false
                         let fileUrl = try result.get()
                         let NewFileNmae = fileUrl.lastPathComponent
                         let fullNameArr = NewFileNmae.components(separatedBy: ".")
@@ -75,7 +76,6 @@ struct UploadDocumentCell: View {
                         }
                         if fileUrl.startAccessingSecurityScopedResource() {
                             CallAPI = false
-                            CallLoader = false
                             defer {
                                 DispatchQueue.main.async {
                                     CallAPI = false
@@ -84,28 +84,35 @@ struct UploadDocumentCell: View {
                             }
                             do {
                                 CallAPI = false
-                                CallLoader = false
-                                let fileData = try Data.init(contentsOf: fileUrl)
-                                let fileStream:String = fileData.base64EncodedString()
-                                print(fileStream)
-                                base64PDF = fileStream
                                 CallLoader = true
-                                viewModel.postUploadDocument(file_name: docName,
-                                                             file_base64: base64PDF,
-                                                             file_ext: fileName,
-                                                             doc_upload_doc_id: docID,
-                                                             appId: studentAppID ?? "") { postDoc in
-                                    if postDoc.status == 1{
-                                        popupMsg = postDoc.msg ?? ""
-                                        isShowPopup = true
-                                        CallAPI = true
-                                        CallLoader = false
-                                    }else{
-                                        popupMsg = postDoc.msg ?? ""
-                                        isShowPopup = true
-                                        CallAPI = false
-                                        CallLoader = false
+                                let fileData = try Data.init(contentsOf: fileUrl)
+                                let array = [UInt8](fileData)
+                                print("Image size in bytes:\(array.count)")
+                                if array.count < 2168584{
+                                    let fileStream:String = fileData.base64EncodedString()
+                                    base64PDF = fileStream
+                                    viewModel.postUploadDocument(file_name: docName,
+                                                                 file_base64: base64PDF,
+                                                                 file_ext: fileName,
+                                                                 doc_upload_doc_id: docID,
+                                                                 appId: studentAppID ?? "") { postDoc in
+                                        if postDoc.status == 1{
+                                            popupMsg = "\(documentNameAbbr) Upload Successfully"
+                                            isShowPopup = true
+                                            CallAPI = true
+                                            CallLoader = false
+                                        }else{
+                                            popupMsg = postDoc.msg ?? ""
+                                            isShowPopup = true
+                                            CallAPI = false
+                                            CallLoader = false
+                                        }
                                     }
+                                }else{
+                                    popupMsg = "File Size Should be less than 2MB"
+                                    isShowPopup = true
+                                    CallAPI = false
+                                    CallLoader = false
                                 }
                             } catch {
                                 CallAPI = false

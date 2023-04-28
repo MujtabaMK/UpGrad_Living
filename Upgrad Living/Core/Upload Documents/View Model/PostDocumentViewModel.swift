@@ -27,9 +27,7 @@ class PostDocumentViewModel: ObservableObject {
             "doc_upload_doc_id": doc_upload_doc_id,
             "appId": appId
         ]
-        
-        print(parameter)
-        
+                
         resuest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         guard let httpbody = try? JSONSerialization.data(withJSONObject: parameter, options: []) else {
             return

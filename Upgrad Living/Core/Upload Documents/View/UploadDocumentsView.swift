@@ -97,9 +97,8 @@ struct UploadDocumentsView: View {
                                         if networkMonitor.isConnected{
                                             verifyViewModel.verifyUploadDocument(appId: studentAppID ?? "") { verify in
                                                 if verify.status == 1{
-                                                    alertMessage = verify.msg ?? ""
-                                                    AlertShow = "1"
-                                                    showingAlert = true
+                                                    isButtonClick = true
+                                                    isStudentProfile = true
                                                 }else{
                                                     alertMessage = verify.msg ?? ""
                                                     AlertShow = "0"
@@ -144,8 +143,7 @@ struct UploadDocumentsView: View {
                             }
                         }else{
                             if AlertShow == "1"{
-                                isButtonClick = true
-                                isStudentProfile = true
+                                
                             }else{
                                 isButtonClick = false
                             }

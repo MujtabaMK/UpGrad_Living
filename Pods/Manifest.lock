@@ -4,6 +4,7 @@ PODS:
   - Macaw (0.9.7):
     - SWXMLHash
   - SVGView (1.0.4)
+  - SwiftUIPager (2.3.1)
   - SWXMLHash (7.0.0)
 
 DEPENDENCIES:
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - lottie-ios
   - Macaw (= 0.9.7)
   - SVGView
+  - SwiftUIPager
 
 SPEC REPOS:
   trunk:
@@ -18,6 +20,7 @@ SPEC REPOS:
     - lottie-ios
     - Macaw
     - SVGView
+    - SwiftUIPager
     - SWXMLHash
 
 SPEC CHECKSUMS:
@@ -25,8 +28,9 @@ SPEC CHECKSUMS:
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   Macaw: 4a931baf9a9826b06d0d8ecf300014c962ab9d50
   SVGView: 4813b73e85fcea6c7ff92720cf1e778c48d0f0db
+  SwiftUIPager: 273cbaec55a03784d5fbec30f57d8b8974e60450
   SWXMLHash: cf8682ebf12f124e77554d6a5f9170830626d99e
 
-PODFILE CHECKSUM: 9d8f6c817ecd15f656fad0157b6c8ae263af42fb
+PODFILE CHECKSUM: bfb7c27b6b89dc0fe0b017881ea830b2529cf87b
 
 COCOAPODS: 1.11.2

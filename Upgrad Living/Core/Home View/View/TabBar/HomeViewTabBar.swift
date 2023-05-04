@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import SwiftUIPager
 
 struct HomeViewTabBar: View {
     @State var selectedIndex: Int = 0
     @State private var isButtonSelected = false
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @State private var offsetButton: CGFloat = 0
+    @State private var offsetView: CGFloat = 0
     
     var body: some View {
         NavigationView {
@@ -22,13 +25,74 @@ struct HomeViewTabBar: View {
                 
                 VStack{
                     VStack{
-                        
-                        
+                        if isButtonSelected{
+                            HStack{
+                                Spacer()
+                                Button {
+                                    
+                                } label: {
+                                    VStack(spacing: -5){
+                                        Image("Home_Book_Space")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 74, height: 74)
+                                        Text("Book a space\n or a guest room")
+                                            .font(.custom(OpenSans_SemiBold, size: 12))
+                                            .foregroundColor(Color(hex: 0x00B2BA))
+                                    }
+                                }
+                                Spacer()
+                                Button {
+                                    
+                                } label: {
+                                    VStack(spacing: -5){
+                                        Image("Home_Student_Connect")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 74, height: 74)
+                                        Text("Student\n Connect")
+                                            .font(.custom(OpenSans_SemiBold, size: 12))
+                                            .foregroundColor(Color(hex: 0x00B2BA))
+                                    }
+                                }
+                                Spacer()
+                                Button {
+                                    
+                                } label: {
+                                    VStack(spacing: -5){
+                                        Image("Home_Request_Approval")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 74, height: 74)
+                                        Text("Request\n Approval")
+                                            .font(.custom(OpenSans_SemiBold, size: 12))
+                                            .foregroundColor(Color(hex: 0x00B2BA))
+                                    }
+                                }
+                                Spacer()
+                            }
+                        }
                     }
-                    .frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity, maxHeight: isButtonSelected ? 130 : 0)
+                    .transition(.move(edge: isButtonSelected ? .top : .bottom))
+                    .offset(y: -20)
+                    .background(LinearGradient(
+                        colors: [colorScheme == .light ? Color(hex: 0xF5F5F5,alpha: 0.2) : Color(hex: 0x201F1F, alpha: 0.2),
+                                 colorScheme == .light ? Color(hex: 0xF5F5F5,alpha: 1.0) : Color(hex: 0x201F1F, alpha: 1.0)
+                                ],
+                        startPoint: .top,
+                        endPoint: .bottom)
+                    )
+                    .offset(y: 40)
+                    .transition(.move(edge: isButtonSelected ? .top : .bottom))
+                    
                     
                     Button {
-                        isButtonSelected.toggle()
+                        withAnimation() {
+                            isButtonSelected.toggle()
+//                            self.offsetButton = -20
+//                            self.offsetView = 40
+                        }
                     } label: {
                         Circle()
                             .fill(Color.tabBarColour)
@@ -42,11 +106,8 @@ struct HomeViewTabBar: View {
                                     .frame(width: 70, height: 70)
                                     .padding(.bottom, 30)
                             }
-                        
-                            
                     }
                 }
-
             }
             .navigationBarHidden(true)
         }
@@ -56,13 +117,13 @@ struct HomeViewTabBar: View {
     func getTabView(type: TabType) -> some View {
         switch type {
         case .home:
-            HomeView()
+            HomeView(pageIndex: Page.withIndex(0))
         case .services:
-            HomeView()
+            HomeView(pageIndex: Page.withIndex(0))
         case .community:
-            HomeView()
+            HomeView(pageIndex: Page.withIndex(0))
         case .events:
-            HomeView()
+            HomeView(pageIndex: Page.withIndex(0))
         }
     }
 }

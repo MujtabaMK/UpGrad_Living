@@ -158,6 +158,7 @@ struct OTPView: View {
                                                     }
                                                     //                                                loginDict = getLoginOTPData(dict: OTPData.data!)
                                                     UserDefaults.standard.set(true, forKey: "isLogin")
+                                                    UserDefaults.standard.set(OTPData.data?.userid ?? "", forKey: "studentUserID")
                                                     stepViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
                                                         if Step.status == 1{
                                                             if Step.data?.step == "0"{
@@ -231,7 +232,6 @@ struct OTPView: View {
                     let lastDigit = Last4dight(MobileNumber: newMobile)
                     Last4DigitMobileNumber = isApplicationId ?  "***\(lastDigit)" : "+91***\(lastDigit)"
                     print(Last4DigitMobileNumber)
-                    
                 }
                 if viewModel.isLoadingData{
                     LoadingView()
@@ -248,7 +248,6 @@ struct OTPView: View {
             let lastDigit = Last4dight(MobileNumber: newMobile)
             Last4DigitMobileNumber = isApplicationId ?  "***\(lastDigit)" : "+91***\(lastDigit)"
             print(Last4DigitMobileNumber)
-            
         }
     }
     func Last4dight(MobileNumber: String) -> String{

@@ -12,7 +12,7 @@ struct WebView: UIViewRepresentable {
     @Binding var title: String
     var url: URL
     var loadStatusChanged: ((Bool, Error?) -> Void)? = nil
-
+    
     func makeCoordinator() -> WebView.Coordinator {
         Coordinator(self)
     }

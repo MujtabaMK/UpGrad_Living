@@ -13,6 +13,7 @@ struct FirstView: View {
     @State private var isUploadDocument = false
     @State private var isStudentProfile = false
     @State private var isHomeView = false
+    @State private var isBookingView = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @State private var showingAlert = false
     @State private var AlertMessage = String()
@@ -45,6 +46,10 @@ struct FirstView: View {
                         "",
                         destination: HomeViewTabBar().navigationBarHidden(true),
                         isActive: $isHomeView).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: BookingView().navigationBarHidden(true),
+                        isActive: $isBookingView).isDetailLink(false)
                 }
             }
             .ignoresSafeArea()
@@ -64,7 +69,8 @@ struct FirstView: View {
                             //                                isSecurityDeposite = true
                             //                            }
                            // isSecurityDeposite = true
-                            isUploadDocument = true
+                            //isHomeView = true
+                            isBookingView = true
                         }else{
                             isBookingProcess = true
                         }

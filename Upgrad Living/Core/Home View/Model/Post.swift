@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Post: Identifiable{
+struct Post: Identifiable, Equatable{
     var id = UUID().uuidString
     var postImage: String
     var title: String

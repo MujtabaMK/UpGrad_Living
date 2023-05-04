@@ -36,3 +36,7 @@ let POST_Save_Profile = "\(StartURL)saveProfile"
 let POST_Upload_Document = "\(StartURL)uploadDoc"
 let GET_Upload_Document = "\(StartURL)getDocuments"
 let VERIFY_Upload_Document = "\(StartURL)verifyDoc"
+
+//Booking
+let GET_FLOOR = "\(StartURL)getFloors"
+let GET_BEDS_DETAILS = "\(StartURL)getBedsDetails"

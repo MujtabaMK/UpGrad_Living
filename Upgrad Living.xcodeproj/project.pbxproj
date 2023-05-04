@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		073E92853C1A2A88BF467C2D /* Pods_Upgrad_Living.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FC69D1BCE0EB9CB9343A47 /* Pods_Upgrad_Living.framework */; };
+		090724B32A023983005BEA4E /* GetFloorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090724B22A023983005BEA4E /* GetFloorModel.swift */; };
+		090724B52A025F7A005BEA4E /* WebViewBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090724B42A025F7A005BEA4E /* WebViewBooking.swift */; };
+		090724B72A0263AB005BEA4E /* GetFloorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090724B62A0263AB005BEA4E /* GetFloorViewModel.swift */; };
 		0931A90629D7ED6B00F6A209 /* SubmitParentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0931A90529D7ED6B00F6A209 /* SubmitParentModel.swift */; };
 		0931A90829D7EE7700F6A209 /* SubmitParentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0931A90729D7EE7700F6A209 /* SubmitParentViewModel.swift */; };
 		0931A90A29D7F67000F6A209 /* SubmitEnrollmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0931A90929D7F67000F6A209 /* SubmitEnrollmentModel.swift */; };
@@ -84,6 +87,9 @@
 		099490D529DAB7D9002FA2C0 /* BookingRoomProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490D429DAB7D9002FA2C0 /* BookingRoomProcessView.swift */; };
 		099490D729DAB972002FA2C0 /* BookingSignProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490D629DAB972002FA2C0 /* BookingSignProcessView.swift */; };
 		099490D929DAC89B002FA2C0 /* BookingProcessLogin_Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099490D829DAC89B002FA2C0 /* BookingProcessLogin_Image.swift */; };
+		099507092A00E00D00339AA9 /* PagerHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099507082A00E00D00339AA9 /* PagerHome.swift */; };
+		0995070F2A00F82A00339AA9 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995070E2A00F82A00339AA9 /* BookingView.swift */; };
+		09A0DEB629FCFE1200355CF3 /* UpcomingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0DEB529FCFE1200355CF3 /* UpcomingEvents.swift */; };
 		09A33B6129CC1D3C00C01D65 /* Upgrad_LivingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */; };
 		09A33B6329CC1D3C00C01D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A33B6229CC1D3C00C01D65 /* ContentView.swift */; };
 		09A33B6529CC1D4200C01D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A33B6429CC1D4200C01D65 /* Assets.xcassets */; };
@@ -97,6 +103,11 @@
 		09A7554229FB8E7100BCE3F7 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7554129FB8E7100BCE3F7 /* TabItemView.swift */; };
 		09A7554429FB8EB500BCE3F7 /* TabBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7554329FB8EB500BCE3F7 /* TabBottomView.swift */; };
 		09A7554629FB8EEE00BCE3F7 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7554529FB8EEE00BCE3F7 /* CustomTabView.swift */; };
+		09AA0C752A03702D0018EFE7 /* GetBedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C742A03702D0018EFE7 /* GetBedModel.swift */; };
+		09AA0C772A0370F60018EFE7 /* GetBedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C762A0370F60018EFE7 /* GetBedViewModel.swift */; };
+		09AA0C7B2A03778D0018EFE7 /* BedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C7A2A03778D0018EFE7 /* BedDetailsView.swift */; };
+		09AA0C7D2A0387120018EFE7 /* BedDetailsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C7C2A0387120018EFE7 /* BedDetailsShowView.swift */; };
+		09AA0C802A03AE880018EFE7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 09AA0C7F2A03AE880018EFE7 /* Kingfisher */; };
 		09B0258229F79E5D0086190A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0258129F79E5D0086190A /* HomeView.swift */; };
 		09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */; };
 		09B7A1C829D8125A00EC72EF /* SubmitMedicalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */; };
@@ -147,6 +158,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		090724B22A023983005BEA4E /* GetFloorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFloorModel.swift; sourceTree = "<group>"; };
+		090724B42A025F7A005BEA4E /* WebViewBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewBooking.swift; sourceTree = "<group>"; };
+		090724B62A0263AB005BEA4E /* GetFloorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFloorViewModel.swift; sourceTree = "<group>"; };
 		0931A90529D7ED6B00F6A209 /* SubmitParentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitParentModel.swift; sourceTree = "<group>"; };
 		0931A90729D7EE7700F6A209 /* SubmitParentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitParentViewModel.swift; sourceTree = "<group>"; };
 		0931A90929D7F67000F6A209 /* SubmitEnrollmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitEnrollmentModel.swift; sourceTree = "<group>"; };
@@ -224,6 +238,9 @@
 		099490D429DAB7D9002FA2C0 /* BookingRoomProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRoomProcessView.swift; sourceTree = "<group>"; };
 		099490D629DAB972002FA2C0 /* BookingSignProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSignProcessView.swift; sourceTree = "<group>"; };
 		099490D829DAC89B002FA2C0 /* BookingProcessLogin_Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingProcessLogin_Image.swift; sourceTree = "<group>"; };
+		099507082A00E00D00339AA9 /* PagerHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerHome.swift; sourceTree = "<group>"; };
+		0995070E2A00F82A00339AA9 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
+		09A0DEB529FCFE1200355CF3 /* UpcomingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEvents.swift; sourceTree = "<group>"; };
 		09A33B5D29CC1D3C00C01D65 /* Upgrad Living.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upgrad Living.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A33B6029CC1D3C00C01D65 /* Upgrad_LivingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrad_LivingApp.swift; sourceTree = "<group>"; };
 		09A33B6229CC1D3C00C01D65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -238,6 +255,10 @@
 		09A7554129FB8E7100BCE3F7 /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
 		09A7554329FB8EB500BCE3F7 /* TabBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBottomView.swift; sourceTree = "<group>"; };
 		09A7554529FB8EEE00BCE3F7 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		09AA0C742A03702D0018EFE7 /* GetBedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBedModel.swift; sourceTree = "<group>"; };
+		09AA0C762A0370F60018EFE7 /* GetBedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBedViewModel.swift; sourceTree = "<group>"; };
+		09AA0C7A2A03778D0018EFE7 /* BedDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedDetailsView.swift; sourceTree = "<group>"; };
+		09AA0C7C2A0387120018EFE7 /* BedDetailsShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedDetailsShowView.swift; sourceTree = "<group>"; };
 		09B0258129F79E5D0086190A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoucesedMedicalTextEditor.swift; sourceTree = "<group>"; };
 		09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitMedicalModel.swift; sourceTree = "<group>"; };
@@ -295,6 +316,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09AA0C802A03AE880018EFE7 /* Kingfisher in Frameworks */,
 				073E92853C1A2A88BF467C2D /* Pods_Upgrad_Living.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +394,7 @@
 				0981D9BA29DC260C0025575D /* Security Deposit */,
 				09C0ED5129E40361009123D2 /* Upload Documents */,
 				097E043129E534EE00F91647 /* Student Profile */,
+				0995070A2A00F7F200339AA9 /* Booking */,
 				09B0258029F79E480086190A /* Home View */,
 			);
 			path = Core;
@@ -410,6 +433,7 @@
 				09B84CD529DED6B5000FC1C6 /* ZoomableScrollView.swift */,
 				09C0ED5429E4345B009123D2 /* InputDocument.swift */,
 				09F7909729ED2B1700758907 /* WebView.swift */,
+				090724B42A025F7A005BEA4E /* WebViewBooking.swift */,
 				09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */,
 				096ADFCA29FAA0F60025A275 /* CornerRadiusStyle.swift */,
 			);
@@ -710,6 +734,44 @@
 				098D698C29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift */,
 			);
 			path = "Material TextField";
+			sourceTree = "<group>";
+		};
+		0995070A2A00F7F200339AA9 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				0995070D2A00F80900339AA9 /* Model */,
+				0995070C2A00F80200339AA9 /* View Model */,
+				0995070B2A00F7FE00339AA9 /* View */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		0995070B2A00F7FE00339AA9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0995070E2A00F82A00339AA9 /* BookingView.swift */,
+				09AA0C7A2A03778D0018EFE7 /* BedDetailsView.swift */,
+				09AA0C7C2A0387120018EFE7 /* BedDetailsShowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0995070C2A00F80200339AA9 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				090724B62A0263AB005BEA4E /* GetFloorViewModel.swift */,
+				09AA0C762A0370F60018EFE7 /* GetBedViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		0995070D2A00F80900339AA9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				090724B22A023983005BEA4E /* GetFloorModel.swift */,
+				09AA0C742A03702D0018EFE7 /* GetBedModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		09A33B5429CC1D3C00C01D65 = {
@@ -1045,6 +1107,8 @@
 			children = (
 				09A7553E29FB8DC700BCE3F7 /* TabBar */,
 				09B0258129F79E5D0086190A /* HomeView.swift */,
+				099507082A00E00D00339AA9 /* PagerHome.swift */,
+				09A0DEB529FCFE1200355CF3 /* UpcomingEvents.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1100,6 +1164,7 @@
 			);
 			name = "Upgrad Living";
 			packageProductDependencies = (
+				09AA0C7F2A03AE880018EFE7 /* Kingfisher */,
 			);
 			productName = "Upgrad Living";
 			productReference = 09A33B5D29CC1D3C00C01D65 /* Upgrad Living.app */;
@@ -1130,6 +1195,7 @@
 			);
 			mainGroup = 09A33B5429CC1D3C00C01D65;
 			packageReferences = (
+				09AA0C7E2A03AE880018EFE7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 09A33B5E29CC1D3C00C01D65 /* Products */;
 			projectDirPath = "";
@@ -1216,6 +1282,7 @@
 			files = (
 				0945E26C29CD9F1400F9EA4E /* WalkThrough3.swift in Sources */,
 				09768B0F29DD81B800CB05F5 /* StepModel.swift in Sources */,
+				090724B72A0263AB005BEA4E /* GetFloorViewModel.swift in Sources */,
 				099490D729DAB972002FA2C0 /* BookingSignProcessView.swift in Sources */,
 				09A7554029FB8DE900BCE3F7 /* TabItemData.swift in Sources */,
 				09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */,
@@ -1232,6 +1299,7 @@
 				0981D9C029DC2F3A0025575D /* SecurityDepositBottomView.swift in Sources */,
 				09B0258229F79E5D0086190A /* HomeView.swift in Sources */,
 				09DE74C429D5783F001B105A /* RoomTypeTwinView.swift in Sources */,
+				090724B32A023983005BEA4E /* GetFloorModel.swift in Sources */,
 				09C72FC629F8FBC9005C197D /* ProfileModel.swift in Sources */,
 				0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */,
 				097E043B29E5356E00F91647 /* StudentProfileCreativity.swift in Sources */,
@@ -1255,12 +1323,14 @@
 				09DE74C229D5782D001B105A /* RoomTypeTripleView.swift in Sources */,
 				09C72FC829F90D60005C197D /* ProfileViewModel.swift in Sources */,
 				09DE74AA29D54560001B105A /* ParentContentViewModel.swift in Sources */,
+				090724B52A025F7A005BEA4E /* WebViewBooking.swift in Sources */,
 				09DE74B229D55C4E001B105A /* EnrollmentDetailsView.swift in Sources */,
 				099490D529DAB7D9002FA2C0 /* BookingRoomProcessView.swift in Sources */,
 				0981D9BC29DC26BB0025575D /* SecurityDepositView.swift in Sources */,
 				097E043329E5351200F91647 /* StudentProfileView.swift in Sources */,
 				096A3FE229CC259B00092AAC /* LoginView.swift in Sources */,
 				099490D129DAAF9B002FA2C0 /* BookingUploadProcessView.swift in Sources */,
+				09AA0C752A03702D0018EFE7 /* GetBedModel.swift in Sources */,
 				099490D929DAC89B002FA2C0 /* BookingProcessLogin_Image.swift in Sources */,
 				095AD00729DAEF9F000CABA8 /* SubmitRoomTypeModel.swift in Sources */,
 				09C72FBE29F8F57A005C197D /* VerifyDocumentModel.swift in Sources */,
@@ -1275,10 +1345,12 @@
 				09768B1529DD846D00CB05F5 /* FirstView.swift in Sources */,
 				0934F12F29CC57AE0076AD56 /* OTPViewModel.swift in Sources */,
 				0993227029D6F9400036C050 /* SubmitStudentModel.swift in Sources */,
+				099507092A00E00D00339AA9 /* PagerHome.swift in Sources */,
 				09C0ED5329E4039F009123D2 /* UploadDocumentsView.swift in Sources */,
 				09B7A1CC29D8264C00EC72EF /* SubmitDocumentaionModel.swift in Sources */,
 				09DE74A829D541F5001B105A /* ParentsDetailsView.swift in Sources */,
 				09C72FB829F8ED17005C197D /* UploadDocumentCell.swift in Sources */,
+				0995070F2A00F82A00339AA9 /* BookingView.swift in Sources */,
 				096A3FFE29CC2B0300092AAC /* FountsDefine.swift in Sources */,
 				098A04E229D452F800C9595A /* CountryModel.swift in Sources */,
 				098A04DC29D4339500C9595A /* MaterialDesignTextEditor.swift in Sources */,
@@ -1299,6 +1371,7 @@
 				09DE74BC29D56977001B105A /* RoomTypeView.swift in Sources */,
 				098A04E429D4538200C9595A /* CountryViewModel.swift in Sources */,
 				0981D9B729DBFA650025575D /* GetFormModel.swift in Sources */,
+				09AA0C7B2A03778D0018EFE7 /* BedDetailsView.swift in Sources */,
 				09768B1129DD81EC00CB05F5 /* StepViewModel.swift in Sources */,
 				09DE74B429D55DBD001B105A /* EnrollmentContentViewModel.swift in Sources */,
 				09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */,
@@ -1316,10 +1389,13 @@
 				09ECD9DD29D3FA60008465A2 /* APIFunction.swift in Sources */,
 				0993227229D6F9810036C050 /* SubmitStudentViewModel.swift in Sources */,
 				0934F13129CC581C0076AD56 /* OTPViewTextField.swift in Sources */,
+				09A0DEB629FCFE1200355CF3 /* UpcomingEvents.swift in Sources */,
+				09AA0C7D2A0387120018EFE7 /* BedDetailsShowView.swift in Sources */,
 				096A400629CC2D5800092AAC /* customLodingIndicator.swift in Sources */,
 				09A6F6DC29CDB96C00689E9F /* BaseAPI.swift in Sources */,
 				09DE74C029D56D01001B105A /* RoomTypeQuardView.swift in Sources */,
 				0931A90C29D7F69D00F6A209 /* SubmitEnrollmentViewModel.swift in Sources */,
+				09AA0C772A0370F60018EFE7 /* GetBedViewModel.swift in Sources */,
 				09C3810B29DA8A52006D82C9 /* BookingSubmitProcessView.swift in Sources */,
 				09C72FBC29F8F441005C197D /* PostDocumentViewModel.swift in Sources */,
 				096A400329CC2D5800092AAC /* HideKeyboard.swift in Sources */,
@@ -1545,6 +1621,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		09AA0C7E2A03AE880018EFE7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		09AA0C7F2A03AE880018EFE7 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09AA0C7E2A03AE880018EFE7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 09A33B5529CC1D3C00C01D65 /* Project object */;
 }

@@ -10,5 +10,6 @@ target 'Upgrad Living' do
   pod 'Introspect'
   pod "Macaw", "0.9.7"
   pod 'SVGView'
+  pod 'SwiftUIPager'
 
 end

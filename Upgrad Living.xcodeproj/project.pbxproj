@@ -25,6 +25,14 @@
 		0945E26C29CD9F1400F9EA4E /* WalkThrough3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945E26B29CD9F1400F9EA4E /* WalkThrough3.swift */; };
 		095AD00729DAEF9F000CABA8 /* SubmitRoomTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095AD00629DAEF9F000CABA8 /* SubmitRoomTypeModel.swift */; };
 		095AD00929DAF01E000CABA8 /* SubmitRoomTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095AD00829DAF01E000CABA8 /* SubmitRoomTypeViewModel.swift */; };
+		096487922A03B91C006E2412 /* BedDetailsTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096487912A03B91C006E2412 /* BedDetailsTop.swift */; };
+		096487942A03BE84006E2412 /* BedSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096487932A03BE84006E2412 /* BedSetView.swift */; };
+		096487962A03D11F006E2412 /* PostFloorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096487952A03D11F006E2412 /* PostFloorModel.swift */; };
+		096487982A03D163006E2412 /* PostFloorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096487972A03D163006E2412 /* PostFloorViewModel.swift */; };
+		0964879A2A03D464006E2412 /* BedSuccesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096487992A03D464006E2412 /* BedSuccesView.swift */; };
+		0964879C2A03D516006E2412 /* BedSuccessTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964879B2A03D516006E2412 /* BedSuccessTopView.swift */; };
+		0964879E2A03DAE7006E2412 /* BedSuccessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964879D2A03DAE7006E2412 /* BedSuccessModel.swift */; };
+		096487A02A03DB2F006E2412 /* BedSuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964879F2A03DB2F006E2412 /* BedSuccessViewModel.swift */; };
 		096A3FE029CC255E00092AAC /* LoginTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A3FDF29CC255E00092AAC /* LoginTopView.swift */; };
 		096A3FE229CC259B00092AAC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A3FE129CC259B00092AAC /* LoginView.swift */; };
 		096A3FF129CC2A5500092AAC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 096A3FE529CC2A5300092AAC /* OpenSans-Light.ttf */; };
@@ -107,7 +115,6 @@
 		09AA0C772A0370F60018EFE7 /* GetBedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C762A0370F60018EFE7 /* GetBedViewModel.swift */; };
 		09AA0C7B2A03778D0018EFE7 /* BedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C7A2A03778D0018EFE7 /* BedDetailsView.swift */; };
 		09AA0C7D2A0387120018EFE7 /* BedDetailsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C7C2A0387120018EFE7 /* BedDetailsShowView.swift */; };
-		09AA0C802A03AE880018EFE7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 09AA0C7F2A03AE880018EFE7 /* Kingfisher */; };
 		09B0258229F79E5D0086190A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0258129F79E5D0086190A /* HomeView.swift */; };
 		09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C529D8072A00EC72EF /* FoucesedMedicalTextEditor.swift */; };
 		09B7A1C829D8125A00EC72EF /* SubmitMedicalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7A1C729D8125A00EC72EF /* SubmitMedicalModel.swift */; };
@@ -155,6 +162,7 @@
 		09F7909A29ED2B6500758907 /* DepositPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7909929ED2B6500758907 /* DepositPaymentView.swift */; };
 		09FB936529F7CFF100E3B0FD /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */; };
 		09FB936A29F7D74200E3B0FD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB936929F7D74200E3B0FD /* Post.swift */; };
+		09FDB26E2A04C43900D70459 /* HomeBottomPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB26D2A04C43900D70459 /* HomeBottomPopView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,6 +183,14 @@
 		0945E26B29CD9F1400F9EA4E /* WalkThrough3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThrough3.swift; sourceTree = "<group>"; };
 		095AD00629DAEF9F000CABA8 /* SubmitRoomTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRoomTypeModel.swift; sourceTree = "<group>"; };
 		095AD00829DAF01E000CABA8 /* SubmitRoomTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRoomTypeViewModel.swift; sourceTree = "<group>"; };
+		096487912A03B91C006E2412 /* BedDetailsTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedDetailsTop.swift; sourceTree = "<group>"; };
+		096487932A03BE84006E2412 /* BedSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedSetView.swift; sourceTree = "<group>"; };
+		096487952A03D11F006E2412 /* PostFloorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFloorModel.swift; sourceTree = "<group>"; };
+		096487972A03D163006E2412 /* PostFloorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFloorViewModel.swift; sourceTree = "<group>"; };
+		096487992A03D464006E2412 /* BedSuccesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedSuccesView.swift; sourceTree = "<group>"; };
+		0964879B2A03D516006E2412 /* BedSuccessTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedSuccessTopView.swift; sourceTree = "<group>"; };
+		0964879D2A03DAE7006E2412 /* BedSuccessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedSuccessModel.swift; sourceTree = "<group>"; };
+		0964879F2A03DB2F006E2412 /* BedSuccessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedSuccessViewModel.swift; sourceTree = "<group>"; };
 		096A3FDF29CC255E00092AAC /* LoginTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTopView.swift; sourceTree = "<group>"; };
 		096A3FE129CC259B00092AAC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		096A3FE329CC26C700092AAC /* Upgrad-Living-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Upgrad-Living-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -306,6 +322,7 @@
 		09F7909929ED2B6500758907 /* DepositPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositPaymentView.swift; sourceTree = "<group>"; };
 		09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
 		09FB936929F7D74200E3B0FD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		09FDB26D2A04C43900D70459 /* HomeBottomPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomPopView.swift; sourceTree = "<group>"; };
 		42FC69D1BCE0EB9CB9343A47 /* Pods_Upgrad_Living.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Upgrad_Living.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3DD8EBA0C63FEA03A808A5 /* Pods-Upgrad Living.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.release.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.release.xcconfig"; sourceTree = "<group>"; };
 		DE0620C48538023C275F94CA /* Pods-Upgrad Living.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.debug.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.debug.xcconfig"; sourceTree = "<group>"; };
@@ -316,7 +333,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09AA0C802A03AE880018EFE7 /* Kingfisher in Frameworks */,
 				073E92853C1A2A88BF467C2D /* Pods_Upgrad_Living.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -752,6 +768,10 @@
 				0995070E2A00F82A00339AA9 /* BookingView.swift */,
 				09AA0C7A2A03778D0018EFE7 /* BedDetailsView.swift */,
 				09AA0C7C2A0387120018EFE7 /* BedDetailsShowView.swift */,
+				096487912A03B91C006E2412 /* BedDetailsTop.swift */,
+				096487932A03BE84006E2412 /* BedSetView.swift */,
+				096487992A03D464006E2412 /* BedSuccesView.swift */,
+				0964879B2A03D516006E2412 /* BedSuccessTopView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -761,6 +781,8 @@
 			children = (
 				090724B62A0263AB005BEA4E /* GetFloorViewModel.swift */,
 				09AA0C762A0370F60018EFE7 /* GetBedViewModel.swift */,
+				096487972A03D163006E2412 /* PostFloorViewModel.swift */,
+				0964879F2A03DB2F006E2412 /* BedSuccessViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -770,6 +792,8 @@
 			children = (
 				090724B22A023983005BEA4E /* GetFloorModel.swift */,
 				09AA0C742A03702D0018EFE7 /* GetBedModel.swift */,
+				096487952A03D11F006E2412 /* PostFloorModel.swift */,
+				0964879D2A03DAE7006E2412 /* BedSuccessModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1109,6 +1133,7 @@
 				09B0258129F79E5D0086190A /* HomeView.swift */,
 				099507082A00E00D00339AA9 /* PagerHome.swift */,
 				09A0DEB529FCFE1200355CF3 /* UpcomingEvents.swift */,
+				09FDB26D2A04C43900D70459 /* HomeBottomPopView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1164,7 +1189,6 @@
 			);
 			name = "Upgrad Living";
 			packageProductDependencies = (
-				09AA0C7F2A03AE880018EFE7 /* Kingfisher */,
 			);
 			productName = "Upgrad Living";
 			productReference = 09A33B5D29CC1D3C00C01D65 /* Upgrad Living.app */;
@@ -1195,7 +1219,6 @@
 			);
 			mainGroup = 09A33B5429CC1D3C00C01D65;
 			packageReferences = (
-				09AA0C7E2A03AE880018EFE7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 09A33B5E29CC1D3C00C01D65 /* Products */;
 			projectDirPath = "";
@@ -1284,6 +1307,7 @@
 				09768B0F29DD81B800CB05F5 /* StepModel.swift in Sources */,
 				090724B72A0263AB005BEA4E /* GetFloorViewModel.swift in Sources */,
 				099490D729DAB972002FA2C0 /* BookingSignProcessView.swift in Sources */,
+				096487922A03B91C006E2412 /* BedDetailsTop.swift in Sources */,
 				09A7554029FB8DE900BCE3F7 /* TabItemData.swift in Sources */,
 				09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */,
 				096ADFCB29FAA0F60025A275 /* CornerRadiusStyle.swift in Sources */,
@@ -1295,6 +1319,7 @@
 				09B84CD129DE9DAA000FC1C6 /* Network.swift in Sources */,
 				0993226529D6B37B0036C050 /* SchoolModel.swift in Sources */,
 				0931A90A29D7F67000F6A209 /* SubmitEnrollmentModel.swift in Sources */,
+				0964879E2A03DAE7006E2412 /* BedSuccessModel.swift in Sources */,
 				09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */,
 				0981D9C029DC2F3A0025575D /* SecurityDepositBottomView.swift in Sources */,
 				09B0258229F79E5D0086190A /* HomeView.swift in Sources */,
@@ -1302,9 +1327,12 @@
 				090724B32A023983005BEA4E /* GetFloorModel.swift in Sources */,
 				09C72FC629F8FBC9005C197D /* ProfileModel.swift in Sources */,
 				0993226829D6B44B0036C050 /* SchoolViewModel.swift in Sources */,
+				0964879C2A03D516006E2412 /* BedSuccessTopView.swift in Sources */,
+				096487A02A03DB2F006E2412 /* BedSuccessViewModel.swift in Sources */,
 				097E043B29E5356E00F91647 /* StudentProfileCreativity.swift in Sources */,
 				0993226A29D6C81A0036C050 /* FoucesedStudentTextField.swift in Sources */,
 				098D699029CD770D0000F5A9 /* WalkThrough1.swift in Sources */,
+				096487982A03D163006E2412 /* PostFloorViewModel.swift in Sources */,
 				099490CF29DAAE14002FA2C0 /* BookingParentProcessView.swift in Sources */,
 				09DE74CC29D58769001B105A /* MedicalQuestionOptionView.swift in Sources */,
 				098A04D029D407C400C9595A /* StudentDetailsView.swift in Sources */,
@@ -1329,6 +1357,7 @@
 				0981D9BC29DC26BB0025575D /* SecurityDepositView.swift in Sources */,
 				097E043329E5351200F91647 /* StudentProfileView.swift in Sources */,
 				096A3FE229CC259B00092AAC /* LoginView.swift in Sources */,
+				09FDB26E2A04C43900D70459 /* HomeBottomPopView.swift in Sources */,
 				099490D129DAAF9B002FA2C0 /* BookingUploadProcessView.swift in Sources */,
 				09AA0C752A03702D0018EFE7 /* GetBedModel.swift in Sources */,
 				099490D929DAC89B002FA2C0 /* BookingProcessLogin_Image.swift in Sources */,
@@ -1374,6 +1403,7 @@
 				09AA0C7B2A03778D0018EFE7 /* BedDetailsView.swift in Sources */,
 				09768B1129DD81EC00CB05F5 /* StepViewModel.swift in Sources */,
 				09DE74B429D55DBD001B105A /* EnrollmentContentViewModel.swift in Sources */,
+				096487942A03BE84006E2412 /* BedSetView.swift in Sources */,
 				09ECD9DB29D3F680008465A2 /* OTPModel.swift in Sources */,
 				099490D329DAB5FF002FA2C0 /* BookingStudentProcessView.swift in Sources */,
 				098A04DA29D42F3600C9595A /* MasterViewModel.swift in Sources */,
@@ -1399,9 +1429,11 @@
 				09C3810B29DA8A52006D82C9 /* BookingSubmitProcessView.swift in Sources */,
 				09C72FBC29F8F441005C197D /* PostDocumentViewModel.swift in Sources */,
 				096A400329CC2D5800092AAC /* HideKeyboard.swift in Sources */,
+				0964879A2A03D464006E2412 /* BedSuccesView.swift in Sources */,
 				098A04DE29D43BC300C9595A /* MaterialDesignTextFieldDOB.swift in Sources */,
 				09CC312629CC71940048BFF5 /* LottieView.swift in Sources */,
 				09CC311E29CC6B7F0048BFF5 /* LoadingView.swift in Sources */,
+				096487962A03D11F006E2412 /* PostFloorModel.swift in Sources */,
 				098A04E629D4617000C9595A /* DetailsViewBottom.swift in Sources */,
 				099490CD29DA9CAA002FA2C0 /* BookingPayProcessView.swift in Sources */,
 				09B7A1CA29D8129800EC72EF /* SubmitMedicalViewModel.swift in Sources */,
@@ -1621,25 +1653,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		09AA0C7E2A03AE880018EFE7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		09AA0C7F2A03AE880018EFE7 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 09AA0C7E2A03AE880018EFE7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 09A33B5529CC1D3C00C01D65 /* Project object */;
 }

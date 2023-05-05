@@ -143,7 +143,7 @@ struct StudentProfileView: View {
     
     @Binding var isBackButtonShow: Bool
     
-    @State private var isContentView = false
+    @State private var isBookingView = false
     
     @State private var alertMessage = String()
     @State private var showingAlert = false
@@ -1157,8 +1157,8 @@ struct StudentProfileView: View {
                         }
                         NavigationLink(
                             "",
-                            destination: ContentView().navigationBarHidden(true),
-                            isActive: $isContentView).isDetailLink(false)
+                            destination: BookingView().navigationBarHidden(true),
+                            isActive: $isBookingView).isDetailLink(false)
                         VStack(alignment: .center) {
                             DetailsViewBottom(textName: "Done", imageName: "Smile_Profile")
                                 .padding()
@@ -1238,7 +1238,7 @@ struct StudentProfileView: View {
                 Button("OK", role: .cancel) {
                     if AlertShow == "1"{
                         isButtonClick = true
-                        isContentView = true
+                        isBookingView = true
                     }else{
                         isButtonClick = false
                     }

@@ -19,45 +19,27 @@ struct SecurityDepositSuccess: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150,height: 151)
-                Text("Payment successful!")
+                Text("Congratulations!!")
                     .font(.custom(OpenSans_Bold, size: 20))
                     .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xFEEEF0))
                     .padding(5)
-                Text("Thank you for making the security deposit. \nThe receipt will be sent to your email.")
-                    .font(.custom(OpenSans_SemiBold, size: 14))
-                    .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : Color(hex: 0x868686))
-                    .multilineTextAlignment(.center)
-                    .padding(5)
-                    .padding(.bottom, 20)
-                Text("Please proceed to \nupload your documents")
-                    .font(.custom(OpenSans_SemiBold, size: 16))
-                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xB1B1B1))
-                    .multilineTextAlignment(.center)
-                    .padding(10)
-                
-                Text("Upload Documents")
-                    .font(.custom(OpenSans_SemiBold, size: 15))
-                    .frame(width: 250, alignment: .center)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color(hex: 0xAFAFAF))
-                    .clipShape(Capsule())
-                    .padding(5)
-                    .padding(.bottom, 3)
-                    .onTapGesture {
-                        isButtonClick = true
-                        isUploadDocument = true
-                    }
-                    .shadow(
-                        color: isButtonClick ? .gray : .clear,
-                        radius: isButtonClick ? 10 : 0,
-                        x: 0,
-                        y: 0
-                    )
-                Text("*You will be able to upload the \ndocuments only post 15th April 2023")
-                    .font(.custom(OpenSans_SemiBold, size: 14))
-                    .foregroundColor(colorScheme == .light ? Color(hex: 0xDE1223) : Color(hex: 0xCC1120))
-                    .multilineTextAlignment(.center)
+                Text("Your payment is successful!")
+                    .font(.custom(OpenSans_Bold, size: 16))
+                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xFEEEF0))
+                    .padding(.top, 0)
+                    .padding(.bottom, 15)
+                VStack(alignment: .leading){
+                    Text("Please note:")
+                        .font(.custom(OpenSans_SemiBold, size: 14))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xFEEEF0))
+                        .multilineTextAlignment(.leading)
+                        .padding(.bottom, 10)
+                    Text("Your parents have been notified by email & asked to provide consent for your accommodation request.\n\nThis is mandatory to move to the next step of uploading documents, creating a profile and selecting a room.")
+                        .font(.custom(OpenSans_SemiBold, size: 14))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xB1B1B1))
+                        .multilineTextAlignment(.leading)
+                }
+                .padding(.leading)
                 NavigationLink("", destination: UploadDocumentsView(isBackButtonShow: .constant(false)).navigationBarHidden(true),isActive: $isUploadDocument).isDetailLink(false)
                 Spacer()
             }

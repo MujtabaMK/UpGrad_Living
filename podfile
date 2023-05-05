@@ -11,5 +11,6 @@ target 'Upgrad Living' do
   pod "Macaw", "0.9.7"
   pod 'SVGView'
   pod 'SwiftUIPager'
+  pod 'Kingfisher', '~> 7.0'
 
 end

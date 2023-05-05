@@ -22,7 +22,6 @@ struct HomeViewTabBar: View {
                     let type = TabType(rawValue: index) ?? .home
                     getTabView(type: type)
                 }
-                
                 VStack{
                     VStack{
                         if isButtonSelected{

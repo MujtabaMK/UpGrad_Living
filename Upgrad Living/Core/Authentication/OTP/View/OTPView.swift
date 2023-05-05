@@ -15,7 +15,6 @@ struct OTPView: View {
     @State private var OTP3 = ""
     @State private var OTP4 = ""
     @FocusState private var loginFieldFocus: LogInField?
-    @State private var isBookingView = false
     @State private var Last4DigitMobileNumber = ""
     @Binding var newMobile: String
     @Binding var isApplicationId: Bool
@@ -27,9 +26,16 @@ struct OTPView: View {
     @StateObject private var stepViewModel = StepViewModel()
     @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var loginDict = [String: Any?]()
+    //
+    @State private var isBookingProcess = false
     @State private var isSecurityDeposite = false
-    @State private var isUploadDocuments = false
+    @State private var isSecuritySuccess = false
+    @State private var isUploadDocument = false
     @State private var isStudentProfile = false
+    @State private var isHomeView = false
+    @State private var isBookingView = false
+    @State private var isBookingSuccess = false
+    
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     var body: some View {
         NavigationView{
@@ -162,13 +168,19 @@ struct OTPView: View {
                                                     stepViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
                                                         if Step.status == 1{
                                                             if Step.data?.step == "0"{
-                                                                isBookingView = true
+                                                                isBookingProcess = true
                                                             }else if Step.data?.step == "1"{
                                                                 isSecurityDeposite = true
                                                             }else if Step.data?.step == "2"{
-                                                                isUploadDocuments = true
+                                                                isUploadDocument = true
+                                                            }else if Step.data?.step == "201"{
+                                                                isSecuritySuccess = true
                                                             }else if Step.data?.step == "3"{
+                                                                isBookingView = true
+                                                            }else if Step.data?.step == "301"{
                                                                 isStudentProfile = true
+                                                            }else if Step.data?.step == "4"{
+                                                                isBookingSuccess = true
                                                             }
                                                         }else{
                                                             isBookingView = true
@@ -214,19 +226,41 @@ struct OTPView: View {
                             .shadow(color: .gray, radius: 10, x: 0, y: 0)
                     )
                     Spacer()
-                    NavigationLink("", destination: BookingProcessView().navigationBarHidden(true),isActive: $isBookingView).isDetailLink(false)
-                    NavigationLink(
-                        "",
-                        destination: SecurityDepositView().navigationBarHidden(true),
-                        isActive: $isSecurityDeposite).isDetailLink(false)
-                    NavigationLink(
-                        "",
-                        destination: UploadDocumentsView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
-                        isActive: $isUploadDocuments).isDetailLink(false)
-                    NavigationLink(
-                        "",
-                        destination: StudentProfileView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
-                        isActive: $isStudentProfile).isDetailLink(false)
+                    
+                    VStack{
+                        NavigationLink(
+                            "",
+                            destination: BookingProcessView().navigationBarHidden(true),
+                            isActive: $isBookingProcess).isDetailLink(false)
+                        NavigationLink(
+                            "",
+                            destination: SecurityDepositView().navigationBarHidden(true),
+                            isActive: $isSecurityDeposite).isDetailLink(false)
+                        NavigationLink(
+                            "",
+                            destination: SecurityDepositSuccess().navigationBarHidden(true),
+                            isActive: $isSecuritySuccess).isDetailLink(false)
+                        NavigationLink(
+                            "",
+                            destination: UploadDocumentsView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
+                            isActive: $isUploadDocument).isDetailLink(false)
+                        NavigationLink(
+                            "",
+                            destination: StudentProfileView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
+                            isActive: $isStudentProfile).isDetailLink(false)
+                        NavigationLink(
+                            "",
+                            destination: HomeViewTabBar().navigationBarHidden(true),
+                            isActive: $isHomeView).isDetailLink(false)
+                        NavigationLink(
+                            "",
+                            destination: BookingView().navigationBarHidden(true),
+                            isActive: $isBookingView).isDetailLink(false)
+                        NavigationLink(
+                            "",
+                            destination: BedSuccesView().navigationBarHidden(true),
+                            isActive: $isBookingSuccess).isDetailLink(false)
+                    }
                 }
                 .onAppear{
                     let lastDigit = Last4dight(MobileNumber: newMobile)

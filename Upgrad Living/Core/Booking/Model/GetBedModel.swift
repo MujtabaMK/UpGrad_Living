@@ -36,7 +36,7 @@ struct BedClass: Codable {
 struct BedDetail: Codable, Identifiable,Equatable {
     let id, studentAppID, clusterCode, clusterSpecialisation: String?
     let specialisationName, studentName, dietry, stateName: String?
-    let cityName, bedNo, bedStatus, bedstatus: String?
+    let cityName, bedNoLoop, bedStatus, bedstatus: String?
     let studentImg: String?
 
     enum CodingKeys: String, CodingKey {
@@ -45,7 +45,8 @@ struct BedDetail: Codable, Identifiable,Equatable {
         case clusterCode = "cluster_code"
         case clusterSpecialisation = "cluster_specialisation"
         case specialisationName = "specialisation_name"
-        case studentName, dietry, stateName, cityName, bedNo, bedStatus, bedstatus, studentImg
+        case bedNoLoop = "bedNo"
+        case studentName, dietry, stateName, cityName, bedStatus, bedstatus, studentImg
     }
 }
 

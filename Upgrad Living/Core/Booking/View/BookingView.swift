@@ -29,12 +29,15 @@ struct BookingView: View {
     @State var floorUrl = ""
     @State private var GenderName = ""
     @State private var RoomType = ""
+    @State private var RoomPrefrence = ""
     @State var isCallWeb = false
     @State var selectedItem = ""
     @State var isCallLoad = false
     @State var getData = [String]()
     @State var isAPI = false
     @State var isShowSheetPopup = false
+    @State var isShowSuccessView = false
+    @State var isShowLoader = false
     
     var body: some View {
         NavigationView {
@@ -56,7 +59,7 @@ struct BookingView: View {
                                 .scaledToFill()
                                 .frame(width: 15, height: 16)
                             Text(GenderName.uppercased())
-                                .font(.custom(OpenSans_Bold, size: 12))
+                                .font(.custom(OpenSans_Bold, size: 10))
                                 .foregroundColor(Color(hex: 0x868686))
                             Spacer()
                             Divider()
@@ -71,7 +74,7 @@ struct BookingView: View {
                                     .frame(width: 33, height: 11)
                                 
                                 Text(RoomType.uppercased())
-                                    .font(.custom(OpenSans_Bold, size: 12))
+                                    .font(.custom(OpenSans_Bold, size: 10))
                                     .foregroundColor(Color(hex: 0x868686))
                                 Spacer()
                             }else if RoomType == "Triple Sharing"{
@@ -81,7 +84,7 @@ struct BookingView: View {
                                     .frame(width: 33, height: 11)
                                 
                                 Text(RoomType.uppercased())
-                                    .font(.custom(OpenSans_Bold, size: 12))
+                                    .font(.custom(OpenSans_Bold, size: 10))
                                     .foregroundColor(Color(hex: 0x868686))
                                 Spacer()
                             }else if RoomType == "Double Sharing"{
@@ -91,7 +94,7 @@ struct BookingView: View {
                                     .frame(width: 33, height: 11)
                                 
                                 Text(RoomType.uppercased())
-                                    .font(.custom(OpenSans_Bold, size: 12))
+                                    .font(.custom(OpenSans_Bold, size: 10))
                                     .foregroundColor(Color(hex: 0x868686))
                                 Spacer()
                             }else if RoomType == "Twin Sharing"{
@@ -101,15 +104,15 @@ struct BookingView: View {
                                     .frame(width: 33, height: 11)
                                 
                                 Text(RoomType.uppercased())
-                                    .font(.custom(OpenSans_Bold, size: 12))
+                                    .font(.custom(OpenSans_Bold, size: 10))
                                     .foregroundColor(Color(hex: 0x868686))
                                 Spacer()
                             }
                         }
                         Divider()
                             .frame(height: 20)
-                        Text("Non-Veg")
-                            .font(.custom(OpenSans_Bold, size: 12))
+                        Text(RoomPrefrence)
+                            .font(.custom(OpenSans_Bold, size: 10))
                             .foregroundColor(Color(hex: 0x868686))
                             .padding(.trailing, 8)
                         Spacer()
@@ -170,6 +173,13 @@ struct BookingView: View {
                     .padding(.top, 6)
                     .padding(.trailing, 25)
                     
+                    if isShowSuccessView{
+                        NavigationLink(
+                            "",
+                            destination: BedSuccesView().navigationBarHidden(true),
+                            isActive: $isShowSuccessView).isDetailLink(false)
+                    }
+                    
                     if isCallWeb{
                         WebViewBooking(title: $title, CallLoad: $isCallLoad,isToCallAPI: $isAPI, sendData: $getData, url: URL(string: floorUrl)!)
                             .onLoadStatusChanged { loading, error in
@@ -193,11 +203,14 @@ struct BookingView: View {
                             }
                     }
                     if isAPI{
-                        BedDetailsView(getBedData: getData, isShowAlert: $showingAlert, alertMessage: $alertMessage, showSheetPopup: $isShowSheetPopup, RoomType: RoomType)
+                        BedDetailsView(getBedData: getData, isShowAlert: $showingAlert, alertMessage: $alertMessage, showSheetPopup: $isShowSheetPopup, isShowSuccessView: $isShowSuccessView, RoomType: RoomType)
                             .sheet(isPresented: $isShowSheetPopup) {
-                                BedDetailsView(getBedData: getData, isShowAlert: $showingAlert, alertMessage: $alertMessage, showSheetPopup: $isShowSheetPopup, RoomType: RoomType)
+                                BedDetailsView(getBedData: getData, isShowAlert: $showingAlert, alertMessage: $alertMessage, showSheetPopup: $isShowSheetPopup, isShowSuccessView: $isShowSuccessView, RoomType: RoomType)
                             }
                     }
+                }
+                if isShowLoader{
+                    LoadingView()
                 }
                 if isLoadig{
                     LoadingView()
@@ -209,6 +222,7 @@ struct BookingView: View {
                         if FloorData.status == 1{
                             GenderName = FloorData.data?.floorType ?? ""
                             RoomType = FloorData.data?.roomType ?? ""
+                            RoomPrefrence = FloorData.data?.dietry ?? ""
                             arrFloor = FloorData.data?.floors ?? []
                             let NewFloorId = arrFloor[0].id
                             floorUrl = "https://booking.upgradliving.com/demo/bedSelectionAppLink/\(NewFloorId ?? "")/\(studentAppID ?? "")/1"
@@ -227,7 +241,6 @@ struct BookingView: View {
                     showingAlert = true
                 }
             }
-            
             .alert(alertMessage, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) {
                     if AlertShow == "1"{

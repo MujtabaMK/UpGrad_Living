@@ -10,10 +10,12 @@ import SwiftUI
 struct FirstView: View {
     @State private var isBookingProcess = false
     @State private var isSecurityDeposite = false
+    @State private var isSecuritySuccess = false
     @State private var isUploadDocument = false
     @State private var isStudentProfile = false
     @State private var isHomeView = false
     @State private var isBookingView = false
+    @State private var isBookingSuccess = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @State private var showingAlert = false
     @State private var AlertMessage = String()
@@ -36,6 +38,10 @@ struct FirstView: View {
                         isActive: $isSecurityDeposite).isDetailLink(false)
                     NavigationLink(
                         "",
+                        destination: SecurityDepositSuccess().navigationBarHidden(true),
+                        isActive: $isSecuritySuccess).isDetailLink(false)
+                    NavigationLink(
+                        "",
                         destination: UploadDocumentsView(isBackButtonShow: .constant(false)).navigationBarHidden(true),
                         isActive: $isUploadDocument).isDetailLink(false)
                     NavigationLink(
@@ -50,6 +56,10 @@ struct FirstView: View {
                         "",
                         destination: BookingView().navigationBarHidden(true),
                         isActive: $isBookingView).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: BedSuccesView().navigationBarHidden(true),
+                        isActive: $isBookingSuccess).isDetailLink(false)
                 }
             }
             .ignoresSafeArea()
@@ -59,18 +69,21 @@ struct FirstView: View {
                     ViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
                         print("Step value = ", Step)
                         if Step.status == 1{
-                            //                            if Step.data?.step == "0"{
-                            //                                isBookingProcess = true
-                            //                            }else if Step.data?.step == "1"{
-                            //                                isSecurityDeposite = true
-                            //                            }else if Step.data?.step == "2"{
-                            //                                isUploadDocument = true
-                            //                            }else if Step.data?.step == "3"{
-                            //                                isSecurityDeposite = true
-                            //                            }
-                           // isSecurityDeposite = true
-                            //isHomeView = true
-                            isBookingView = true
+                            if Step.data?.step == "0"{
+                                isBookingProcess = true
+                            }else if Step.data?.step == "1"{
+                                isSecurityDeposite = true
+                            }else if Step.data?.step == "2"{
+                                isUploadDocument = true
+                            }else if Step.data?.step == "201"{
+                                isSecuritySuccess = true
+                            }else if Step.data?.step == "3"{
+                                isBookingView = true
+                            }else if Step.data?.step == "301"{
+                                isStudentProfile = true
+                            }else if Step.data?.step == "4"{
+                                isBookingSuccess = true
+                            }
                         }else{
                             isBookingProcess = true
                         }

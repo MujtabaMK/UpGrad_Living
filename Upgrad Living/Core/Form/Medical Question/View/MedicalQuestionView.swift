@@ -114,14 +114,14 @@ struct MedicalQuestionView: View {
                                         
                                         .padding(.bottom, 5)
                                         HStack(spacing: 15){
-                                            if foodPrefrence == "Veg"{
+                                            if foodPrefrence == "Vegetarian"{
                                                 MedicalQuestionOptionView(text: "Veg", isSelect: .constant(true))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Veg"
+                                                        foodPrefrence = "Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Non-Veg", isSelect: .constant(false))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Non-Veg"
+                                                        foodPrefrence = "Non-Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Jain", isSelect: .constant(false))
                                                     .onTapGesture {
@@ -131,14 +131,14 @@ struct MedicalQuestionView: View {
                                                     .onTapGesture {
                                                         foodPrefrence = "Other"
                                                     }
-                                            }else if foodPrefrence == "Non-Veg"{
+                                            }else if foodPrefrence == "Non-Vegetarian"{
                                                 MedicalQuestionOptionView(text: "Veg", isSelect: .constant(false))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Veg"
+                                                        foodPrefrence = "Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Non-Veg", isSelect: .constant(true))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Non-Veg"
+                                                        foodPrefrence = "Non-Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Jain", isSelect: .constant(false))
                                                     .onTapGesture {
@@ -151,11 +151,11 @@ struct MedicalQuestionView: View {
                                             }else if foodPrefrence == "Jain"{
                                                 MedicalQuestionOptionView(text: "Veg", isSelect: .constant(false))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Veg"
+                                                        foodPrefrence = "Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Non-Veg", isSelect: .constant(false))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Non-Veg"
+                                                        foodPrefrence = "Non-Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Jain", isSelect: .constant(true))
                                                     .onTapGesture {
@@ -168,11 +168,11 @@ struct MedicalQuestionView: View {
                                             }else if foodPrefrence == "Other"{
                                                 MedicalQuestionOptionView(text: "Veg", isSelect: .constant(false))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Veg"
+                                                        foodPrefrence = "Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Non-Veg", isSelect: .constant(false))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Non-Veg"
+                                                        foodPrefrence = "Non-Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Jain", isSelect: .constant(false))
                                                     .onTapGesture {
@@ -185,11 +185,11 @@ struct MedicalQuestionView: View {
                                             }else{
                                                 MedicalQuestionOptionView(text: "Veg", isSelect: .constant(false))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Veg"
+                                                        foodPrefrence = "Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Non-Veg", isSelect: .constant(false))
                                                     .onTapGesture {
-                                                        foodPrefrence = "Non-Veg"
+                                                        foodPrefrence = "Non-Vegetarian"
                                                     }
                                                 MedicalQuestionOptionView(text: "Jain", isSelect: .constant(false))
                                                     .onTapGesture {

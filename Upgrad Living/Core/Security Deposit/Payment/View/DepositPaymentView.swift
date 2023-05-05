@@ -12,10 +12,11 @@ struct DepositPaymentView: View {
     @State var title: String = ""
     @State var error: Error? = nil
     @State private var isLoadig = true
+    @State private var isSendToSuccess = false
     var body: some View {
         NavigationView {
             ZStack{
-                WebView(title: $title, url: URL(string: "https://booking.upgradliving.com")!)
+                WebView(title: $title, SendToNextPage: $isSendToSuccess, url: URL(string: "https://booking.upgradliving.com")!)
                     .onLoadStatusChanged { loading, error in
                         if loading {
                             print("Loading started")
@@ -37,6 +38,10 @@ struct DepositPaymentView: View {
                 if isLoadig{
                     LoadingView()
                 }
+                NavigationLink(
+                    "",
+                    destination: SecurityDepositSuccess().navigationBarHidden(true),
+                    isActive: $isSendToSuccess).isDetailLink(false)
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)

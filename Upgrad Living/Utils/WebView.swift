@@ -10,8 +10,10 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     @Binding var title: String
+    @Binding var SendToNextPage: Bool
     var url: URL
     var loadStatusChanged: ((Bool, Error?) -> Void)? = nil
+    @State private var sendURL = ""
     
     func makeCoordinator() -> WebView.Coordinator {
         Coordinator(self)
@@ -52,6 +54,10 @@ struct WebView: UIViewRepresentable {
             print(webView.url as Any)
             parent.title = webView.title ?? ""
             webView.evaluateJavaScript("document.getElementsByName('applnID')[0].value='\(studentAppID!)'", completionHandler: nil)
+            parent.sendURL = webView.url?.absoluteString ?? ""
+            if parent.sendURL == "https://booking.upgradliving.com/successPayment"{
+                parent.SendToNextPage = true
+            }
             parent.loadStatusChanged?(false, nil)
         }
 

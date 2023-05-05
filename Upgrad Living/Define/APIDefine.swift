@@ -40,3 +40,5 @@ let VERIFY_Upload_Document = "\(StartURL)verifyDoc"
 //Booking
 let GET_FLOOR = "\(StartURL)getFloors"
 let GET_BEDS_DETAILS = "\(StartURL)getBedsDetails"
+let POST_FLOOR = "\(StartURL)confirmBed"
+let GET_BED_SUCCESS = "\(StartURL)roomDetails"

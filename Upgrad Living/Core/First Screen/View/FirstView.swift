@@ -16,6 +16,8 @@ struct FirstView: View {
     @State private var isHomeView = false
     @State private var isBookingView = false
     @State private var isBookingSuccess = false
+    @State private var isBedAgreementShow = false
+    @State private var isRentSuccess = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @State private var showingAlert = false
     @State private var AlertMessage = String()
@@ -60,6 +62,14 @@ struct FirstView: View {
                         "",
                         destination: BedSuccesView().navigationBarHidden(true),
                         isActive: $isBookingSuccess).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: AgreementSignBookingView().navigationBarHidden(true),
+                        isActive: $isBedAgreementShow).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: RentViewSuccess().navigationBarHidden(true),
+                        isActive: $isRentSuccess).isDetailLink(false)
                 }
             }
             .ignoresSafeArea()
@@ -84,6 +94,7 @@ struct FirstView: View {
                             }else if Step.data?.step == "4"{
                                 isBookingSuccess = true
                             }
+                           // isBedAgreementShow = true
                         }else{
                             isBookingProcess = true
                         }

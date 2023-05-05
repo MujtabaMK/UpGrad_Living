@@ -163,6 +163,10 @@
 		09FB936529F7CFF100E3B0FD /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */; };
 		09FB936A29F7D74200E3B0FD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB936929F7D74200E3B0FD /* Post.swift */; };
 		09FDB26E2A04C43900D70459 /* HomeBottomPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB26D2A04C43900D70459 /* HomeBottomPopView.swift */; };
+		09FDB2742A05194200D70459 /* AgreementSignBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB2732A05194200D70459 /* AgreementSignBookingView.swift */; };
+		09FDB2762A051CB700D70459 /* RentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB2752A051CB700D70459 /* RentView.swift */; };
+		09FDB2782A051CFB00D70459 /* WebViewRent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB2772A051CFB00D70459 /* WebViewRent.swift */; };
+		09FDB27A2A051DCA00D70459 /* RentViewSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FDB2792A051DCA00D70459 /* RentViewSuccess.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -323,6 +327,10 @@
 		09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
 		09FB936929F7D74200E3B0FD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		09FDB26D2A04C43900D70459 /* HomeBottomPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomPopView.swift; sourceTree = "<group>"; };
+		09FDB2732A05194200D70459 /* AgreementSignBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementSignBookingView.swift; sourceTree = "<group>"; };
+		09FDB2752A051CB700D70459 /* RentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentView.swift; sourceTree = "<group>"; };
+		09FDB2772A051CFB00D70459 /* WebViewRent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRent.swift; sourceTree = "<group>"; };
+		09FDB2792A051DCA00D70459 /* RentViewSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentViewSuccess.swift; sourceTree = "<group>"; };
 		42FC69D1BCE0EB9CB9343A47 /* Pods_Upgrad_Living.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Upgrad_Living.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C3DD8EBA0C63FEA03A808A5 /* Pods-Upgrad Living.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.release.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.release.xcconfig"; sourceTree = "<group>"; };
 		DE0620C48538023C275F94CA /* Pods-Upgrad Living.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upgrad Living.debug.xcconfig"; path = "Target Support Files/Pods-Upgrad Living/Pods-Upgrad Living.debug.xcconfig"; sourceTree = "<group>"; };
@@ -411,6 +419,7 @@
 				09C0ED5129E40361009123D2 /* Upload Documents */,
 				097E043129E534EE00F91647 /* Student Profile */,
 				0995070A2A00F7F200339AA9 /* Booking */,
+				09FDB26F2A05189900D70459 /* Rent */,
 				09B0258029F79E480086190A /* Home View */,
 			);
 			path = Core;
@@ -450,6 +459,7 @@
 				09C0ED5429E4345B009123D2 /* InputDocument.swift */,
 				09F7909729ED2B1700758907 /* WebView.swift */,
 				090724B42A025F7A005BEA4E /* WebViewBooking.swift */,
+				09FDB2772A051CFB00D70459 /* WebViewRent.swift */,
 				09FB936429F7CFF100E3B0FD /* SnapCarousel.swift */,
 				096ADFCA29FAA0F60025A275 /* CornerRadiusStyle.swift */,
 			);
@@ -1153,6 +1163,40 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		09FDB26F2A05189900D70459 /* Rent */ = {
+			isa = PBXGroup;
+			children = (
+				09FDB2722A0518C100D70459 /* Model */,
+				09FDB2712A0518B400D70459 /* View Model */,
+				09FDB2702A0518AF00D70459 /* View */,
+			);
+			path = Rent;
+			sourceTree = "<group>";
+		};
+		09FDB2702A0518AF00D70459 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09FDB2732A05194200D70459 /* AgreementSignBookingView.swift */,
+				09FDB2752A051CB700D70459 /* RentView.swift */,
+				09FDB2792A051DCA00D70459 /* RentViewSuccess.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09FDB2712A0518B400D70459 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		09FDB2722A0518C100D70459 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		61B811BA70591BBBDF446A90 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1312,6 +1356,7 @@
 				09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */,
 				096ADFCB29FAA0F60025A275 /* CornerRadiusStyle.swift in Sources */,
 				09A7554429FB8EB500BCE3F7 /* TabBottomView.swift in Sources */,
+				09FDB2742A05194200D70459 /* AgreementSignBookingView.swift in Sources */,
 				0993226C29D6E71D0036C050 /* FoucesedParentTextField.swift in Sources */,
 				098A04D829D42EC700C9595A /* MasterModel.swift in Sources */,
 				0981D9BE29DC273F0025575D /* SecurityDepositTopView.swift in Sources */,
@@ -1321,6 +1366,7 @@
 				0931A90A29D7F67000F6A209 /* SubmitEnrollmentModel.swift in Sources */,
 				0964879E2A03DAE7006E2412 /* BedSuccessModel.swift in Sources */,
 				09A6F6DE29CDB9B300689E9F /* APIDefine.swift in Sources */,
+				09FDB27A2A051DCA00D70459 /* RentViewSuccess.swift in Sources */,
 				0981D9C029DC2F3A0025575D /* SecurityDepositBottomView.swift in Sources */,
 				09B0258229F79E5D0086190A /* HomeView.swift in Sources */,
 				09DE74C429D5783F001B105A /* RoomTypeTwinView.swift in Sources */,
@@ -1371,6 +1417,7 @@
 				098D698B29CD702C0000F5A9 /* MaterialDesignTextField.swift in Sources */,
 				0981D9B929DBFBF50025575D /* GetFormViewModel.swift in Sources */,
 				09DE74AC29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift in Sources */,
+				09FDB2762A051CB700D70459 /* RentView.swift in Sources */,
 				09768B1529DD846D00CB05F5 /* FirstView.swift in Sources */,
 				0934F12F29CC57AE0076AD56 /* OTPViewModel.swift in Sources */,
 				0993227029D6F9400036C050 /* SubmitStudentModel.swift in Sources */,
@@ -1382,6 +1429,7 @@
 				0995070F2A00F82A00339AA9 /* BookingView.swift in Sources */,
 				096A3FFE29CC2B0300092AAC /* FountsDefine.swift in Sources */,
 				098A04E229D452F800C9595A /* CountryModel.swift in Sources */,
+				09FDB2782A051CFB00D70459 /* WebViewRent.swift in Sources */,
 				098A04DC29D4339500C9595A /* MaterialDesignTextEditor.swift in Sources */,
 				098D698D29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift in Sources */,
 				0931A90629D7ED6B00F6A209 /* SubmitParentModel.swift in Sources */,

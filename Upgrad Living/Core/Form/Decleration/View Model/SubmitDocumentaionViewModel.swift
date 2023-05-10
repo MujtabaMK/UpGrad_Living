@@ -15,6 +15,9 @@ class SubmitDocumentaionViewModel: ObservableObject {
     
     func fetchLoginDate(accept: String,
                         appId: String,
+                        declaredBy: String,
+                        nameOfParents: String,
+                        studentName: String,
                         complition: @escaping (SubmitDocumentaionModel) -> Void){
         self.isLoadingData = true
         let urlString = Documentation_Details_Submit_API
@@ -25,6 +28,9 @@ class SubmitDocumentaionViewModel: ObservableObject {
         let parameter = [
             "accept": accept,
             "appId":appId,
+            "declaredBy": declaredBy,
+            "nameOfParents": nameOfParents,
+            "studentName": studentName,
         ]
         
         print(parameter)

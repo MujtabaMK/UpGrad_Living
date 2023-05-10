@@ -23,12 +23,18 @@ struct FirstView: View {
     @State private var AlertMessage = String()
     @StateObject private var ViewModel = StepViewModel()
     @EnvironmentObject var networkMonitor: NetworkMonitor
+    
+    @State private var scale = 1.0
+    
     var body: some View {
         NavigationView {
             ZStack{
-                Image("Flash_Screen")
+                Image("Blank_Launch_Screen")
                     .resizable()
                     .scaledToFill()
+                Image("Upgrad_Logo_White")
+                    .resizable()
+                    .frame(width: 281, height: 40)
                 VStack{
                     NavigationLink(
                         "",
@@ -94,7 +100,7 @@ struct FirstView: View {
                             }else if Step.data?.step == "4"{
                                 isBookingSuccess = true
                             }
-                           // isBedAgreementShow = true
+                           // isHomeView = true
                         }else{
                             isBookingProcess = true
                         }

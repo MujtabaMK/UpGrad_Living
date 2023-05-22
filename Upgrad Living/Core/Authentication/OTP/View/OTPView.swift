@@ -165,6 +165,7 @@ struct OTPView: View {
                                                     //                                                loginDict = getLoginOTPData(dict: OTPData.data!)
                                                     UserDefaults.standard.set(true, forKey: "isLogin")
                                                     UserDefaults.standard.set(OTPData.data?.userid ?? "", forKey: "studentUserID")
+                                                    UserDefaults.standard.set(OTPData.data?.username ?? "", forKey: "studentusername")
                                                     stepViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
                                                         if Step.status == 1{
                                                             if Step.data?.step == "0"{
@@ -181,6 +182,8 @@ struct OTPView: View {
                                                                 isStudentProfile = true
                                                             }else if Step.data?.step == "4"{
                                                                 isBookingSuccess = true
+                                                            }else if Step.data?.step == "5"{
+                                                                isHomeView = true
                                                             }
                                                         }else{
                                                             isBookingView = true
@@ -250,7 +253,7 @@ struct OTPView: View {
                             isActive: $isStudentProfile).isDetailLink(false)
                         NavigationLink(
                             "",
-                            destination: HomeViewTabBar().navigationBarHidden(true),
+                            destination: HomeViewTabBar(isEvent: .constant(false), isEventsAll: .constant(false), isProfile: .constant(false)).navigationBarHidden(true),
                             isActive: $isHomeView).isDetailLink(false)
                         NavigationLink(
                             "",

@@ -18,6 +18,9 @@ struct FirstView: View {
     @State private var isBookingSuccess = false
     @State private var isBedAgreementShow = false
     @State private var isRentSuccess = false
+    @State private var isEvent = false
+    @State private var isEventsAll = false
+    @State private var isProfile = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @State private var showingAlert = false
     @State private var AlertMessage = String()
@@ -26,15 +29,21 @@ struct FirstView: View {
     
     @State private var scale = 1.0
     
+    var EventScreen: String
+    
     var body: some View {
         NavigationView {
             ZStack{
                 Image("Blank_Launch_Screen")
                     .resizable()
                     .scaledToFill()
-                Image("Upgrad_Logo_White")
-                    .resizable()
-                    .frame(width: 281, height: 40)
+                if EventScreen == ""{
+                    Image("Upgrad_Logo_White")
+                        .resizable()
+                        .frame(width: 281, height: 40)
+                }else{
+                    LoadingView()
+                }
                 VStack{
                     NavigationLink(
                         "",
@@ -58,7 +67,7 @@ struct FirstView: View {
                         isActive: $isStudentProfile).isDetailLink(false)
                     NavigationLink(
                         "",
-                        destination: HomeViewTabBar().navigationBarHidden(true),
+                        destination: HomeViewTabBar(isEvent: $isEvent, isEventsAll: $isEventsAll, isProfile: $isProfile).navigationBarHidden(true),
                         isActive: $isHomeView).isDetailLink(false)
                     NavigationLink(
                         "",
@@ -77,49 +86,73 @@ struct FirstView: View {
                         destination: RentViewSuccess().navigationBarHidden(true),
                         isActive: $isRentSuccess).isDetailLink(false)
                 }
+                VStack{
+                    NavigationLink(
+                        "",
+                        destination: EventsBookingView(isToHome: true).navigationBarHidden(true),
+                        isActive: $isEvent).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: EventAllView().navigationBarHidden(true),
+                        isActive: $isEventsAll).isDetailLink(false)
+                    NavigationLink(
+                        "",
+                        destination: ProfileView().navigationBarHidden(true),
+                        isActive: $isProfile).isDetailLink(false)
+                }
+                if ViewModel.isLoadingData{
+                    LoadingView()
+                }
             }
             .ignoresSafeArea()
             .onAppear{
-                if networkMonitor.isConnected{
-                    showingAlert = false
-                    ViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
-                        print("Step value = ", Step)
-                        if Step.status == 1{
-                            if Step.data?.step == "0"{
-                                isBookingProcess = true
-                            }else if Step.data?.step == "1"{
-                                isSecurityDeposite = true
-                            }else if Step.data?.step == "2"{
-                                isUploadDocument = true
-                            }else if Step.data?.step == "201"{
-                                isSecuritySuccess = true
-                            }else if Step.data?.step == "3"{
-                                isBookingView = true
-                            }else if Step.data?.step == "301"{
-                                isStudentProfile = true
-                            }else if Step.data?.step == "4"{
-                                isBookingSuccess = true
+                if EventScreen == "1"{
+                    isHomeView = true
+                }else if EventScreen == "2"{
+                    isHomeView = true
+                }else{
+                        if networkMonitor.isConnected{
+                            showingAlert = false
+                            ViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
+                                print("Step value = ", Step)
+                                if Step.status == 1{
+                                    if Step.data?.step == "0"{
+                                        isBookingProcess = true
+                                    }else if Step.data?.step == "1"{
+                                        isSecurityDeposite = true
+                                    }else if Step.data?.step == "2"{
+                                        isUploadDocument = true
+                                    }else if Step.data?.step == "201"{
+                                        isSecuritySuccess = true
+                                    }else if Step.data?.step == "3"{
+                                        isBookingView = true
+                                    }else if Step.data?.step == "301"{
+                                        isStudentProfile = true
+                                    }else if Step.data?.step == "4"{
+                                        isBookingSuccess = true
+                                    }else if Step.data?.step == "5"{
+                                        isHomeView = true
+                                    }
+                                }else{
+                                    isBookingProcess = true
+                                }
                             }
-                           // isHomeView = true
                         }else{
-                            isBookingProcess = true
+                            AlertMessage = "Please Check Your Internet Connection"
+                            showingAlert = true
                         }
                     }
-                }else{
-                    AlertMessage = "Please Check Your Internet Connection"
-                    showingAlert = true
-                }
-            }
-            .alert(AlertMessage, isPresented: $showingAlert) {
-                Button("OK", role: .cancel) { }
-            }
-            .navigationBarHidden(true)
         }
+        .alert(AlertMessage, isPresented: $showingAlert) {
+            Button("OK", role: .cancel) { }
+        }
+        .navigationBarHidden(true)
     }
+}
 }
 
 struct FirstView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstView()
+        FirstView(EventScreen: "")
     }
 }

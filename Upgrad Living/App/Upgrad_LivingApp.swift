@@ -17,7 +17,7 @@ struct Upgrad_LivingApp: App {
         WindowGroup {
             if isWalkThrough{
                 if isLogin{
-                    FirstView()
+                    FirstView(EventScreen: "")
                         .environmentObject(networkMonitor)
                     //ContentView()
                 }else{

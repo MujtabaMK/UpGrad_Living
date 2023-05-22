@@ -42,3 +42,8 @@ let GET_FLOOR = "\(StartURL)getFloors"
 let GET_BEDS_DETAILS = "\(StartURL)getBedsDetails"
 let POST_FLOOR = "\(StartURL)confirmBed"
 let GET_BED_SUCCESS = "\(StartURL)roomDetails"
+
+//Home
+//Food
+
+let GET_Meal_List = "\(StartURL)mealList"

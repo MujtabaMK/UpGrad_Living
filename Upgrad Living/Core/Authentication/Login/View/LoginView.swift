@@ -39,12 +39,16 @@ struct LoginView: View {
                         Text(" ATLAS Application ID")
                             .font(.custom(OpenSans_SemiBold, size: 14))
                             .foregroundColor(Color(hex: 0x333333))
-                        +
-                        Text(" (OR) your")
+                        
+                        Text(" (OR) ")
+                            .font(.custom(OpenSans_Regular, size: 14))
+                            .foregroundColor(Color(hex: 0x868686, alpha: 1.0))
+                        
+                        Text("your ")
                             .font(.custom(OpenSans_Regular, size: 14))
                             .foregroundColor(Color(hex: 0x868686, alpha: 1.0))
                         +
-                        Text(" Registered Mobile Number")
+                        Text("Registered Mobile Number")
                             .font(.custom(OpenSans_Bold, size: 14))
                             .foregroundColor(Color(hex: 0x333333))
                     }

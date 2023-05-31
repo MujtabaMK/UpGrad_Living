@@ -36,6 +36,8 @@ struct OTPView: View {
     @State private var isBookingView = false
     @State private var isBookingSuccess = false
     
+    @State private var isSelectedIndex = 3
+    
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     var body: some View {
         NavigationView{
@@ -253,7 +255,33 @@ struct OTPView: View {
                             isActive: $isStudentProfile).isDetailLink(false)
                         NavigationLink(
                             "",
-                            destination: HomeViewTabBar(isEvent: .constant(false), isEventsAll: .constant(false), isProfile: .constant(false)).navigationBarHidden(true),
+                            destination: HomeViewTabBar(
+                                selectedIndex: isSelectedIndex,
+                                isEvent: .constant(false),
+                                isEventsAll: .constant(false),
+                                isProfile: .constant(false),
+                                isEventDetails: .constant(false),
+                                RoomieId: .constant(""),
+                                NewSelectedIndex: .constant(0),
+                                isofferView: .constant(false),
+                                isBackEvent: .constant(false),
+                                isBackDining: .constant(false),
+                                isDiningView: .constant(false),
+                                isBackLaundry: .constant(false),
+                                isLaundryView: .constant(false),
+                                isBackGym: .constant(false),
+                                isGymView: .constant(false),
+                                isBackSport: .constant(false),
+                                isSportView: .constant(false),
+                                isBackHeltcare: .constant(false),
+                                isHeltcareView: .constant(false),
+                                isBackHouseKeeping: .constant(false),
+                                isHouseKeepingView: .constant(false),
+                                isBackConvenience: .constant(false),
+                                isConvenienceView: .constant(false),
+                                isBackCoffee: .constant(false),
+                                isCoffeeView: .constant(false)
+                            ).navigationBarHidden(true),
                             isActive: $isHomeView).isDetailLink(false)
                         NavigationLink(
                             "",

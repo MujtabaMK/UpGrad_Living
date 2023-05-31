@@ -11,79 +11,92 @@ import SwiftUI
 struct SnapCarousel<Content: View,T: Identifiable>: View {
     var content: (T) -> Content
     var list: [T]
-    
+        
     //Properties
     var spacing: CGFloat
     var trailingSpace: CGFloat
     @Binding var index: Int
-    
-    init(spacing: CGFloat = 15, trailingSpace: CGFloat = 100, index: Binding<Int>,items: [T], @ViewBuilder content: @escaping (T) -> Content){
+    @Binding var changevalue: Bool
+        
+    init(changeValue: Binding<Bool>,spacing: CGFloat = 15, trailingSpace: CGFloat = 100, index: Binding<Int>,items: [T], @ViewBuilder content: @escaping (T) -> Content){
         self.list = items
         self.spacing = spacing
         self.trailingSpace = trailingSpace
         self._index = index
         self.content = content
+        self._changevalue = changeValue
     }
+    
     // Offset...
     @GestureState var offset: CGFloat = 0
     @State var currentIndex: Int = 0
     var body: some View{
-        GeometryReader{ proxy in
-            //Setting correct width for snap carousel...
-            
-            // One Sided snap caorusel
-            let width = proxy.size.width - (trailingSpace - spacing)
-            let adjustMentWidth = (trailingSpace / 2) - spacing
-            
-            HStack(spacing: spacing){
-                ForEach(list){ item in
-                    content(item)
-                        .frame(width: proxy.size.width - trailingSpace)
-                        .offset(y: getOffset(item: item, width: width))
+        ScrollViewReader { scrollValue in
+            GeometryReader{ proxy in
+                //Setting correct width for snap carousel...
+                
+                // One Sided snap caorusel
+                let width = proxy.size.width - (trailingSpace - spacing)
+                let adjustMentWidth = (trailingSpace / 2) - spacing
+                
+                HStack(spacing: spacing){
+                    ForEach(list){ item in
+                        content(item)
+                            .frame(width: proxy.size.width - trailingSpace)
+                            .offset(y: getOffset(item: item, width: width))
+                    }
+                }
+                //Spacing will be horizontal padding...
+                .padding(.horizontal, spacing)
+                .offset(x: (CGFloat(currentIndex) * -width) + (currentIndex != 0 ? adjustMentWidth : 0) + offset)
+                .gesture(
+                    DragGesture()
+                        .updating($offset, body: { value, out, _ in
+                            out = value.translation.width
+                        })
+                        .onEnded({ value in
+                            // Updating Current Index
+                            let offsetX = value.translation.width
+                            
+                            // were going to convert the tranlsation into progress (0 - 1)
+                            // and round the value...
+                            // based on the progress increasing or dexreasing the current index...
+                            
+                            let progress = -offsetX / width
+                            let roundIndex = progress.rounded()
+                            
+                            //Setting max...
+                            currentIndex = max(min(currentIndex + Int(roundIndex), list.count - 2), 0)
+                            
+                            //Updating index...
+                            currentIndex =  index
+                        })
+                        .onChanged({ value in
+                            //Updating only index...
+                            changevalue = false
+                            
+                            // Updating Current Index
+                            let offsetX = value.translation.width
+                            
+                            // were going to convert the tranlsation into progress (0 - 1)
+                            // and round the value...
+                            // based on the progress increasing or dexreasing the current index...
+                            
+                            let progress = -offsetX / width
+                            let roundIndex = progress.rounded()
+                            
+                            //Setting max...
+                            index = max(min(currentIndex + Int(roundIndex), list.count - 1), 0)
+                        })
+                )
+                .onChange(of: index) { _ in
+                    if changevalue{
+                        withAnimation {
+                            scrollToIndex(index)
+                        }
+                    }
                 }
             }
-            //Spacing will be horizontal padding...
-            .padding(.horizontal, spacing)
-            .offset(x: (CGFloat(currentIndex) * -width) + (currentIndex != 0 ? adjustMentWidth : 0) + offset)
-            .gesture(
-                DragGesture()
-                    .updating($offset, body: { value, out, _ in
-                        out = value.translation.width
-                    })
-                    .onEnded({ value in
-                       // Updating Current Index
-                        let offsetX = value.translation.width
-                        
-                        // were going to convert the tranlsation into progress (0 - 1)
-                        // and round the value...
-                        // based on the progress increasing or dexreasing the current index...
-                        
-                        let progress = -offsetX / width
-                        let roundIndex = progress.rounded()
-                        
-                        //Setting max...
-                        currentIndex = max(min(currentIndex + Int(roundIndex), list.count - 2), 0)
-                        
-                        //Updating index...
-                        currentIndex =  index
-                    })
-                    .onChanged({ value in
-                        //Updating only index...
-                        
-                        // Updating Current Index
-                         let offsetX = value.translation.width
-                         
-                         // were going to convert the tranlsation into progress (0 - 1)
-                         // and round the value...
-                         // based on the progress increasing or dexreasing the current index...
-                         
-                         let progress = -offsetX / width
-                         let roundIndex = progress.rounded()
-                         
-                         //Setting max...
-                         index = max(min(currentIndex + Int(roundIndex), list.count - 1), 0)
-                    })
-            )
         }
         .animation(.easeOut, value: offset == 0)
     }
@@ -98,7 +111,7 @@ struct SnapCarousel<Content: View,T: Identifiable>: View {
         let next = getIndex(item: item) + 1 == currentIndex ? (offset < 0 ? -topOffset : topOffset) : 0
         //safty chdck between 0 to max list size
         let checkBetween = currentIndex >= 0 && currentIndex > list.count ? (getIndex(item: item) - 1 == currentIndex ? previous : next) : 0
-       //Checking current
+        //Checking current
         //if sp shifting view to top
         return getIndex(item: item) == currentIndex ? -20 - topOffset : checkBetween
     }
@@ -111,4 +124,10 @@ struct SnapCarousel<Content: View,T: Identifiable>: View {
         return index
     }
     
+    func scrollToIndex(_ index: Int) {
+        guard index >= 0 && index < list.count else {
+            return // Handle out-of-bounds index
+        }
+        currentIndex = index
+    }
 }

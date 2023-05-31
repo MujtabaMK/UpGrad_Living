@@ -56,13 +56,13 @@ struct HomeViewTop: View {
                         }
                     }
                 }
-                .padding(.top, 20)
+                .padding(.top, 50)
                 .padding([.leading, .trailing], 10)
                 VStack{
                     StrokeText(text: "What’s on the menu today?", width: 1.0, color: Color(hex: 0xFFFFFF, alpha: 0.8))
                         .foregroundColor(Color(hex: 0xD9404C))
                         .font(.custom(OpenSans_Bold, size: 25))
-                        .padding(.top, 25)
+                        .padding(.top, -10)
                 }
             }
         }

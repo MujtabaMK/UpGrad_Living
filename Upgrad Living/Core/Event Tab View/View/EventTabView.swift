@@ -15,11 +15,46 @@ struct EventTabView: View {
     @State private var SearchText = ""
     @State private var isFilter = false
     @State private var isEvent = false
+    @State private var CheckFavriate = false
+    
+    @State private var alertMessage = String()
+    @State private var showingAlert = false
+    @State private var AlertShow = String()
     
     var body: some View {
         NavigationView {            
             ZStack{
                 VStack{
+                    HStack{
+                        Button {
+                            isHome = true
+                        } label: {
+                            Image("back_Button")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding(.leading, 30)
+                        }
+                        Spacer(minLength: 0)
+                        Text("Events")
+                            .font(.custom(OpenSans_SemiBold, size: 18))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
+                            .padding(.trailing, 30)
+                        Spacer(minLength: 0)
+                        
+                        Image(CheckFavriate ? "Home_Bookmark_Select" : "Home_Bookmark_Not_Select")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .padding(.trailing)
+                            .onTapGesture {
+                                CheckFavriate.toggle()
+                            }
+                    }
+                    .padding(.trailing)
+                    .padding(.top)
+                    Divider()
+                    
                     VStack{
                         
                         SearchBarEvent(text: $SearchText, isFilterClick: $isFilter)
@@ -31,17 +66,22 @@ struct EventTabView: View {
                                         isEvent = true
                                     }
                                 } label: {
-                                    UpcommingEventsCell(post: Event)
-                                        .padding(.horizontal, 15)
-                                        .padding(.leading, 5)
-                                        .frame(width: getRect().width, height: 300, alignment: .center)
-                                    NavigationLink(
-                                        "",
-                                        destination: EventsBookingView(isToHome: false).navigationBarHidden(true),
-                                        isActive: $isEvent).isDetailLink(false)
+//                                    UpcommingEventsCell(post: Event, isShowAlert: $showingAlert,alertMessage: $alertMessage)
+//                                        .padding(.horizontal, 15)
+//                                        .padding(.leading, 5)
+//                                        .frame(width: getRect().width, height: 300, alignment: .center)
+//                                    NavigationLink(
+//                                        "",
+//                                        destination: EventsBookingView(isToHome: false).navigationBarHidden(true),
+//                                        isActive: $isEvent).isDetailLink(false)
                                 }
                             }
                         }
+                        
+                        NavigationLink(
+                            "",
+                            destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                            isActive: $isHome).isDetailLink(false)
                     }
                     if isFilter{
                         VStack(alignment: .leading){
@@ -83,7 +123,6 @@ struct EventTabView: View {
                     }
                 }
             }
-            .ignoresSafeArea()
             .navigationBarHidden(true)
         }
     }

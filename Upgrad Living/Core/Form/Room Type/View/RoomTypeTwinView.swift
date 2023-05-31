@@ -29,17 +29,17 @@ struct RoomTypeTwinView: View {
                     }
                     Divider()
                     HStack(spacing: 6){
-                        Text("\u{20B9}54,000 per month")
+                        Text("\u{20B9}60,000 per month")
                             .font(.custom(OpenSans_SemiBold, size: 13))
                             .foregroundColor(Color(hex: 0x333333))
-                        ZStack{
-                            Text("\u{20B9}60,000 per month")
-                                .font(.custom(OpenSans_SemiBold, size: 12))
-                                .foregroundColor(Color(hex: 0x868686))
-                            Rectangle()
-                                .fill(Color(hex: 0x868686))
-                                .frame(width: 60,height: 0.5)
-                        }
+//                        ZStack{
+//                            Text("\u{20B9}60,000 per month")
+//                                .font(.custom(OpenSans_SemiBold, size: 12))
+//                                .foregroundColor(Color(hex: 0x868686))
+//                            Rectangle()
+//                                .fill(Color(hex: 0x868686))
+//                                .frame(width: 60,height: 0.5)
+//                        }
                     }
                     Text("**Inaugural Offer**")
                         .font(.custom(OpenSans_SemiBoldItalic, size: 12))

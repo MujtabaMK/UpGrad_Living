@@ -1,20 +1,22 @@
 PODS:
-  - Introspect (0.2.3)
-  - Kingfisher (7.1.1)
-  - lottie-ios (3.3.0)
+  - Introspect (0.3.1)
+  - Kingfisher (7.7.0)
+  - lottie-ios (4.0.1)
   - Macaw (0.9.7):
     - SWXMLHash
   - SVGView (1.0.4)
-  - SwiftUIPager (2.3.1)
-  - SWXMLHash (7.0.0)
+  - SwiftUIPager (2.5.0)
+  - SWXMLHash (7.0.2)
+  - WaterfallGrid (1.0.1)
 
 DEPENDENCIES:
   - Introspect
   - Kingfisher (~> 7.0)
-  - lottie-ios
+  - lottie-ios (= 4.0.1)
   - Macaw (= 0.9.7)
   - SVGView
   - SwiftUIPager
+  - WaterfallGrid (~> 1.0.0)
 
 SPEC REPOS:
   trunk:
@@ -25,16 +27,18 @@ SPEC REPOS:
     - SVGView
     - SwiftUIPager
     - SWXMLHash
+    - WaterfallGrid
 
 SPEC CHECKSUMS:
-  Introspect: 6917895ed34004271bc8d75a75db6c07839fa971
-  Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
-  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  Introspect: 4a3e10358b43237f80673b730908c183b3d05a42
+  Kingfisher: f043ac666dfc96c1f37604f93effb45a7ee3a3e1
+  lottie-ios: 54d22edf55b839f0929cabbfe609c9aa548b1145
   Macaw: 4a931baf9a9826b06d0d8ecf300014c962ab9d50
   SVGView: 4813b73e85fcea6c7ff92720cf1e778c48d0f0db
-  SwiftUIPager: 273cbaec55a03784d5fbec30f57d8b8974e60450
-  SWXMLHash: cf8682ebf12f124e77554d6a5f9170830626d99e
+  SwiftUIPager: b314d8923bef0bde743c904bb74fcc7a05fd3422
+  SWXMLHash: dd733a457e9c4fe93b1538654057aefae4acb382
+  WaterfallGrid: 0554a759d9a8aa136fc1769480ddb01bc6fb94b9
 
-PODFILE CHECKSUM: 3d47346ea148c3d03128e6d17903e9a2fc3670a7
+PODFILE CHECKSUM: 89e72be2e4ee3e21fc03b50fe980a039cc9ae9c8
 
 COCOAPODS: 1.11.2

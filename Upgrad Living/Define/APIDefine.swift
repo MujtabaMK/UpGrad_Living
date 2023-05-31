@@ -44,6 +44,24 @@ let POST_FLOOR = "\(StartURL)confirmBed"
 let GET_BED_SUCCESS = "\(StartURL)roomDetails"
 
 //Home
+let GET_Hoster_offer = "\(StartURL)getHostelOffers"
 //Food
 
 let GET_Meal_List = "\(StartURL)mealList"
+
+//Events
+let GET_ALL_EVENTS = "\(StartURL)getHostelEvents"
+let POST_Add_To_Favorite = "\(StartURL)addToFavorite"
+let GET_ALL_Favorite = "\(StartURL)getFavorites"
+let GET_Category = "\(StartURL)eventCategories"
+let POST_BookTicket = "\(StartURL)bookTicket"
+let POST_Reminder = "\(StartURL)addReminder"
+
+//Roomiew
+let GET_Roomies_Details = "\(StartURL)roomieProfile"
+
+//Services
+let GET_Dining_Details = "\(StartURL)dining"
+let GET_Laundry_Details = "\(StartURL)laundry"
+let GET_HealthCare_Details = "\(StartURL)healthcare"
+let GET_Convinience_Details = "\(StartURL)convinience"

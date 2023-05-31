@@ -1,5 +1,5 @@
-framework module Pods_Upgrad_Living {
-  umbrella header "Pods-Upgrad Living-umbrella.h"
+framework module Pods_UpGrad_Living {
+  umbrella header "Pods-UpGrad Living-umbrella.h"
 
   export *
   module * { export * }

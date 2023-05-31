@@ -10,46 +10,50 @@ import Kingfisher
 
 struct UpcomingEvents: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @StateObject private var viewModel = AddToFavoriteViewModel()
+    @EnvironmentObject var networkMonitor: NetworkMonitor
+    @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     //Current Index...
     @State var currentIndex: Int = 0
     @State private var isBookMarkSelect = false
     @Binding var isEvents : Bool
     @Binding var isEventsAll: Bool
     var arrEvents: [Event]
+    @Binding var isShowAlert: Bool
+    @Binding var alertMessage: String
+    @Binding var callHomeAPIAgain: Bool
+    @State private var EventId = ""
     
     var body: some View {
-        VStack{
-            HStack{
-                Text("Upcoming events")
-                    .font(.custom(OpenSans_Bold, size: 20))
-                    .foregroundColor(colorScheme == .light ? Color(hex: 0x1A1A1A) : Color(hex: 0xFFFFFF))
-                
-                Spacer()
-                Button {
-                    isEventsAll = true
-                } label: {
-                    Text("See All")
-                        .font(.custom(OpenSans_SemiBold, size: 12))
-                        .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : Color(hex: 0x868686))
+        if arrEvents.count > 0{
+            VStack{
+                HStack{
+                    Text("Upcoming events")
+                        .font(.custom(OpenSans_Bold, size: 20))
+                        .foregroundColor(colorScheme == .light ? Color(hex: 0x1A1A1A) : Color(hex: 0xFFFFFF))
+                    
+                    Spacer()
+                    Button {
+                        isEventsAll = true
+                    } label: {
+                        Text("See All")
+                            .font(.custom(OpenSans_SemiBold, size: 12))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : Color(hex: 0x868686))
+                    }
+                    
+                    Image(systemName: "arrowtriangle.forward.fill")
+                        .resizable()
+                        .renderingMode(.template)
+                        .frame(width: 6, height: 9)
+                    
                 }
-                
-                Image(systemName: "arrowtriangle.forward.fill")
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 6, height: 9)
-                
+                .padding(.horizontal)
+                SnapCarouselEvents(spacing: getRect().height < 750 ? 0 : 0,trailingSpace: getRect().height < 750 ? 100 : 150,index: $currentIndex, items: arrEvents) { events in
+                    CardView(post: events)
+                    //UpcommingEventsCell(isEvents: $isEvents, post: events)
+                }
+                .frame(height: 260)
             }
-            .padding(.horizontal)
-//            NavigationLink(
-//                "",
-//                destination: EventsBookingView().navigationBarHidden(true),
-//                isActive: $isEvents).isDetailLink(false)
-            
-            SnapCarouselEvents(spacing: getRect().height < 750 ? 0 : 0,trailingSpace: getRect().height < 750 ? 100 : 150,index: $currentIndex, items: arrEvents) { events in
-                CardView(post: events)
-                //UpcommingEventsCell(isEvents: $isEvents, post: events)
-            }
-            .frame(height: 260)
         }
     }
     @ViewBuilder
@@ -117,9 +121,28 @@ struct UpcomingEvents: View {
                             Spacer()
                             VStack{
                                 Button {
-                                    
+                                    EventId = post.id ?? ""
+                                    if networkMonitor.isConnected{
+                                        viewModel.AddToFavorite(appId: studentAppID ?? "", eventId: EventId) { Fav in
+                                            if Fav.status == 1{
+                                                alertMessage = Fav.msg ?? ""
+                                                isShowAlert = true
+                                                callHomeAPIAgain.toggle()
+                                            }else{
+                                                alertMessage = Fav.msg ?? ""
+                                                isShowAlert = true
+                                                callHomeAPIAgain.toggle()
+                                            }
+                                        }
+                                    }else{
+                                        alertMessage = "Please Check Your Internet Connection"
+                                        isShowAlert = true
+                                    }
                                 } label: {
-                                    Image("Home_Bookmark_Not_Select")
+                                    Image(post.isFavorate == "1" ? "Home_Bookmark_Select" : "Home_Bookmark_Not_Select")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 30, height: 30)
                                 }
                                 Spacer()
                             }
@@ -136,6 +159,20 @@ struct UpcomingEvents: View {
             }
         }
         .onTapGesture {
+            do{
+                // Create JSON Encoder
+                let encoder = JSONEncoder()
+                
+                // Encode Note
+                let data = try encoder.encode(post)
+                
+                // Write/Set Data
+                UserDefaults.standard.set(data, forKey: "eventfromHome")
+                UserDefaults.standard.set("0", forKey: "AllEvents")
+            }catch{
+                print("Unable to Encode Array of Notes (\(error))")
+            }
+            
             isEvents = true
         }
         .cornerRadius(15)

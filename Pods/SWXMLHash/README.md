@@ -1,8 +1,10 @@
 # SWXMLHash
 
-[![CocoaPods](https://img.shields.io/cocoapods/p/SWXMLHash.svg)]()
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods](https://img.shields.io/cocoapods/v/SWXMLHash.svg)](https://cocoapods.org/pods/SWXMLHash)
+[![Swift](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdrmohundro%2FSWXMLHash%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/drmohundro/SWXMLHash)
+[![Platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fdrmohundro%2FSWXMLHash%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/drmohundro/SWXMLHash)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SWXMLHash)](https://cocoapods.org/pods/SWXMLHash)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
 [![Join the chat at https://gitter.im/drmohundro/SWXMLHash](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/drmohundro/SWXMLHash?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![codebeat](https://codebeat.co/badges/893cc640-c5d9-45b2-a3ff-426e6e6b7b80)](https://codebeat.co/projects/github-com-drmohundro-swxmlhash)
 
@@ -497,7 +499,7 @@ With the following implementation for `Date` value deserialization:
 
 ```swift
 extension Date: XMLValueDeserialization {
-    public static func deserialize(_ element: XMLElement) throws -> Date {
+    public static func deserialize(_ element: XMLHash.XMLElement) throws -> Date {
         let date = stringToDate(element.text)
 
         guard let validDate = date else {
@@ -619,6 +621,22 @@ extension NSDate: XMLElementDeserializable {
 ### How do I handle deserialization with an enum?
 
 Check out this great suggestion/example from @woolie up at <https://github.com/drmohundro/SWXMLHash/discussions/245>.
+
+### I'm seeing an ""'XMLElement' is ambiguous" Error
+
+This is related to <https://github.com/drmohundro/SWXMLHash/issues/256> - `XMLElement` has actually been renamed
+multiple times to attempt to avoid conflicts, but the easiest approach is to just scope it via `XMLHash.XMLElement`.
+
+### Will SWXMLHash work in a web context (e.g. Vapor)?
+
+See <https://github.com/drmohundro/SWXMLHash/discussions/264> where this is discussed. The only change needed is to
+add the following import logic:
+
+```swift
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+```
 
 ### Have a different question?
 

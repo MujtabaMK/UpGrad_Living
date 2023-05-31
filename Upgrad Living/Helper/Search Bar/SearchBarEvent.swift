@@ -11,12 +11,12 @@ struct SearchBarEvent: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Binding var text: String
     @Binding var isFilterClick: Bool
-    @State private var isEditing = false
+    @State private var isEditing = true
     var body: some View {
         ZStack(alignment: .trailing) {
             Capsule()
                 .fill(colorScheme == .light ? Color(.systemGray6) : .gray)
-                .frame(width: getRect().width - 40, height: 40)
+                .frame(width: getRect().width - 40, height: 50)
                 .cornerRadius(12)
                 .overlay {
                     HStack(spacing: 3){
@@ -28,22 +28,19 @@ struct SearchBarEvent: View {
                             .padding(.trailing, 5)
                             .foregroundColor(colorScheme == .light ? .black : .white)
                         
-                        Rectangle()
-                            .frame(width: 1, height: 20)
-                            .background(Color(hex: 0x969696))
+                        Divider()
+                            .frame(height: 20)
                         
                         TextField("Search ...", text: $text)
                             .foregroundColor(colorScheme == .light ? .black : .white)
                             .padding(7)
                             .keyboardType(.webSearch)
-                        
                             .onTapGesture {
                                 self.isEditing = true
                             }
                         
-                        Rectangle()
-                            .frame(width: 1, height: 20)
-                            .background(Color(hex: 0x969696))
+                        Divider()
+                            .frame(height: 20)
                         
                         Button {
                             withAnimation {

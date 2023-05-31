@@ -179,11 +179,111 @@ extension View {
         let targetSize = controller.view.intrinsicContentSize
         view?.bounds = CGRect(origin: .zero, size: targetSize)
         view?.backgroundColor = .clear
-
+        
         let renderer = UIGraphicsImageRenderer(size: targetSize)
 
         return renderer.image { _ in
             view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
         }
+    }
+}
+
+extension View {
+    func snapshotiOS15() -> UIImage {
+
+        let controller = UIHostingController(rootView: self)
+        let view = controller.view
+    
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        format.opaque = true
+            
+        let targetSize = controller.view.intrinsicContentSize
+        view?.bounds = CGRect(origin: .zero, size: targetSize)
+        view?.backgroundColor = .clear
+            
+        let window = UIWindow(frame: view!.bounds)
+        window.addSubview(controller.view)
+        window.makeKeyAndVisible()
+            
+        let renderer = UIGraphicsImageRenderer(bounds: view!.bounds, format: format)
+        return renderer.image { rendererContext in
+                view?.layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
+extension View {
+    func asImage() -> UIImage {
+        let controller = UIHostingController(rootView: self.edgesIgnoringSafeArea(.all))
+        
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        
+        window?.rootViewController?.view.addSubview(controller.view)
+        
+        controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1, height: 1)
+        controller.additionalSafeAreaInsets = UIEdgeInsets(top: -controller.view.safeAreaInsets.top, left: -controller.view.safeAreaInsets.left, bottom: -controller.view.safeAreaInsets.bottom, right: -controller.view.safeAreaInsets.right)
+        
+        let targetSize = controller.view.intrinsicContentSize
+        controller.view.bounds = CGRect(origin: .zero, size: targetSize)
+        controller.view.sizeToFit()
+        
+        let image = controller.view.asImage()
+        controller.view.removeFromSuperview()
+        
+        return image
+    }
+}
+extension UIView {
+    func asImage() -> UIImage  {
+   
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
+func yesterDay() -> String {
+    var dayComponent = DateComponents()
+    dayComponent.day = -1
+    let calendar = Calendar.current
+    let nextDay =  calendar.date(byAdding: dayComponent, to: Date())!
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "yyyy-MM-dd"
+    return formatter.string(from: nextDay) //Output is "March 6, 2020
+}
+
+extension Date {
+    var startOfWeek: Date {
+        let date = Calendar.current.date(from: Calendar.current.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+        let dslTimeOffset = NSTimeZone.local.daylightSavingTimeOffset(for: date)
+        return date.addingTimeInterval(dslTimeOffset)
+    }
+
+    var endOfWeek: Date {
+        return Calendar.current.date(byAdding: .second, value: 604799, to: self.startOfWeek)!
+    }
+}
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+
+public extension UIApplication {
+    func currentUIWindow() -> UIWindow? {
+        let connectedScenes = UIApplication.shared.connectedScenes
+            .filter { $0.activationState == .foregroundActive }
+            .compactMap { $0 as? UIWindowScene }
+        
+        let window = connectedScenes.first?
+            .windows
+            .first { $0.isKeyWindow }
+        return window
     }
 }

@@ -22,9 +22,14 @@ struct HomeView: View {
     @State var pageIndex: Page
     @State var selectedItem = ""
     @Binding var isEvent: Bool
-    @Binding var isEventAll: Bool
-    @Binding var isProfile: Bool
+    @Binding var isBackEvent: Bool
     
+    @Binding var isProfile: Bool
+    @Binding var isEventDetails: Bool
+    @Binding var RoomieId: String
+    @Binding var isofferView: Bool
+    
+    @State private var isEventAll = false
     @State private var alertMessage = String()
     @State private var showingAlert = false
     @State private var AlertShow = String()
@@ -34,9 +39,13 @@ struct HomeView: View {
     @State private var arrNotes = [Note]()
     @State private var arrEvents = [Event]()
     @State private var arrOffer = [Offer]()
+    @State private var arrRoomies = [Roomy]()
     
     @State private var profileImg = ""
     @State private var studentName = ""
+    
+    @State var callHomeAPIAgain = false
+    @State var changeValue = false
     
     var body: some View {
         NavigationView {
@@ -45,23 +54,28 @@ struct HomeView: View {
                     VStack{
                         VStack{
                             HomeViewTop(ProfileImage: profileImg, StudentName: studentName)
-                                .frame(height: 162)
+                                .frame(height: 172)
                             ZStack{
                                 Color(colorScheme == .light ? .white : .black)
                                 VStack{
                                     ScrollView([.horizontal, .vertical], showsIndicators: false){
                                         HStack{
                                             ForEach(Array(arrMealList.enumerated()), id: \.offset) { index, food in
-                                                Rectangle()
-                                                    .fill(currentIndex == index ? Color(hex: 0xD9404C) : Color(hex: 0xFFFFFF))
-                                                    .frame(width: 80, height: 38)
-                                                    .cornerRadius(15)
-                                                    .shadow(color: .gray, radius: 3, x: 0, y: 0)
-                                                    .overlay {
-                                                        Text(food.mealName ?? "")
-                                                            .font(.custom(OpenSans_SemiBold, size: 12))
-                                                            .foregroundColor(currentIndex == index ? .white : .black)
-                                                    }
+                                                Button {
+                                                    changeValue = true
+                                                    currentIndex = index
+                                                } label: {
+                                                    Rectangle()
+                                                        .fill(currentIndex == index ? Color(hex: 0xD9404C) : Color(hex: 0xFFFFFF))
+                                                        .frame(width: 80, height: 38)
+                                                        .cornerRadius(15)
+                                                        .shadow(color: .gray, radius: 3, x: 0, y: 0)
+                                                        .overlay {
+                                                            Text(food.mealName ?? "")
+                                                                .font(.custom(OpenSans_SemiBold, size: 12))
+                                                                .foregroundColor(currentIndex == index ? .white : .black)
+                                                        }
+                                                }
                                             }
                                         }
                                         .padding([.top, .bottom])
@@ -84,7 +98,7 @@ struct HomeView: View {
                                         .padding(.top, -12)
                                     
                                     //Posts
-                                    SnapCarousel(spacing: getRect().height < 750 ? 0 : 0,trailingSpace: getRect().height < 750 ? 100 : 150,index: $currentIndex, items: arrMealList) { post in
+                                    SnapCarousel(changeValue: $changeValue, spacing: getRect().height < 750 ? 0 : 0,trailingSpace: getRect().height < 750 ? 100 : 150,index: $currentIndex, items: arrMealList) { post in
                                         CardView(post: post)
                                     }
                                     .offset(y: 40)
@@ -95,8 +109,8 @@ struct HomeView: View {
                                         NoticeView(notice: post, IndexValue: currentIndexNotice)
                                     }
                                     .offset(y: 40)
-                                    .frame(height: 100)
-                                    .padding(.bottom, 40)
+                                    .frame(height: arrNotes.count > 0 ? 100 : 0)
+                                    .padding(.bottom, getRect().height < 750 ? 40 : 60)
                                     
                                     HStack{
                                         ForEach(arrNotes.indices, id: \.self) { notice in
@@ -114,16 +128,22 @@ struct HomeView: View {
                                         }
                                     }
                                     
-                                    UpcomingEvents(isEvents: $isEvent, isEventsAll: $isEventAll, arrEvents: arrEvents)
+                                    UpcomingEvents(isEvents: $isEvent, isEventsAll: $isEventAll, arrEvents: arrEvents,isShowAlert: $showingAlert, alertMessage: $alertMessage, callHomeAPIAgain: $callHomeAPIAgain)
                                         .padding(.top)
                                     
-                                    HomeRoomiesView(isProfile: $isProfile)
+                                    HomeRoomiesView(isProfile: $isProfile, RoomieId: $RoomieId, arrRoomie: arrRoomies)
                                     
-                                    HomeOfferView(arrDeals: arrOffer)
+                                    HomeOfferView(arrDeals: arrOffer, isofferView: $isofferView)
                                         .padding(.bottom, 20)
                                     
                                     NearByView()
-                                    
+                                                                        
+                                }
+                                VStack{
+                                    NavigationLink(
+                                        "",
+                                        destination: EventAllView(isEventDetails: $isEventDetails, isBackEvent: $isBackEvent).navigationBarHidden(true),
+                                        isActive: $isEventAll).isDetailLink(false)
                                 }
                             }
                             .cornerRadius(15, corners: [.topLeft, .topRight])
@@ -139,9 +159,58 @@ struct HomeView: View {
                                 arrNotes = Meal.data?.note ?? []
                                 arrEvents = Meal.data?.event ?? []
                                 arrOffer = Meal.data?.offer ?? []
+                                arrRoomies = Meal.data?.roomies ?? []
                                 profileImg = Meal.data?.profile?.studentImg ?? ""
                                 studentName = Meal.data?.profile?.studentName ?? ""
                                 print(profileImg)
+                                do{
+                                    // Create JSON Encoder
+                                    let encoder = JSONEncoder()
+                                    
+                                    // Encode Note
+                                    let data = try encoder.encode(arrNotes)
+                                    
+                                    // Write/Set Data
+                                    UserDefaults.standard.set(data, forKey: "notesfromMeal")
+                                }catch{
+                                    print("Unable to Encode Array of Notes (\(error))")
+                                }
+                            }else{
+                                alertMessage = Meal.msg ?? ""
+                            }
+                        }
+                    }else{
+                        alertMessage = "Please Check Your Internet Connection"
+                        AlertShow = "0"
+                        showingAlert = true
+                    }
+                }
+                .onChange(of: callHomeAPIAgain) { newValue in
+                    if networkMonitor.isConnected{
+                        viewModelMeal.getMealList(hostel_student_id: studentAppID ?? "") { Meal in
+                            if Meal.status == 1{
+                                arrMealList = Meal.data?.meal ?? []
+                                arrNotes = Meal.data?.note ?? []
+                                arrEvents = Meal.data?.event ?? []
+                                arrOffer = Meal.data?.offer ?? []
+                                arrRoomies = Meal.data?.roomies ?? []
+                                profileImg = Meal.data?.profile?.studentImg ?? ""
+                                studentName = Meal.data?.profile?.studentName ?? ""
+                                print(profileImg)
+                                
+                                do{
+                                    // Create JSON Encoder
+                                    let encoder = JSONEncoder()
+                                    
+                                    // Encode Note
+                                    let data = try encoder.encode(arrNotes)
+                                    
+                                    // Write/Set Data
+                                    UserDefaults.standard.set(data, forKey: "notesfromMeal")
+                                }catch{
+                                    print("Unable to Encode Array of Notes (\(error))")
+                                }
+                                
                             }else{
                                 alertMessage = Meal.msg ?? ""
                             }
@@ -293,7 +362,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(pageIndex: Page.withIndex(0), isEvent: .constant(false), isEventAll: .constant(false), isProfile: .constant(false))
+        HomeView(pageIndex: Page.withIndex(0), isEvent: .constant(false), isBackEvent: .constant(false), isProfile: .constant(false), isEventDetails: .constant(false), RoomieId: .constant(""), isofferView: .constant(false))
     }
 }
 

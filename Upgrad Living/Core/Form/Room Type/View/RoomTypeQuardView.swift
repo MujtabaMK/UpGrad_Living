@@ -17,9 +17,9 @@ struct RoomTypeQuardView: View {
                     .scaledToFit()
                     .frame(width: 24, height: 24)
                     .padding(.leading, 12)
-                VStack(alignment: .leading){
+                VStack(alignment: .leading, spacing: 5){
                     HStack(spacing: 4){
-                        Text("Quad Sharing Room")
+                        Text("Quad Sharing Room".uppercased())
                             .font(.custom(OpenSans_Bold, size: 14))
                             .foregroundColor(Color(hex: 0x333333))
                         Image("Quad_Sharing")
@@ -32,7 +32,7 @@ struct RoomTypeQuardView: View {
                         Text("\u{20B9}45,000 per month")
                             .font(.custom(OpenSans_SemiBold, size: 13))
                             .foregroundColor(Color(hex: 0x333333))
-                        ZStack{
+                        ZStack(alignment: .center){
                             Text("\u{20B9}49,000 per month")
                                 .font(.custom(OpenSans_SemiBold, size: 12))
                                 .foregroundColor(Color(hex: 0x868686))
@@ -41,10 +41,17 @@ struct RoomTypeQuardView: View {
                                 .frame(width: 60,height: 0.5)
                         }
                     }
-                    Text("**Inaugural Offer**")
-                        .font(.custom(OpenSans_SemiBoldItalic, size: 12))
-                        .foregroundColor(Color(hex: 0xC1101B))
-                    
+                    HStack(spacing: 0){
+                        Text("**")
+                            .font(.custom(OpenSans_SemiBoldItalic, size: 12))
+                            .foregroundColor(Color(hex: 0xC1101B))
+                        Text("Inaugural Offer")
+                            .font(.custom(OpenSans_SemiBoldItalic, size: 12))
+                            .foregroundColor(Color(hex: 0xC1101B))
+                        Text("**")
+                            .font(.custom(OpenSans_SemiBoldItalic, size: 12))
+                            .foregroundColor(Color(hex: 0xC1101B))
+                    }
                 }
                 .padding(.horizontal)
             }

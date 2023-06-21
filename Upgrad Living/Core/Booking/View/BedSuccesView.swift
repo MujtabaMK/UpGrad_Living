@@ -41,9 +41,17 @@ struct BedSuccesView: View {
                             .font(.custom(OpenSans_Bold, size: 16))
                             .foregroundColor(colorScheme == .light ? .black : .white)
                             .padding(.top)
-                        Text("The upGrad Living Agreement will be sent to you by email which needs to be docusigned and sent back to us, post which you can make the payment towards your rent.")
+                        Text("The upGrad Living Agreement will be sent to you by email which needs to be")
                             .font(.custom(OpenSans_SemiBold, size: 16))
-                            .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : .gray)
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : Color(hex: 0x868686))
+                        +
+                        Text(" docusigned ")
+                            .font(.custom(OpenSans_Bold, size: 16))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
+                        +
+                        Text("and sent back to us, post which you can make the payment towards your rent.")
+                            .font(.custom(OpenSans_SemiBold, size: 16))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : Color(hex: 0x868686))
                     }
                     .padding(.leading)
                     Spacer()

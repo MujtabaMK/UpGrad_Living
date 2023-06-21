@@ -22,7 +22,7 @@ struct OTPClass: Codable {
     let certification, discipline, graduationYear, school: String?
     let website: String?
     let schoolLogo, schoolAppLogoMain, schoolAppLogoRotate: String?
-    let fatherName, fatherEmail, fatherMobile, motherName: String?
+    let appID,fatherName, fatherEmail, fatherMobile, motherName: String?
     let motherEmail, motherMobile, facebook, instagram: String?
     let twitter, shortBio, userType, activation: String?
     let password, registerID, behance, googlePlus: String?
@@ -37,6 +37,7 @@ struct OTPClass: Codable {
         case schoolLogo = "school_logo"
         case schoolAppLogoMain = "school_app_logo_main"
         case schoolAppLogoRotate = "school_app_logo_rotate"
+        case appID = "appId"
         case fatherName = "father_name"
         case fatherEmail = "father_email"
         case fatherMobile = "father_mobile"

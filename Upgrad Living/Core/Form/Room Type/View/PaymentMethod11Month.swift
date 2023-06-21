@@ -11,18 +11,18 @@ struct PaymentMethod11Month: View {
     @Binding var isSelect: Bool
     var body: some View {
         VStack{
-            HStack{
+            HStack(spacing: 2){
                 Image(isSelect ? "Room_Select_Radio" : "Room_UnSelect_Radio")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
                     .padding(.leading, 12)
                 
-                HStack{
+                HStack(spacing: 2){
                     VLine().stroke(style: StrokeStyle(lineWidth: 0.5))
                         .foregroundColor(Color(hex: 0x333333))
                         .frame(width: 20,height: 30)
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading, spacing: 8){
                         Text("PAY IN")
                             .font(.custom(OpenSans_SemiBold, size: 14))
                             .foregroundColor(Color(hex: 0x333333))

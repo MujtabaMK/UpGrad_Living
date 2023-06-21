@@ -60,7 +60,7 @@ struct BedDetailsView: View {
                                     } label: {
                                         Capsule()
                                             .strokeBorder(Color(hex: 0xB20710), lineWidth: 1)
-                                            .frame(width: 120)
+                                            .frame(width: 110)
                                             .overlay {
                                                 Text("Go Back")
                                                     .font(.custom(OpenSans_SemiBold, size: 15))
@@ -91,7 +91,7 @@ struct BedDetailsView: View {
                                     } label: {
                                         Text("Confirm")
                                             .font(.custom(OpenSans_SemiBold, size: 15))
-                                            .frame(width: 90, alignment: .center)
+                                            .frame(width: 130, alignment: .center)
                                             .font(.custom(OpenSans_SemiBold, size: 14))
                                             .padding()
                                             .foregroundColor(.white)

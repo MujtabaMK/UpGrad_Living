@@ -169,7 +169,7 @@ struct StudentProfileView: View {
                         }
                         Spacer(minLength: 0)
                         Text("Student Profile")
-                            .font(.custom(OpenSans_SemiBold, size: 18))
+                            .font(.custom(OpenSans_Bold, size: 18))
                             .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
                             .padding(.trailing, 30)
                         Spacer(minLength: 0)
@@ -284,16 +284,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "MakeUp_Profile", titleName: "Make Up", isSelect: $isCreativityMakeUp)
+                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "MakeUp_Profile", titleName: "Make-Up", isSelect: $isCreativityMakeUp)
                                     .onTapGesture {
                                         isCreativityMakeUp.toggle()
                                         if isCreativityMakeUp{
-                                            txtCreativityMakeUp = "Make Up"
+                                            txtCreativityMakeUp = "Make-Up"
                                             arrCreavity.append(txtCreativityMakeUp)
                                             print(arrCreavity)
                                         }else{
                                             txtCreativityMakeUp = ""
-                                            if let index = arrCreavity.firstIndex(of: "Make Up")  {
+                                            if let index = arrCreavity.firstIndex(of: "Make-Up")  {
                                                 arrCreavity.remove(at: index)
                                                 print(arrCreavity)
                                             } else {
@@ -619,16 +619,16 @@ struct StudentProfileView: View {
                                 .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : Color(hex: 0x868686))
                                 .padding(.bottom, 4)
                             LazyVGrid(columns: threeColumnGrid) {
-                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Cafe_Profile", titleName: "Cafe hopping", isSelect: $isGoingOutCafe)
+                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Cafe_Profile", titleName: "Cafe-hopping", isSelect: $isGoingOutCafe)
                                     .onTapGesture {
                                         isGoingOutCafe.toggle()
                                         if isGoingOutCafe{
-                                            txtGoingOutCafe = "Cafe hopping"
+                                            txtGoingOutCafe = "Cafe-hopping"
                                             arrGoingOut.append(txtGoingOutCafe)
                                             print(arrGoingOut)
                                         }else{
                                             txtGoingOutCafe = ""
-                                            if let index = arrGoingOut.firstIndex(of: "Cafe hopping")  {
+                                            if let index = arrGoingOut.firstIndex(of: "Cafe-hopping")  {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
@@ -687,16 +687,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Stand_Up_Profile", titleName: "Stand Up", isSelect: $isGoingOutStandUp)
+                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Stand_Up_Profile", titleName: "Stand-up", isSelect: $isGoingOutStandUp)
                                     .onTapGesture {
                                         isGoingOutStandUp.toggle()
                                         if isGoingOutStandUp{
-                                            txtGoingOutStandUp = "Stand Up"
+                                            txtGoingOutStandUp = "Stand-up"
                                             arrGoingOut.append(txtGoingOutStandUp)
                                             print(arrGoingOut)
                                         }else{
                                             txtGoingOutStandUp = ""
-                                            if let index = arrGoingOut.firstIndex(of: "Stand Up")  {
+                                            if let index = arrGoingOut.firstIndex(of: "Stand-up")  {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
@@ -724,16 +724,16 @@ struct StudentProfileView: View {
                             }
                             .padding(.trailing)
                             LazyVGrid(columns: thwoColumnGrid) {
-                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Museums_Profile", titleName: "Museums & Galleries", isSelect: $isGoingOutMusems)
+                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Museums_Profile", titleName: "Museums and Galleries", isSelect: $isGoingOutMusems)
                                     .onTapGesture {
                                         isGoingOutMusems.toggle()
                                         if isGoingOutMusems{
-                                            txtGoingOutMusems = "Museums & Galleries"
+                                            txtGoingOutMusems = "Museums and Galleries"
                                             arrGoingOut.append(txtGoingOutMusems)
                                             print(arrGoingOut)
                                         }else{
                                             txtEntertainmentMusic = ""
-                                            if let index = arrGoingOut.firstIndex(of: "Museums & Galleries")  {
+                                            if let index = arrGoingOut.firstIndex(of: "Museums and Galleries")  {
                                                 arrGoingOut.remove(at: index)
                                                 print(arrGoingOut)
                                             } else {
@@ -826,16 +826,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Take_Outs_Profile", titleName: "Take-Outs", isSelect: $isStayingTakeOuts)
+                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Take_Outs_Profile", titleName: "Take-outs", isSelect: $isStayingTakeOuts)
                                     .onTapGesture {
                                         isStayingTakeOuts.toggle()
                                         if isStayingTakeOuts{
-                                            txtStayingTakeOuts = "Take-Outs"
+                                            txtStayingTakeOuts = "Take-0uts"
                                             arrStayingIn.append(txtStayingTakeOuts)
                                             print(arrStayingIn)
                                         }else{
                                             txtStayingTakeOuts = ""
-                                            if let index = arrStayingIn.firstIndex(of: "Take-Outs")  {
+                                            if let index = arrStayingIn.firstIndex(of: "Take-outs")  {
                                                 arrStayingIn.remove(at: index)
                                                 print(arrStayingIn)
                                             } else {
@@ -893,16 +893,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Non_Veg_Profile", titleName: "Non-vegetarian", isSelect: $isFoodNonVeg)
+                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Non_Veg_Profile", titleName: "Non Vegetarian", isSelect: $isFoodNonVeg)
                                     .onTapGesture {
                                         isFoodNonVeg.toggle()
                                         if isFoodNonVeg{
-                                            txtFoodNonVeg = "Non-vegetarian"
+                                            txtFoodNonVeg = "Non Vegetarian"
                                             arrFoodAndDrink.append(txtFoodNonVeg)
                                             print(arrFoodAndDrink)
                                         }else{
                                             txtFoodNonVeg = ""
-                                            if let index = arrFoodAndDrink.firstIndex(of: "Non-vegetarian")  {
+                                            if let index = arrFoodAndDrink.firstIndex(of: "Non Vegetarian")  {
                                                 arrFoodAndDrink.remove(at: index)
                                                 print(arrFoodAndDrink)
                                             } else {
@@ -943,16 +943,16 @@ struct StudentProfileView: View {
                                 .padding(.bottom, 4)
                             
                             LazyVGrid(columns: threeColumnGrid) {
-                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Ambitious_Profile", titleName: "Ambitious", isSelect: $isValuesAmbitious)
+                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Ambitious_Profile", titleName: "Ambition", isSelect: $isValuesAmbitious)
                                     .onTapGesture {
                                         isValuesAmbitious.toggle()
                                         if isValuesAmbitious{
-                                            txtValuesAmbitious = "Ambitious"
+                                            txtValuesAmbitious = "Ambition"
                                             arrValues.append(txtValuesAmbitious)
                                             print(arrValues)
                                         }else{
                                             txtValuesAmbitious = ""
-                                            if let index = arrValues.firstIndex(of: "Ambitious")  {
+                                            if let index = arrValues.firstIndex(of: "Ambition")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -960,16 +960,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Active_Profile", titleName: "Active", isSelect: $isValuesActive)
+                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Active_Profile", titleName: "Being Active", isSelect: $isValuesActive)
                                     .onTapGesture {
                                         isValuesActive.toggle()
                                         if isValuesActive{
-                                            txtValuesActive = "Active"
+                                            txtValuesActive = "Being Active"
                                             arrValues.append(txtValuesActive)
                                             print(arrValues)
                                         }else{
                                             txtValuesActive = ""
-                                            if let index = arrValues.firstIndex(of: "Active")  {
+                                            if let index = arrValues.firstIndex(of: "Being Active")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -994,16 +994,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile3, imageName: "Creative_Profile", titleName: "Creative", isSelect: $isValuesCreative)
+                                StudentProfileCreativity(backgroundColour: Student_Profile3, imageName: "Creative_Profile", titleName: "Creativity", isSelect: $isValuesCreative)
                                     .onTapGesture {
                                         isValuesCreative.toggle()
                                         if isValuesCreative{
-                                            txtValuesCreative = "Creative"
+                                            txtValuesCreative = "Creativity"
                                             arrValues.append(txtValuesCreative)
                                             print(arrValues)
                                         }else{
                                             txtValuesCreative = ""
-                                            if let index = arrValues.firstIndex(of: "Creative")  {
+                                            if let index = arrValues.firstIndex(of: "Creativity")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -1011,16 +1011,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Empathetic_Profile", titleName: "Empathetic", isSelect: $isValuesEmpathetic)
+                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Empathetic_Profile", titleName: "Empathy", isSelect: $isValuesEmpathetic)
                                     .onTapGesture {
                                         isValuesEmpathetic.toggle()
                                         if isValuesEmpathetic{
-                                            txtValuesEmpathetic = "Empathetic"
+                                            txtValuesEmpathetic = "Empathy"
                                             arrValues.append(txtValuesEmpathetic)
                                             print(arrValues)
                                         }else{
                                             txtValuesEmpathetic = ""
-                                            if let index = arrValues.firstIndex(of: "Empathetic")  {
+                                            if let index = arrValues.firstIndex(of: "Empathy")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -1028,16 +1028,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Intelligent_Profile", titleName: "Intelligent", isSelect: $isValuesIntelligent)
+                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Intelligent_Profile", titleName: "Intelligency", isSelect: $isValuesIntelligent)
                                     .onTapGesture {
                                         isValuesIntelligent.toggle()
                                         if isValuesIntelligent{
-                                            txtValuesIntelligent = "Intelligent"
+                                            txtValuesIntelligent = "Intelligency"
                                             arrValues.append(txtValuesIntelligent)
                                             print(arrValues)
                                         }else{
                                             txtValuesIntelligent = ""
-                                            if let index = arrValues.firstIndex(of: "Intelligent")  {
+                                            if let index = arrValues.firstIndex(of: "Intelligency")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -1045,16 +1045,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Optimistic_Profile", titleName: "Optimistic", isSelect: $isValuesOptimistic)
+                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Optimistic_Profile", titleName: "Positivity", isSelect: $isValuesOptimistic)
                                     .onTapGesture {
                                         isValuesOptimistic.toggle()
                                         if isValuesOptimistic{
-                                            txtValuesOptimistic = "Optimistic"
+                                            txtValuesOptimistic = "Positivity"
                                             arrValues.append(txtValuesOptimistic)
                                             print(arrValues)
                                         }else{
                                             txtValuesOptimistic = ""
-                                            if let index = arrValues.firstIndex(of: "Optimistic")  {
+                                            if let index = arrValues.firstIndex(of: "Positivity")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -1062,16 +1062,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile3, imageName: "Self_Aware_Profile", titleName: "Self Aware", isSelect: $isValuesSelfAware)
+                                StudentProfileCreativity(backgroundColour: Student_Profile3, imageName: "Self_Aware_Profile", titleName: "Self-awareness", isSelect: $isValuesSelfAware)
                                     .onTapGesture {
                                         isValuesSelfAware.toggle()
                                         if isValuesSelfAware{
-                                            txtValuesSelfAware = "Self Aware"
+                                            txtValuesSelfAware = "Self-awareness"
                                             arrValues.append(txtValuesSelfAware)
                                             print(arrValues)
                                         }else{
                                             txtValuesSelfAware = ""
-                                            if let index = arrValues.firstIndex(of: "Self Aware")  {
+                                            if let index = arrValues.firstIndex(of: "Self-awareness")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -1079,16 +1079,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Family_Oriented_Profile", titleName: "Family Oriented", isSelect: $isValuesFamilyOriented)
+                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Family_Oriented_Profile", titleName: "Being Family Oriented", isSelect: $isValuesFamilyOriented)
                                     .onTapGesture {
                                         isValuesFamilyOriented.toggle()
                                         if isValuesFamilyOriented{
-                                            txtValuesFamilyOriented = "Family Oriented"
+                                            txtValuesFamilyOriented = "Being Family Oriented"
                                             arrValues.append(txtValuesFamilyOriented)
                                             print(arrValues)
                                         }else{
                                             txtValuesFamilyOriented = ""
-                                            if let index = arrValues.firstIndex(of: "Family Oriented")  {
+                                            if let index = arrValues.firstIndex(of: "Being Family Oriented")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -1100,16 +1100,16 @@ struct StudentProfileView: View {
                             }
                             .padding(.trailing)
                             LazyVGrid(columns: threeColumnGrid){
-                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Adventurous_Profile", titleName: "Adventurous", isSelect: $isValuesAdventurous)
+                                StudentProfileCreativity(backgroundColour: Student_Profile1, imageName: "Adventurous_Profile", titleName: "Sense of adventure", isSelect: $isValuesAdventurous)
                                     .onTapGesture {
                                         isValuesAdventurous.toggle()
                                         if isValuesAdventurous{
-                                            txtValuesAdventurous = "Adventurous"
+                                            txtValuesAdventurous = "Sense of adventure"
                                             arrValues.append(txtValuesAdventurous)
                                             print(arrValues)
                                         }else{
                                             txtValuesAdventurous = ""
-                                            if let index = arrValues.firstIndex(of: "Adventurous")  {
+                                            if let index = arrValues.firstIndex(of: "Sense of adventure")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -1117,16 +1117,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Social_Aware_Profile", titleName: "Social Aware", isSelect: $isValuesSociallyAware)
+                                StudentProfileCreativity(backgroundColour: Student_Profile2, imageName: "Social_Aware_Profile", titleName: "Social awareness", isSelect: $isValuesSociallyAware)
                                     .onTapGesture {
                                         isValuesSociallyAware.toggle()
                                         if isValuesSociallyAware{
-                                            txtValuesSociallyAware = "Social Aware"
+                                            txtValuesSociallyAware = "Social awareness"
                                             arrValues.append(txtValuesSociallyAware)
                                             print(arrValues)
                                         }else{
                                             txtValuesSociallyAware = ""
-                                            if let index = arrValues.firstIndex(of: "Social Aware")  {
+                                            if let index = arrValues.firstIndex(of: "Social awareness")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -1134,16 +1134,16 @@ struct StudentProfileView: View {
                                             }
                                         }
                                     }
-                                StudentProfileCreativity(backgroundColour: Student_Profile3, imageName: "Funny_Profile", titleName: "Funny", isSelect: $isValuesFunny)
+                                StudentProfileCreativity(backgroundColour: Student_Profile3, imageName: "Funny_Profile", titleName: "Sense of humour", isSelect: $isValuesFunny)
                                     .onTapGesture {
                                         isValuesFunny.toggle()
                                         if isValuesFunny{
-                                            txtValuesFunny = "Funny"
+                                            txtValuesFunny = "Sense of humour"
                                             arrValues.append(txtValuesFunny)
                                             print(arrValues)
                                         }else{
                                             txtValuesFunny = ""
-                                            if let index = arrValues.firstIndex(of: "Funny")  {
+                                            if let index = arrValues.firstIndex(of: "Sense of humour")  {
                                                 arrValues.remove(at: index)
                                                 print(arrValues)
                                             } else {
@@ -1162,6 +1162,7 @@ struct StudentProfileView: View {
                         VStack(alignment: .center) {
                             DetailsViewBottom(textName: "Done", imageName: "Smile_Profile")
                                 .padding()
+                                .padding(.trailing)
                                 .frame(alignment: .center)
                                 .onTapGesture {
                                     if arrCreavity.count == 0{

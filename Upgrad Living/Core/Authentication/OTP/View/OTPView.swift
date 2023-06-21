@@ -39,6 +39,8 @@ struct OTPView: View {
     @State private var isSelectedIndex = 3
     
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
+    @State private var deviceToken = UserDefaults.standard.string(forKey: "fcmdeviceToken")
+    
     var body: some View {
         NavigationView{
             ZStack{
@@ -156,9 +158,10 @@ struct OTPView: View {
                         VStack(alignment: .center){
                             Button {
                                 let MobileOTP = OTP1 + OTP2 + OTP3 + OTP4
+                                let DeviceName = UIDevice.current.name
                                 if MobileOTP.count == 4{
                                     if networkMonitor.isConnected{
-                                        viewModel.fetchLoginDate(mobile: newMobile, otp: MobileOTP) { OTPData in
+                                        viewModel.fetchLoginDate(mobile: newMobile, otp: MobileOTP, token: deviceToken ?? "", device_name: DeviceName, deviceType: "2", appId: studentAppID ?? "") { OTPData in
                                             if OTPData.status == 1{
                                                 if OTPData.data?.userid?.count != 0{
                                                     saveLoginOTPData(dict: OTPData.data!) { returnvalue in
@@ -222,7 +225,7 @@ struct OTPView: View {
                         }
                         .padding(.bottom, 20)
                     }
-                    .frame(maxWidth: UIScreen.main.bounds.width - 60)
+                    .frame(maxWidth: UIScreen.main.bounds.width - 50)
                     .background(colorScheme == .light ? .white : Color(hex: 0xFEEEF0, alpha: 1.0))
                     .padding(.horizontal)
                     .background(
@@ -255,33 +258,7 @@ struct OTPView: View {
                             isActive: $isStudentProfile).isDetailLink(false)
                         NavigationLink(
                             "",
-                            destination: HomeViewTabBar(
-                                selectedIndex: isSelectedIndex,
-                                isEvent: .constant(false),
-                                isEventsAll: .constant(false),
-                                isProfile: .constant(false),
-                                isEventDetails: .constant(false),
-                                RoomieId: .constant(""),
-                                NewSelectedIndex: .constant(0),
-                                isofferView: .constant(false),
-                                isBackEvent: .constant(false),
-                                isBackDining: .constant(false),
-                                isDiningView: .constant(false),
-                                isBackLaundry: .constant(false),
-                                isLaundryView: .constant(false),
-                                isBackGym: .constant(false),
-                                isGymView: .constant(false),
-                                isBackSport: .constant(false),
-                                isSportView: .constant(false),
-                                isBackHeltcare: .constant(false),
-                                isHeltcareView: .constant(false),
-                                isBackHouseKeeping: .constant(false),
-                                isHouseKeepingView: .constant(false),
-                                isBackConvenience: .constant(false),
-                                isConvenienceView: .constant(false),
-                                isBackCoffee: .constant(false),
-                                isCoffeeView: .constant(false)
-                            ).navigationBarHidden(true),
+                            destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
                             isActive: $isHomeView).isDetailLink(false)
                         NavigationLink(
                             "",

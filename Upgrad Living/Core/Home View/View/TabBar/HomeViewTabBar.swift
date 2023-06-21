@@ -39,6 +39,24 @@ struct HomeViewTabBar: View {
     @Binding var isBackCoffee: Bool
     @Binding var isCoffeeView: Bool
     
+    @Binding var isBackCommunity: Bool
+    @Binding var isCommunityView: Bool
+    
+    @Binding var isBackUserProfile: Bool
+    @Binding var isUserProfile: Bool
+    
+    @Binding var isBackisNotification: Bool
+    @Binding var isNotification: Bool
+    
+    @Binding var isBackGuestRoom: Bool
+    @Binding var isGuestRoom: Bool
+    
+    @Binding var isBackRequestApproval: Bool
+    @Binding var isRequestApproval: Bool
+    
+    @Binding var isBackServiceBooking: Bool
+    @Binding var isServiceBooking: Bool
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom){
@@ -52,42 +70,42 @@ struct HomeViewTabBar: View {
                             HStack{
                                 Spacer()
                                 Button {
-                                    
+                                    isGuestRoom = true
                                 } label: {
                                     VStack(spacing: -5){
                                         Image("Home_Book_Space")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 74, height: 74)
-                                        Text("Book a space\n or a guest room")
+                                        Text("Guest room\n booking")
                                             .font(.custom(OpenSans_SemiBold, size: 12))
                                             .foregroundColor(Color(hex: 0x00B2BA))
                                     }
                                 }
                                 Spacer()
                                 Button {
-                                    
+                                    isServiceBooking = true
                                 } label: {
                                     VStack(spacing: -5){
                                         Image("Home_Student_Connect")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 74, height: 74)
-                                        Text("Student\n Connect")
+                                        Text("Pay in\n store")
                                             .font(.custom(OpenSans_SemiBold, size: 12))
                                             .foregroundColor(Color(hex: 0x00B2BA))
                                     }
                                 }
                                 Spacer()
                                 Button {
-                                    
+                                    isRequestApproval = true
                                 } label: {
                                     VStack(spacing: -5){
                                         Image("Home_Request_Approval")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 74, height: 74)
-                                        Text("Parental\n Approval")
+                                        Text("Approval\n Requests")
                                             .font(.custom(OpenSans_SemiBold, size: 12))
                                             .foregroundColor(Color(hex: 0x00B2BA))
                                     }
@@ -113,8 +131,6 @@ struct HomeViewTabBar: View {
                     Button {
                         withAnimation() {
                             isButtonSelected.toggle()
-                            //                            self.offsetButton = -20
-                            //                            self.offsetView = 40
                         }
                     } label: {
                         Circle()
@@ -132,8 +148,11 @@ struct HomeViewTabBar: View {
                     }
                 }
             }
+            .navigationBarTitle("")
             .navigationBarHidden(true)
             .ignoresSafeArea()
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
             .onAppear{
                 selectedIndex = NewSelectedIndex
             }
@@ -144,11 +163,11 @@ struct HomeViewTabBar: View {
     func getTabView(type: TabType) -> some View {
         switch type {
         case .home:
-            HomeView(pageIndex: Page.withIndex(0), isEvent: $isEvent, isBackEvent: $isBackEvent, isProfile: $isProfile, isEventDetails: $isEventDetails, RoomieId: $RoomieId, isofferView: $isofferView)
+            HomeView(pageIndex: Page.withIndex(0), isEvent: $isEvent, isBackEvent: $isBackEvent, isProfile: $isProfile, isEventDetails: $isEventDetails, RoomieId: $RoomieId, isofferView: $isofferView, isUserProfile: $isUserProfile, isNotification: $isNotification)
         case .services:
             ServiceView(isBackDining: $isBackDining, isDiningView: $isDiningView, isBackLaundray: $isBackLaundry, isLaundryView: $isLaundryView, isGymView: $isGymView, isSportView: $isSportView, isHeltcareView: $isHeltcareView, isHouseKeepingView: $isHouseKeepingView, isConvenienceView: $isConvenienceView, isCoffeeView: $isCoffeeView)
         case .community:
-            HomeView(pageIndex: Page.withIndex(0), isEvent: .constant(false), isBackEvent: .constant(false), isProfile: .constant(false), isEventDetails: .constant(false), RoomieId: .constant(""), isofferView: .constant(false))
+            CommunityView(isCommunityView: $isCommunityView)
         case .events:
             EventAllView(isEventDetails: $isEventDetails, isBackEvent: $isBackEvent)
         }

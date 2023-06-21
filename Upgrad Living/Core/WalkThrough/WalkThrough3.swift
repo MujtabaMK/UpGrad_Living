@@ -19,7 +19,7 @@ struct WalkThrough3: View {
             VStack{
                 Image("Walk_Through3_Top")
                     .resizable()
-                    .renderingMode(.original)
+                    .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width, height: 399)
                     .padding(.top, 15)
                     .padding(.bottom, 5)
@@ -54,6 +54,18 @@ struct WalkThrough3: View {
                     .renderingMode(.original)
                     .frame(width: 38, height: 10)
                     .padding(.bottom, 10)
+                
+                Button {
+                    UserDefaults.standard.set(true, forKey: "isWalkThrough")
+                    isLogin = true
+                } label: {
+                    Text("Skip")
+                        .underline()
+                        .font(.custom(OpenSans_SemiBold, size: 14))
+                        .foregroundColor(Color(hex: 0xFFFFFF,alpha: 0.8))
+                }
+                
+                
                 NavigationLink(
                     "",
                     destination: LoginView().navigationBarHidden(true),

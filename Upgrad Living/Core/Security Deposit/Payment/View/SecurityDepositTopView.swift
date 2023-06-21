@@ -20,7 +20,7 @@ struct SecurityDepositTopView: View {
                     .padding()
                 Text("Book your bed and get ready to dream in comfort!")
                     .font(.custom(OpenSans_Bold, size: 20))
-                    .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
+                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
                     .frame(width: 200, alignment: .center)
                     .multilineTextAlignment(.center)
                 

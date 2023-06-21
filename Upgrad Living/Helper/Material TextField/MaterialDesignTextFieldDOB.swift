@@ -18,6 +18,7 @@ struct MaterialDesignTextFieldDOB: View {
             HStack{
                 TextField("", text: $text)
                     .focused($focusField, equals: .textField)
+                    .font(.custom(OpenSans_SemiBold, size: 12))
                 Spacer()
                 Image(placeholderImage)
                     .resizable()
@@ -36,6 +37,7 @@ struct MaterialDesignTextFieldDOB: View {
                         .cornerRadius(4.0)
                         .opacity(placeholderBackgroundOpacity)
                     Text(placeholder)
+                        .font(.custom(OpenSans_SemiBold, size: 10))
                         .foregroundColor(.white)
                         .colorMultiply(placeholderColor)
                         .animatableFont(size: placeholderFontSize)

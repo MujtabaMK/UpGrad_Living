@@ -6,12 +6,18 @@ target 'UpGrad Living' do
   use_frameworks!
 
   # Pods for Upgrad Living
+
   pod 'lottie-ios', '4.0.1'
   pod 'Introspect'
-  pod "Macaw", "0.9.7"
-  pod 'SVGView'
   pod 'SwiftUIPager'
   pod 'Kingfisher', '~> 7.0'
   pod 'WaterfallGrid', '~> 1.0.0'
+  pod 'FSCalendar'
+  pod 'IQKeyboardManagerSwift'
+
+  pod 'FirebaseMessaging'
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
 
 end

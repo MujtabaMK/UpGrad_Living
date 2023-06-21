@@ -133,8 +133,8 @@ struct UploadDocumentCell: View {
             RoundedRectangle(
                 cornerRadius: 15).strokeBorder(Color(hex: 0x00B2BA),
                                                style: StrokeStyle(lineWidth: 1.0))
-                .padding(.top, -10)
-                .padding(.leading, -25)
+                .padding(.top, -5)
+                .padding(.leading, -20)
                 .padding(.trailing, -10)
                 .padding(.bottom, 5)
         )
@@ -144,7 +144,7 @@ struct UploadDocumentCell: View {
         .background(
             RoundedRectangle(cornerRadius: 15)
                 .fill(colorScheme == .light ? Color(hex: 0xFDE1E3, alpha: 1.0) : Color(hex: 0xFDE1E3, alpha: 1.0))
-                .shadow(color: .gray, radius: 5, x: 0, y: 0)
+                .shadow(color: .gray, radius: 3, x: 0, y: 0)
         )
         .padding(.bottom)
         .onAppear{

@@ -25,6 +25,7 @@ struct FirstView: View {
     @State private var isofferView = false
     @State private var isBackEvent = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
+    @AppStorage("SendPageTo") private var SendPageTo = ""
     @State private var showingAlert = false
     @State private var isBackDining = false
     @State private var isDiningView = false
@@ -42,6 +43,36 @@ struct FirstView: View {
     @State private var isConvenienceView = false
     @State private var isBackCoffee = false
     @State private var isCoffeeView = false
+    @State private var isBackNotification = false
+    @State private var isNotification = false
+    
+    @State private var isBackCommunity = false
+    @State private var isCommunityView = false
+    
+    @State private var isBackUserProfile = false
+    @State private var isUserProfile = false
+    @State private var isLogout = false
+    
+    @State private var isBackGuestRoom = false
+    @State private var isGuestRoom = false
+    
+    @State private var isBackRequestApproval = false
+    @State private var isRequestApproval = false
+    
+    //Parent...
+    @State private var isParentHome = false
+    
+    @State private var isBackParentGuestRoom = false
+    
+    @State private var isBackParentHelpdesk = false
+    @State private var isParentHelpdesk = false
+    
+    @State private var isBackParentApproval = false
+    @State private var isParentLogout = false
+    
+    @State private var isBackServiceBooking = false
+    @State private var isServiceBooking = false
+    
     @State private var RoomieId = ""
     @State private var AlertMessage = String()
     @StateObject private var ViewModel = StepViewModel()
@@ -51,6 +82,18 @@ struct FirstView: View {
     
     var EventScreen: String
     @Binding var newSelectedIndex: Int
+    
+    
+    @ObservedObject var appState = AppState.shared
+    @State var navigate = false
+    
+//    var pushNavigationBinding : Binding<Bool> {
+//           .init { () -> Bool in
+//               appState.pageToNavigationTo != nil
+//           } set: { (newValue) in
+//               if !newValue { appState.pageToNavigationTo = nil }
+//           }
+//       }
     
     var body: some View {
         NavigationView {
@@ -90,7 +133,7 @@ struct FirstView: View {
                         "",
                         destination: HomeViewTabBar(
                             isEvent: $isEvent,
-                         isEventsAll: $isEventsAll,
+                            isEventsAll: $isEventsAll,
                             isProfile: $isProfile,
                             isEventDetails: $isEventDetails,
                             RoomieId: $RoomieId,
@@ -112,7 +155,19 @@ struct FirstView: View {
                             isBackConvenience: $isBackConvenience,
                             isConvenienceView: $isConvenienceView,
                             isBackCoffee: $isBackCoffee,
-                            isCoffeeView: $isCoffeeView
+                            isCoffeeView: $isCoffeeView,
+                            isBackCommunity: $isBackCommunity,
+                            isCommunityView: $isCommunityView,
+                            isBackUserProfile: $isBackUserProfile,
+                            isUserProfile: $isUserProfile,
+                            isBackisNotification: $isBackNotification,
+                            isNotification: $isNotification,
+                            isBackGuestRoom: $isBackGuestRoom,
+                            isGuestRoom: $isGuestRoom,
+                            isBackRequestApproval: $isBackRequestApproval,
+                            isRequestApproval: $isRequestApproval,
+                            isBackServiceBooking: $isBackServiceBooking,
+                            isServiceBooking: $isServiceBooking
                         ).navigationBarHidden(true),
                         isActive: $isHomeView).isDetailLink(false)
                     NavigationLink(
@@ -153,6 +208,11 @@ struct FirstView: View {
                         "",
                         destination: HosterOfferView().navigationBarHidden(true),
                         isActive: $isofferView).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: LoginView().navigationBarHidden(true),
+                        isActive: $isLogout).isDetailLink(false)
                 }
                 VStack{ //services
                     NavigationLink(
@@ -203,6 +263,7 @@ struct FirstView: View {
                         "",
                         destination: ServiceHelthCareView(isBackHeltcare: $isBackHeltcare).navigationBarHidden(true),
                         isActive: $isHeltcareView).isDetailLink(false)
+                    
                 }
                 VStack{
                     NavigationLink(
@@ -234,45 +295,166 @@ struct FirstView: View {
                         "",
                         destination: ServiceCoffeeView(isBackCoffee: $isBackCoffee).navigationBarHidden(true),
                         isActive: $isCoffeeView).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(2)).navigationBarHidden(true),
+                        isActive: $isBackCommunity).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: CommunityDetailsView(isCommunityBack: $isBackCommunity).navigationBarHidden(true),
+                        isActive: $isCommunityView).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                        isActive: $isBackUserProfile).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: UserProfile(isBackUserProfile: $isBackUserProfile, isLogout: $isLogout).navigationBarHidden(true),
+                        isActive: $isUserProfile).isDetailLink(false)
+                }
+                VStack{
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                        isActive: $isBackNotification).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: NotificationView(isBackNotification: $isBackNotification).navigationBarHidden(true),
+                        isActive: $isNotification).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                        isActive: $isBackGuestRoom).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: BookGuestRoom(isBackGuestRoom: $isBackGuestRoom).navigationBarHidden(true),
+                        isActive: $isGuestRoom).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                        isActive: $isBackRequestApproval).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: RequestApprovalView(isBackRequestApproval: $isBackRequestApproval).navigationBarHidden(true),
+                        isActive: $isRequestApproval).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: ServiceBooking(isBackServiceBooking: $isBackServiceBooking).navigationBarHidden(true),
+                        isActive: $isServiceBooking).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                        isActive: $isBackServiceBooking).isDetailLink(false)
+                    
+                    if navigate{
+                        if SendPageTo == "1"{
+                            NavigationLink(
+                                "",
+                                destination: ServiceSportView(isBackSport: $isBackSport).navigationBarHidden(true),
+                                isActive: .constant(true)).isDetailLink(false)
+                        }else if SendPageTo == "2"{
+                            NavigationLink(
+                                "",
+                                destination: NotificationView(isBackNotification: $isBackNotification).navigationBarHidden(true),
+                                isActive: .constant(true)).isDetailLink(false)
+                        }
+                    }
+                }
+                VStack{//Parent
+                    
+                    NavigationLink(
+                        "",
+                        destination: ParentViewTabBar(
+                            isBackParentGuestRoom: $isBackParentGuestRoom,
+                            isBackParentHelpdesk: $isBackParentHelpdesk,
+                            isParentHelpdesk: $isParentHelpdesk,
+                            isBackParentApproval: $isBackParentApproval,
+                            isLogout: $isParentLogout,
+                            NewSelectedIndex: $newSelectedIndex
+                        ).navigationBarHidden(true),
+                        isActive: $isParentHome).isDetailLink(false)
+                    
+                    
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                        isActive: $isBackParentHelpdesk).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: ParentHelpdesk(isBackParentHelpdesk: $isBackParentHelpdesk).navigationBarHidden(true),
+                        isActive: $isParentHelpdesk).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                        isActive: $isBackParentApproval).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                        isActive: $isBackParentGuestRoom).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: LoginView().navigationBarHidden(true),
+                        isActive: $isParentLogout).isDetailLink(false)
+                    
                 }
                 if ViewModel.isLoadingData{
                     LoadingView()
                 }
             }
+            .onReceive(appState.$pageToNavigationTo) { (nav) in
+                if nav != nil {
+                    navigate = true
+                }
+            }
             .ignoresSafeArea()
             .onAppear{
-                    if networkMonitor.isConnected{
-                        showingAlert = false
-                        ViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
-                            print("Step value = ", Step)
-                            if Step.status == 1{
-//                                if Step.data?.step == "0"{
-//                                    isBookingProcess = true
-//                                }else if Step.data?.step == "1"{
-//                                    isSecurityDeposite = true
-//                                }else if Step.data?.step == "2"{
-//                                    isUploadDocument = true
-//                                }else if Step.data?.step == "201"{
-//                                    isSecuritySuccess = true
-//                                }else if Step.data?.step == "3"{
-//                                    isBookingView = true
-//                                }else if Step.data?.step == "301"{
-//                                    isStudentProfile = true
-//                                }else if Step.data?.step == "4"{
-//                                    isBookingSuccess = true
-//                                }else if Step.data?.step == "5"{
-//                                    isHomeView = true
-//                                }
-                                isHomeView = true
-                            }else{
-                                isBookingProcess = true
-                            }
+                if networkMonitor.isConnected{
+                    showingAlert = false
+                    ViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
+                        print("Step value = ", Step)
+                        if Step.status == 1{
+//                            if Step.data?.step == "0"{
+//                                isBookingProcess = true
+//                            }else if Step.data?.step == "1"{
+//                                isSecurityDeposite = true
+//                            }else if Step.data?.step == "2"{
+//                                isUploadDocument = true
+//                            }else if Step.data?.step == "201"{
+//                                isSecuritySuccess = true
+//                            }else if Step.data?.step == "3"{
+//                                isBookingView = true
+//                            }else if Step.data?.step == "301"{
+//                                isStudentProfile = true
+//                            }else if Step.data?.step == "4"{
+//                                isBookingSuccess = true
+//                            }else if Step.data?.step == "5"{
+//                                isHomeView = true
+//                            }
+                            isHomeView = true
+                            //isParentHome = true
+                        }else{
+                            isBookingProcess = true
                         }
-                    }else{
-                        AlertMessage = "Please Check Your Internet Connection"
-                        showingAlert = true
                     }
-                
+                }else{
+                    AlertMessage = "Please Check Your Internet Connection"
+                    showingAlert = true
+                }
             }
             .alert(AlertMessage, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) { }

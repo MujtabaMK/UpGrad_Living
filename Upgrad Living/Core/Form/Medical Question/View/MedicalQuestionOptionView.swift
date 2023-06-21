@@ -18,7 +18,7 @@ struct MedicalQuestionOptionView: View {
                 .scaledToFit()
                 .frame(width: 24, height: 24)
             Text(text)
-                .font(.custom(OpenSans_SemiBold, size: 12))
+                .font(.custom(OpenSans_SemiBold, size: 11))
                 .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
         }
     }

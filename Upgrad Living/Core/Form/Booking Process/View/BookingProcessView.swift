@@ -54,7 +54,7 @@ struct BookingProcessView: View {
                                 }
                             }
                             HStack{
-                                Text("The booking process at upGrad Living consists of \nnine easy steps... ")
+                                Text("The booking process at upGrad Living consists of \nnine easy steps...\n\n")
                                     .font(.custom(OpenSans_Bold, size: 20))
                                     .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                     .padding(.leading, 5)

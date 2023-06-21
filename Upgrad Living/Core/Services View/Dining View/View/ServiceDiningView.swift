@@ -45,7 +45,7 @@ struct ServiceDiningView: View {
                         }
                         Spacer()
                     }
-                    .padding(.top, 50)
+                    .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
                     VStack(alignment: .leading){
                         Text("Dining")
                             .font(.custom(OpenSans_Bold, size: 18))

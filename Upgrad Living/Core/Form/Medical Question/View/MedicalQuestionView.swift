@@ -679,13 +679,13 @@ struct MedicalQuestionView: View {
                                         if thyroid == "Yes"{
                                             MedicalTextEditor(textField: $txtthyroid, isYesSelect: true)
                                         }
-                                        
                                         Divider()
                                             .frame(width: UIScreen.main.bounds.width - 80)
                                             .padding(.leading, 40)
                                     }
                                 }
                                 .id(3)
+                                .padding(.horizontal)
                                 
                                 VStack(alignment: .leading) {
                                     
@@ -1208,10 +1208,6 @@ struct MedicalQuestionView: View {
                                         if anyOtherDisease == "Yes"{
                                             MedicalTextEditor(textField: $txtanyOtherDisease, isYesSelect: true)
                                         }
-                                        
-                                        Divider()
-                                            .frame(width: UIScreen.main.bounds.width - 80)
-                                            .padding(.leading, 40)
                                     }
                                 }
                                 .id(5)

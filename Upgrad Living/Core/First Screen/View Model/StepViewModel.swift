@@ -25,6 +25,7 @@ class StepViewModel: ObservableObject {
         ]
         
         print(parameter)
+        print(urlString)
         
         resuest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         guard let httpbody = try? JSONSerialization.data(withJSONObject: parameter, options: []) else {

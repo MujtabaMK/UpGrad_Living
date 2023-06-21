@@ -32,7 +32,7 @@ struct ServiceWeekMenuView: View {
             .cornerRadius(2)
             .padding(.bottom, 5)
             
-            ScrollView([.horizontal, .vertical], showsIndicators: false){
+            ScrollView(.horizontal, showsIndicators: false){
                 HStack{
                     ForEach(Array(arrMeal.enumerated()), id: \.offset) { index, food in
                         Button {
@@ -52,9 +52,11 @@ struct ServiceWeekMenuView: View {
                         }
                     }
                 }
+                .frame(width: getRect().width - 20, alignment: .center)
                 .padding([.top, .bottom])
                 .padding([.leading, .trailing], 4)
             }
+            .frame(width: getRect().width - 20, alignment: .center)
             
             //Posts
             SnapCarouselDining(changeValue: $changeValue, spacing: getRect().height < 750 ? 10 : 10,trailingSpace: getRect().height < 750 ? 100 : 150,index: $currentIndex, items: arrMeal) { post in

@@ -128,7 +128,7 @@ struct EnrollmentDetailsView: View {
                                     //ShowDegreeDropDown = false
                                     //ShowSpeclizationDropDown = false
                                 })
-                                .frame(width: UIScreen.main.bounds.width - 20, height: 60)
+                                .frame(width: UIScreen.main.bounds.width - 20, height: 80)
                                 .onSubmit {
                                     editingTextFieldSchool = false
                                     ShowSchoolDropDown = false

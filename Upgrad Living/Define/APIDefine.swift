@@ -65,3 +65,35 @@ let GET_Dining_Details = "\(StartURL)dining"
 let GET_Laundry_Details = "\(StartURL)laundry"
 let GET_HealthCare_Details = "\(StartURL)healthcare"
 let GET_Convinience_Details = "\(StartURL)convinience"
+
+//Community
+let GET_Community = "\(StartURL)community"
+let GET_Community_Details = "\(StartURL)communityDtl"
+
+//Profile Info
+let GET_Profile_Info = "\(StartURL)profileInfo"
+let GET_Ticket_Category = "\(StartURL)getTicketCategry"
+let GET_Past_Ticket = "\(StartURL)pastTickets"
+let GET_Past_Ticket_Details = "\(StartURL)getByTicketId"
+let POST_Ticket_Photo = "\(StartURL)uploadTicketDoc"
+let POST_Save_Ticket = "\(StartURL)saveTicket"
+
+//Guest Room
+let POST_Book_Guest_Room = "\(StartURL)bookGuestRoom"
+let GET_Book_Guest_Room = "\(StartURL)myBookings"
+let GET_Book_Guest_Room_Details = "\(StartURL)getBookingById"
+
+//Request Approval
+let POST_Request_Approval = "\(StartURL)requestApproval"
+let GET_Seek_Approval = "\(StartURL)requestList"
+
+
+//PARENT
+
+//Home
+let GET_Parent_Home_Details = "\(StartURL)parentsHomeScreen"
+let GET_Parent_Pending_Details = "\(StartURL)pendingRequestList"
+
+//Pending Approval
+let POST_Parent_Pending_Action = "\(StartURL)takeAction"
+

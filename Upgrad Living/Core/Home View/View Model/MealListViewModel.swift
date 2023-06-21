@@ -23,7 +23,7 @@ class MealListViewModel: ObservableObject {
         let parameter: [String: Any] = [
             "appId": hostel_student_id,
         ]
-        
+        print(urlString)
         print(parameter)
         
         resuest.setValue("application/json", forHTTPHeaderField: "Content-Type")

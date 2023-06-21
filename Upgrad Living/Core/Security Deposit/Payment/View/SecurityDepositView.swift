@@ -26,7 +26,7 @@ struct SecurityDepositView: View {
                         .font(.custom(OpenSans_Bold, size: 18))
                         .padding(8)
                         .frame(
-                            width: UIScreen.main.bounds.width,
+                            width: UIScreen.main.bounds.width,height: 60,
                             alignment: .center)
                         .background(Color(hex: 0xF36773))
                         .padding(.top, -12)

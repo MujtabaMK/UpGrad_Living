@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WalkThrough1: View {
     @State private var isWalkThrough2 = false
+    @State private var isLogin = false
     var body: some View {
         NavigationView {
             ZStack{
@@ -19,7 +20,7 @@ struct WalkThrough1: View {
                 VStack(alignment: .center){
                     Image("Walh_Through1_Top")
                         .resizable()
-                        .renderingMode(.original)
+                        .scaledToFit()
                         .frame(width: UIScreen.main.bounds.width, height: 345)
                         .padding(.top, 6)
                     Text("A home away")
@@ -52,11 +53,27 @@ struct WalkThrough1: View {
                         .resizable()
                         .renderingMode(.original)
                         .frame(width: 38, height: 10)
-                        .padding(.bottom, 40)
+                        .padding(.bottom)
+                    
+                    Button {
+                        UserDefaults.standard.set(true, forKey: "isWalkThrough")
+                        isLogin = true
+                    } label: {
+                        Text("Skip")
+                            .underline()
+                            .font(.custom(OpenSans_SemiBold, size: 14))
+                            .foregroundColor(Color(hex: 0xFFFFFF,alpha: 0.8))
+                    }
+                    
                     NavigationLink(
                         "",
                         destination: WalkThrough2().navigationBarHidden(true),
                         isActive: $isWalkThrough2).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: LoginView().navigationBarHidden(true),
+                        isActive: $isLogin).isDetailLink(false)
                 }
                 .padding(.bottom, 40)
             }

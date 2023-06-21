@@ -15,19 +15,6 @@ struct TabBottomView: View {
     
     var body: some View {
         HStack {
-//            Spacer()
-//
-//            ForEach(tabbarItems.indices) { index in
-//                let item = tabbarItems[index]
-//                Button {
-//                    self.selectedIndex = index
-//                } label: {
-//                    let isSelected = selectedIndex == index
-//                    TabItemView(data: item, isSelected: isSelected)
-//                }
-//                Spacer()
-//            }
-            
             Spacer()
             Button {
                 self.selectedIndex = 0

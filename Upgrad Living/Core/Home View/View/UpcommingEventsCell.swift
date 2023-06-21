@@ -138,6 +138,7 @@ struct UpcommingEventsCell: View {
             }
             .cornerRadius(15)
             .padding(5)
+            .ignoresSafeArea()
             .navigationBarHidden(true)
         }
     }

@@ -15,6 +15,7 @@ struct MaterialDesignTextFieldwithoutImage: View {
     var body: some View {
         ZStack {
             TextField("", text: $text)
+                .font(.custom(OpenSans_SemiBold, size: 12))
                 .focused($focusField, equals: .textField)
                 .padding()
                 .overlay(
@@ -29,6 +30,7 @@ struct MaterialDesignTextFieldwithoutImage: View {
                         .cornerRadius(4.0)
                         .opacity(placeholderBackgroundOpacity)
                     Text(placeholder)
+                        .font(.custom(OpenSans_SemiBold, size: 10))
                         .foregroundColor(.white)
                         .colorMultiply(placeholderColor)
                         .animatableFont(size: placeholderFontSize)

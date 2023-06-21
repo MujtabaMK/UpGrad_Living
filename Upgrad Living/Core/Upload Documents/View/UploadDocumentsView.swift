@@ -53,7 +53,7 @@ struct UploadDocumentsView: View {
                         }
                         Spacer(minLength: 0)
                         Text("Upload Documents")
-                            .font(.custom(OpenSans_SemiBold, size: 18))
+                            .font(.custom(OpenSans_Bold, size: 18))
                             .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : .white)
                             .padding(.trailing, 30)
                         Spacer(minLength: 0)

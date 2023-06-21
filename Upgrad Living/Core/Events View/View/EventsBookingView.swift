@@ -105,7 +105,7 @@ struct EventsBookingView: View {
                                     }
                                 }
                             }
-                            .padding(.top, 40)
+                            .padding(.top, UIDevice.current.hasNotch ? 40 : 20)
                         }
                         VStack{
                             HStack{

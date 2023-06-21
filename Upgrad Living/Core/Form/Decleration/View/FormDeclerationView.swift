@@ -103,7 +103,6 @@ struct FormDeclerationView: View {
                                     HStack{
                                         Image(isAccept ? "Form_Accept" : "Form_Not_Accept")
                                             .resizable()
-                                            .renderingMode(.template)
                                             .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
                                             .scaledToFit()
                                             .frame(width: 30, height: 30)
@@ -117,7 +116,7 @@ struct FormDeclerationView: View {
                                     TextField("Father/ Mother Name", text: $fatherMother)
                                         .multilineTextAlignment(.leading)
                                     HLine()
-                                        .stroke(style: StrokeStyle(lineWidth: 0.5, dash: [5]))
+                                        .stroke(style: StrokeStyle(lineWidth: 0.5, dash: [1]))
                                         .foregroundColor(colorScheme == .light ? Color(hex: 0x969696) : Color(hex: 0x969696))
                                         .frame(height: 1)
                                 }
@@ -130,7 +129,7 @@ struct FormDeclerationView: View {
                                 VStack{
                                     TextField("Student Name", text: $studentName)
                                     HLine()
-                                        .stroke(style: StrokeStyle(lineWidth: 0.5, dash: [5]))
+                                        .stroke(style: StrokeStyle(lineWidth: 0.5, dash: [1]))
                                         .foregroundColor(colorScheme == .light ? Color(hex: 0x969696) : Color(hex: 0x969696))
                                         .frame(height: 1)
                                 }

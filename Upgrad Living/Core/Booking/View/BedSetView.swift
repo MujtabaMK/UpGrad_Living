@@ -12,25 +12,21 @@ struct BedSetView: View {
     var body: some View {
         VStack(alignment: .leading){
             if BedValue == 0{
-                Image("Bed_A_icon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 48)
+                StrokeText(text: "A", width: 1.0, color:  Color(hex: 0xF47781))
+                    .foregroundColor(Color(hex: 0xFFFFFF))
+                    .font(.custom(OpenSans_Bold, size: 35))
             }else if BedValue == 1{
-                Image("Bed_B_icon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 48)
+                StrokeText(text: "B", width: 1.0, color:  Color(hex: 0xF47781))
+                    .foregroundColor(Color(hex: 0xFFFFFF))
+                    .font(.custom(OpenSans_Bold, size: 35))
             }else if BedValue == 2{
-                Image("Bed_C_icon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 48)
+                StrokeText(text: "C", width: 1.0, color:  Color(hex: 0xF47781))
+                    .foregroundColor(Color(hex: 0xFFFFFF))
+                    .font(.custom(OpenSans_Bold, size: 35))
             }else if BedValue == 3{
-                Image("Bed_D_icon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 48)
+                StrokeText(text: "D", width: 1.0, color:  Color(hex: 0xF47781))
+                    .foregroundColor(Color(hex: 0xFFFFFF))
+                    .font(.custom(OpenSans_Bold, size: 35))
             }
         }
         .padding(.leading, 15)

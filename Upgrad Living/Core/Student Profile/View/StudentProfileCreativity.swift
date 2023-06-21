@@ -21,7 +21,7 @@ struct StudentProfileCreativity: View {
                     .scaledToFit()
                     .frame(width: 24, height: 23)
                 Text(titleName)
-                    .font(.custom(OpenSans_SemiBold, size: 10))
+                    .font(.custom(OpenSans_SemiBold, size: 9))
                     .foregroundColor(Color(hex: 0x333333))
             }
         }

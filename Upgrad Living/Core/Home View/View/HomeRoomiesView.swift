@@ -31,13 +31,33 @@ struct HomeRoomiesView: View {
                             UserDefaults.standard.set(Room.studentAppID ?? "", forKey: "RoomieAppID")
                             isProfile = true
                         } label: {
-                            bckimg
+//                            bckimg
+//                                .overlay {
+//                                    KFImage(URL(string: Room.studentImg ?? ""))
+//                                        .resizable()
+//                                        .scaledToFit()
+//                                        .frame(width: 95, height: 110)
+//                                        .mask { bckimg }
+//                                }
+                            
+                            KFImage(URL(string: Room.studentImg ?? ""))
+                                .placeholder{
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle(tint: Color("Student_Profile1")))
+                                    }
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 110, height: 110)
+                                .clipShape(Circle())
+                                .clipped()
+                                .padding(5)
+                                .background(colorScheme == .light ? .white : Color(hex: 0x2E2E2E))
+                                .clipShape(Circle())
+                                .shadow(color: .gray, radius: 3, x: 0, y: 0)
                                 .overlay {
-                                    KFImage(URL(string: Room.studentImg ?? ""))
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 95, height: 110)
-                                        .mask { bckimg }
+                                    Circle()
+                                        .stroke(style: StrokeStyle(lineWidth: 1, dash: [1]))
+                                        .foregroundColor(Color(hex: 0xDE1223))
                                 }
                         }
                     }

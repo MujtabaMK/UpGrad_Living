@@ -89,19 +89,32 @@ struct EventAllView: View {
                         }
                         
                         ScrollView(showsIndicators: false) {
-                            ForEach(searchResults) { Event in
+                            ForEach(Array(searchResults.enumerated()), id: \.offset) { index, Event in
                                 if CheckFavriate{
                                     if Event.isFavorate == "1"{
                                         UpcommingEventsCell(post: Event, isShowAlert: $showingAlert,alertMessage: $alertMessage, isEventDetails: $isEventDetails, isCallAPI: $isCallAPI)
                                             .padding(.horizontal, 15)
                                             .padding(.leading, 5)
-                                            .frame(width: getRect().width, height: 350)
+                                            .frame(width: getRect().width, height: 300)
+                                    }else{
+                                        if index == 0{
+                                            VStack{
+                                                Image("Save_Events")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 96, height: 127)
+                                                
+                                                Text("Oops! There are no Saved Events!")
+                                                    .font(.custom(OpenSans_Bold, size: 20))
+                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xFFFFFF))
+                                            }
+                                        }
                                     }
                                 }else{
                                     UpcommingEventsCell(post: Event, isShowAlert: $showingAlert,alertMessage: $alertMessage, isEventDetails: $isEventDetails, isCallAPI: $isCallAPI)
                                         .padding(.horizontal, 15)
                                         .padding(.leading, 5)
-                                        .frame(width: getRect().width, height: 350)
+                                        .frame(width: getRect().width, height: 300)
                                 }
                             }
                         }
@@ -306,16 +319,16 @@ struct EventAllView: View {
                                             startDate = ""
                                             endDate = ""
                                         } label: {
-                                            Rectangle()
-                                                .strokeBorder(Color(hex: 0xB20710), lineWidth: 1)
+                                            Text("Clear")
+                                                .font(.custom(OpenSans_SemiBold, size: 15))
+                                                .foregroundColor(Color(hex: 0x333333))
+                                                .padding()
                                                 .frame(width: 130)
                                                 .background(.white)
                                                 .cornerRadius(50)
                                                 .overlay {
-                                                    Text("Clear")
-                                                        .font(.custom(OpenSans_SemiBold, size: 15))
-                                                        .foregroundColor(Color(hex: 0x333333))
-                                                        .padding()
+                                                    RoundedRectangle(cornerRadius: 50)
+                                                        .strokeBorder(Color(hex: 0xB20710), lineWidth: 1)
                                                 }
                                         }
                                         Spacer()
@@ -374,7 +387,7 @@ struct EventAllView: View {
                         .cornerRadius(15, corners: [.topLeft, .topRight])
                         .shadow(color: .gray, radius: 2, x: 0, y: 0)
                         .offset(y: 10)
-                        .padding(.bottom, 70)
+                        .padding(.bottom, 80)
                     }
                     
                 }
@@ -411,8 +424,7 @@ struct EventAllView: View {
                     }
                 }
             }
-            .padding(.bottom, 70)
-            //.ignoresSafeArea()
+            .padding(.bottom, 50)
             .navigationBarHidden(true)
             .onAppear{
                 if networkMonitor.isConnected{

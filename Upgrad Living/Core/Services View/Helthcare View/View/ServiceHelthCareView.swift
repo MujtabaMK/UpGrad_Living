@@ -44,7 +44,7 @@ struct ServiceHelthCareView: View {
                         }
                         Spacer()
                     }
-                    .padding(.top, 50)
+                    .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
                     VStack(alignment: .leading){
                         HStack{
                             Text("Healthcare")
@@ -59,6 +59,7 @@ struct ServiceHelthCareView: View {
                                 .scaledToFit()
                                 .frame(width: 24, height: 24)
                                 .padding(.top, 20)
+                                .foregroundColor(Color(hex: 0x00B2BA))
                         }
                         .padding(.horizontal)
                         Rectangle()
@@ -142,30 +143,32 @@ struct ServiceHelthCareView: View {
                         }
                         .padding(.leading)
                         .padding(.bottom)
-                        VStack(alignment: .leading){
-                            Text("*Please note:")
-                                .font(.custom(OpenSans_SemiBold, size: 15))
-                                .foregroundColor(Color(hex: 0xD9404C))
-                            
+                        if arrNotes.count > 0{
                             VStack(alignment: .leading){
-                                ForEach(arrNotes) { notes in
-                                    if notes.notesCateg == "5"{
-                                        Text(notes.note ?? "")
-                                            .font(.custom(OpenSans_SemiBold, size: 15))
-                                            .foregroundColor(Color(hex: 0xD9404C))
-                                            .padding(2)
+                                Text("*Please note:")
+                                    .font(.custom(OpenSans_SemiBold, size: 15))
+                                    .foregroundColor(Color(hex: 0xD9404C))
+                                
+                                VStack(alignment: .leading){
+                                    ForEach(arrNotes) { notes in
+                                        if notes.notesCateg == "5"{
+                                            Text(notes.note ?? "")
+                                                .font(.custom(OpenSans_SemiBold, size: 15))
+                                                .foregroundColor(Color(hex: 0xD9404C))
+                                                .padding(2)
+                                        }
                                     }
                                 }
                             }
+                            .padding(5)
+                            .frame(width: getRect().width - 20, alignment: .leading)
+                            .padding(.leading, 5)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [1]))
+                            }
+                            .padding(.leading, 20)
                         }
-                        .padding(5)
-                        .frame(width: getRect().width - 20, alignment: .leading)
-                        .padding(.leading, 5)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [1]))
-                        }
-                        .padding(.leading, 20)
                     }
                     .padding(.bottom)
                     .frame(maxWidth: getRect().width)

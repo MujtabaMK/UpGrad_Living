@@ -111,7 +111,7 @@ struct BookingView: View {
                         }
                         Divider()
                             .frame(height: 20)
-                        Text(RoomPrefrence)
+                        Text(RoomPrefrence.uppercased())
                             .font(.custom(OpenSans_Bold, size: 10))
                             .foregroundColor(Color(hex: 0x868686))
                             .padding(.trailing, 8)

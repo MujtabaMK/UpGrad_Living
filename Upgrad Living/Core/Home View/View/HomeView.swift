@@ -28,6 +28,8 @@ struct HomeView: View {
     @Binding var isEventDetails: Bool
     @Binding var RoomieId: String
     @Binding var isofferView: Bool
+    @Binding var isUserProfile: Bool
+    @Binding var isNotification: Bool
     
     @State private var isEventAll = false
     @State private var alertMessage = String()
@@ -51,105 +53,105 @@ struct HomeView: View {
         NavigationView {
             GeometryReader { proxy in
                 ScrollView(showsIndicators: false){
-                    VStack{
+                    ZStack{
+                        HomeViewTop(ProfileImage: profileImg, StudentName: studentName, isUserProfile: $isUserProfile, isNotification: $isNotification)
+                            .frame(height: 172)
+                    }
+                    ZStack{
+                        Color(colorScheme == .light ? .white : .black)
                         VStack{
-                            HomeViewTop(ProfileImage: profileImg, StudentName: studentName)
-                                .frame(height: 172)
-                            ZStack{
-                                Color(colorScheme == .light ? .white : .black)
-                                VStack{
-                                    ScrollView([.horizontal, .vertical], showsIndicators: false){
-                                        HStack{
-                                            ForEach(Array(arrMealList.enumerated()), id: \.offset) { index, food in
-                                                Button {
-                                                    changeValue = true
-                                                    currentIndex = index
-                                                } label: {
-                                                    Rectangle()
-                                                        .fill(currentIndex == index ? Color(hex: 0xD9404C) : Color(hex: 0xFFFFFF))
-                                                        .frame(width: 80, height: 38)
-                                                        .cornerRadius(15)
-                                                        .shadow(color: .gray, radius: 3, x: 0, y: 0)
-                                                        .overlay {
-                                                            Text(food.mealName ?? "")
-                                                                .font(.custom(OpenSans_SemiBold, size: 12))
-                                                                .foregroundColor(currentIndex == index ? .white : .black)
-                                                        }
-                                                }
-                                            }
-                                        }
-                                        .padding([.top, .bottom])
-                                        .padding([.leading, .trailing], 4)
-                                    }
-                                    
+                            ScrollView(.horizontal, showsIndicators: false){
+                                HStack{
                                     ForEach(Array(arrMealList.enumerated()), id: \.offset) { index, food in
-                                        if currentIndex == index{
-                                            Text(food.foodTime ?? "")
-                                                .font(.custom(OpenSans_Bold, size: 16))
-                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : Color(hex: 0xFFFFFF, alpha: 0.8))
-                                                .padding([.top, .bottom], 0)
+                                        Button {
+                                            changeValue = true
+                                            currentIndex = index
+                                        } label: {
+                                            Rectangle()
+                                                .fill(currentIndex == index ? Color(hex: 0xD9404C) : Color(hex: 0xFFFFFF))
+                                                .frame(width: 80, height: 38)
+                                                .cornerRadius(15)
+                                                .shadow(color: .gray, radius: 3, x: 0, y: 0)
+                                                .overlay {
+                                                    Text(food.mealName ?? "")
+                                                        .font(.custom(OpenSans_SemiBold, size: 12))
+                                                        .foregroundColor(currentIndex == index ? .white : .black)
+                                                }
                                         }
                                     }
-                                    
-                                    Image("Home_Time_Line")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 206, height: 8)
-                                        .padding(.top, -12)
-                                    
-                                    //Posts
-                                    SnapCarousel(changeValue: $changeValue, spacing: getRect().height < 750 ? 0 : 0,trailingSpace: getRect().height < 750 ? 100 : 150,index: $currentIndex, items: arrMealList) { post in
-                                        CardView(post: post)
-                                    }
-                                    .offset(y: 40)
-                                    .frame(height: 300)
-                                    .padding(.bottom)
-                                    
-                                    SnapCarouselEvents(spacing: getRect().height < 750 ? 0 : 0,trailingSpace: getRect().height < 750 ? 25 : 25,index: $currentIndexNotice, items: arrNotes) { post in
-                                        NoticeView(notice: post, IndexValue: currentIndexNotice)
-                                    }
-                                    .offset(y: 40)
-                                    .frame(height: arrNotes.count > 0 ? 100 : 0)
-                                    .padding(.bottom, getRect().height < 750 ? 40 : 60)
-                                    
-                                    HStack{
-                                        ForEach(arrNotes.indices, id: \.self) { notice in
-                                            if notice == currentIndexNotice{
-                                                Image("Notice_Indicator_Select")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 8, height: 8)
-                                            }else{
-                                                Image("Notice_Indicator_NotSelect")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 5, height: 5)
-                                            }
-                                        }
-                                    }
-                                    
-                                    UpcomingEvents(isEvents: $isEvent, isEventsAll: $isEventAll, arrEvents: arrEvents,isShowAlert: $showingAlert, alertMessage: $alertMessage, callHomeAPIAgain: $callHomeAPIAgain)
-                                        .padding(.top)
-                                    
-                                    HomeRoomiesView(isProfile: $isProfile, RoomieId: $RoomieId, arrRoomie: arrRoomies)
-                                    
-                                    HomeOfferView(arrDeals: arrOffer, isofferView: $isofferView)
-                                        .padding(.bottom, 20)
-                                    
-                                    NearByView()
-                                                                        
                                 }
-                                VStack{
-                                    NavigationLink(
-                                        "",
-                                        destination: EventAllView(isEventDetails: $isEventDetails, isBackEvent: $isBackEvent).navigationBarHidden(true),
-                                        isActive: $isEventAll).isDetailLink(false)
+                                .frame(width: getRect().width - 20, alignment: .center)
+                                .padding([.top, .bottom])
+                                .padding([.leading, .trailing], 4)
+                            }
+                            .frame(width: getRect().width - 20, alignment: .center)
+                            
+                            ForEach(Array(arrMealList.enumerated()), id: \.offset) { index, food in
+                                if currentIndex == index{
+                                    Text(food.foodTime ?? "")
+                                        .font(.custom(OpenSans_Bold, size: 16))
+                                        .foregroundColor(colorScheme == .light ? Color(hex: 0x868686) : Color(hex: 0xFFFFFF, alpha: 0.8))
+                                        .padding([.top, .bottom], 0)
                                 }
                             }
-                            .cornerRadius(15, corners: [.topLeft, .topRight])
-                            .offset(y: -10)
+                            
+                            Image("Home_Time_Line")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 206, height: 8)
+                                .padding(.top, -12)
+                            
+                            //Posts
+                            SnapCarousel(changeValue: $changeValue, spacing: getRect().height < 750 ? 0 : 0,trailingSpace: getRect().height < 750 ? 100 : 150,index: $currentIndex, items: arrMealList) { post in
+                                CardView(post: post)
+                            }
+                            .offset(y: 40)
+                            .frame(height: 300)
+                            .padding(.bottom)
+                            
+                            SnapCarouselEvents(spacing: getRect().height < 750 ? 0 : 0,trailingSpace: getRect().height < 750 ? 25 : 25,index: $currentIndexNotice, items: arrNotes) { post in
+                                NoticeView(notice: post, IndexValue: currentIndexNotice)
+                            }
+                            .offset(y: 40)
+                            .frame(height: arrNotes.count > 0 ? 100 : 0)
+                            .padding(.bottom, getRect().height < 750 ? 40 : 60)
+                            
+                            HStack{
+                                ForEach(arrNotes.indices, id: \.self) { notice in
+                                    if notice == currentIndexNotice{
+                                        Image("Notice_Indicator_Select")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 8, height: 8)
+                                    }else{
+                                        Image("Notice_Indicator_NotSelect")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 5, height: 5)
+                                    }
+                                }
+                            }
+                            
+                            UpcomingEvents(isEvents: $isEvent, isEventsAll: $isEventAll, arrEvents: arrEvents,isShowAlert: $showingAlert, alertMessage: $alertMessage, callHomeAPIAgain: $callHomeAPIAgain)
+                                .padding(.top)
+                            
+                            HomeRoomiesView(isProfile: $isProfile, RoomieId: $RoomieId, arrRoomie: arrRoomies)
+                            
+                            HomeOfferView(arrDeals: arrOffer, isofferView: $isofferView)
+                                .padding(.bottom, 20)
+                            
+                            NearByView()
+                            
+                        }
+                        VStack{
+                            NavigationLink(
+                                "",
+                                destination: EventAllView(isEventDetails: $isEventDetails, isBackEvent: $isBackEvent).navigationBarHidden(true),
+                                isActive: $isEventAll).isDetailLink(false)
                         }
                     }
+                    .cornerRadius(15, corners: [.topLeft, .topRight])
+                    .offset(y: -30)
                 }
                 .onAppear{
                     if networkMonitor.isConnected{
@@ -189,6 +191,8 @@ struct HomeView: View {
                     if networkMonitor.isConnected{
                         viewModelMeal.getMealList(hostel_student_id: studentAppID ?? "") { Meal in
                             if Meal.status == 1{
+                                clearKingFisherCache()
+                                
                                 arrMealList = Meal.data?.meal ?? []
                                 arrNotes = Meal.data?.note ?? []
                                 arrEvents = Meal.data?.event ?? []
@@ -238,6 +242,12 @@ struct HomeView: View {
     }
     func setSelectItem(item: String) {
         selectedItem = item
+    }
+    
+    func clearKingFisherCache(){
+        KingfisherManager.shared.cache.clearMemoryCache()
+        KingfisherManager.shared.cache.clearDiskCache()
+        KingfisherManager.shared.cache.cleanExpiredDiskCache()
     }
     
     //New Code
@@ -356,13 +366,6 @@ struct HomeView: View {
             print(IndexValue)
         }
         //.cornerRadius(15, corners: [.topLeft, .topRight, .bottomLeft, .bottomRight])
-    }
-    
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(pageIndex: Page.withIndex(0), isEvent: .constant(false), isBackEvent: .constant(false), isProfile: .constant(false), isEventDetails: .constant(false), RoomieId: .constant(""), isofferView: .constant(false))
     }
 }
 

@@ -37,7 +37,7 @@ struct ServiceGymView: View {
                         }
                         Spacer()
                     }
-                    .padding(.top, 50)
+                    .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
                     VStack(alignment: .leading){
                         Text("Gym & Fitness Studio")
                             .font(.custom(OpenSans_Bold, size: 18))
@@ -122,30 +122,32 @@ struct ServiceGymView: View {
                         }
                         .padding(.leading)
                         .padding(.bottom)
-                        VStack(alignment: .leading){
-                            Text("*Please note:")
-                                .font(.custom(OpenSans_SemiBold, size: 15))
-                                .foregroundColor(Color(hex: 0xD9404C))
-                            
+                        if arrNotes.count > 0{
                             VStack(alignment: .leading){
-                                ForEach(arrNotes) { notes in
-                                    if notes.notesCateg == "3"{
-                                        Text(notes.note ?? "")
-                                            .font(.custom(OpenSans_SemiBold, size: 15))
-                                            .foregroundColor(Color(hex: 0xD9404C))
-                                            .padding(2)
+                                Text("*Please note:")
+                                    .font(.custom(OpenSans_SemiBold, size: 15))
+                                    .foregroundColor(Color(hex: 0xD9404C))
+                                
+                                VStack(alignment: .leading){
+                                    ForEach(arrNotes) { notes in
+                                        if notes.notesCateg == "3"{
+                                            Text(notes.note ?? "")
+                                                .font(.custom(OpenSans_SemiBold, size: 15))
+                                                .foregroundColor(Color(hex: 0xD9404C))
+                                                .padding(2)
+                                        }
                                     }
                                 }
                             }
+                            .padding(5)
+                            .frame(width: getRect().width - 20, alignment: .leading)
+                            .padding(.leading, 5)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [1]))
+                            }
+                            .padding(.leading, 20)
                         }
-                        .padding(5)
-                        .frame(width: getRect().width - 20, alignment: .leading)
-                        .padding(.leading, 5)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [1]))
-                        }
-                        .padding(.leading, 20)
                     }
                     .padding(.bottom)
                     .frame(maxWidth: getRect().width)

@@ -33,6 +33,7 @@ struct ServiceView: View {
                             .padding(.trailing, 30)
                         Spacer(minLength: 0)
                     }
+                    .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
                     Divider()
                     Text("A plethora of amenities to cater to the diverse needs of our students!")
                         .font(.custom(OpenSans_Bold, size: 18))
@@ -74,6 +75,8 @@ struct ServiceView: View {
                     .padding(.bottom, 30)
                 }
             }
+            .padding(.bottom, 50)
+            .ignoresSafeArea()
             .navigationBarHidden(true)
         }
     }

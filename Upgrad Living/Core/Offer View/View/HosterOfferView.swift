@@ -47,7 +47,7 @@ struct HosterOfferView: View {
                             Spacer(minLength: 0)
                         }
                         .padding(.trailing)
-                        .padding(.top)
+                        .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
                         Divider()
                         
                         ForEach(arrOffer) { deals in
@@ -69,6 +69,8 @@ struct HosterOfferView: View {
                     }
                 }
             }
+            .ignoresSafeArea()
+            .navigationBarHidden(true)
             .onAppear{
                 if networkMonitor.isConnected{
                     viewModel.getHostelOffer(appId: studentAppID ?? "") { offer in

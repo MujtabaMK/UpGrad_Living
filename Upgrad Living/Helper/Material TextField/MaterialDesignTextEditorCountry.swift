@@ -16,6 +16,7 @@ struct MaterialDesignTextEditorCountry: View {
         ZStack {
             HStack{
                 TextEditor(text: .constant(text))
+                    .font(.custom(OpenSans_SemiBold, size: 12))
                     .disabled(true)
                     .padding(.leading, 4)
                     .focused($focusField, equals: .textField)
@@ -39,6 +40,7 @@ struct MaterialDesignTextEditorCountry: View {
                         .cornerRadius(4.0)
                         .opacity(placeholderBackgroundOpacity)
                     Text(placeholder)
+                        .font(.custom(OpenSans_SemiBold, size: 10))
                         .foregroundColor(.white)
                         .colorMultiply(placeholderColor)
                         .animatableFont(size: placeholderFontSize)

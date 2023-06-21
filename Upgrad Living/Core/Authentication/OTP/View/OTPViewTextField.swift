@@ -15,7 +15,7 @@ struct OTPViewTextField: View {
             .keyboardType(.numberPad)
             .frame(width: 45, height: 45)
             .multilineTextAlignment(.center)
-            .font(Font.custom(OpenSans_Bold, size: 14))
+            .font(Font.custom(OpenSans_SemiBold, size: 15))
             .foregroundColor(.black)
             .onReceive(Just(text)) { newValue in
                 if text.count > 1 {

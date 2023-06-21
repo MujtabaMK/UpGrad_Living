@@ -9,6 +9,8 @@ import SwiftUI
 import Kingfisher
 
 struct BedDetailsShowView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     var getData: [BedDetail]
     var body: some View {
         VStack{
@@ -41,11 +43,23 @@ struct BedDetailsShowView: View {
                                     Text(value.specialisationName ?? "")
                                         .font(.custom(OpenSans_SemiBold, size: 12))
                                         .foregroundColor(Color(hex: 0x868686))
-                                    Divider()
+                                    
+                                    HLine()
+                                        .stroke(style: StrokeStyle(lineWidth: 0.5, dash: [1]))
+                                        .foregroundColor(colorScheme == .light ? Color(hex: 0x969696) : Color(hex: 0x969696))
+                                        .frame(height: 1)
+                                        .padding(.trailing)
+                                    
                                     Text("\(value.stateName ?? "") \(value.cityName ?? "")")
                                         .font(.custom(OpenSans_SemiBold, size: 12))
                                         .foregroundColor(Color(hex: 0x868686))
-                                    Divider()
+                                    
+                                    HLine()
+                                        .stroke(style: StrokeStyle(lineWidth: 0.5, dash: [1]))
+                                        .foregroundColor(colorScheme == .light ? Color(hex: 0x969696) : Color(hex: 0x969696))
+                                        .frame(height: 1)
+                                        .padding(.trailing)
+                                    
                                     HStack{
                                         Text("Food Preference -")
                                             .font(.custom(OpenSans_SemiBold, size: 12))
@@ -62,18 +76,34 @@ struct BedDetailsShowView: View {
                         .background(.white)
                         .cornerRadius(12)
                         .shadow(color: .gray, radius: 5, x: 0, y: 0)
-                        .offset(x: 5, y: -25)
+                        .offset(x: 5, y: -20)
                         
                     }else{
                         BedSetView(BedValue: indexvalue)
-                        Text(value.bedstatus ?? "")
-                            .font(.custom(OpenSans_SemiBold, size: 16))
-                            .foregroundColor(Color(hex: 0x969696))
-                            .frame(width: getRect().width - 10, height: 130, alignment: .center)
-                            .background(.white)
-                            .cornerRadius(12)
-                            .shadow(color: .gray, radius: 5, x: 0, y: 0)
-                            .offset(x: 5, y: -25)
+                        HStack{
+                            HLine()
+                                .stroke(style: StrokeStyle(lineWidth: 0.5, dash: [1]))
+                                .foregroundColor(colorScheme == .light ? Color(hex: 0x969696) : .black)
+                                .frame(height: 1)
+                                .padding(.leading)
+                            
+                            Text(value.bedstatus?.uppercased() ?? "")
+                                .font(.custom(OpenSans_SemiBold, size: 16))
+                                .foregroundColor(Color(hex: 0x969696))
+                                .padding(.horizontal)
+                                
+                            
+                            HLine()
+                                .stroke(style: StrokeStyle(lineWidth: 0.5, dash: [1]))
+                                .foregroundColor(colorScheme == .light ? Color(hex: 0x969696) : Color(hex: 0x969696))
+                                .frame(height: 1)
+                                .padding(.trailing)
+                        }
+                        .frame(width: getRect().width - 10, height: 130, alignment: .center)
+                        .background(.white)
+                        .cornerRadius(12)
+                        .shadow(color: .gray, radius: 5, x: 0, y: 0)
+                        .offset(x: 5, y: -20)
                         
                     }
                 }

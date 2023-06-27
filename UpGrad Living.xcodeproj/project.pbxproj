@@ -289,6 +289,8 @@
 		09D3BE2D2A383F39000B898A /* Upgrad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09D3BE2B2A383F39000B898A /* Upgrad.xcdatamodeld */; };
 		09D3BE342A38486F000B898A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3BE332A38486F000B898A /* CoreDataManager.swift */; };
 		09D3BE372A3853D1000B898A /* CalendarModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3BE362A3853D1000B898A /* CalendarModule.swift */; };
+		09DC3F7C2A4AE0BB006CA24C /* LaundryDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC3F7B2A4AE0BB006CA24C /* LaundryDayModel.swift */; };
+		09DC3F7E2A4AE0ED006CA24C /* LaundryDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC3F7D2A4AE0ED006CA24C /* LaundryDayViewModel.swift */; };
 		09DE74A829D541F5001B105A /* ParentsDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74A729D541F5001B105A /* ParentsDetailsView.swift */; };
 		09DE74AA29D54560001B105A /* ParentContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74A929D54560001B105A /* ParentContentViewModel.swift */; };
 		09DE74AC29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74AB29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift */; };
@@ -635,6 +637,8 @@
 		09D3BE2C2A383F39000B898A /* Upgrad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Upgrad.xcdatamodel; sourceTree = "<group>"; };
 		09D3BE332A38486F000B898A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		09D3BE362A3853D1000B898A /* CalendarModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModule.swift; sourceTree = "<group>"; };
+		09DC3F7B2A4AE0BB006CA24C /* LaundryDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryDayModel.swift; sourceTree = "<group>"; };
+		09DC3F7D2A4AE0ED006CA24C /* LaundryDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryDayViewModel.swift; sourceTree = "<group>"; };
 		09DE74A729D541F5001B105A /* ParentsDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentsDetailsView.swift; sourceTree = "<group>"; };
 		09DE74A929D54560001B105A /* ParentContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentContentViewModel.swift; sourceTree = "<group>"; };
 		09DE74AB29D55848001B105A /* MaterialDesignTextFieldwithoutImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialDesignTextFieldwithoutImage.swift; sourceTree = "<group>"; };
@@ -2531,6 +2535,7 @@
 			children = (
 				09B9421F2A39C80200945146 /* RequestApprovalViewModel.swift */,
 				0926FB7C2A3B243C009A61CB /* SeekApprovalViewModel.swift */,
+				09DC3F7D2A4AE0ED006CA24C /* LaundryDayViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -2541,6 +2546,7 @@
 				09815F6C2A388AB700AF7720 /* RequestReasonModel.swift */,
 				09B9421D2A39C7C300945146 /* RequestApprovalModel.swift */,
 				0926FB7A2A3B18C8009A61CB /* SeekApprovalModel.swift */,
+				09DC3F7B2A4AE0BB006CA24C /* LaundryDayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3134,6 +3140,7 @@
 				0940F3F32A444AA3000B79D3 /* ServiceSlotViewModel.swift in Sources */,
 				09C32E5E2A40663800C60C30 /* ParentSeekApproval.swift in Sources */,
 				09C32E622A406B5900C60C30 /* ParentHomeViewModel.swift in Sources */,
+				09DC3F7C2A4AE0BB006CA24C /* LaundryDayModel.swift in Sources */,
 				0905F3B42A289F4400E4BE2A /* UserProfile.swift in Sources */,
 				09B84CD629DED6B5000FC1C6 /* ZoomableScrollView.swift in Sources */,
 				09B7A1C629D8072A00EC72EF /* FoucesedMedicalTextEditor.swift in Sources */,
@@ -3237,6 +3244,7 @@
 				098D698D29CD70EF0000F5A9 /* AnimatableCustomFontModifier.swift in Sources */,
 				0931A90629D7ED6B00F6A209 /* SubmitParentModel.swift in Sources */,
 				0940F3ED2A443190000B79D3 /* MemberOTPView.swift in Sources */,
+				09DC3F7E2A4AE0ED006CA24C /* LaundryDayViewModel.swift in Sources */,
 				09B7A1C829D8125A00EC72EF /* SubmitMedicalModel.swift in Sources */,
 				09C410672A417D81007D6934 /* ParentApprovalTop.swift in Sources */,
 				09C32E562A40581B00C60C30 /* ParentBookGuestRoomWeb.swift in Sources */,

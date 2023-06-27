@@ -18,7 +18,7 @@ struct RequestLeave: View {
     
     @State private var StartDate = Date()
     @State private var EndDate = Date()
-
+    
     @Binding var startDate: String
     @Binding var endDate: String
     @Binding var startTime: String
@@ -244,7 +244,6 @@ struct RequestLeave: View {
         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from:startDate)!
-        
         
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels

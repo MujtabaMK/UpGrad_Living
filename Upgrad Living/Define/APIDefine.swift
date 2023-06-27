@@ -88,6 +88,7 @@ let GET_Book_Guest_Room_Details = "\(StartURL)getBookingById"
 //Request Approval
 let POST_Request_Approval = "\(StartURL)requestApproval"
 let GET_Seek_Approval = "\(StartURL)requestList"
+let GET_Laundry_Day = "\(StartURL)checkLaundryDay"
 
 //Book Service
 

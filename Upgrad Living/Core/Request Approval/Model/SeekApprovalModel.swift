@@ -20,7 +20,7 @@ struct SeekApprovalRequest: Codable {
     let reasonCateg, startDate, startTime, days: String?
     let dateDetails: String?
     let approvers: [Approver]?
-
+    
     enum CodingKeys: String, CodingKey {
         case requestID = "requestId"
         case requestCategory, guestName, guestNo, reasonCateg, startDate, startTime, days, dateDetails, approvers

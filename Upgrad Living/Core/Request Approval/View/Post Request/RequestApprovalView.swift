@@ -294,6 +294,10 @@ struct RequestApprovalView: View {
                                 alertMessage = "Invite a guest request added successfully"
                                 AlertShow = "1"
                                 showingAlert = true
+                            }else if ReasonId == "5"{
+                                alertMessage = "Laundry requtest added successfully"
+                                AlertShow = "1"
+                                showingAlert = true
                             }
                         }else{
                             alertMessage = request.msg ?? ""

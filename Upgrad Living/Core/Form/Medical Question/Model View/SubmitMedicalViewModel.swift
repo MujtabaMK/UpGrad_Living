@@ -8,7 +8,6 @@
 import Foundation
 
 class SubmitMedicalViewModel: ObservableObject {
-    @Published var coins = SubmitMedicalModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

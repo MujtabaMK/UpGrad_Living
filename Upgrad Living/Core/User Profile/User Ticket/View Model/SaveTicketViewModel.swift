@@ -8,7 +8,6 @@
 import Foundation
 
 class SaveTicketViewModel: ObservableObject {
-    @Published var coins = SaveTicketModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

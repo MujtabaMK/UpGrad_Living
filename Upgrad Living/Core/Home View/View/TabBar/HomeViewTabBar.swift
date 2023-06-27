@@ -87,11 +87,11 @@ struct HomeViewTabBar: View {
                                     isServiceBooking = true
                                 } label: {
                                     VStack(spacing: -5){
-                                        Image("Home_Student_Connect")
+                                        Image("Home_Service_Booking_icon")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 74, height: 74)
-                                        Text("Pay in\n store")
+                                        Text("Service\n Booking")
                                             .font(.custom(OpenSans_SemiBold, size: 12))
                                             .foregroundColor(Color(hex: 0x00B2BA))
                                     }

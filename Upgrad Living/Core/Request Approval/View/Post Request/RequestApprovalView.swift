@@ -116,6 +116,13 @@ struct RequestApprovalView: View {
                                     .padding(.bottom)
                                 
                                 Button {
+                                    startDate = ""
+                                    endDate = ""
+                                    startTime = ""
+                                    endTime = ""
+                                    guestName = ""
+                                    guestNo = ""
+                                    reason = ""
                                     isReasion.toggle()
                                 } label: {
                                     HStack{
@@ -136,7 +143,6 @@ struct RequestApprovalView: View {
                                     .background(colorScheme == .light ? Color(hex: 0xF9F9F9) : Color(hex: 0x2E2E2E))
                                     .cornerRadius(5)
                                     .shadow(color: .gray, radius: 2, x: 0, y: 0)
-                                    
                                 }
                                 if isReasion{
                                     VStack{
@@ -224,6 +230,18 @@ struct RequestApprovalView: View {
                                                         showingAlert: $showingAlert,
                                                         AlertShow: $AlertShow)
                                     .padding(.top)
+                                }else if ReasonId == "5"{
+                                    RequestLaundry(startDate: $startDate,
+                                                   endDate: $endDate,
+                                                   startTime: $startTime,
+                                                   endTime: $endTime,
+                                                   guestName: $guestName,
+                                                   guestNo: $guestNo,
+                                                   reason: $reason,
+                                                   callAPI: $callAPI,
+                                                   alertMessage: $alertMessage,
+                                                   showingAlert: $showingAlert,
+                                                   AlertShow: $AlertShow)
                                 }
                             }
                         }

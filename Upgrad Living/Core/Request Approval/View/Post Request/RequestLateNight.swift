@@ -57,11 +57,10 @@ struct RequestLateNight: View {
                                             .frame(width: 25, height: 35)
                                             .padding(.leading, 20)
                                         
-                                        Spacer()
-                                        
                                         Text(startDate)
                                             .font(.custom(OpenSans_Bold, size: 14))
                                             .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
+                                            .padding(.leading)
                                         Spacer()
                                     }
                                 }
@@ -171,6 +170,10 @@ struct RequestLateNight: View {
                             alertMessage = "Please select end time"
                             AlertShow = "0"
                             showingAlert = true
+                        }else if startTime > endTime{
+                            alertMessage = "Please Correct the time"
+                            AlertShow = "0"
+                            showingAlert = true
                         }else if reason.isEmpty{
                             alertMessage = "Please enter reason for late night"
                             AlertShow = "0"
@@ -208,8 +211,8 @@ struct RequestLateNight: View {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         // Convert Date to String
         startDate =  dateFormatter.string(from: todayDate)
-        
     }
+    
     //MARK: - Show Date Picker
     func showDatePickerAlert() {//\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
         let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
@@ -242,7 +245,6 @@ struct RequestLateNight: View {
         dateFormatter.dateFormat = "HH:mm:ss"
         // Convert Date to String
         startTime =  dateFormatter.string(from: todayDate)
-        
     }
     
     //MARK: - Convert End Time Method
@@ -253,14 +255,13 @@ struct RequestLateNight: View {
         dateFormatter.dateFormat = "HH:mm:ss"
         // Convert Date to String
         endTime =  dateFormatter.string(from: todayDate)
-        
     }
     
     //MARK: - Show Time Picker
     func showStartTimePickerAlert() {//\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
         let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
         let datePicker: UIDatePicker = UIDatePicker()
-        
+
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
         alertVC.view.addSubview(datePicker)
@@ -283,7 +284,6 @@ struct RequestLateNight: View {
     func showEndTimePickerAlert() {//\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
         let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
         let datePicker: UIDatePicker = UIDatePicker()
-        
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
         alertVC.view.addSubview(datePicker)

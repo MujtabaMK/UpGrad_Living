@@ -36,9 +36,10 @@ struct RoomTypeTripleView: View {
                             Text("\u{20B9}51,000 per month")
                                 .font(.custom(OpenSans_SemiBold, size: 12))
                                 .foregroundColor(Color(hex: 0x868686))
-                            Rectangle()
-                                .fill(Color(hex: 0x868686))
-                                .frame(width: 60,height: 0.5)
+                                .strikethrough(true, color: Color(hex: 0x868686))
+//                            Rectangle()
+//                                .fill(Color(hex: 0x868686))
+//                                .frame(width: 60,height: 0.5)
                         }
                     }
                     HStack(spacing: 0){

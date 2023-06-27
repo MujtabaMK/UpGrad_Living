@@ -8,7 +8,6 @@
 import Foundation
 
 class ParentTakeActionViewModel: ObservableObject {
-    @Published var coins = ParentTakeActionModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

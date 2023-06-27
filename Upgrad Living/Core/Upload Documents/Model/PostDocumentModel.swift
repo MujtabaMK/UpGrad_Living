@@ -14,7 +14,7 @@ struct PostDocumentModel: Codable {
     let data: PostDocumentClass?
 }
 
-// MARK: - DataClass
+// MARK: - PostDocumentClass
 struct PostDocumentClass: Codable {
     let fileName: String?
     let fileURL: String?

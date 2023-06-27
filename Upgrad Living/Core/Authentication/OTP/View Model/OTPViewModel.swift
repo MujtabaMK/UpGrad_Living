@@ -15,7 +15,6 @@ enum LogInField {
 }
 
 class OTPViewModel: ObservableObject {
-    @Published var coins = OTPModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

@@ -8,7 +8,6 @@
 import Foundation
 
 class SeekApprovalViewModel: ObservableObject {
-    @Published var coins = SeekApprovalModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

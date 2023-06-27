@@ -21,7 +21,7 @@ struct GetBedModel: Codable {
     let data: BedClass?
 }
 
-// MARK: - DataClass
+// MARK: - BedClass
 struct BedClass: Codable {
     let insertID, roomName, floorName, bedNo: String?
     let bedDetails: [BedDetail]?

@@ -8,7 +8,6 @@
 import Foundation
 
 class ParentHomeViewModel: ObservableObject {
-    @Published var coins = ParentHomeModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

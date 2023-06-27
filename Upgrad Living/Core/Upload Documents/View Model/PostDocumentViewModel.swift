@@ -8,7 +8,6 @@
 import Foundation
 
 class PostDocumentViewModel: ObservableObject {
-    @Published var coins = PostDocumentModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

@@ -14,7 +14,7 @@ struct CommunityDetailsModule: Codable {
     let data: CommunityDetailsClass?
 }
 
-// MARK: - DataClass
+// MARK: - CommunityDetailsClass
 struct CommunityDetailsClass: Codable {
     let clubDetails: ClubDetails?
     let details: [Detail]?

@@ -21,8 +21,8 @@ struct OTPView: View {
     @Environment(\.presentationMode) var presentaionMode
     @State private var showingAlert = false
     @State private var AlertMessage = String()
-    @StateObject var viewModel = OTPViewModel()
-    @StateObject private var loginViewModel = LoginViewModel()
+    @StateObject var viewModel = HomeOTPViewModel()
+    @StateObject private var loginViewModel = HomeLoginViewModel()
     @StateObject private var stepViewModel = StepViewModel()
     @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var loginDict = [String: Any?]()
@@ -35,11 +35,16 @@ struct OTPView: View {
     @State private var isHomeView = false
     @State private var isBookingView = false
     @State private var isBookingSuccess = false
+    @State private var isParentHome = false
     
     @State private var isSelectedIndex = 3
     
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @State private var deviceToken = UserDefaults.standard.string(forKey: "fcmdeviceToken")
+    
+    @AppStorage("studentUserID") private var studentUserID = ""
+    @AppStorage("studentUserType") private var studentUserType = ""
+    
     
     var body: some View {
         NavigationView{
@@ -70,7 +75,7 @@ struct OTPView: View {
                             .padding(.top, 8)
                             .padding(.bottom)
                         VStack(alignment: .center){
-                            Text("Verify your Application ID/ Mobile No. ")
+                            Text("Verify your Mobile No. ")
                                 .font(.custom(OpenSans_SemiBold, size: 14))
                                 .foregroundColor(Color(hex: 0x333333))
                                 .padding(.bottom, 4)
@@ -138,9 +143,12 @@ struct OTPView: View {
                             HStack{
                                 Spacer()
                                 Button {
-                                    loginViewModel.fetchLoginDate(mobile: newMobile) { loginData in
-                                        if loginData.status == 1{
+                                    loginViewModel.fetchLoginDate(mobile: newMobile) { login in
+                                        if login.status == 1{
                                             
+                                        }else{
+                                            AlertMessage = login.msg ?? ""
+                                            showingAlert = true
                                         }
                                     }
                                 } label: {
@@ -160,46 +168,32 @@ struct OTPView: View {
                                 let MobileOTP = OTP1 + OTP2 + OTP3 + OTP4
                                 let DeviceName = UIDevice.current.name
                                 if MobileOTP.count == 4{
+                                   
                                     if networkMonitor.isConnected{
-                                        viewModel.fetchLoginDate(mobile: newMobile, otp: MobileOTP, token: deviceToken ?? "", device_name: DeviceName, deviceType: "2", appId: studentAppID ?? "") { OTPData in
-                                            if OTPData.status == 1{
-                                                if OTPData.data?.userid?.count != 0{
-                                                    saveLoginOTPData(dict: OTPData.data!) { returnvalue in
-                                                        print("DEBUG: School Name = ",returnvalue.school ?? "")
-                                                    }
-                                                    //                                                loginDict = getLoginOTPData(dict: OTPData.data!)
+                                        viewModel.fetchLoginDate(
+                                            deviceType: "2",
+                                            otp: MobileOTP,
+                                            mobile: newMobile,
+                                            userId: studentUserID,
+                                            userType: studentUserType,
+                                            token: deviceToken ?? "",
+                                            device_name: DeviceName,
+                                            appId: studentAppID ?? "") { OTPData in
+                                                if OTPData.status == 1{
                                                     UserDefaults.standard.set(true, forKey: "isLogin")
+                                                    UserDefaults.standard.set("2", forKey: "DataFromLogin")
+                                                    UserDefaults.standard.set(OTPData.data?.appID ?? "", forKey: "studentAppID")
                                                     UserDefaults.standard.set(OTPData.data?.userid ?? "", forKey: "studentUserID")
                                                     UserDefaults.standard.set(OTPData.data?.username ?? "", forKey: "studentusername")
-                                                    stepViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
-                                                        if Step.status == 1{
-                                                            if Step.data?.step == "0"{
-                                                                isBookingProcess = true
-                                                            }else if Step.data?.step == "1"{
-                                                                isSecurityDeposite = true
-                                                            }else if Step.data?.step == "2"{
-                                                                isUploadDocument = true
-                                                            }else if Step.data?.step == "201"{
-                                                                isSecuritySuccess = true
-                                                            }else if Step.data?.step == "3"{
-                                                                isBookingView = true
-                                                            }else if Step.data?.step == "301"{
-                                                                isStudentProfile = true
-                                                            }else if Step.data?.step == "4"{
-                                                                isBookingSuccess = true
-                                                            }else if Step.data?.step == "5"{
-                                                                isHomeView = true
-                                                            }
-                                                        }else{
-                                                            isBookingView = true
-                                                        }
-                                                    }
+                                                    UserDefaults.standard.set(OTPData.data?.usertype ?? "", forKey: "studentUserType")
+                                                    
+                                                   isHomeView = true
+                                                    
+                                                }else{
+                                                    AlertMessage = OTPData.msg ?? ""
+                                                    showingAlert = true
                                                 }
-                                            }else{
-                                                AlertMessage = OTPData.msg ?? ""
-                                                showingAlert = true
                                             }
-                                        }
                                     }else{
                                         AlertMessage = "Please Check Your Internet Connection"
                                         showingAlert = true
@@ -258,8 +252,12 @@ struct OTPView: View {
                             isActive: $isStudentProfile).isDetailLink(false)
                         NavigationLink(
                             "",
-                            destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                            destination: FirstView(EventScreen: "2", newSelectedIndex: .constant(0)).navigationBarHidden(true),
                             isActive: $isHomeView).isDetailLink(false)
+                        NavigationLink(
+                            "",
+                            destination: FirstView(EventScreen: "2", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                            isActive: $isParentHome).isDetailLink(false)
                         NavigationLink(
                             "",
                             destination: BookingView().navigationBarHidden(true),

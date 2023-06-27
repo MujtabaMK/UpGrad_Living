@@ -8,7 +8,6 @@
 import Foundation
 
 class MealListViewModel: ObservableObject {
-    @Published var coins = MealListModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

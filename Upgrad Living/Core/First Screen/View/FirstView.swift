@@ -26,6 +26,8 @@ struct FirstView: View {
     @State private var isBackEvent = false
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @AppStorage("SendPageTo") private var SendPageTo = ""
+    @AppStorage("studentUserType") private var studentUserType = ""
+    @AppStorage("DataFromLogin") private var DataFromLogin = ""
     @State private var showingAlert = false
     @State private var isBackDining = false
     @State private var isDiningView = false
@@ -111,7 +113,7 @@ struct FirstView: View {
                 VStack{
                     NavigationLink(
                         "",
-                        destination: BookingProcessView().navigationBarHidden(true),
+                        destination: StudentDetailsFirstView().navigationBarHidden(true),
                         isActive: $isBookingProcess).isDetailLink(false)
                     NavigationLink(
                         "",
@@ -182,12 +184,14 @@ struct FirstView: View {
                         "",
                         destination: AgreementSignBookingView().navigationBarHidden(true),
                         isActive: $isBedAgreementShow).isDetailLink(false)
+                   
+                }
+                VStack{
                     NavigationLink(
                         "",
                         destination: RentViewSuccess().navigationBarHidden(true),
                         isActive: $isRentSuccess).isDetailLink(false)
-                }
-                VStack{
+                    
                     NavigationLink(
                         "",
                         destination: EventsBookingView(isToHome: true).navigationBarHidden(true),
@@ -253,7 +257,8 @@ struct FirstView: View {
                         "",
                         destination: ServiceSportView(isBackSport: $isBackSport).navigationBarHidden(true),
                         isActive: $isSportView).isDetailLink(false)
-                    
+                }
+                VStack{
                     NavigationLink(
                         "",
                         destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(1)).navigationBarHidden(true),
@@ -263,7 +268,6 @@ struct FirstView: View {
                         "",
                         destination: ServiceHelthCareView(isBackHeltcare: $isBackHeltcare).navigationBarHidden(true),
                         isActive: $isHeltcareView).isDetailLink(false)
-                    
                 }
                 VStack{
                     NavigationLink(
@@ -310,13 +314,14 @@ struct FirstView: View {
                         "",
                         destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
                         isActive: $isBackUserProfile).isDetailLink(false)
-                    
+                 
+                }
+                VStack{
                     NavigationLink(
                         "",
                         destination: UserProfile(isBackUserProfile: $isBackUserProfile, isLogout: $isLogout).navigationBarHidden(true),
                         isActive: $isUserProfile).isDetailLink(false)
-                }
-                VStack{
+                    
                     NavigationLink(
                         "",
                         destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
@@ -357,19 +362,19 @@ struct FirstView: View {
                         destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
                         isActive: $isBackServiceBooking).isDetailLink(false)
                     
-                    if navigate{
-                        if SendPageTo == "1"{
-                            NavigationLink(
-                                "",
-                                destination: ServiceSportView(isBackSport: $isBackSport).navigationBarHidden(true),
-                                isActive: .constant(true)).isDetailLink(false)
-                        }else if SendPageTo == "2"{
-                            NavigationLink(
-                                "",
-                                destination: NotificationView(isBackNotification: $isBackNotification).navigationBarHidden(true),
-                                isActive: .constant(true)).isDetailLink(false)
-                        }
-                    }
+//                    if navigate{
+//                        if SendPageTo == "1"{
+//                            NavigationLink(
+//                                "",
+//                                destination: ServiceSportView(isBackSport: $isBackSport).navigationBarHidden(true),
+//                                isActive: .constant(true)).isDetailLink(false)
+//                        }else if SendPageTo == "2"{
+//                            NavigationLink(
+//                                "",
+//                                destination: NotificationView(isBackNotification: $isBackNotification).navigationBarHidden(true),
+//                                isActive: .constant(true)).isDetailLink(false)
+//                        }
+//                    }
                 }
                 VStack{//Parent
                     
@@ -380,7 +385,7 @@ struct FirstView: View {
                             isBackParentHelpdesk: $isBackParentHelpdesk,
                             isParentHelpdesk: $isParentHelpdesk,
                             isBackParentApproval: $isBackParentApproval,
-                            isLogout: $isParentLogout,
+                            isParentLogout: $isParentLogout,
                             NewSelectedIndex: $newSelectedIndex
                         ).navigationBarHidden(true),
                         isActive: $isParentHome).isDetailLink(false)
@@ -421,39 +426,46 @@ struct FirstView: View {
                     navigate = true
                 }
             }
-            .ignoresSafeArea()
             .onAppear{
-                if networkMonitor.isConnected{
-                    showingAlert = false
-                    ViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
-                        print("Step value = ", Step)
-                        if Step.status == 1{
-//                            if Step.data?.step == "0"{
-//                                isBookingProcess = true
-//                            }else if Step.data?.step == "1"{
-//                                isSecurityDeposite = true
-//                            }else if Step.data?.step == "2"{
-//                                isUploadDocument = true
-//                            }else if Step.data?.step == "201"{
-//                                isSecuritySuccess = true
-//                            }else if Step.data?.step == "3"{
-//                                isBookingView = true
-//                            }else if Step.data?.step == "301"{
-//                                isStudentProfile = true
-//                            }else if Step.data?.step == "4"{
-//                                isBookingSuccess = true
-//                            }else if Step.data?.step == "5"{
-//                                isHomeView = true
-//                            }
-                            isHomeView = true
-                            //isParentHome = true
-                        }else{
-                            isBookingProcess = true
-                        }
+                if DataFromLogin == "2"{
+                    if studentUserType == "2"{
+                        isParentHome = true
+                    }else if studentUserType == "3"{
+                        isHomeView = true
                     }
                 }else{
-                    AlertMessage = "Please Check Your Internet Connection"
-                    showingAlert = true
+                    if networkMonitor.isConnected{
+                        showingAlert = false
+                        ViewModel.fetchLoginDate(appId: studentAppID ?? "") { Step in
+                            print("Step value = ", Step)
+                            if Step.status == 1{
+                                if Step.data?.step == "0"{
+                                    isBookingProcess = true
+                                }else if Step.data?.step == "1"{
+                                    isSecurityDeposite = true
+                                }else if Step.data?.step == "2"{
+                                    isUploadDocument = true
+                                }else if Step.data?.step == "201"{
+                                    isSecuritySuccess = true
+                                }else if Step.data?.step == "3"{
+                                    isBookingView = true
+                                }else if Step.data?.step == "301"{
+                                    isStudentProfile = true
+                                }else if Step.data?.step == "4"{
+                                    isBookingSuccess = true
+                                }else if Step.data?.step == "5"{
+                                    isHomeView = true
+                                }
+                               // isHomeView = true
+                                //isParentHome = true
+                            }else{
+                                isBookingProcess = true
+                            }
+                        }
+                    }else{
+                        AlertMessage = "Please Check Your Internet Connection"
+                        showingAlert = true
+                    }
                 }
             }
             .alert(AlertMessage, isPresented: $showingAlert) {

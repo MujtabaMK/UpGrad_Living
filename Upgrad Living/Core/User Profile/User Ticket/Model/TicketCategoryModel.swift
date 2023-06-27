@@ -14,7 +14,7 @@ struct TicketCategoryModel: Codable {
     let data: TicketCategoryClass?
 }
 
-// MARK: - DataClass
+// MARK: - TicketCategoryClass
 struct TicketCategoryClass: Codable {
     let ticketCategories: [TicketCategory]?
 }

@@ -13,6 +13,8 @@ let StartURL = BaseAPI.shared.BaseURL
 //Login API
 let Login_API = "\(StartURL)loginOTPApp"
 let Login_OTP_Verify_API = "\(StartURL)loginOTPVerify"
+let Home_Login_API = "\(StartURL)usersLogin"
+let Home_Login_OTP_Verify = "\(StartURL)verifyUserOTP"
 
 //Master API
 let Master_API = "\(StartURL)masters"
@@ -87,6 +89,11 @@ let GET_Book_Guest_Room_Details = "\(StartURL)getBookingById"
 let POST_Request_Approval = "\(StartURL)requestApproval"
 let GET_Seek_Approval = "\(StartURL)requestList"
 
+//Book Service
+
+let GET_Book_Service_Slot = "\(StartURL)getBookingSlots"
+let POST_Book_Service_Slot = "\(StartURL)slotBooking"
+let GET_Details_Book_Service_Slot = "\(StartURL)mySlotBookings"
 
 //PARENT
 

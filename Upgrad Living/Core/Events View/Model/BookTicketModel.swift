@@ -14,7 +14,7 @@ struct BookTicketModel: Codable {
     let data: BookTicketClass?
 }
 
-// MARK: - DataClass
+// MARK: - BookTicketClass
 struct BookTicketClass: Codable {
     let eventName, location, day, month: String?
     let timeStart, fulldate: String?

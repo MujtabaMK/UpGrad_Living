@@ -8,7 +8,6 @@
 import Foundation
 
 class PostFloorViewModel: ObservableObject {
-    @Published var coins = PostFloorModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

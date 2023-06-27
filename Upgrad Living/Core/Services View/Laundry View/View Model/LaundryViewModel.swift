@@ -8,7 +8,6 @@
 import Foundation
 
 class LaundryViewModel: ObservableObject {
-    @Published var coins = LaundryModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

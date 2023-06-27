@@ -8,7 +8,6 @@
 import Foundation
 
 class CategoryViewModel: ObservableObject {
-    @Published var coins = CategoryModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

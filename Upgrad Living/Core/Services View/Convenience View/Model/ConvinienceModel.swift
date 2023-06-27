@@ -14,7 +14,7 @@ struct ConvinienceModel: Codable {
     let data: ConvinienceClass?
 }
 
-// MARK: - DataClass
+// MARK: - ConvinienceClass
 struct ConvinienceClass: Codable {
     let timings: ConvinienceTimings?
     let offers: [ConvinienceOffer]?

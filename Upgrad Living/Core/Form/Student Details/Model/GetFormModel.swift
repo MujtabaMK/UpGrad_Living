@@ -14,7 +14,7 @@ struct GetFormModel: Codable {
     let data: FormDataClass?
 }
 
-// MARK: - DataClass
+// MARK: - FormDataClass
 struct FormDataClass: Codable {
     let pkid, firstName, middleName, lastName: String?
     let mobile, email, bloddGroupID, bloddGroup: String?

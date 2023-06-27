@@ -8,7 +8,6 @@
 import Foundation
 
 class HealthCareViewModel: ObservableObject {
-    @Published var coins = HealthCareModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

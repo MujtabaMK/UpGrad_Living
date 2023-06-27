@@ -8,7 +8,6 @@
 import Foundation
 
 class PostTicketPhotoViewModel: ObservableObject {
-    @Published var coins = PostTicketPhotoModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

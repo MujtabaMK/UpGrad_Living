@@ -10,12 +10,10 @@ import Combine
 
 struct StudentDetailsView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @Environment(\.presentationMode) var presentationMode
-    @StateObject private var viewModel = ContentViewModel()
+    @StateObject private var viewModel = StudentContentViewModel()
     @State private var borderColor = Color(hex: 0xF15865)
     @State private var canEditBloodGroup = false
     @State private var canEditGender = false
-    @State private var canEditDOB = false
     @State private var canEditCurrentCountry = false
     @State private var canEditCurrentState = false
     @State private var canEditCurrentCity = false
@@ -50,65 +48,55 @@ struct StudentDetailsView: View {
     @State private var arrCityPerment = [City]()
     
     //ID
-    @State private var bloodGroupId = ""
-    @State private var genderId = ""
-    @State private var currentCountryID = ""
-    @State private var currentStateId = ""
-    @State private var currentCityId = ""
-    @State private var permentCountryID = ""
-    @State private var permentStateId = ""
-    @State private var permentCityId = ""
+    @State private var bloodGroupId = String()
+    @State private var genderId = String()
+    @State private var currentCountryID = String()
+    @State private var currentStateId = String()
+    @State private var currentCityId = String()
+    @State private var permentCountryID = String()
+    @State private var permentStateId = String()
+    @State private var permentCityId = String()
     
     //Search Text
-    @State private var searchTextBloodGroup = ""
+    @State private var searchTextBloodGroup = String()
     @State private var ShowBloodGroupDropDown = false
     
     //Current
-    @State private var searchTextCurrentCountry = ""
+    @State private var searchTextCurrentCountry = String()
     @State private var ShowCurrentCountryDropDown = false
     
-    @State private var searchTextCurrentState = ""
+    @State private var searchTextCurrentState = String()
     @State private var ShowCurrentStateDropDown = false
     
-    @State private var searchTextCurrentCity = ""
+    @State private var searchTextCurrentCity = String()
     @State private var ShowCurrentCityDropDown = false
     
     //Perment
-    @State private var searchTextPermentCountry = ""
+    @State private var searchTextPermentCountry = String()
     @State private var ShowPermentCountryDropDown = false
     
-    @State private var searchTextPermentState = ""
+    @State private var searchTextPermentState = String()
     @State private var ShowPermentStateDropDown = false
     
-    @State private var searchTextPermentCity = ""
+    @State private var searchTextPermentCity = String()
     @State private var ShowPermentCityDropDown = false
     
     @State private var isButtonClick = false
     
-    @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
+    @AppStorage("studentAppID") private var studentAppID = String()
     @FocusState private var focusedField: FoucesedStudentTextField?
     
     var getIsEditable: String
+    
     var body: some View {
         NavigationView {
             ZStack{
                 VStack{
                     HStack{
-                        Button {
-                            withAnimation() {
-                                presentationMode.wrappedValue.dismiss()
-                            }
-                        } label: {
-                            Image("back_Button")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30, height: 30)
-                                .padding(.leading, 20)
-                        }
                         Spacer(minLength: 0)
                         Text("Application Form")
                             .font(.custom(OpenSans_Bold, size: 18))
-                            .foregroundColor(Color(hex: 0x000000))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x000000) : Color(hex: 0xFFFFFF))
                             .padding(.trailing, 30)
                         Spacer(minLength: 0)
                     }
@@ -1191,7 +1179,7 @@ struct StudentDetailsView: View {
                                                     pState: permentStateId,
                                                     pCity: permentCityId,
                                                     pPincode: viewModel.textPermanentPinCode,
-                                                    appId: studentAppID ?? "") { Studentdata in
+                                                    appId: studentAppID) { Studentdata in
                                                         if Studentdata.status == 1{
                                                             showPrentsDetails = true
                                                         }else{
@@ -1205,7 +1193,6 @@ struct StudentDetailsView: View {
                                                 showingAlert = true
                                             }
                                         }
-                                        
                                     })
                                     .shadow(color: isButtonClick ? .gray : .clear, radius: isButtonClick ? 10 : 0, x: 0, y: 0)
                             }
@@ -1220,6 +1207,8 @@ struct StudentDetailsView: View {
                     LoadingView()
                 }
             }
+            .navigationBarHidden(true)
+            .ignoresSafeArea()
             .alert(alertMessage, isPresented: $showingAlert) {
                 Button("OK", role: .cancel) {
                     if AlertShow == "1"{
@@ -1229,7 +1218,6 @@ struct StudentDetailsView: View {
                     }
                 }
             }
-            .navigationBarHidden(true)
         }
         .onAppear(perform: delayText)
     }
@@ -1237,7 +1225,8 @@ struct StudentDetailsView: View {
         // Delay of 0.2 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             if networkMonitor.isConnected{
-                GetViewModel.fetchLoginDate(appId: studentAppID ?? "") { formData in
+                print(studentAppID)
+                GetViewModel.fetchLoginDate(appId: studentAppID) { formData in
                     if formData.status == 1{
                         viewModel.textFirstName = formData.data?.firstName ?? ""
                         viewModel.textMiddleName = formData.data?.middleName ?? ""
@@ -1570,11 +1559,5 @@ struct StudentDetailsView: View {
         if let viewController = UIApplication.shared.windows.first?.rootViewController {
             viewController.present(alertVC, animated: true, completion: nil)
         }
-    }
-}
-
-struct StudentDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StudentDetailsView(getIsEditable: "1")
     }
 }

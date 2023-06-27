@@ -8,7 +8,6 @@
 import Foundation
 
 class GetFormViewModel: ObservableObject {
-    @Published var coins = GetFormModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

@@ -14,7 +14,7 @@ struct OTPModel: Codable {
     let data: OTPClass?
 }
 
-// MARK: - DataClass
+// MARK: - OTPClass
 struct OTPClass: Codable {
     let userid, username, email, mobile: String?
     let profileImage: String?

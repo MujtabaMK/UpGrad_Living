@@ -8,7 +8,6 @@
 import Foundation
 
 class GetPastTicketViewModel: ObservableObject {
-    @Published var coins = GetPastTicketModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

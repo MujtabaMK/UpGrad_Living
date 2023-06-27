@@ -8,7 +8,6 @@
 import Foundation
 
 class LoginViewModel: ObservableObject {
-    @Published var coins = LoginModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""
@@ -24,6 +23,7 @@ class LoginViewModel: ObservableObject {
             "applnID": mobile,
         ]
         
+        print(urlString)
         print(parameter)
         
         resuest.setValue("application/json", forHTTPHeaderField: "Content-Type")

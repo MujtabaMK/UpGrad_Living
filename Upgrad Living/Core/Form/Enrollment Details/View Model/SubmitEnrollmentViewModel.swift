@@ -8,7 +8,6 @@
 import Foundation
 
 class SubmitEnrollmentViewModel: ObservableObject {
-    @Published var coins = SubmitEnrollmentModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

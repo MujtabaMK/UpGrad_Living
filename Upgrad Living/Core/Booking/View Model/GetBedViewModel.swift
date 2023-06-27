@@ -8,7 +8,6 @@
 import Foundation
 
 class GetBedViewModel: ObservableObject {
-    @Published var coins = GetBedModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

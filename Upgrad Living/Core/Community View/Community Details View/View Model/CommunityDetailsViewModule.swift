@@ -8,7 +8,6 @@
 import Foundation
 
 class CommunityDetailsViewModule: ObservableObject {
-    @Published var coins = CommunityDetailsModule.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

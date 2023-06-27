@@ -12,7 +12,7 @@ struct MealListModel: Codable {
     let data: HomeClass?
 }
 
-// MARK: - DataClass
+// MARK: - HomeClass
 struct HomeClass: Codable {
     let meal: [Meal]?
     let note: [Note]?

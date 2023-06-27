@@ -205,7 +205,7 @@ struct ConfirmedGuestRoom: View {
                             }
                             .padding(.bottom)
                             
-                            HStack{
+                            HStack(spacing: 25){
                                 Button {
                                     downloadAndSharePDF(pdfURL: pdfURLString)
                                 } label: {
@@ -223,9 +223,9 @@ struct ConfirmedGuestRoom: View {
                                                     .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xFFFFFF))
                                             }
                                         }
-                                        .sheet(isPresented: $isPresented) {
-                                            ActivityView(activityItems: sharedItems)
-                                        }
+//                                        .sheet(isPresented: $isPresented) {
+//                                            ActivityView(activityItems: sharedItems)
+//                                        }
                                 }
                                 
                                 Button {

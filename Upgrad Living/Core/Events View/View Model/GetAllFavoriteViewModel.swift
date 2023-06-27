@@ -8,7 +8,6 @@
 import Foundation
 
 class GetAllFavoriteViewModel: ObservableObject {
-    @Published var coins = GetAllFavoriteModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

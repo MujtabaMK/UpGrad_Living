@@ -14,7 +14,7 @@ struct CountryModel: Codable {
     let data: CountryClass?
 }
 
-// MARK: - DataClass
+// MARK: - CountryClass
 struct CountryClass: Codable {
     let countries: [contry]?, states: [states]?, cities: [City]?
 }

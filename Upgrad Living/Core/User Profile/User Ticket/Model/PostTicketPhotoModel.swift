@@ -14,7 +14,7 @@ struct PostTicketPhotoModel: Codable {
     let data: PostImagePhotoClass?
 }
 
-// MARK: - DataClass
+// MARK: - PostImagePhotoClass
 struct PostImagePhotoClass: Codable {
     let id: Int?
     let fileURL: String?

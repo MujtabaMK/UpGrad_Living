@@ -14,7 +14,7 @@ struct BedSuccessModel: Codable {
     let data: BedSuccessClass?
 }
 
-// MARK: - DataClass
+// MARK: - BedSuccessClass
 struct BedSuccessClass: Codable {
     let roomName: String?
 }

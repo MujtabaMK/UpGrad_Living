@@ -52,6 +52,7 @@ struct ParentsDetailsView: View {
     @FocusState private var focusedField: FoucesedParentTextField?
     
     var getIsEditable: String
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -1077,9 +1078,3 @@ struct ParentsDetailsView: View {
         }
     }
 }
-
-//struct ParentsDetailsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ParentsDetailsView(getIsEditable: "1", formData: <#FormDataClass#>)
-//    }
-//}

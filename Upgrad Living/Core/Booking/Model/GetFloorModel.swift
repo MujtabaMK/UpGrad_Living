@@ -14,7 +14,7 @@ struct GetFloorModel: Codable {
     let data: FloorClass?
 }
 
-// MARK: - DataClass
+// MARK: - FloorClass
 struct FloorClass: Codable {
     let roomType, floorType,dietry: String?
     let floors: [Floor]?

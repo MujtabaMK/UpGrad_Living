@@ -8,7 +8,6 @@
 import Foundation
 
 class DiningViewModel: ObservableObject {
-    @Published var coins = DiningModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

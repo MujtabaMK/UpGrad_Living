@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ContentViewModel: ObservableObject {
+final class StudentContentViewModel: ObservableObject {
     
     let placeholderFirstName = "First Name*"
     let placeholderMiddleName = "Middle Name"

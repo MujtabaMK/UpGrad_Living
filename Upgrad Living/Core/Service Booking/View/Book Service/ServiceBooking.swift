@@ -12,11 +12,16 @@ struct ServiceBooking: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
+    @StateObject private var viewModel = ServiceSlotViewModel()
+    @StateObject private var viewModelBook = BookServiceSlotViewModel()
+    @StateObject private var viewModelDetails = ListServiceSlotViewModel()
     
     @State private var isRequestSelect = false
     @State private var isCategory = false
     @State private var CategoryName = ""
-    @State private var CategoryID = ""
+    @State private var CategoryID = "1"
+    
+    @State private var arrServiceDetails = [ListServiceSlot]()
     
     @State private var todayDate = Date()
     
@@ -24,7 +29,22 @@ struct ServiceBooking: View {
     
     @State private var isServiceConfirm = false
     
+    @State private var alertMessage = String()
+    @State private var showingAlert = false
+    @State private var AlertShow = String()
+    
+    @State private var showing2ButtonAlert = false
+    @State private var alertTitle = ""
+    @State private var buttonTitle = ""
+        
     var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+    
+    //API
+    
+    @State private var arrSlotWise = [ServiceSlot]()
+    @State private var currentSlotTimimgId = ""
+    @State private var currentSlotId = ""
+    
     
     @Binding var isBackServiceBooking: Bool
     
@@ -32,34 +52,7 @@ struct ServiceBooking: View {
         NavigationView {
             ZStack{
                 ScrollView(showsIndicators: false) {
-                    ZStack(alignment: .top){
-                        Image("Home_Top_Background")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: getRect().width, height: 290)
-                            .padding(.top, -90)
-                        VStack{
-                            HStack{
-                                Button {
-                                    isBackServiceBooking = true
-                                } label: {
-                                    Image("back_Button")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 30, height: 30)
-                                        .padding(.leading, 20)
-                                }
-                                Spacer(minLength: 0)
-                                Text("Service Booking")
-                                    .font(.custom(OpenSans_SemiBold, size: 18))
-                                    .foregroundColor(colorScheme == .light ? .white : .white)
-                                    .padding(.trailing, 30)
-                                Spacer(minLength: 0)
-                            }
-                            Spacer()
-                        }
-                        .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
-                    }
+                    ServiceBookingTop(isBackServiceBooking: $isBackServiceBooking)
                     VStack{
                         VStack{
                             HStack(spacing: 0){
@@ -135,15 +128,16 @@ struct ServiceBooking: View {
                                     }
                                     if isCategory{
                                         VStack{
-                                            ForEach(arrRequestReason) { request in
+                                            ForEach(arrBookService) { request in
                                                 Button {
                                                     CategoryID = request.id
-                                                    CategoryName = request.name
+                                                    CategoryName = request.ServiceName
+                                                    callServiceSlotAPI()
                                                     isCategory.toggle()
                                                 } label: {
                                                     VStack{
                                                         HStack{
-                                                            Text(request.name)
+                                                            Text(request.ServiceName)
                                                                 .font(.custom(OpenSans_SemiBold, size: 14))
                                                                 .foregroundColor(Color(hex: 0x868686))
                                                                 .padding(.leading)
@@ -211,63 +205,42 @@ struct ServiceBooking: View {
                                         }
                                         .padding(.leading)
                                         
-                                        HStack{
-                                            Text("Morning slots")
-                                                .font(.custom(OpenSans_Bold, size: 14))
-                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
-                                                .padding(.top)
-                                            Spacer()
+                                        ForEach(Array(arrSlotWise.enumerated()), id: \.offset) { index, wise in
+                                            HStack{
+                                                Text(wise.slotName ?? "")
+                                                    .font(.custom(OpenSans_Bold, size: 14))
+                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
+                                                    .padding(.top)
+                                                Spacer()
+                                            }
+                                            .padding(.leading)
+                                            
+                                            LazyVGrid(columns: twoColumnGrid) {
+                                                ForEach(wise.slotTimings ?? []) { timing in
+                                                    Button {
+                                                        if timing.isTimeSlotAvailable == "0"{
+                                                            currentSlotTimimgId = timing.id ?? ""
+                                                            currentSlotId = wise.slotID ?? ""
+                                                            alertTitle = "Are you sure you want to Book This Slot?"
+                                                            buttonTitle = "Book"
+                                                            showing2ButtonAlert = true
+                                                        }else{
+                                                            alertMessage = "Current slot not available"
+                                                            AlertShow = "0"
+                                                            showingAlert = true
+                                                        }
+                                                    } label: {
+                                                        SlotTimimgBookingCell(timing: timing)
+                                                    }
+                                                }
+                                            }
+                                            .padding(.horizontal)
                                         }
-                                        .padding(.leading)
-                                        
-                                        LazyVGrid(columns: twoColumnGrid) {
-                                            
-                                            Text("05:30 am - 12:30 pm")
-                                                .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x868686))
-                                                .padding(5)
-                                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 33)
-                                                .overlay {
-                                                    RoundedRectangle(cornerRadius: 8)
-                                                        .stroke(Color(hex: 0xD96DAE), lineWidth: 1)
-                                                }
-                                            
-                                            Text("03:00 pm - 10:30 pm")
-                                                .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x868686))
-                                                .padding(5)
-                                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 33)
-                                                .overlay {
-                                                    RoundedRectangle(cornerRadius: 8)
-                                                        .stroke(Color(hex: 0xD96DAE), lineWidth: 1)
-                                                }
-                                            
-                                            Text("05:30 am - 12:30 pm")
-                                                .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x868686))
-                                                .padding(5)
-                                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 33)
-                                                .overlay {
-                                                    RoundedRectangle(cornerRadius: 8)
-                                                        .stroke(Color(hex: 0xD96DAE), lineWidth: 1)
-                                                }
-                                            
-                                            Text("03:00 pm - 10:30 pm")
-                                                .font(.custom(OpenSans_SemiBold, size: 14))
-                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x868686))
-                                                .padding(5)
-                                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 33)
-                                                .overlay {
-                                                    RoundedRectangle(cornerRadius: 8)
-                                                        .stroke(Color(hex: 0xD96DAE), lineWidth: 1)
-                                                }
-                                        }
-                                        .padding(.horizontal)
                                     }
                                 }
                             }
                             if isRequestSelect{
-                                ServiceBookingView()
+                                ServiceBookingView(arrslotDetails: arrServiceDetails)
                                     .padding(.top)
                             }
                         }
@@ -277,9 +250,91 @@ struct ServiceBooking: View {
                     .cornerRadius(15, corners: [.topLeft, .topRight])
                     .offset(y: -80)
                 }
+                if viewModelBook.isLoadingData{
+                    LoadingView()
+                }
+                if viewModel.isLoadingData{
+                    LoadingView()
+                }
+                if viewModelDetails.isLoadingData{
+                    LoadingView()
+                }
             }
+            .onAppear{
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+                // Set Date Format
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                // Convert Date to String
+                startDate =  dateFormatter.string(from: todayDate)
+                callServiceSlotAPI()
+                
+                viewModelDetails.getBookServiceSlot(appId: studentAppID ?? "") { getDetails in
+                    if getDetails.status == 1{
+                        arrServiceDetails = getDetails.data ?? []
+                    }else{
+                        arrSlotWise = []
+                        alertMessage = getDetails.msg ?? ""
+                        AlertShow = "0"
+                        showingAlert = true
+                    }
+                }
+            }
+            .onChange(of: isRequestSelect, perform: { _ in
+                if isRequestSelect{
+                    viewModelDetails.getBookServiceSlot(appId: studentAppID ?? "") { getDetails in
+                        if getDetails.status == 1{
+                            arrServiceDetails = getDetails.data ?? []
+                        }else{
+                            alertMessage = getDetails.msg ?? ""
+                            AlertShow = "0"
+                            showingAlert = true
+                        }
+                    }
+                }
+            })
             .ignoresSafeArea()
             .navigationBarHidden(true)
+            .alert(alertMessage, isPresented: $showingAlert) {
+                Button("OK", role: .cancel) {
+                    if AlertShow == "1"{
+                        isRequestSelect = true
+                    }else{
+                        
+                    }
+                }
+            }
+            .alert(isPresented:$showing2ButtonAlert) {
+                Alert(
+                    title: Text(alertTitle),
+                    message: Text(""),
+                    primaryButton: .destructive(Text(buttonTitle)) {
+                        if networkMonitor.isConnected{
+                            viewModelBook.PostBookServiceSlot(
+                                appId: studentAppID ?? "",
+                                categoryId: CategoryID,
+                                date: startDate,
+                                slotId: currentSlotId,
+                                timeSlotId: currentSlotTimimgId) { book in
+                                    if book.status == 1{
+                                        alertMessage = "Slot Book Successfully"
+                                        AlertShow = "1"
+                                        showingAlert = true
+                                    }else{
+                                        alertMessage = book.msg ?? ""
+                                        AlertShow = "0"
+                                        showingAlert = true
+                                    }
+                                }
+                        }else{
+                            alertMessage = "Please Check Your Internet Connection"
+                            AlertShow = "0"
+                            showingAlert = true
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
     }
     
@@ -291,7 +346,7 @@ struct ServiceBooking: View {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         // Convert Date to String
         startDate =  dateFormatter.string(from: todayDate)
-        
+        callServiceSlotAPI()
     }
     //MARK: - Show Date Picker
     func showDatePickerAlert() {//\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
@@ -314,6 +369,28 @@ struct ServiceBooking: View {
         
         if let viewController = UIApplication.shared.windows.first?.rootViewController {
             viewController.present(alertVC, animated: true, completion: nil)
+        }
+    }
+    
+    func callServiceSlotAPI(){
+        if networkMonitor.isConnected{
+            viewModel.getBookServiceSlot(
+                appId: studentAppID ?? "",
+                categoryId: CategoryID,
+                date: startDate) { service in
+                    if service.status == 1{
+                        arrSlotWise = service.data ?? []
+                    }else{
+                        arrSlotWise = []
+                        alertMessage = service.msg ?? ""
+                        AlertShow = "0"
+                        showingAlert = true
+                    }
+                }
+        }else{
+            alertMessage = "Please Check Your Internet Connection"
+            AlertShow = "0"
+            showingAlert = true
         }
     }
 }

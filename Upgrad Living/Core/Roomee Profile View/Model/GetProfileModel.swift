@@ -13,7 +13,7 @@ struct GetProfileModel: Codable {
     let data: ProfileClass?
 }
 
-// MARK: - DataClass
+// MARK: - ProfileClass
 struct ProfileClass: Codable {
     let appDetails: AppDetails?
     let roomies: [RoomMate]?

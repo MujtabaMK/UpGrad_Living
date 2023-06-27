@@ -8,7 +8,6 @@
 import Foundation
 
 class TicketCategoryViewModel: ObservableObject {
-    @Published var coins = TicketCategoryModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

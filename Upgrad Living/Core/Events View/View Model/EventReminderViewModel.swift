@@ -8,7 +8,6 @@
 import Foundation
 
 class EventReminderViewModel: ObservableObject {
-    @Published var coins = EventReminderModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

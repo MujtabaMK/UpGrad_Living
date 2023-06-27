@@ -8,7 +8,6 @@
 import Foundation
 
 class ConvinienceViewModel: ObservableObject {
-    @Published var coins = ConvinienceModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

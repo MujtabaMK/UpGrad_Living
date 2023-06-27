@@ -8,7 +8,6 @@
 import Foundation
 
 class SubmitStudentViewModel: ObservableObject {
-    @Published var coins = SubmitStudentModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

@@ -8,7 +8,6 @@
 import Foundation
 
 class SubmitParentViewModel: ObservableObject {
-    @Published var coins = SubmitParentModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

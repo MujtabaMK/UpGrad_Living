@@ -13,7 +13,7 @@ struct ParentHomeModel: Codable {
     let data: ParentHomeDataClass?
 }
 
-// MARK: - DataClass
+// MARK: - ParentHomeDataClass
 struct ParentHomeDataClass: Codable {
     let requestsCount: ParentRequestsCount?
     let meal: [ParentMeal]?

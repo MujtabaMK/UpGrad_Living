@@ -8,7 +8,6 @@
 import Foundation
 
 class SubmitRoomTypeViewModel: ObservableObject {
-    @Published var coins = SubmitRoomTypeModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

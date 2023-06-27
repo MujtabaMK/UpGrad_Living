@@ -51,30 +51,48 @@ struct SeekApproval: View {
                 }
             }
             
-            HStack{
+            if arrSeekApproval.reasonCateg == "5"{
                 HStack{
-                    Spacer()
-                    Text(arrSeekApproval.reasonCateg == "2" ? arrSeekApproval.dateDetails ?? "" : arrSeekApproval.startDate ?? "")
-                        .font(.custom(OpenSans_SemiBold, size: 14))
-                        .foregroundColor(colorScheme == .light ? Color(hex: 0x6B6A6A) : Color(hex: 0xB1B1B1))
-                    Spacer()
+                    HStack{
+                        Spacer()
+                        Text(arrSeekApproval.reasonCateg == "2" ? arrSeekApproval.dateDetails ?? "" : arrSeekApproval.startDate ?? "")
+                            .font(.custom(OpenSans_SemiBold, size: 14))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x6B6A6A) : Color(hex: 0xB1B1B1))
+                        Spacer()
+                    }
+                    .frame(height: 50)
+                    .background(colorScheme == .light ? Color(hex: 0xF4F4F4) : Color(hex: 0x505050))
+                    
+                    Rectangle()
+                        .fill(colorScheme == .light ? Color(hex: 0xFFFFFF) : Color(hex: 0xB1B1B1))
+                        .frame(width: 1, height: 50)
                 }
-                .frame(height: 50)
-                .background(colorScheme == .light ? Color(hex: 0xF4F4F4) : Color(hex: 0x505050))
-                
-                Rectangle()
-                    .fill(colorScheme == .light ? Color(hex: 0xFFFFFF) : Color(hex: 0xB1B1B1))
-                    .frame(width: 1, height: 50)
-                
+            }else{
                 HStack{
-                    Spacer()
-                    Text(arrSeekApproval.reasonCateg == "2" ? arrSeekApproval.days ?? "" : arrSeekApproval.startTime ?? "")
-                        .font(.custom(OpenSans_SemiBold, size: 14))
-                        .foregroundColor(colorScheme == .light ? Color(hex: 0x6B6A6A) : Color(hex: 0xB1B1B1))
-                    Spacer()
+                    HStack{
+                        Spacer()
+                        Text(arrSeekApproval.reasonCateg == "2" ? arrSeekApproval.dateDetails ?? "" : arrSeekApproval.startDate ?? "")
+                            .font(.custom(OpenSans_SemiBold, size: 14))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x6B6A6A) : Color(hex: 0xB1B1B1))
+                        Spacer()
+                    }
+                    .frame(height: 50)
+                    .background(colorScheme == .light ? Color(hex: 0xF4F4F4) : Color(hex: 0x505050))
+                    
+                    Rectangle()
+                        .fill(colorScheme == .light ? Color(hex: 0xFFFFFF) : Color(hex: 0xB1B1B1))
+                        .frame(width: 1, height: 50)
+                    
+                    HStack{
+                        Spacer()
+                        Text(arrSeekApproval.reasonCateg == "2" ? arrSeekApproval.days ?? "" : arrSeekApproval.startTime ?? "")
+                            .font(.custom(OpenSans_SemiBold, size: 14))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x6B6A6A) : Color(hex: 0xB1B1B1))
+                        Spacer()
+                    }
+                    .frame(height: 50)
+                    .background(colorScheme == .light ? Color(hex: 0xF4F4F4) : Color(hex: 0x505050))
                 }
-                .frame(height: 50)
-                .background(colorScheme == .light ? Color(hex: 0xF4F4F4) : Color(hex: 0x505050))
             }
             
             VStack{

@@ -14,7 +14,7 @@ struct LoginModel: Codable {
     let data: LoginClass?
 }
 
-// MARK: - DataClass
+// MARK: - LoginClass
 struct LoginClass: Codable {
     let studentMobile, studentAppID: String?
 

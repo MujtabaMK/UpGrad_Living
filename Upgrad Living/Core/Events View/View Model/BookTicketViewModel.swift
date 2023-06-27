@@ -8,7 +8,6 @@
 import Foundation
 
 class BookTicketViewModel: ObservableObject {
-    @Published var coins = BookTicketModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

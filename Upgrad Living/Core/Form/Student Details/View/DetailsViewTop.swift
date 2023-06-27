@@ -210,9 +210,3 @@ struct DetailsViewTop: View {
         }
     }
 }
-
-struct DetailsViewTop_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailsViewTop(Step: "1")
-    }
-}

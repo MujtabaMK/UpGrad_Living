@@ -20,8 +20,8 @@ struct LoginView: View {
     @State private var AlertMessage = String()
     @State private var AlertShow = String()
     
-    @StateObject var viewModel = LoginViewModel()
-    @StateObject var viewModelOTP = OTPViewModel()
+    @StateObject var viewModel = HomeLoginViewModel()
+    @StateObject var viewModelOTP = HomeOTPViewModel()
     @StateObject private var stepViewModel = StepViewModel()
     @EnvironmentObject var networkMonitor: NetworkMonitor
     
@@ -52,24 +52,11 @@ struct LoginView: View {
                         .frame(width: 181, height: 32)
                         .padding()
                         .padding(.top, 8)
-                        .padding(.bottom)
+                        //.padding(.bottom)
                     VStack(alignment: .center, spacing: 4){
                         Text("Enter Your")
                             .font(.custom(OpenSans_Regular, size: 14))
                             .foregroundColor(Color(hex: 0x868686, alpha: 1.0))
-//                        +
-//                        Text(" ATLAS Application ID")
-//                            .font(.custom(OpenSans_SemiBold, size: 14))
-//                            .foregroundColor(Color(hex: 0x333333))
-//
-//                        Text(" (OR) ")
-//                            .font(.custom(OpenSans_Regular, size: 14))
-//                            .foregroundColor(Color(hex: 0x868686, alpha: 1.0))
-//
-//                        Text("your ")
-//                            .font(.custom(OpenSans_Regular, size: 14))
-//                            .foregroundColor(Color(hex: 0x868686, alpha: 1.0))
-                        //+
                         Text("Registered Mobile Number")
                             .font(.custom(OpenSans_Bold, size: 14))
                             .foregroundColor(Color(hex: 0x333333))
@@ -121,7 +108,7 @@ struct LoginView: View {
                         Spacer()
                         VStack {
                             Button {
-                                
+                                isBookingProcess = true
                             } label: {
                                 Text("Not Registered yet! ")
                                     .font(.custom(OpenSans_SemiBold, size: 12))
@@ -139,19 +126,22 @@ struct LoginView: View {
                     
                     VStack{
                         Button {
-                            if txtMobile.count == 10 || txtMobile.count == 7 || txtMobile.count == 8{
+                            if txtMobile.count == 10{
                                 if networkMonitor.isConnected{
-                                    viewModel.fetchLoginDate(mobile: txtMobile) { loginData in
-                                        if loginData.status == 1{
-                                            MobileNumber = loginData.data?.studentMobile ?? ""
-                                            print(loginData.data?.studentMobile ?? "")
-                                            
-                                            print(loginData.data?.studentAppID ?? "")
-                                            UserDefaults.standard.set(loginData.data?.studentAppID ?? "", forKey: "studentAppID")
+                                    viewModel.fetchLoginDate(mobile: txtMobile) { LoginDate in
+                                        if LoginDate.status == 1{
+                                            MobileNumber = LoginDate.data?.mobile ?? ""
                                             isApplicationId = false
+                                            UserDefaults.standard.set(LoginDate.data?.appID ?? "", forKey: "studentAppID")
+                                            UserDefaults.standard.set(LoginDate.data?.userid ?? "", forKey: "studentUserID")
+                                            UserDefaults.standard.set(LoginDate.data?.username ?? "", forKey: "studentusername")
+                                            UserDefaults.standard.set(LoginDate.data?.usertype ?? "", forKey: "studentUserType")
+                                            
                                             isShowOTP = true
+                                            
+                                            
                                         }else{
-                                            AlertMessage = loginData.msg ?? ""
+                                            AlertMessage = LoginDate.msg ?? ""
                                             isShowAlert = true
                                         }
                                     }
@@ -160,7 +150,7 @@ struct LoginView: View {
                                     isShowAlert = true
                                 }
                             }else{
-                                AlertMessage = "Please Enter valid Application Id or Mobile Number"
+                                AlertMessage = "Please Enter valid Mobile Number"
                                 isShowAlert = true
                             }
                         } label: {
@@ -213,7 +203,7 @@ struct LoginView: View {
                             isActive: $isStudentProfile).isDetailLink(false)
                         NavigationLink(
                             "",
-                            destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
+                            destination: FirstView(EventScreen: "2", newSelectedIndex: .constant(0)).navigationBarHidden(true),
                             isActive: $isHomeView).isDetailLink(false)
                         NavigationLink(
                             "",
@@ -242,44 +232,18 @@ struct LoginView: View {
                 if txtMobile.count == 10{
                     if networkMonitor.isConnected{
                         let DeviceName = UIDevice.current.name
-                        
-                        viewModelOTP.fetchLoginDate(mobile: txtMobile, otp: "7879", token: deviceToken ?? "", device_name: DeviceName, deviceType: "2", appId: "") { OTPData in
-                            if OTPData.status == 1{
-                                if OTPData.data?.userid?.count != 0{
-                                    saveLoginOTPData(dict: OTPData.data!) { returnvalue in
-                                        print("DEBUG: School Name = ",returnvalue.school ?? "")
-                                    }
-                                    UserDefaults.standard.set(true, forKey: "isLogin")
-                                    UserDefaults.standard.set(OTPData.data?.userid ?? "", forKey: "studentUserID")
-                                    UserDefaults.standard.set(OTPData.data?.username ?? "", forKey: "studentusername")
-                                    UserDefaults.standard.set(OTPData.data?.appID ?? "", forKey: "studentAppID")
-                                    
-                                    stepViewModel.fetchLoginDate(appId: OTPData.data?.appID ?? "") { Step in
-                                        if Step.status == 1{
-                                            if Step.data?.step == "0"{
-                                                isBookingProcess = true
-                                            }else if Step.data?.step == "1"{
-                                                isSecurityDeposite = true
-                                            }else if Step.data?.step == "2"{
-                                                isUploadDocument = true
-                                            }else if Step.data?.step == "201"{
-                                                isSecuritySuccess = true
-                                            }else if Step.data?.step == "3"{
-                                                isBookingView = true
-                                            }else if Step.data?.step == "301"{
-                                                isStudentProfile = true
-                                            }else if Step.data?.step == "4"{
-                                                isBookingSuccess = true
-                                            }else if Step.data?.step == "5"{
-                                                isHomeView = true
-                                            }
-                                        }else{
-                                            isBookingView = true
-                                        }
-                                    }
-                                }
+                        viewModelOTP.fetchLoginDate(deviceType: "2", otp: "7879", mobile: txtMobile, userId: "", userType: "", token: deviceToken ?? "", device_name: DeviceName, appId: studentAppID ?? "") { HomeOTP in
+                            if HomeOTP.status == 1{
+                                UserDefaults.standard.set(true, forKey: "isLogin")
+                                UserDefaults.standard.set("2", forKey: "DataFromLogin")
+                                UserDefaults.standard.set(HomeOTP.data?.appID ?? "", forKey: "studentAppID")
+                                UserDefaults.standard.set(HomeOTP.data?.userid ?? "", forKey: "studentUserID")
+                                UserDefaults.standard.set(HomeOTP.data?.username ?? "", forKey: "studentusername")
+                                UserDefaults.standard.set(HomeOTP.data?.usertype ?? "", forKey: "studentUserType")
+                                
+                                isHomeView = true
                             }else{
-                                AlertMessage = OTPData.msg ?? ""
+                                AlertMessage = HomeOTP.msg ?? ""
                                 AlertShow = "0"
                                 showingAlert = true
                             }

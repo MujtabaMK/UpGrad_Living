@@ -8,7 +8,6 @@
 import Foundation
 
 class GetDocumentViewModel: ObservableObject {
-    @Published var coins = GetDocumentModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

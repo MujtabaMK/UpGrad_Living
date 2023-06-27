@@ -14,7 +14,7 @@ struct ProfileInfoModel: Codable {
     let data: ProfileInfoClass?
 }
 
-// MARK: - DataClass
+// MARK: - ProfileInfoClass
 struct ProfileInfoClass: Codable {
     let profile: ProfileInfo?
     let creativity: [ProfileCreativity]?

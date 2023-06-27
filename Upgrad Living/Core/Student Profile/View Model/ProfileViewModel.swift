@@ -8,7 +8,6 @@
 import Foundation
 
 class ProfileViewModel: ObservableObject {
-    @Published var coins = ProfileModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

@@ -8,7 +8,6 @@
 import Foundation
 
 class CommunityViewModel: ObservableObject {
-    @Published var coins = CommunityModule.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

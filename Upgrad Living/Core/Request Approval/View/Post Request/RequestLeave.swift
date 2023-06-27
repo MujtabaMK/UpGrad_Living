@@ -240,9 +240,15 @@ struct RequestLeave: View {
         let alertVC = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
         let datePicker: UIDatePicker = UIDatePicker()
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from:startDate)!
+        
+        
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
-        datePicker.minimumDate = Date()
+        datePicker.minimumDate = date
         alertVC.view.addSubview(datePicker)
         datePicker.frame.size.width = UIScreen.main.bounds.width
         

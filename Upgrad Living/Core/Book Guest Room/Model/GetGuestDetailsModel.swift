@@ -14,7 +14,7 @@ struct GetGuestDetailsModel: Codable {
     let data: GuestDetailsClass?
 }
 
-// MARK: - DataClass
+// MARK: - GuestDetailsClass
 struct GuestDetailsClass: Codable {
     let refrenceID, startDate, endDate, nights: String?
     let pdfURL: String?

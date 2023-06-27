@@ -8,7 +8,6 @@
 import Foundation
 
 class GetAllEventViewModel: ObservableObject {
-    @Published var coins = GetAllEventModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

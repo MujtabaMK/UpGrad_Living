@@ -54,12 +54,11 @@ struct RequestFoodDelivery: View {
                                             .scaledToFit()
                                             .frame(width: 25, height: 35)
                                             .padding(.leading, 20)
-                                        
-                                        Spacer()
-                                        
+                                                                                
                                         Text(startDate)
                                             .font(.custom(OpenSans_Bold, size: 14))
                                             .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0x333333))
+                                            .padding(.leading)
                                         Spacer()
                                     }
                                 }
@@ -155,6 +154,10 @@ struct RequestFoodDelivery: View {
                             showingAlert = true
                         }else if endTime.isEmpty{
                             alertMessage = "Please select end time"
+                            AlertShow = "0"
+                            showingAlert = true
+                        }else if startTime > endTime{
+                            alertMessage = "Please Correct the time"
                             AlertShow = "0"
                             showingAlert = true
                         }else{

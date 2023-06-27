@@ -15,6 +15,7 @@ struct SecurityDepositView: View {
     @State private var alertMessage = String()
     @State private var showingAlert = false
     @State private var AlertShow = String()
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading){
@@ -78,13 +79,8 @@ struct SecurityDepositView: View {
                     }
                 }
             }
+            .ignoresSafeArea()
             .navigationBarHidden(true)
         }
-    }
-}
-
-struct SecurityDepositView_Previews: PreviewProvider {
-    static var previews: some View {
-        SecurityDepositView()
     }
 }

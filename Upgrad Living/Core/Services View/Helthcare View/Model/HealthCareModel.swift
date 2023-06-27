@@ -14,7 +14,7 @@ struct HealthCareModel: Codable {
     let data: HealthCareClass?
 }
 
-// MARK: - DataClass
+// MARK: - HealthCareClass
 struct HealthCareClass: Codable {
     let doctors: [ServiceDoctor]?
     let notes: [ServiceNote]?

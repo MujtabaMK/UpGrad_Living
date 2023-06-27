@@ -14,7 +14,7 @@ struct LaundryModel: Codable {
     let data: LaundryClass?
 }
 
-// MARK: - DataClass
+// MARK: - LaundryClass
 struct LaundryClass: Codable {
     let laundryTimings: [LaundryTiming]?
     let notes: [LaundryNote]?

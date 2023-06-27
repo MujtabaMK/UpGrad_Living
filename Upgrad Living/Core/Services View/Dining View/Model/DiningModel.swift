@@ -14,7 +14,7 @@ struct DiningModel: Codable {
     let data: DiningClass?
 }
 
-// MARK: - DataClass
+// MARK: - DiningClass
 struct DiningClass: Codable {
     let timings: [ServiceTiming]?
     let days: [ServiceDay]?

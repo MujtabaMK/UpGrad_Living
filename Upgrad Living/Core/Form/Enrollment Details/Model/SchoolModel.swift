@@ -14,7 +14,7 @@ struct SchoolModel: Codable {
     let data: SchoolClass?
 }
 
-// MARK: - DataClass
+// MARK: - SchoolClass
 struct SchoolClass: Codable {
     let specialization: [Specialization]?
     let degree: [Degree]?

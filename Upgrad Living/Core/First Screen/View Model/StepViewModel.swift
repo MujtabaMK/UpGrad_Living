@@ -8,7 +8,6 @@
 import Foundation
 
 class StepViewModel: ObservableObject {
-    @Published var coins = StepModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

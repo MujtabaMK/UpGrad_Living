@@ -14,7 +14,7 @@ struct GetPastTicketModel: Codable {
     let data: getPastTicketClass?
 }
 
-// MARK: - DataClass
+// MARK: - getPastTicketClass
 struct getPastTicketClass: Codable {
     let ticketNo, ticketID, ticketCateg, ticketDesc: String?
     let ticketStatus, raisedAt: String?

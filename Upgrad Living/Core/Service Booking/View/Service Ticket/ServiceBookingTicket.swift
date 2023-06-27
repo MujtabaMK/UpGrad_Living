@@ -22,7 +22,6 @@ struct ServiceBookingTicket: View {
     @State private var sharedItems: [Any] = []
     
     var qrImage: String
-    var eventName: String
     var eventDate: String
     var eventTime: String
     var eventLocation: String
@@ -128,30 +127,25 @@ struct ServiceBookingTicket: View {
                         .font(.custom(OpenSans_SemiBold, size: 12))
                         .foregroundColor(Color(hex: 0xFFFFFF))
                 }
-                VStack(alignment: .leading, spacing: 2){
-                    Text(eventName)
-                        .font(.custom(OpenSans_Bold, size: 16))
-                        .foregroundColor(Color(hex: 0x333333))
-                        .padding(.bottom, 12)
+                VStack(alignment: .leading, spacing: 10){
                     HStack{
                         Image("Ticket_Calender")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 30, height: 30)
-                        
                         Text(eventDate)
                             .font(.custom(OpenSans_SemiBold, size: 14))
                             .foregroundColor(Color(hex: 0x333333))
-                        +
-                        Text("|")
-                            .font(.custom(OpenSans_SemiBold, size: 14))
-                            .foregroundColor(Color(hex: 0x333333))
-                        +
+                    }
+                    HStack{
+                        Image("Book_Service_Time_icon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
                         Text(eventTime)
                             .font(.custom(OpenSans_SemiBold, size: 14))
                             .foregroundColor(Color(hex: 0x333333))
                     }
-                    .padding(.bottom, 3)
                     HStack{
                         Image("Ticket_Location")
                             .resizable()
@@ -163,7 +157,7 @@ struct ServiceBookingTicket: View {
                     }
                 }
                 .padding(.leading, -50)
-                .padding(.top, 60)
+                .padding(.top, 30)
             }
         }
         .padding(.top, 50)

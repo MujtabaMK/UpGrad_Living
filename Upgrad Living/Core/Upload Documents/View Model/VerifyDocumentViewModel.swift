@@ -8,7 +8,6 @@
 import Foundation
 
 class VerifyDocumentViewModel: ObservableObject {
-    @Published var coins = VerifyDocumentModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

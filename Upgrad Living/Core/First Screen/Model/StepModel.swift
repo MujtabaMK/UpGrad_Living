@@ -14,7 +14,7 @@ struct StepModel: Codable {
     let data: StepDataClass?
 }
 
-// MARK: - DataClass
+// MARK: - StepDataClass
 struct StepDataClass: Codable {
     let step: String?
 }

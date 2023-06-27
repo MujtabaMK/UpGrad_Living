@@ -8,7 +8,6 @@
 import Foundation
 
 class RequestApprovalViewModel: ObservableObject {
-    @Published var coins = RequestApprovalModel.self
     @Published var isLoadingData = false
     @Published var ShowAlert = false
     @Published var PrintError = ""

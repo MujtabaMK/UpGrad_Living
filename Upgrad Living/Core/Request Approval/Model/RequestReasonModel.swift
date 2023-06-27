@@ -17,5 +17,5 @@ var arrRequestReason = [
     RequestReasonModel(id: "2", name: "Leave"),
     RequestReasonModel(id: "3", name: "Food delivery"),
     RequestReasonModel(id: "4", name: "Invite a guest"),
-    RequestReasonModel(id: "5", name: "Laundry"),
+    RequestReasonModel(id: "5", name: "Laundry")
 ]

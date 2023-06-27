@@ -41,29 +41,29 @@ struct BookingProcessView: View {
                         .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
                     Divider()
                     ScrollView(showsIndicators: false) {
-                        HStack(spacing: 0){
-                            HStack{
-                                Text("Housing".uppercased())
-                                    .font(.custom(OpenSans_Bold, size: 18))
-                                    .foregroundColor(isRequestSelect ? Color(hex: 0x868686) : Color(hex: 0xFFFFFF))
-                            }
-                            .onTapGesture {
-                                isRequestSelect = false
-                            }
-                            .frame(maxWidth: .infinity, minHeight: 55, maxHeight: 55)
-                            .background(isRequestSelect ? Color(hex: 0xFEF0F1) : Color(hex: 0xF04957))
-                            
-                            HStack{
-                                Text("membership".uppercased())
-                                    .font(.custom(OpenSans_Bold, size: 18))
-                                    .foregroundColor(isRequestSelect ? Color(hex: 0xFFFFFF) : Color(hex: 0x868686))
-                            }
-                            .onTapGesture {
-                                isRequestSelect = true
-                            }
-                            .frame(maxWidth: .infinity, minHeight: 55, maxHeight: 55)
-                            .background(isRequestSelect ? Color(hex: 0xF04957) : Color(hex: 0xFEF0F1))
-                        }
+//                        HStack(spacing: 0){
+//                            HStack{
+//                                Text("Housing".uppercased())
+//                                    .font(.custom(OpenSans_Bold, size: 18))
+//                                    .foregroundColor(isRequestSelect ? Color(hex: 0x868686) : Color(hex: 0xFFFFFF))
+//                            }
+//                            .onTapGesture {
+//                                isRequestSelect = false
+//                            }
+//                            .frame(maxWidth: .infinity, minHeight: 55, maxHeight: 55)
+//                            .background(isRequestSelect ? Color(hex: 0xFEF0F1) : Color(hex: 0xF04957))
+//
+//                            HStack{
+//                                Text("membership".uppercased())
+//                                    .font(.custom(OpenSans_Bold, size: 18))
+//                                    .foregroundColor(isRequestSelect ? Color(hex: 0xFFFFFF) : Color(hex: 0x868686))
+//                            }
+//                            .onTapGesture {
+//                                isRequestSelect = true
+//                            }
+//                            .frame(maxWidth: .infinity, minHeight: 55, maxHeight: 55)
+//                            .background(isRequestSelect ? Color(hex: 0xF04957) : Color(hex: 0xFEF0F1))
+//                        }
                         if !isRequestSelect{
                             BookingProcessHousing(
                                 txtMobile: $txtMobile,

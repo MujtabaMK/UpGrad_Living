@@ -15,6 +15,7 @@ struct ServiceBooking: View {
     @StateObject private var viewModel = ServiceSlotViewModel()
     @StateObject private var viewModelBook = BookServiceSlotViewModel()
     @StateObject private var viewModelDetails = ListServiceSlotViewModel()
+    @StateObject private var viewModelCategory = TicketCategoryViewModel()
     
     @State private var isRequestSelect = false
     @State private var isCategory = false
@@ -22,6 +23,7 @@ struct ServiceBooking: View {
     @State private var CategoryID = "1"
     
     @State private var arrServiceDetails = [ListServiceSlot]()
+    @State private var arrBookService = [TicketCategory]()
     
     @State private var todayDate = Date()
     
@@ -130,14 +132,14 @@ struct ServiceBooking: View {
                                         VStack{
                                             ForEach(arrBookService) { request in
                                                 Button {
-                                                    CategoryID = request.id
-                                                    CategoryName = request.ServiceName
+                                                    CategoryID = request.id ?? ""
+                                                    CategoryName = request.name ?? ""
                                                     callServiceSlotAPI()
                                                     isCategory.toggle()
                                                 } label: {
                                                     VStack{
                                                         HStack{
-                                                            Text(request.ServiceName)
+                                                            Text(request.name ?? "")
                                                                 .font(.custom(OpenSans_SemiBold, size: 14))
                                                                 .foregroundColor(Color(hex: 0x868686))
                                                                 .padding(.leading)
@@ -275,6 +277,15 @@ struct ServiceBooking: View {
                     }else{
                         arrSlotWise = []
                         alertMessage = getDetails.msg ?? ""
+                        AlertShow = "0"
+                        showingAlert = true
+                    }
+                }
+                viewModelCategory.getTicketCategory { category in
+                    if category.status == 1{
+                        arrBookService = category.data?.ticketCategories ?? []
+                    }else{
+                        alertMessage = category.msg ?? ""
                         AlertShow = "0"
                         showingAlert = true
                     }

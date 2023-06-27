@@ -53,7 +53,6 @@
 		093BB15529DAE91D0019C91F /* PaymentMethod6Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093BB15429DAE91D0019C91F /* PaymentMethod6Month.swift */; };
 		093BB15829DAEB530019C91F /* PaymentMethod11Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093BB15729DAEB530019C91F /* PaymentMethod11Month.swift */; };
 		0940F3ED2A443190000B79D3 /* MemberOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0940F3EC2A443190000B79D3 /* MemberOTPView.swift */; };
-		0940F3EF2A44481C000B79D3 /* BookServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0940F3EE2A44481C000B79D3 /* BookServiceModel.swift */; };
 		0940F3F12A444A66000B79D3 /* ServiceSlotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0940F3F02A444A66000B79D3 /* ServiceSlotModel.swift */; };
 		0940F3F32A444AA3000B79D3 /* ServiceSlotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0940F3F22A444AA3000B79D3 /* ServiceSlotViewModel.swift */; };
 		0940F3F72A446846000B79D3 /* Pods_UpGrad_Living.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17069D8091909ED7CBF1058 /* Pods_UpGrad_Living.framework */; };
@@ -400,7 +399,6 @@
 		093BB15429DAE91D0019C91F /* PaymentMethod6Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod6Month.swift; sourceTree = "<group>"; };
 		093BB15729DAEB530019C91F /* PaymentMethod11Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethod11Month.swift; sourceTree = "<group>"; };
 		0940F3EC2A443190000B79D3 /* MemberOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberOTPView.swift; sourceTree = "<group>"; };
-		0940F3EE2A44481C000B79D3 /* BookServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookServiceModel.swift; sourceTree = "<group>"; };
 		0940F3F02A444A66000B79D3 /* ServiceSlotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSlotModel.swift; sourceTree = "<group>"; };
 		0940F3F22A444AA3000B79D3 /* ServiceSlotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSlotViewModel.swift; sourceTree = "<group>"; };
 		0940F3FA2A446B26000B79D3 /* HomeLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoginModel.swift; sourceTree = "<group>"; };
@@ -1863,7 +1861,6 @@
 		09B304B12A42B819003BFCB2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0940F3EE2A44481C000B79D3 /* BookServiceModel.swift */,
 				0940F3F02A444A66000B79D3 /* ServiceSlotModel.swift */,
 				09A6F1EB2A45778E008C964B /* BookServiceSlotModel.swift */,
 				09A6F1EF2A458261008C964B /* ListServiceSlotModel.swift */,
@@ -3271,7 +3268,6 @@
 				09B9421C2A39BA0F00945146 /* RequestFoodDelivery.swift in Sources */,
 				09A22D582A29F23E009B2CCF /* CommunityDetailsModule.swift in Sources */,
 				09FAD1E62A2F48220044721A /* UserPastTicketView.swift in Sources */,
-				0940F3EF2A44481C000B79D3 /* BookServiceModel.swift in Sources */,
 				09C32E4F2A4056C000C60C30 /* ParentConfirmedGuestRoom.swift in Sources */,
 				09DE74BC29D56977001B105A /* RoomTypeView.swift in Sources */,
 				099C8BE72A0CBC6F00C867D9 /* SnapCarouselEvents.swift in Sources */,
@@ -3520,7 +3516,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.upgrad.living;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3562,7 +3558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.upgrad.living;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

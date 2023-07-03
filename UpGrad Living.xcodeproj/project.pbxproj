@@ -195,6 +195,7 @@
 		09AA0C772A0370F60018EFE7 /* GetBedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C762A0370F60018EFE7 /* GetBedViewModel.swift */; };
 		09AA0C7B2A03778D0018EFE7 /* BedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C7A2A03778D0018EFE7 /* BedDetailsView.swift */; };
 		09AA0C7D2A0387120018EFE7 /* BedDetailsShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AA0C7C2A0387120018EFE7 /* BedDetailsShowView.swift */; };
+		09AD92492A52D1F8005A52E4 /* CalendarSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AD92482A52D1F8005A52E4 /* CalendarSelectorDelegate.swift */; };
 		09B0258229F79E5D0086190A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0258129F79E5D0086190A /* HomeView.swift */; };
 		09B304B32A42B865003BFCB2 /* ServiceBooking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B304B22A42B865003BFCB2 /* ServiceBooking.swift */; };
 		09B304B82A42E170003BFCB2 /* ServiceBookingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B304B72A42E170003BFCB2 /* ServiceBookingTicket.swift */; };
@@ -287,7 +288,6 @@
 		09CE06742A33068000AD7F57 /* ConfirmedGuestRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE06732A33068000AD7F57 /* ConfirmedGuestRoom.swift */; };
 		09D3BE2D2A383F39000B898A /* Upgrad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09D3BE2B2A383F39000B898A /* Upgrad.xcdatamodeld */; };
 		09D3BE342A38486F000B898A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3BE332A38486F000B898A /* CoreDataManager.swift */; };
-		09D3BE372A3853D1000B898A /* CalendarModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D3BE362A3853D1000B898A /* CalendarModule.swift */; };
 		09DC3F7C2A4AE0BB006CA24C /* LaundryDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC3F7B2A4AE0BB006CA24C /* LaundryDayModel.swift */; };
 		09DC3F7E2A4AE0ED006CA24C /* LaundryDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC3F7D2A4AE0ED006CA24C /* LaundryDayViewModel.swift */; };
 		09DE74A829D541F5001B105A /* ParentsDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DE74A729D541F5001B105A /* ParentsDetailsView.swift */; };
@@ -542,6 +542,7 @@
 		09AA0C762A0370F60018EFE7 /* GetBedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBedViewModel.swift; sourceTree = "<group>"; };
 		09AA0C7A2A03778D0018EFE7 /* BedDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedDetailsView.swift; sourceTree = "<group>"; };
 		09AA0C7C2A0387120018EFE7 /* BedDetailsShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedDetailsShowView.swift; sourceTree = "<group>"; };
+		09AD92482A52D1F8005A52E4 /* CalendarSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSelectorDelegate.swift; sourceTree = "<group>"; };
 		09B0258129F79E5D0086190A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		09B304B22A42B865003BFCB2 /* ServiceBooking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBooking.swift; sourceTree = "<group>"; };
 		09B304B72A42E170003BFCB2 /* ServiceBookingTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBookingTicket.swift; sourceTree = "<group>"; };
@@ -634,7 +635,6 @@
 		09CE06732A33068000AD7F57 /* ConfirmedGuestRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedGuestRoom.swift; sourceTree = "<group>"; };
 		09D3BE2C2A383F39000B898A /* Upgrad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Upgrad.xcdatamodel; sourceTree = "<group>"; };
 		09D3BE332A38486F000B898A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		09D3BE362A3853D1000B898A /* CalendarModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModule.swift; sourceTree = "<group>"; };
 		09DC3F7B2A4AE0BB006CA24C /* LaundryDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryDayModel.swift; sourceTree = "<group>"; };
 		09DC3F7D2A4AE0ED006CA24C /* LaundryDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaundryDayViewModel.swift; sourceTree = "<group>"; };
 		09DE74A729D541F5001B105A /* ParentsDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentsDetailsView.swift; sourceTree = "<group>"; };
@@ -1187,7 +1187,6 @@
 		096A3FD629CC24E900092AAC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				09D3BE352A385217000B898A /* FS Calender */,
 				09A22D542A29CEB2009B2CCF /* Image Picker */,
 				09FAF02E2A1CDBF200A30C93 /* MultipleDate */,
 				0993226629D6B3F70036C050 /* Material TextField */,
@@ -1522,6 +1521,7 @@
 		099100292A348F7C00FFF417 /* Date Picker */ = {
 			isa = PBXGroup;
 			children = (
+				09AD92482A52D1F8005A52E4 /* CalendarSelectorDelegate.swift */,
 				0991001E2A34593700FFF417 /* GuestDatePopup.swift */,
 			);
 			path = "Date Picker";
@@ -2565,14 +2565,6 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		09D3BE352A385217000B898A /* FS Calender */ = {
-			isa = PBXGroup;
-			children = (
-				09D3BE362A3853D1000B898A /* CalendarModule.swift */,
-			);
-			path = "FS Calender";
-			sourceTree = "<group>";
-		};
 		09DE74A329D541B3001B105A /* Parents Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -3074,6 +3066,7 @@
 				09FDB2742A05194200D70459 /* AgreementSignBookingView.swift in Sources */,
 				0993226C29D6E71D0036C050 /* FoucesedParentTextField.swift in Sources */,
 				098A04D829D42EC700C9595A /* MasterModel.swift in Sources */,
+				09AD92492A52D1F8005A52E4 /* CalendarSelectorDelegate.swift in Sources */,
 				09C32E682A40764900C60C30 /* ParentRequestLateNight.swift in Sources */,
 				09C32E482A40557B00C60C30 /* ParentRoomSuccessView.swift in Sources */,
 				0981D9BE29DC273F0025575D /* SecurityDepositTopView.swift in Sources */,
@@ -3127,7 +3120,6 @@
 				09FAF02B2A1CAC5A00A30C93 /* CategoryModel.swift in Sources */,
 				09A7554629FB8EEE00BCE3F7 /* CustomTabView.swift in Sources */,
 				09C32E532A40578400C60C30 /* ParentBookGuestRoomView.swift in Sources */,
-				09D3BE372A3853D1000B898A /* CalendarModule.swift in Sources */,
 				096A400529CC2D5800092AAC /* extention.swift in Sources */,
 				093751232A262226000899BE /* ServiceLaundryTiming.swift in Sources */,
 				0991001B2A344E4800FFF417 /* BookGuestRoomView.swift in Sources */,

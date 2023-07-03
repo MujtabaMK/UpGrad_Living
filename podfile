@@ -12,7 +12,7 @@ target 'UpGrad Living' do
   pod 'SwiftUIPager'
   pod 'Kingfisher', '~> 7.0'
   pod 'WaterfallGrid', '~> 1.0.0'
-  pod 'FSCalendar'
+  pod 'WWCalendarTimeSelector'
   pod 'IQKeyboardManagerSwift'
 
   pod 'FirebaseMessaging'

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WWCalendarTimeSelector
 
 struct BookGuestRoom: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -41,6 +42,12 @@ struct BookGuestRoom: View {
     @State private var DifferenceBetweenDays = ""
     
     @State private var arrGuest = [Any]()
+    
+    //WWCalender
+    
+    @State private var singleDate: Date?
+    @State private var selectedDateString = ""
+    @State private var multipleDates: [Date] = []
     
     var body: some View {
         NavigationView {
@@ -110,7 +117,8 @@ struct BookGuestRoom: View {
                                     .frame(width: 18, height: 18)
                             }
                             .onTapGesture{
-                                isShowDatePicker = true
+                                //isShowDatePicker = true
+                                showCalendar()
                             }
                             .frame(width: 230)
                             .padding()
@@ -642,6 +650,17 @@ struct BookGuestRoom: View {
                     }
                 }
             }
+        }
+    }
+    
+    func showCalendar() {
+        let selector = WWCalendarTimeSelector.instantiate()
+        selector.optionSelectionType = WWCalendarTimeSelectorSelection.range
+        let delegate = CalendarSelectorDelegate(singleDate: $singleDate, selectedDateString: $selectedDateString, multipleDates: $multipleDates, startDateGlobal: $startDate, endDateGlobal: $endDate, DifferenceBetweenDays: $DifferenceBetweenDays)
+        selector.delegate = delegate
+        
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            scene.windows.first?.rootViewController?.present(selector, animated: true, completion: nil)
         }
     }
 }

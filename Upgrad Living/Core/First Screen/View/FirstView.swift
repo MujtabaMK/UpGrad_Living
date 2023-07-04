@@ -61,19 +61,14 @@ struct FirstView: View {
     @State private var isBackRequestApproval = false
     @State private var isRequestApproval = false
     
-    //Parent...
-    @State private var isParentHome = false
-    
-    @State private var isBackParentGuestRoom = false
-    
-    @State private var isBackParentHelpdesk = false
-    @State private var isParentHelpdesk = false
-    
-    @State private var isBackParentApproval = false
-    @State private var isParentLogout = false
-    
     @State private var isBackServiceBooking = false
     @State private var isServiceBooking = false
+    
+    //Parent...
+    @State private var isParentHome = false
+        
+    //Admin
+    @State private var isAdminView = false
     
     @State private var RoomieId = ""
     @State private var AlertMessage = String()
@@ -377,44 +372,24 @@ struct FirstView: View {
 //                    }
                 }
                 VStack{//Parent
-                    
+                        
                     NavigationLink(
                         "",
-                        destination: ParentViewTabBar(
-                            isBackParentGuestRoom: $isBackParentGuestRoom,
-                            isBackParentHelpdesk: $isBackParentHelpdesk,
-                            isParentHelpdesk: $isParentHelpdesk,
-                            isBackParentApproval: $isBackParentApproval,
-                            isParentLogout: $isParentLogout,
-                            NewSelectedIndex: $newSelectedIndex
+                        destination: ParentFirstView(
+                            EventScreen: "",
+                            newSelectedIndex: $newSelectedIndex
                         ).navigationBarHidden(true),
                         isActive: $isParentHome).isDetailLink(false)
                     
+                    //Admin...
                     
                     NavigationLink(
                         "",
-                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
-                        isActive: $isBackParentHelpdesk).isDetailLink(false)
-                    
-                    NavigationLink(
-                        "",
-                        destination: ParentHelpdesk(isBackParentHelpdesk: $isBackParentHelpdesk).navigationBarHidden(true),
-                        isActive: $isParentHelpdesk).isDetailLink(false)
-                    
-                    NavigationLink(
-                        "",
-                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
-                        isActive: $isBackParentApproval).isDetailLink(false)
-                    
-                    NavigationLink(
-                        "",
-                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
-                        isActive: $isBackParentGuestRoom).isDetailLink(false)
-                    
-                    NavigationLink(
-                        "",
-                        destination: LoginView().navigationBarHidden(true),
-                        isActive: $isParentLogout).isDetailLink(false)
+                        destination: AdminFirstView(
+                            EventScreen: "",
+                            newSelectedIndex: $newSelectedIndex
+                        ).navigationBarHidden(true),
+                        isActive: $isAdminView).isDetailLink(false)
                     
                 }
                 if ViewModel.isLoadingData{
@@ -428,7 +403,9 @@ struct FirstView: View {
             }
             .onAppear{
                 if DataFromLogin == "2"{
-                    if studentUserType == "2"{
+                    if studentUserType == "1"{
+                        isAdminView = true
+                    }else if studentUserType == "2"{
                         isParentHome = true
                     }else if studentUserType == "3"{
                         isHomeView = true

@@ -230,6 +230,16 @@
 		09B9421E2A39C7C300945146 /* RequestApprovalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9421D2A39C7C300945146 /* RequestApprovalModel.swift */; };
 		09B942202A39C80200945146 /* RequestApprovalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9421F2A39C80200945146 /* RequestApprovalViewModel.swift */; };
 		09B942242A39F3D200945146 /* SeekApproval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B942232A39F3D200945146 /* SeekApproval.swift */; };
+		09B96BF42A53EEE700192E78 /* AdminViewTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96BF32A53EEE700192E78 /* AdminViewTabBar.swift */; };
+		09B96BF62A53EF1400192E78 /* AdminCustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96BF52A53EF1400192E78 /* AdminCustomTabView.swift */; };
+		09B96BF82A53EF3400192E78 /* AdminTabBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96BF72A53EF3400192E78 /* AdminTabBottomView.swift */; };
+		09B96BFE2A53F09200192E78 /* AdminHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96BFD2A53F09200192E78 /* AdminHomeView.swift */; };
+		09B96C002A53FB8A00192E78 /* AdminFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96BFF2A53FB8A00192E78 /* AdminFirstView.swift */; };
+		09B96C022A53FE2C00192E78 /* ParentFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96C012A53FE2C00192E78 /* ParentFirstView.swift */; };
+		09B96C042A540A0A00192E78 /* AdminDropDownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96C032A540A0A00192E78 /* AdminDropDownModel.swift */; };
+		09B96C062A541B4800192E78 /* AdminApprovalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96C052A541B4800192E78 /* AdminApprovalRequest.swift */; };
+		09B96C082A541BA500192E78 /* AdminBookingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96C072A541BA500192E78 /* AdminBookingStatus.swift */; };
+		09B96C0B2A541C6900192E78 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B96C0A2A541C6900192E78 /* CircularProgressView.swift */; };
 		09BB78792A2F4D150090A0A0 /* GetPastTicketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB78782A2F4D150090A0A0 /* GetPastTicketModel.swift */; };
 		09BB787B2A2F4D240090A0A0 /* GetPastTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB787A2A2F4D240090A0A0 /* GetPastTicketViewModel.swift */; };
 		09BF6C202A3C407500A83DB3 /* UserCheckInCheckOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BF6C1F2A3C407500A83DB3 /* UserCheckInCheckOut.swift */; };
@@ -577,6 +587,16 @@
 		09B9421D2A39C7C300945146 /* RequestApprovalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestApprovalModel.swift; sourceTree = "<group>"; };
 		09B9421F2A39C80200945146 /* RequestApprovalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestApprovalViewModel.swift; sourceTree = "<group>"; };
 		09B942232A39F3D200945146 /* SeekApproval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekApproval.swift; sourceTree = "<group>"; };
+		09B96BF32A53EEE700192E78 /* AdminViewTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewTabBar.swift; sourceTree = "<group>"; };
+		09B96BF52A53EF1400192E78 /* AdminCustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCustomTabView.swift; sourceTree = "<group>"; };
+		09B96BF72A53EF3400192E78 /* AdminTabBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabBottomView.swift; sourceTree = "<group>"; };
+		09B96BFD2A53F09200192E78 /* AdminHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeView.swift; sourceTree = "<group>"; };
+		09B96BFF2A53FB8A00192E78 /* AdminFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminFirstView.swift; sourceTree = "<group>"; };
+		09B96C012A53FE2C00192E78 /* ParentFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentFirstView.swift; sourceTree = "<group>"; };
+		09B96C032A540A0A00192E78 /* AdminDropDownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDropDownModel.swift; sourceTree = "<group>"; };
+		09B96C052A541B4800192E78 /* AdminApprovalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminApprovalRequest.swift; sourceTree = "<group>"; };
+		09B96C072A541BA500192E78 /* AdminBookingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminBookingStatus.swift; sourceTree = "<group>"; };
+		09B96C0A2A541C6900192E78 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		09BB78782A2F4D150090A0A0 /* GetPastTicketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPastTicketModel.swift; sourceTree = "<group>"; };
 		09BB787A2A2F4D240090A0A0 /* GetPastTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPastTicketViewModel.swift; sourceTree = "<group>"; };
 		09BF6C1F2A3C407500A83DB3 /* UserCheckInCheckOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCheckInCheckOut.swift; sourceTree = "<group>"; };
@@ -1162,24 +1182,10 @@
 				09768B1229DD842F00CB05F5 /* First Screen */,
 				098D698E29CD76EB0000F5A9 /* WalkThrough */,
 				096A3FDD29CC254100092AAC /* Authentication */,
-				09C32E282A40197500C60C30 /* Parents */,
 				098A04CA29D4075300C9595A /* Form */,
-				0981D9BA29DC260C0025575D /* Security Deposit */,
-				09C0ED5129E40361009123D2 /* Upload Documents */,
-				097E043129E534EE00F91647 /* Student Profile */,
-				0995070A2A00F7F200339AA9 /* Booking */,
-				09FDB26F2A05189900D70459 /* Rent */,
-				09B0258029F79E480086190A /* Home View */,
-				0917233C2A0E4BEF008D9AEC /* Events View */,
-				090ED18D2A125CD600FE8B18 /* Roomee Profile View */,
-				09178F6B2A248F6E00BC1435 /* Offer View */,
-				09178F772A24BD0400BC1435 /* Services View */,
-				095B5D7E2A285A430063900B /* Community View */,
-				0905F3AF2A289F1600E4BE2A /* User Profile */,
-				09C3AE072A31950500B68B02 /* Notification View */,
-				09C3AE132A3201A100B68B02 /* Book Guest Room */,
-				09D3BE262A382F4A000B898A /* Request Approval */,
-				09B304AE2A42B7FF003BFCB2 /* Service Booking */,
+				09B96BF02A53EE5700192E78 /* Student */,
+				09C32E282A40197500C60C30 /* Parents */,
+				09B96BF12A53EEAB00192E78 /* Admin */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1187,6 +1193,7 @@
 		096A3FD629CC24E900092AAC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				09B96C092A541C4D00192E78 /* Circle Progress View */,
 				09A22D542A29CEB2009B2CCF /* Image Picker */,
 				09FAF02E2A1CDBF200A30C93 /* MultipleDate */,
 				0993226629D6B3F70036C050 /* Material TextField */,
@@ -1337,6 +1344,8 @@
 			isa = PBXGroup;
 			children = (
 				09768B1429DD846D00CB05F5 /* FirstView.swift */,
+				09B96C012A53FE2C00192E78 /* ParentFirstView.swift */,
+				09B96BFF2A53FB8A00192E78 /* AdminFirstView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2144,6 +2153,91 @@
 				09B942232A39F3D200945146 /* SeekApproval.swift */,
 			);
 			path = "View Request";
+			sourceTree = "<group>";
+		};
+		09B96BF02A53EE5700192E78 /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				0981D9BA29DC260C0025575D /* Security Deposit */,
+				09C0ED5129E40361009123D2 /* Upload Documents */,
+				097E043129E534EE00F91647 /* Student Profile */,
+				0995070A2A00F7F200339AA9 /* Booking */,
+				09FDB26F2A05189900D70459 /* Rent */,
+				09B0258029F79E480086190A /* Home View */,
+				0917233C2A0E4BEF008D9AEC /* Events View */,
+				090ED18D2A125CD600FE8B18 /* Roomee Profile View */,
+				09178F6B2A248F6E00BC1435 /* Offer View */,
+				09178F772A24BD0400BC1435 /* Services View */,
+				095B5D7E2A285A430063900B /* Community View */,
+				0905F3AF2A289F1600E4BE2A /* User Profile */,
+				09C3AE072A31950500B68B02 /* Notification View */,
+				09C3AE132A3201A100B68B02 /* Book Guest Room */,
+				09D3BE262A382F4A000B898A /* Request Approval */,
+				09B304AE2A42B7FF003BFCB2 /* Service Booking */,
+			);
+			path = Student;
+			sourceTree = "<group>";
+		};
+		09B96BF12A53EEAB00192E78 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				09B96BF22A53EECA00192E78 /* Tab Bar */,
+				09B96BF92A53F05F00192E78 /* Home View */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		09B96BF22A53EECA00192E78 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				09B96BF72A53EF3400192E78 /* AdminTabBottomView.swift */,
+				09B96BF52A53EF1400192E78 /* AdminCustomTabView.swift */,
+				09B96BF32A53EEE700192E78 /* AdminViewTabBar.swift */,
+			);
+			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		09B96BF92A53F05F00192E78 /* Home View */ = {
+			isa = PBXGroup;
+			children = (
+				09B96BFC2A53F07B00192E78 /* Model */,
+				09B96BFB2A53F07200192E78 /* View Model */,
+				09B96BFA2A53F06C00192E78 /* View */,
+			);
+			path = "Home View";
+			sourceTree = "<group>";
+		};
+		09B96BFA2A53F06C00192E78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09B96BFD2A53F09200192E78 /* AdminHomeView.swift */,
+				09B96C052A541B4800192E78 /* AdminApprovalRequest.swift */,
+				09B96C072A541BA500192E78 /* AdminBookingStatus.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09B96BFB2A53F07200192E78 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		09B96BFC2A53F07B00192E78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09B96C032A540A0A00192E78 /* AdminDropDownModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09B96C092A541C4D00192E78 /* Circle Progress View */ = {
+			isa = PBXGroup;
+			children = (
+				09B96C0A2A541C6900192E78 /* CircularProgressView.swift */,
+			);
+			path = "Circle Progress View";
 			sourceTree = "<group>";
 		};
 		09BF6C1B2A3C3E7400A83DB3 /* User CheckInOut */ = {
@@ -3046,6 +3140,7 @@
 				09BB787B2A2F4D240090A0A0 /* GetPastTicketViewModel.swift in Sources */,
 				09FAF0382A1CDC0F00A30C93 /* MDPModel.swift in Sources */,
 				09CE06742A33068000AD7F57 /* ConfirmedGuestRoom.swift in Sources */,
+				09B96BFE2A53F09200192E78 /* AdminHomeView.swift in Sources */,
 				09A7554029FB8DE900BCE3F7 /* TabItemData.swift in Sources */,
 				0917233B2A0E3BB3008D9AEC /* NearByView.swift in Sources */,
 				09B7A1CE29D8266E00EC72EF /* SubmitDocumentaionViewModel.swift in Sources */,
@@ -3054,11 +3149,14 @@
 				09BB78792A2F4D150090A0A0 /* GetPastTicketModel.swift in Sources */,
 				09B413292A3724B9000730DF /* GetGuestViewModel.swift in Sources */,
 				09FAF0232A1C8B3D00A30C93 /* AddToFavoriteModel.swift in Sources */,
+				09B96C0B2A541C6900192E78 /* CircularProgressView.swift in Sources */,
 				096ADFCB29FAA0F60025A275 /* CornerRadiusStyle.swift in Sources */,
 				09B4BCB12A272D05005EBF2A /* HealthCareViewModel.swift in Sources */,
 				09FAF0252A1C8B5E00A30C93 /* AddToFavoriteViewModel.swift in Sources */,
 				0943931D2A13799D003C2A10 /* ProfileView.swift in Sources */,
 				095B5D832A285A850063900B /* CommunityView.swift in Sources */,
+				09B96C082A541BA500192E78 /* AdminBookingStatus.swift in Sources */,
+				09B96C002A53FB8A00192E78 /* AdminFirstView.swift in Sources */,
 				09A7554429FB8EB500BCE3F7 /* TabBottomView.swift in Sources */,
 				09FAF0272A1C910500A30C93 /* GetAllFavoriteModel.swift in Sources */,
 				09B304B32A42B865003BFCB2 /* ServiceBooking.swift in Sources */,
@@ -3066,6 +3164,7 @@
 				09FDB2742A05194200D70459 /* AgreementSignBookingView.swift in Sources */,
 				0993226C29D6E71D0036C050 /* FoucesedParentTextField.swift in Sources */,
 				098A04D829D42EC700C9595A /* MasterModel.swift in Sources */,
+				09B96C042A540A0A00192E78 /* AdminDropDownModel.swift in Sources */,
 				09AD92492A52D1F8005A52E4 /* CalendarSelectorDelegate.swift in Sources */,
 				09C32E682A40764900C60C30 /* ParentRequestLateNight.swift in Sources */,
 				09C32E482A40557B00C60C30 /* ParentRoomSuccessView.swift in Sources */,
@@ -3139,6 +3238,7 @@
 				093751152A25DB86000899BE /* ServiceWeekMenuView.swift in Sources */,
 				09BF6C202A3C407500A83DB3 /* UserCheckInCheckOut.swift in Sources */,
 				09815F6B2A38874A00AF7720 /* RequestApprovalView.swift in Sources */,
+				09B96BF42A53EEE700192E78 /* AdminViewTabBar.swift in Sources */,
 				09FAF02D2A1CDB0B00A30C93 /* MultipleDatePopup.swift in Sources */,
 				098A04D429D4111100C9595A /* DetailsViewTop.swift in Sources */,
 				099124F22A2DB2DE00AA425B /* ProfileInfoModel.swift in Sources */,
@@ -3175,6 +3275,7 @@
 				097E043329E5351200F91647 /* StudentProfileView.swift in Sources */,
 				0905F3B62A28B46200E4BE2A /* CommunityModule.swift in Sources */,
 				096A3FE229CC259B00092AAC /* LoginView.swift in Sources */,
+				09B96C062A541B4800192E78 /* AdminApprovalRequest.swift in Sources */,
 				099490D129DAAF9B002FA2C0 /* BookingUploadProcessView.swift in Sources */,
 				09C32E452A4054F600C60C30 /* ParentDatePopup.swift in Sources */,
 				09178F7E2A24BD4F00BC1435 /* ServiceView.swift in Sources */,
@@ -3227,6 +3328,7 @@
 				098A04E229D452F800C9595A /* CountryModel.swift in Sources */,
 				09178F702A248FB900BC1435 /* OfferModel.swift in Sources */,
 				09FAF0292A1C915800A30C93 /* GetAllFavoriteViewModel.swift in Sources */,
+				09B96C022A53FE2C00192E78 /* ParentFirstView.swift in Sources */,
 				09FDB2782A051CFB00D70459 /* WebViewRent.swift in Sources */,
 				098A04DC29D4339500C9595A /* MaterialDesignTextEditor.swift in Sources */,
 				09FAF0212A1C819900A30C93 /* GetAllEventViewModel.swift in Sources */,
@@ -3259,6 +3361,7 @@
 				09C32E4A2A40559600C60C30 /* ParentRoomSuccessTopView.swift in Sources */,
 				09B9421C2A39BA0F00945146 /* RequestFoodDelivery.swift in Sources */,
 				09A22D582A29F23E009B2CCF /* CommunityDetailsModule.swift in Sources */,
+				09B96BF82A53EF3400192E78 /* AdminTabBottomView.swift in Sources */,
 				09FAD1E62A2F48220044721A /* UserPastTicketView.swift in Sources */,
 				09C32E4F2A4056C000C60C30 /* ParentConfirmedGuestRoom.swift in Sources */,
 				09DE74BC29D56977001B105A /* RoomTypeView.swift in Sources */,
@@ -3335,6 +3438,7 @@
 				09FAF0472A1CF5DA00A30C93 /* EventReminderPopUp.swift in Sources */,
 				09C72FBC29F8F441005C197D /* PostDocumentViewModel.swift in Sources */,
 				096A400329CC2D5800092AAC /* HideKeyboard.swift in Sources */,
+				09B96BF62A53EF1400192E78 /* AdminCustomTabView.swift in Sources */,
 				09868FA92A334BC7009D9EB1 /* GuestRelationModel.swift in Sources */,
 				09B4BCC52A274F88005EBF2A /* ServiceConvenienceView.swift in Sources */,
 				0964879A2A03D464006E2412 /* BedSuccesView.swift in Sources */,
@@ -3508,7 +3612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.upgrad.living;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3550,7 +3654,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.upgrad.living;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

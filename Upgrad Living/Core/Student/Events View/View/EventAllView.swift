@@ -19,7 +19,7 @@ struct EventAllView: View {
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     
     @State private var isHome = false
-       
+    
     @State private var arrAllEvent = [AllEvent]()
     @State private var arrAllFav = [AllFavorites]()
     @State private var arrCreativity = [FilterCatagory]()
@@ -42,6 +42,7 @@ struct EventAllView: View {
     @State private var FilterType = ""
     @State private var CheckFavriate = false
     @State private var noEvents = false
+    @State private var arrAddFav = [AllEvent]()
     
     @State private var alertMessage = String()
     @State private var showingAlert = false
@@ -70,14 +71,28 @@ struct EventAllView: View {
                             .padding(.trailing, 30)
                         Spacer(minLength: 0)
                         
-                        Image(CheckFavriate ? "Home_Bookmark_Select" : "Home_Bookmark_Not_Select")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                            .padding(.trailing)
-                            .onTapGesture {
-                                CheckFavriate.toggle()
-                            }
+                        if !noEvents{
+                            Image(CheckFavriate ? "Home_Bookmark_Select" : "Home_Bookmark_Not_Select")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding(.trailing)
+                                .onTapGesture {
+                                    CheckFavriate.toggle()
+                                    if CheckFavriate{
+                                        for (_, value) in searchResults.enumerated(){
+                                            if value.isFavorate == "1"{
+                                                arrAddFav.append(value)
+                                            }
+                                        }
+                                    }else{
+                                        arrAddFav = []
+                                    }
+                                }
+                        }else{
+                            Text("")
+                                .frame(width: 30)
+                        }
                     }
                     .padding(.trailing)
                     .padding(.top)
@@ -96,19 +111,6 @@ struct EventAllView: View {
                                             .padding(.horizontal, 15)
                                             .padding(.leading, 5)
                                             .frame(width: getRect().width, height: 300)
-                                    }else{
-                                        if index == 0{
-                                            VStack{
-                                                Image("Save_Events")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 96, height: 127)
-                                                
-                                                Text("Oops! There are no Saved Events!")
-                                                    .font(.custom(OpenSans_Bold, size: 20))
-                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xFFFFFF))
-                                            }
-                                        }
                                     }
                                 }else{
                                     UpcommingEventsCell(post: Event, isShowAlert: $showingAlert,alertMessage: $alertMessage, isEventDetails: $isEventDetails, isCallAPI: $isCallAPI)
@@ -163,7 +165,6 @@ struct EventAllView: View {
                                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
                                                 .background(.white)
                                                 .cornerRadius(15)
-                                                
                                                 .overlay(
                                                     RoundedRectangle(
                                                         cornerRadius: 15.0)
@@ -172,7 +173,6 @@ struct EventAllView: View {
                                                 )
                                                 .padding(.horizontal, 6)
                                         }
-
                                     }
                                 }
                                 
@@ -295,17 +295,17 @@ struct EventAllView: View {
                                                 .scaledToFit()
                                                 .frame(width: 4.5, height: 9)
                                         }
-                                            .frame(minWidth: 0, maxWidth: 200, minHeight: 50)
-                                            .background(.white)
-                                            .cornerRadius(15)
-                                            .overlay(
-                                                RoundedRectangle(
-                                                    cornerRadius: 15.0)
-                                                .strokeBorder(isChooseFromCalender ? Color(hex: 0xF5868F) : .gray,
-                                                              style: StrokeStyle(lineWidth: isChooseFromCalender ? 2.0 : 1.0))
-                                            )
-                                            .padding(.leading, 3)
-                                            .padding(.bottom, 20)
+                                        .frame(minWidth: 0, maxWidth: 200, minHeight: 50)
+                                        .background(.white)
+                                        .cornerRadius(15)
+                                        .overlay(
+                                            RoundedRectangle(
+                                                cornerRadius: 15.0)
+                                            .strokeBorder(isChooseFromCalender ? Color(hex: 0xF5868F) : .gray,
+                                                          style: StrokeStyle(lineWidth: isChooseFromCalender ? 2.0 : 1.0))
+                                        )
+                                        .padding(.leading, 3)
+                                        .padding(.bottom, 20)
                                     }
                                     
                                     HStack{
@@ -389,7 +389,6 @@ struct EventAllView: View {
                         .offset(y: 10)
                         .padding(.bottom, 80)
                     }
-                    
                 }
                 
                 if isChooseFromCalender{
@@ -411,18 +410,21 @@ struct EventAllView: View {
                             .foregroundColor(colorScheme == .light ? Color(hex: 0xDE1223) : Color(hex: 0xDE1223))
                     }
                 }
-                if isEventsave{
-                    VStack{
-                        Image("Save_Events")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 96, height: 127)
-                        
-                        Text("Oops! There are no Saved Events!")
-                            .font(.custom(OpenSans_Bold, size: 20))
-                            .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xFFFFFF))
+                if CheckFavriate{
+                    if arrAddFav.count == 0{
+                        VStack{
+                            Image("Save_Events")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 96, height: 127)
+                            
+                            Text("Oops! There are no Saved Events!")
+                                .font(.custom(OpenSans_Bold, size: 20))
+                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : Color(hex: 0xFFFFFF))
+                        }
                     }
                 }
+                
             }
             .padding(.bottom, 50)
             .navigationBarHidden(true)

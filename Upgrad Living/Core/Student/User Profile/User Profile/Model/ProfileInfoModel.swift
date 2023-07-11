@@ -66,7 +66,7 @@ struct ProfileGoingOut: Codable {
 
 // MARK: - HelpDesk
 struct ProfileHelpDesk: Codable {
-    let helpDesk, contactNo: String?
+    let helpDesk, contactNo, email, whatsappNo: String?
 }
 
 // MARK: - Profile

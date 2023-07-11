@@ -19,6 +19,7 @@ struct ParentViewTabBar: View {
     @Binding var isParentHelpdesk: Bool
     @Binding var isBackParentApproval: Bool
     @Binding var isParentLogout: Bool
+    @Binding var isApprovalView: Bool
     
     @Binding var NewSelectedIndex: Int
     
@@ -45,7 +46,12 @@ struct ParentViewTabBar: View {
     func getTabView(type: ParentTabType) -> some View {
         switch type {
         case .home:
-            ParentHomeView(isParentHelpdesk: $isParentHelpdesk, isBackParentHelpdesk: $isBackParentHelpdesk, isLogout: $isParentLogout)
+            ParentHomeView(
+                isParentHelpdesk: $isParentHelpdesk,
+                isBackParentHelpdesk: $isBackParentHelpdesk,
+                isLogout: $isParentLogout,
+                isApprovalView: $isApprovalView
+            )
             
         case .RoomBooking:
             ParentRoomBooking(isBackParentGuestRoom: $isBackParentGuestRoom)

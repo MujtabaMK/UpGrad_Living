@@ -207,53 +207,70 @@ struct ParentRequestInviteaGuest: View {
                     }
                     .padding(.bottom)
                     
-                    HStack{
-                        Button {
-                            requestID = arrPending.id ?? ""
-                            requestStatus = "2"
-                            callAPI.toggle()
-                        } label: {
-                            Capsule()
-                                .strokeBorder(Color(hex: 0xB20710), lineWidth: 1)
-                                .frame(width: 110, height: 50)
-                                .overlay {
-                                    HStack(spacing: 4){
-                                        Text("Reject")
-                                            .font(.custom(OpenSans_SemiBold, size: 15))
-                                            .foregroundColor(colorScheme == .light ? Color(hex: 0xDE1223) : Color(hex:0xDE1223))
+                    if arrPending.isEdit == "1"{
+                        HStack{
+                            Button {
+                                requestID = arrPending.id ?? ""
+                                requestStatus = "2"
+                                callAPI.toggle()
+                            } label: {
+                                Capsule()
+                                    .strokeBorder(Color(hex: 0xB20710), lineWidth: 1)
+                                    .frame(width: 110, height: 50)
+                                    .overlay {
+                                        HStack(spacing: 4){
+                                            Text("Reject")
+                                                .font(.custom(OpenSans_SemiBold, size: 15))
+                                                .foregroundColor(colorScheme == .light ? Color(hex: 0xDE1223) : Color(hex:0xDE1223))
+                                        }
                                     }
-                                }
-                        }
-                        
-                        Spacer()
-                        
-                        Button {
-                            requestID = arrPending.id ?? ""
-                            requestStatus = "1"
-                            callAPI.toggle()
-                        } label: {
-                            Capsule()
-                                .fill(
-                                    LinearGradient(
-                                        colors: [Color(hex: 0xEE2C3C),
-                                                 Color(hex: 0xB20710)],
-                                        startPoint: .leading,
-                                        endPoint: .trailing)
-                                )
-                                .frame(width: 160, height: 50)
-                                .overlay{
-                                    HStack{
-                                        Spacer()
-                                        Text("Approve")//Save & Continue
-                                            .font(.custom(OpenSans_SemiBold, size: 15))
-                                            .foregroundColor(.white)
-                                        Spacer()
+                            }
+                            
+                            Spacer()
+                            
+                            Button {
+                                requestID = arrPending.id ?? ""
+                                requestStatus = "1"
+                                callAPI.toggle()
+                            } label: {
+                                Capsule()
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [Color(hex: 0xEE2C3C),
+                                                     Color(hex: 0xB20710)],
+                                            startPoint: .leading,
+                                            endPoint: .trailing)
+                                    )
+                                    .frame(width: 160, height: 50)
+                                    .overlay{
+                                        HStack{
+                                            Spacer()
+                                            Text("Approve")//Save & Continue
+                                                .font(.custom(OpenSans_SemiBold, size: 15))
+                                                .foregroundColor(.white)
+                                            Spacer()
+                                        }
                                     }
-                                }
+                            }
                         }
+                        .padding(.bottom)
+                        .padding(.horizontal)
+                    }else{
+                        HStack{
+                            Image("Seek_Pending_icon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 21, height: 21)
+                            
+                            Text("Pending by admin")
+                                .font(.custom(OpenSans_SemiBold, size: 12))
+                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0x333333, alpha: 1.0))
+                            
+                            Spacer()
+                        }
+                        .padding(.bottom)
+                        .padding(.horizontal)
                     }
-                    .padding(.bottom)
-                    .padding(.horizontal)
                 }
                 .frame(width: getRect().width - 40)
                 .background(Color(hex: 0xFEEEF0))

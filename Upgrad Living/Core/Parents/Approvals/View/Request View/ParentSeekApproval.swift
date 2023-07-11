@@ -13,7 +13,7 @@ struct ParentSeekApproval: View {
     @EnvironmentObject var networkMonitor: NetworkMonitor
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     
-    var arrSeekApproval: SeekApprovalRequest
+    var arrSeekApproval: ParentRequest
     
     var body: some View {
         VStack{

@@ -16,7 +16,8 @@ struct AdminFirstView: View {
     
     @State private var isAdminView = false
     @State private var isAdminLogout = false
-    
+    @State private var isEventDetails = false
+    @State private var isBackAdminApproval = false
     
     var EventScreen: String
     @Binding var newSelectedIndex: Int
@@ -28,9 +29,7 @@ struct AdminFirstView: View {
                     .resizable()
                     .scaledToFill()
                 if EventScreen == ""{
-                    Image("Upgrad_Logo_White")
-                        .resizable()
-                        .frame(width: 281, height: 40)
+                    LoadingView()
                 }else{
                     LoadingView()
                 }
@@ -40,7 +39,9 @@ struct AdminFirstView: View {
                         "",
                         destination: AdminViewTabBar(
                             NewSelectedIndex: $newSelectedIndex,
-                            isAdminLogout: $isAdminLogout
+                            isAdminLogout: $isAdminLogout,
+                            isEventDetails: $isEventDetails,
+                            isBackAdminApproval: $isBackAdminApproval
                         ).navigationBarHidden(true),
                         isActive: $isAdminView).isDetailLink(false)
                     
@@ -48,6 +49,11 @@ struct AdminFirstView: View {
                         "",
                         destination: LoginView().navigationBarHidden(true),
                         isActive: $isAdminLogout).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: AdminEventDetails(isToHome: true).navigationBarHidden(true),
+                        isActive: $isEventDetails).isDetailLink(false)
                 }
             }
             .navigationBarHidden(true)

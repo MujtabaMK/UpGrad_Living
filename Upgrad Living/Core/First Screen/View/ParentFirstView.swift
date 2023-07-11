@@ -25,6 +25,8 @@ struct ParentFirstView: View {
     @State private var isBackParentApproval = false
     @State private var isParentLogout = false
     
+    @State private var isApprovalView = false
+    
     var EventScreen: String
     @Binding var newSelectedIndex: Int
     
@@ -34,10 +36,9 @@ struct ParentFirstView: View {
                 Image("Blank_Launch_Screen")
                     .resizable()
                     .scaledToFill()
+                
                 if EventScreen == ""{
-                    Image("Upgrad_Logo_White")
-                        .resizable()
-                        .frame(width: 281, height: 40)
+                    LoadingView()
                 }else{
                     LoadingView()
                 }
@@ -52,6 +53,7 @@ struct ParentFirstView: View {
                             isParentHelpdesk: $isParentHelpdesk,
                             isBackParentApproval: $isBackParentApproval,
                             isParentLogout: $isParentLogout,
+                            isApprovalView: $isApprovalView,
                             NewSelectedIndex: $newSelectedIndex
                         ).navigationBarHidden(true),
                         isActive: $isParentHome).isDetailLink(false)
@@ -75,6 +77,11 @@ struct ParentFirstView: View {
                         "",
                         destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(0)).navigationBarHidden(true),
                         isActive: $isBackParentGuestRoom).isDetailLink(false)
+                    
+                    NavigationLink(
+                        "",
+                        destination: FirstView(EventScreen: "1", newSelectedIndex: .constant(2)).navigationBarHidden(true),
+                        isActive: $isApprovalView).isDetailLink(false)
                     
                     NavigationLink(
                         "",

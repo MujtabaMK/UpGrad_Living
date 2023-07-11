@@ -52,39 +52,46 @@ struct ParentHelpdesk: View {
                         .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
                     }
                     ForEach(Array(arrHelpdesk.enumerated()), id: \.offset) { index, desk in
-                        VStack(spacing: 20){
-                            VStack(alignment: .leading, spacing: 5){
-                                HStack{
-                                    Text(desk.helpDesk ?? "")
-                                        .font(.custom(OpenSans_Bold, size: 18))
-                                        .foregroundColor(Color(hex: 0x333333))
-                                    Spacer()
-                                }
-                                .padding(.leading)
-                                HStack{
-                                    Text(desk.contactNo ?? "")
-                                        .font(.custom(OpenSans_SemiBold, size: 14))
-                                        .foregroundColor(Color(hex: 0x565656))
-                                    
-                                    Spacer()
-                                    
-                                    Image("Service_Phone_Call")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 24, height: 24)
-                                        .foregroundColor(colorsicon[safe: index] ?? colorsicon[safe: index - colorsicon.count])
-                                        .onTapGesture {
-                                            let phone = "tel://"
-                                            let phoneNumberformatted = "\(phone)\(desk.contactNo ?? "")"
-                                            guard let url = URL(string: phoneNumberformatted) else { return }
-                                            UIApplication.shared.open(url)
-                                        }
-                                }
-                                .padding(.horizontal)
-                            }
+                        VStack{
+//                            VStack(alignment: .leading, spacing: 5){
+//                                HStack{
+//                                    Text(desk.helpDesk ?? "")
+//                                        .font(.custom(OpenSans_Bold, size: 18))
+//                                        .foregroundColor(Color(hex: 0x333333))
+//                                    Spacer()
+//                                }
+//                                .padding(.leading)
+//                                HStack{
+//                                    Text(desk.contactNo ?? "")
+//                                        .font(.custom(OpenSans_SemiBold, size: 14))
+//                                        .foregroundColor(Color(hex: 0x565656))
+//
+//                                    Spacer()
+//
+//                                    Image("Service_Phone_Call")
+//                                        .resizable()
+//                                        .scaledToFit()
+//                                        .frame(width: 24, height: 24)
+//                                        .foregroundColor(colorsicon[safe: index] ?? colorsicon[safe: index - colorsicon.count])
+//                                        .onTapGesture {
+//                                            let phone = "tel://"
+//                                            let phoneNumberformatted = "\(phone)\(desk.contactNo ?? "")"
+//                                            guard let url = URL(string: phoneNumberformatted) else { return }
+//                                            UIApplication.shared.open(url)
+//                                        }
+//                                }
+//                                .padding(.horizontal)
+//                            }
+                            
+                            ParentHelpdeskcell(
+                                backgroundTopColour: (colorsicon[safe: index] ?? colorsicon[safe: index - colorsicon.count])!,
+                                backgroundBottomColour: (colorsmain[safe: index] ?? colorsmain[safe: index - colorsmain.count])!,
+                                desk: desk
+                            )
                         }
-                        .frame(width: getRect().width - 20, height: 100)
-                        .background(colorsmain[safe: index] ?? colorsmain[safe: index - colorsmain.count])
+                        .frame(width: getRect().width - 20, height: 80)
+                        //.background(colorsmain[safe: index] ?? colorsmain[safe: index - colorsmain.count])
+                        .background(Color(hex: 0xFEF5F6))
                         .padding(.top, 40)
                     }
                     .frame(maxWidth: getRect().width)

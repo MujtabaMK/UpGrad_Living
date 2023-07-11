@@ -104,4 +104,11 @@ let GET_Parent_Pending_Details = "\(StartURL)pendingRequestList"
 
 //Pending Approval
 let POST_Parent_Pending_Action = "\(StartURL)takeAction"
+let GET_Parent_Pending_Request = "\(StartURL)parentsrequestList"
 
+//Admin
+
+//Pending Approval
+
+let GET_Admin_Pending_Details = "\(StartURL)pendingRequestsAdmin"
+let GET_Admin_Pending_Request = "\(StartURL)adminsrequestList"

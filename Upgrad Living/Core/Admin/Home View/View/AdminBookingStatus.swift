@@ -61,7 +61,6 @@ struct AdminBookingStatus: View {
                     .overlay{
                         RoundedRectangle(cornerRadius: 40)
                             .stroke(Color(hex: 0xF1F1FA), lineWidth: 1)
-                        
                     }
                 }
             }
@@ -149,6 +148,8 @@ struct AdminBookingStatus: View {
                     ProgressView("", value: applicationRecivedAmount, total: 100)
                         .tint(Color(hex: 0xEE2C3C))
                         .scaleEffect(x: 1, y: 2, anchor: .center)
+                        .padding(.top, -5)
+                        .padding(.bottom)
                 }
                 VStack{
                     HStack{

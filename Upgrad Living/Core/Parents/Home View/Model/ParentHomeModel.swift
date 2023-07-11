@@ -23,7 +23,7 @@ struct ParentHomeDataClass: Codable {
 
 // MARK: - EmergenyContact
 struct PatentEmergenyContact: Codable {
-    let helpDesk, contactNo: String?
+    let helpDesk, contactNo, email, whatsappNo: String?
 }
 
 // MARK: - Meal

@@ -156,7 +156,7 @@ struct UserIntrestsView: View {
     
     var body: some View {
         NavigationView {
-            ZStack{
+            ZStack(alignment: .bottom){
                 ScrollView(showsIndicators: false) {
                     ZStack{
                         Image("Home_Top_Background")
@@ -195,13 +195,19 @@ struct UserIntrestsView: View {
                             
                             Spacer()
                             
-                            Image(isEditable ? "User_Profile_Select" : "User_Profile_UnSelect")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 23, height: 24)
-                                .onTapGesture {
-                                    isEditable.toggle()
-                                }
+                            VStack(alignment: .center){
+                                Image(isEditable ? "User_Profile_Select" : "User_Profile_UnSelect")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 23, height: 24)
+                                
+                                Text("Edit")
+                                    .font(.custom(OpenSans_SemiBold, size: 14))
+                                    .foregroundColor(Color(hex: 0x00B2BA))
+                            }
+                            .onTapGesture {
+                                isEditable.toggle()
+                            }
                         }
                         .padding(.top)
                         .padding(.horizontal)
@@ -1326,80 +1332,83 @@ struct UserIntrestsView: View {
                             .padding(.bottom, 20)
                         }
                         .padding(.leading)
-                        if isEditable{
-                            VStack(alignment: .center) {
-                                HStack{
-                                    Spacer()
-                                    
-                                    DetailsViewBottom(textName: "Update", imageName: "Smile_Profile")
-                                        .padding()
-                                        .frame(alignment: .center)
-                                        .onTapGesture {
-                                            if arrCreavity.count == 0{
-                                                alertMessage = "Please pick favourites from Creativity"
-                                                AlertShow = "0"
-                                                showingalert = true
-                                            }else if arrSports.count == 0{
-                                                alertMessage = "Please pick favourites from Sports"
-                                                AlertShow = "0"
-                                                showingalert = true
-                                            }else if arrEntertainment.count == 0{
-                                                alertMessage = "Please pick favourites from Entertainment"
-                                                AlertShow = "0"
-                                                showingalert = true
-                                            }else if arrGoingOut.count == 0{
-                                                alertMessage = "Please pick favourites from Going Out"
-                                                AlertShow = "0"
-                                                showingalert = true
-                                            }else if arrStayingIn.count == 0{
-                                                alertMessage = "Please pick favourites from Staying In"
-                                                AlertShow = "0"
-                                                showingalert = true
-                                            }else if arrFoodAndDrink.count == 0{
-                                                alertMessage = "Please pick favourites from Food & Drink"
-                                                AlertShow = "0"
-                                                showingalert = true
-                                            }else if arrValues.count == 0{
-                                                alertMessage = "Please pick favourites from Values & Traits"
-                                                AlertShow = "0"
-                                                showingalert = true
-                                            }else{
-                                                if networkMonitor.isConnected{
-                                                    viewModelPost.postProfile(appId: studentAppID ?? "",
-                                                                              creativity: arrCreavity as NSArray,
-                                                                              sports: arrSports as NSArray,
-                                                                              entertainment: arrEntertainment as NSArray,
-                                                                              goingOut: arrGoingOut as NSArray,
-                                                                              stayingIn: arrStayingIn as NSArray,
-                                                                              foodAndDrink: arrFoodAndDrink as NSArray,
-                                                                              values: arrValues as NSArray) { Profile in
-                                                        if Profile.status == 1{
-                                                            alertMessage = "Interests Updates Successfully"
-                                                            AlertShow = "0"
-                                                            showingalert = true
-                                                        }else{
-                                                            alertMessage = Profile.msg ?? ""
-                                                            AlertShow = "0"
-                                                            showingalert = true
-                                                        }
-                                                    }
-                                                }else{
-                                                    alertMessage = "Please Check Your Internet Connection"
-                                                    AlertShow = "0"
-                                                    showingalert = true
-                                                }
-                                            }
-                                        }
-                                    Spacer()
-                                }
-                            }
-                        }
                     }
                     .frame(maxWidth: getRect().width)
                     .background(colorScheme == .light ? .white : .black)
                     .cornerRadius(15, corners: [.topLeft, .topRight])
                     .offset(y: -80)
                 }
+                
+                if isEditable{
+                    VStack(alignment: .center) {
+                        HStack{
+                            Spacer()
+                            
+                            DetailsViewBottom(textName: "Update", imageName: "")
+                                .padding()
+                                .frame(alignment: .center)
+                                .onTapGesture {
+                                    if arrCreavity.count == 0{
+                                        alertMessage = "Please pick favourites from Creativity"
+                                        AlertShow = "0"
+                                        showingalert = true
+                                    }else if arrSports.count == 0{
+                                        alertMessage = "Please pick favourites from Sports"
+                                        AlertShow = "0"
+                                        showingalert = true
+                                    }else if arrEntertainment.count == 0{
+                                        alertMessage = "Please pick favourites from Entertainment"
+                                        AlertShow = "0"
+                                        showingalert = true
+                                    }else if arrGoingOut.count == 0{
+                                        alertMessage = "Please pick favourites from Going Out"
+                                        AlertShow = "0"
+                                        showingalert = true
+                                    }else if arrStayingIn.count == 0{
+                                        alertMessage = "Please pick favourites from Staying In"
+                                        AlertShow = "0"
+                                        showingalert = true
+                                    }else if arrFoodAndDrink.count == 0{
+                                        alertMessage = "Please pick favourites from Food & Drink"
+                                        AlertShow = "0"
+                                        showingalert = true
+                                    }else if arrValues.count == 0{
+                                        alertMessage = "Please pick favourites from Values & Traits"
+                                        AlertShow = "0"
+                                        showingalert = true
+                                    }else{
+                                        if networkMonitor.isConnected{
+                                            viewModelPost.postProfile(appId: studentAppID ?? "",
+                                                                      creativity: arrCreavity as NSArray,
+                                                                      sports: arrSports as NSArray,
+                                                                      entertainment: arrEntertainment as NSArray,
+                                                                      goingOut: arrGoingOut as NSArray,
+                                                                      stayingIn: arrStayingIn as NSArray,
+                                                                      foodAndDrink: arrFoodAndDrink as NSArray,
+                                                                      values: arrValues as NSArray) { Profile in
+                                                if Profile.status == 1{
+                                                    alertMessage = "Interests Updates Successfully"
+                                                    AlertShow = "0"
+                                                    showingalert = true
+                                                }else{
+                                                    alertMessage = Profile.msg ?? ""
+                                                    AlertShow = "0"
+                                                    showingalert = true
+                                                }
+                                            }
+                                        }else{
+                                            alertMessage = "Please Check Your Internet Connection"
+                                            AlertShow = "0"
+                                            showingalert = true
+                                        }
+                                    }
+                                }
+                            Spacer()
+                        }
+                        .background(colorScheme == .light ? Color(hex: 0xFFFFFF, alpha: 0.7) : Color(hex: 0x000000, alpha: 0.7))
+                    }
+                }
+                
                 if viewModelPost.isLoadingData{
                     LoadingView()
                 }

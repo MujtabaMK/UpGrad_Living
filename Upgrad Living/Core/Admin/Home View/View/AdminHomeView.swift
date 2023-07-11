@@ -72,6 +72,10 @@ struct AdminHomeView: View {
                             .padding(.top)
                         AdminBookingStatus()
                             .padding(.top)
+                        AdminAttendanceDashboard()
+                            .padding(.top)
+                        AdminRoomDetails()
+                            .padding(.top)
                             .padding(.bottom, 70)
                     }
                 }

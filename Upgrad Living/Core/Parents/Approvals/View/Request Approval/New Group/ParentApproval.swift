@@ -14,10 +14,10 @@ struct ParentApproval: View {
     @State private var studentAppID = UserDefaults.standard.string(forKey: "studentAppID")
     @State private var studentusername = UserDefaults.standard.string(forKey: "studentusername")
     @StateObject private var viewModelPending = ParentPendingViewModel()
-    @StateObject private var viewModelGet = SeekApprovalViewModel()
     @StateObject private var viewModelPost = ParentTakeActionViewModel()
+    @StateObject private var viewModelSeek = ParentPendingRequestViewModel()
     
-    @State private var arrSeekApproval = [SeekApprovalRequest]()
+    @State private var arrSeekApproval = [ParentRequest]()
     @State private var arrPendingParentDetails = [ParentPending]()
     
     @State private var isReasion = false
@@ -78,7 +78,7 @@ struct ParentApproval: View {
                                     }
                                 }
                                 
-                                Text("Pending")
+                                Text("Pending Requests")
                                     .font(.custom(OpenSans_SemiBold, size: 14))
                                     .foregroundColor(isRequestSelect ? Color(hex: 0xDE1223) : Color(hex: 0xDE1223))
                             }
@@ -95,7 +95,7 @@ struct ParentApproval: View {
                                     .scaledToFit()
                                     .frame(width: 21, height: 19)
                                 
-                                Text("Requests")
+                                Text("Past Requests")
                                     .font(.custom(OpenSans_SemiBold, size: 14))
                                     .foregroundColor(isRequestSelect ? Color(hex: 0xDE1223) : Color(hex: 0xDE1223))
                             }
@@ -124,7 +124,7 @@ struct ParentApproval: View {
                                                   arrPendingParentDetails: arrPendingParentDetails)
                         }
                         if isRequestSelect{
-                            ForEach(Array(arrSeekApproval.enumerated()), id: \.offset) { index,approval in
+                            ForEach(Array(arrSeekApproval.enumerated()), id: \.offset) { index, approval in
                                 ParentSeekApproval(arrSeekApproval: approval)
                                     .padding(.top)
                             }
@@ -138,7 +138,7 @@ struct ParentApproval: View {
                 if viewModelPending.isLoadingData{
                     LoadingView()
                 }
-                if viewModelGet.isLoadingData{
+                if viewModelSeek.isLoadingData{
                     LoadingView()
                 }
                 if viewModelPost.isLoadingData{
@@ -179,7 +179,7 @@ struct ParentApproval: View {
             .onChange(of: isRequestSelect, perform: { _ in
                 if isRequestSelect{
                     if networkMonitor.isConnected{
-                        viewModelGet.getProfileInfo(appId: studentAppID ?? "") { seek in
+                        viewModelSeek.getPendingInfo(appId: studentAppID ?? "") { seek in
                             if seek.status == 1{
                                 arrSeekApproval = seek.data ?? []
                             }else{
@@ -213,7 +213,7 @@ struct ParentApproval: View {
             })
             .onAppear{
                 if networkMonitor.isConnected{
-                    viewModelGet.getProfileInfo(appId: studentAppID ?? "") { seek in
+                    viewModelSeek.getPendingInfo(appId: studentAppID ?? "") { seek in
                         if seek.status == 1{
                             arrSeekApproval = seek.data ?? []
                         }else{

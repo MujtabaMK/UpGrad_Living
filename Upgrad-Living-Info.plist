@@ -20,6 +20,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>maps</string>
+		<string>whatsapp</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>

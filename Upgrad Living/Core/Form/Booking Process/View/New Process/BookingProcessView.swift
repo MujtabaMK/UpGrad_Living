@@ -10,6 +10,7 @@ import Combine
 
 struct BookingProcessView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var networkMonitor: NetworkMonitor
     @StateObject var viewModel = LoginViewModel()
     @StateObject var viewModelOTP = OTPViewModel()
@@ -35,10 +36,26 @@ struct BookingProcessView: View {
         NavigationView {
             VStack{
                 VStack{
-                    Text("Booking Process")
-                        .font(.custom(OpenSans_Bold, size: 18))
-                        .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
-                        .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
+                    HStack{
+                        Button {
+                            withAnimation() {
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        } label: {
+                            Image("back_Button")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding(.leading, 20)
+                        }
+                        Spacer()
+                        Text("Booking Process")
+                            .font(.custom(OpenSans_Bold, size: 18))
+                            .foregroundColor(colorScheme == .light ? Color(hex: 0x333333) : .white)
+                        Spacer()
+                    }
+                    .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
+                    .padding(.horizontal)
                     Divider()
                     ScrollView(showsIndicators: false) {
 //                        HStack(spacing: 0){

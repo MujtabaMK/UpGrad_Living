@@ -16,7 +16,8 @@ struct AdminViewTabBar: View {
         
     @Binding var NewSelectedIndex: Int
     @Binding var isAdminLogout: Bool
-
+    @Binding var isEventDetails: Bool
+    @Binding var isBackAdminApproval: Bool
     
     var body: some View {
         NavigationView {
@@ -43,11 +44,11 @@ struct AdminViewTabBar: View {
         case .home:
             AdminHomeView(isLogout: $isAdminLogout)
         case .services:
-            AdminHomeView(isLogout: $isAdminLogout)
+            AdminServiceView()
         case .events:
-            AdminHomeView(isLogout: $isAdminLogout)
+            AdminEventAllView(isEventDetails: $isEventDetails)
         case .Approvals:
-            AdminHomeView(isLogout: $isAdminLogout)
+            AdminRequestApproval(isBackAdminApproval: $isBackAdminApproval)
         }
     }
 }

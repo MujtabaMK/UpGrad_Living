@@ -32,6 +32,7 @@ struct ParentHomeView: View {
     @Binding var isParentHelpdesk: Bool
     @Binding var isBackParentHelpdesk: Bool
     @Binding var isLogout: Bool
+    @Binding var isApprovalView: Bool
     
     @State private var pendingCount = ""
     @State private var approvedCount = ""
@@ -41,6 +42,8 @@ struct ParentHomeView: View {
     @State private var enteryTime = ""
     
     @State private var arrHelpDesk = [PatentEmergenyContact]()
+    
+    @State private var whatsUPNumber = ""
     
     var body: some View {
         NavigationView {
@@ -69,7 +72,7 @@ struct ParentHomeView: View {
                                     .scaledToFit()
                                     .frame(width: 25,height: 25)
                             }
-
+                            
                             Button {
                                 alert2Message = "Are you sure you want to Logout?"
                                 buttonTitle = "Logout"
@@ -80,7 +83,7 @@ struct ParentHomeView: View {
                                     .scaledToFit()
                                     .frame(width: 25,height: 25)
                             }
-
+                            
                         }
                         .padding(.horizontal)
                         .padding(.top, UIDevice.current.hasNotch ? 50 : 20)
@@ -120,6 +123,9 @@ struct ParentHomeView: View {
                                         .frame(width: 25, height: 25)
                                         .offset(y: -15)
                                 }
+                                .onTapGesture {
+                                    isApprovalView = true
+                                }
                                 
                                 ZStack(alignment: .top){
                                     VStack(spacing: 8){
@@ -142,6 +148,9 @@ struct ParentHomeView: View {
                                         .frame(width: 25, height: 25)
                                         .offset(y: -15)
                                 }
+                                .onTapGesture {
+                                    isApprovalView = true
+                                }
                                 
                                 ZStack(alignment: .top){
                                     VStack(spacing: 8){
@@ -163,6 +172,9 @@ struct ParentHomeView: View {
                                         .scaledToFit()
                                         .frame(width: 25, height: 25)
                                         .offset(y: -15)
+                                }
+                                .onTapGesture {
+                                    isApprovalView = true
                                 }
                             }
                             .padding(.bottom)
@@ -251,179 +263,127 @@ struct ParentHomeView: View {
                                     VStack(spacing: 20){
                                         if arrHelpDesk.count > 0{
                                             VStack(alignment: .leading, spacing: 5){
-                                                HStack{
-                                                    Text(arrHelpDesk[0].helpDesk ?? "".uppercased())
-                                                        .font(.custom(OpenSans_Bold, size: 18))
-                                                        .foregroundColor(Color(hex: 0x333333))
-                                                    Spacer()
-                                                }
-                                                .padding(.leading)
-                                                HStack{
-                                                    Text(arrHelpDesk[0].contactNo ?? "")
-                                                        .font(.custom(OpenSans_SemiBold, size: 14))
-                                                        .foregroundColor(Color(hex: 0x565656))
-                                                    
-                                                    Spacer()
-                                                    
-                                                    Image("Service_Phone_Call")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: 24, height: 24)
-                                                        .foregroundColor(Color(hex: 0xFB6876))
-                                                        .onTapGesture {
-                                                            let phone = "tel://"
-                                                            let phoneNumberformatted = "\(phone)\(Text(arrHelpDesk[0].contactNo ?? ""))"
-                                                            guard let url = URL(string: phoneNumberformatted) else { return }
-                                                            UIApplication.shared.open(url)
-                                                        }
-                                                }
-                                                .padding(.horizontal)
+                                                ParentHelpdeskcell(backgroundTopColour: Color(hex: 0x333333), backgroundBottomColour: Color(hex: 0x333333), desk: arrHelpDesk[0])
                                             }
-                                            .frame(width: getRect().width - 20, height: 100)
-                                            .background(Color(hex: 0xFAC2C7))
+                                            .frame(width: getRect().width - 20, height: 80)
+                                            .background(Color(hex: 0xFEF5F6))
                                             
                                             if arrHelpDesk.count > 1{
                                                 VStack(alignment: .leading, spacing: 5){
-                                                    HStack{
-                                                        Text(arrHelpDesk[1].helpDesk ?? "".uppercased())
-                                                            .font(.custom(OpenSans_Bold, size: 18))
-                                                            .foregroundColor(Color(hex: 0x333333))
-                                                        Spacer()
-                                                    }
-                                                    .padding(.leading)
-                                                    HStack{
-                                                        Text(arrHelpDesk[1].contactNo ?? "")
-                                                            .font(.custom(OpenSans_SemiBold, size: 14))
-                                                            .foregroundColor(Color(hex: 0x565656))
-                                                        
-                                                        Spacer()
-                                                        
-                                                        Image("Service_Phone_Call")
-                                                            .resizable()
-                                                            .scaledToFit()
-                                                            .frame(width: 24, height: 24)
-                                                            .foregroundColor(Color(hex: 0x13A2A7))
-                                                            .onTapGesture {
-                                                                let phone = "tel://"
-                                                                let phoneNumberformatted = "\(phone)\(Text(arrHelpDesk[1].contactNo ?? ""))"
-                                                                guard let url = URL(string: phoneNumberformatted) else { return }
-                                                                UIApplication.shared.open(url)
-                                                            }
-                                                    }
-                                                    .padding(.horizontal)
+                                                    ParentHelpdeskcell(backgroundTopColour: Color(hex: 0x333333), backgroundBottomColour: Color(hex: 0x333333), desk: arrHelpDesk[1])
                                                 }
-                                                .frame(width: getRect().width - 20, height: 100)
-                                                .background(Color(hex: 0xB1D9ED))
+                                                .frame(width: getRect().width - 20, height: 80)
+                                                .background(Color(hex: 0xFEF5F6))
                                             }
                                         }
                                     }
                                 }
                                 .padding(.bottom, 20)
                                 
-                                if !exitTime.isEmpty{
-                                    VStack{
-                                        HStack{
-                                            Text("Student Check-in/ Check-out time")
-                                                .font(.custom(OpenSans_Bold, size: 20))
-                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x1A1A1A, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
-                                            
-                                            Spacer()
-                                        }
-                                        .padding(.leading)
-                                        
-                                        VStack{
-                                            Image("User_CheckIN_CheckOut_icon")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 206, height: 105)
-                                                .padding(.bottom, 20)
-                                            
-                                            Text(studentDate)
-                                                .font(.custom(OpenSans_Bold, size: 18))
-                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x00000, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
-                                            
-                                            HStack{
-                                                Spacer()
-                                                
-                                                Text("Exit time")
-                                                    .font(.custom(OpenSans_SemiBold, size: 14))
-                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x616161) : Color(hex: 0x616161))
-                                                
-                                                Spacer()
-                                                
-                                                Rectangle()
-                                                    .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [2]))
-                                                    .foregroundColor(.clear)
-                                                    .frame(width: 1)
-                                                
-                                                
-                                                Spacer()
-                                                
-                                                Text("Entry time")
-                                                    .font(.custom(OpenSans_SemiBold, size: 14))
-                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x616161) : Color(hex: 0x616161))
-                                                
-                                                Spacer()
-                                                
-                                            }
-                                            .frame(height: 31)
-                                            .background(Color(hex: 0xFDDFE3))
-                                            
-                                            HStack{
-                                                Spacer()
-                                                Text(exitTime)
-                                                    .font(.custom(OpenSans_Bold, size: 16))
-                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
-                                                Spacer()
-                                                
-                                                Rectangle()
-                                                    .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [2]))
-                                                    .foregroundColor(Color(hex: 0x969696))
-                                                    .frame(width: 1)
-                                                
-                                                Spacer()
-                                                Text(enteryTime)
-                                                    .font(.custom(OpenSans_Bold, size: 16))
-                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
-                                                
-                                                Spacer()
-                                            }
-                                            .frame(height: 48)
-                                            .padding(.top, -6)
-                                            
-                                            Rectangle()
-                                                .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [2]))
-                                                .foregroundColor(Color(hex: 0x969696))
-                                                .frame(width: getRect().width - 40, height: 0.5)
-                                                .padding(.top, -8)
-                                            
-                                            VStack{
-                                                Text("Please note:")
-                                                    .font(.custom(OpenSans_SemiBold, size: 14))
-                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x969696) : Color(hex: 0x969696))
-                                                
-                                                +
-                                                
-                                                Text(" Above timings shown are 1st exit from the hostel and ")
-                                                    .font(.custom(OpenSans_SemiBold, size: 14))
-                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
-                                                
-                                                +
-                                                
-                                                Text(" last entry into the hostel")
-                                                    .font(.custom(OpenSans_SemiBold, size: 14))
-                                                    .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
-                                                
-                                            }
-                                            .padding(.horizontal)
-                                        }
-                                        .padding(.vertical, 20)
-                                        .background(colorScheme == .light ? Color(hex: 0xFFFFFF) : Color(hex: 0x2E2E2E))
-                                        .cornerRadius(20)
-                                        .frame(width: getRect().width - 40)
-                                        .shadow(color: .gray, radius: 4, x: 0, y: 0)
-                                    }
-                                }
+                                // if !exitTime.isEmpty{
+//                                VStack{
+//                                    HStack{
+//                                        Text("Student Check-in/ Check-out time")
+//                                            .font(.custom(OpenSans_Bold, size: 20))
+//                                            .foregroundColor(colorScheme == .light ? Color(hex: 0x1A1A1A, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
+//
+//                                        Spacer()
+//                                    }
+//                                    .padding(.leading)
+//
+//                                    VStack{
+//                                        Image("User_CheckIN_CheckOut_icon")
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 206, height: 105)
+//                                            .padding(.bottom, 20)
+//
+//                                        Text(studentDate)
+//                                            .font(.custom(OpenSans_Bold, size: 18))
+//                                            .foregroundColor(colorScheme == .light ? Color(hex: 0x00000, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
+//
+//                                        HStack{
+//                                            Spacer()
+//
+//                                            Text("Exit time")
+//                                                .font(.custom(OpenSans_SemiBold, size: 14))
+//                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x616161) : Color(hex: 0x616161))
+//
+//                                            Spacer()
+//
+//                                            Rectangle()
+//                                                .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [2]))
+//                                                .foregroundColor(.clear)
+//                                                .frame(width: 1)
+//
+//
+//                                            Spacer()
+//
+//                                            Text("Entry time")
+//                                                .font(.custom(OpenSans_SemiBold, size: 14))
+//                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x616161) : Color(hex: 0x616161))
+//
+//                                            Spacer()
+//
+//                                        }
+//                                        .frame(height: 31)
+//                                        .background(Color(hex: 0xFDDFE3))
+//
+//                                        HStack{
+//                                            Spacer()
+//                                            Text(exitTime)
+//                                                .font(.custom(OpenSans_Bold, size: 16))
+//                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
+//                                            Spacer()
+//
+//                                            Rectangle()
+//                                                .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [2]))
+//                                                .foregroundColor(Color(hex: 0x969696))
+//                                                .frame(width: 1)
+//
+//                                            Spacer()
+//                                            Text(enteryTime)
+//                                                .font(.custom(OpenSans_Bold, size: 16))
+//                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
+//                                            
+//                                            Spacer()
+//                                        }
+//                                        .frame(height: 48)
+//                                        .padding(.top, -6)
+//
+//                                        Rectangle()
+//                                            .strokeBorder(style: StrokeStyle(lineWidth: 0.2, dash: [2]))
+//                                            .foregroundColor(Color(hex: 0x969696))
+//                                            .frame(width: getRect().width - 40, height: 0.5)
+//                                            .padding(.top, -8)
+//
+//                                        VStack{
+//                                            Text("Please note:")
+//                                                .font(.custom(OpenSans_SemiBold, size: 14))
+//                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x969696) : Color(hex: 0x969696))
+//
+//                                            +
+//
+//                                            Text(" Above timings shown are 1st exit from the hostel and ")
+//                                                .font(.custom(OpenSans_SemiBold, size: 14))
+//                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
+//
+//                                            +
+//
+//                                            Text(" last entry into the hostel")
+//                                                .font(.custom(OpenSans_SemiBold, size: 14))
+//                                                .foregroundColor(colorScheme == .light ? Color(hex: 0x333333, alpha: 1.0) : Color(hex: 0xFFFFFF, alpha: 0.8))
+//
+//                                        }
+//                                        .padding(.horizontal)
+//                                    }
+//                                    .padding(.vertical, 20)
+//                                    .background(colorScheme == .light ? Color(hex: 0xFFFFFF) : Color(hex: 0x2E2E2E))
+//                                    .cornerRadius(20)
+//                                    .frame(width: getRect().width - 40)
+//                                    .shadow(color: .gray, radius: 4, x: 0, y: 0)
+//                                }
+                                // }
                                 Text("")
                             }
                         }
